@@ -1,12 +1,20 @@
 import LineTop from "../assets/Images/head_line.png"
-import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai"
+import { AiFillCaretDown, AiFillCaretRight } from "react-icons/ai"
 import { useState } from "react"
 
 export default function Artifacts() {
   const [showThemeListFilter, setShowThemeListFilter] = useState(false)
+  const [showCatListFilter, setShowCatListFilter] = useState(false)
+  const [showPriceListFilter, setShowPriceListFilter] = useState(false)
 
-  const handleItemsFilterClick = () => {
+  const handleThemeFilterClick = () => {
     setShowThemeListFilter(!showThemeListFilter)
+  }
+  const handleCatFilterClick = () => {
+    setShowCatListFilter(!showCatListFilter)
+  }
+  const handlePriceFilterClick = () => {
+    setShowPriceListFilter(!showPriceListFilter)
   }
 
   return (
@@ -24,8 +32,8 @@ export default function Artifacts() {
         <div className="divFiltersEshop">
           <p className="titleFilters">Tous les artéfacts</p>
           {/* par thèmes */}
-          <p className="itemsFilter" onClick={handleItemsFilterClick}>
-            {showThemeListFilter ? <AiFillCaretDown /> : <AiFillCaretUp />}
+          <p className="itemsFilter" onClick={handleThemeFilterClick}>
+            {showThemeListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
             Par thèmes
           </p>
           <div
@@ -52,11 +60,14 @@ export default function Artifacts() {
             </div>
           </div>
           {/* par catégories */}
-          <p className="itemsFilter">
-            <AiFillCaretDown />
+          <p className="itemsFilter" onClick={handleCatFilterClick}>
+            {showCatListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
             Par catégories
           </p>
-          <div id="catListFilter">
+          <div
+            id="catListFilter"
+            style={{ display: showCatListFilter ? "block" : "none" }}
+          >
             <div>
               <label className="labelInputFilter">
                 <input type="checkbox" />
@@ -77,11 +88,14 @@ export default function Artifacts() {
             </div>
           </div>
           {/* par prix */}
-          <p className="itemsFilter">
-            <AiFillCaretDown />
+          <p className="itemsFilter" onClick={handlePriceFilterClick}>
+            {showPriceListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
             Par prix
           </p>
-          <div id="priceListFilter">
+          <div
+            id="priceListFilter"
+            style={{ display: showPriceListFilter ? "block" : "none" }}
+          >
             <div>
               <label className="labelInputFilter">
                 <input type="checkbox" />

@@ -1,4 +1,4 @@
-/// HEAD ///
+/// TITLE HEAD ///
 .divHeadEshop {
     .titleHeadEshop {
         font-family: var(--font1);
@@ -31,6 +31,9 @@
     font-family: var(--font2);
     font-size: 1vw;
     border-bottom: 1px solid white;
+}
+.itemsFilter:hover {
+    cursor: pointer;
 }
 .labelInputFilter {
     font-family: var(--font2);
