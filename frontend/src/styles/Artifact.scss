@@ -31,6 +31,7 @@
     font-family: var(--font2);
     font-size: 1vw;
     border-bottom: 1px solid white;
+    margin-bottom: 5px;
 }
 .itemsFilter:hover {
     cursor: pointer;
@@ -39,6 +40,13 @@
     font-family: var(--font2);
     font-size: 1vw;
 }
+// .checkboxStyleEshop {
+//     color: var(--third-color);
+// }
+// .checkboxStyleEshop:checked {
+//     color: red;
+// }
+
 
 /// DIV ARTFACTS ///
 .divArtifactsEshop {
