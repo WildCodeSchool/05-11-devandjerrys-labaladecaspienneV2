@@ -1,3 +1,4 @@
+import Contact from "@pages/Contact"
 import { Route, Routes } from "react-router-dom"
 
 import Footer from "./components/Footer"
@@ -23,6 +24,7 @@ function App() {
         <Route path="/theme/:id" element={<ThemeDetails />} />
         <Route path="/artifacts" element={<Artifacts />} />
         <Route path="/artifacts/:id" element={<ArtifactDetails />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
     </div>
