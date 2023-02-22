@@ -11,21 +11,23 @@ function Header() {
       <div className="mainDivHeader">
         <img className="headerAngle angleL" src={angleL} alt="image" />
         <img className="headerStar" src={star} alt="image" />
-        <Link to="/artifacts">
+        <Link className="linkHeader" to="/artifacts">
           <p className="itemsNavHeader">Boutique</p>
         </Link>
         <img className="headerStar" src={star} alt="image" />
-        <p className="itemsNavHeader">Qui suis-je ?</p>
-        <Link to="/home">
+        <Link className="linkHeader" to="#">
+          <p className="itemsNavHeader">Qui suis-je ?</p>
+        </Link>
+        <Link className="linkHeader" to="/home">
           <div className="divLogoHeader">
             <img className="logoHeader" src={logo} alt="image" />
           </div>
         </Link>
-        <Link to="#">
+        <Link className="linkHeader" to="#">
           <p className="itemsNavHeader">Connexion</p>
         </Link>
         <img className="headerStar" src={star} alt="image" />
-        <Link to="#">
+        <Link className="linkHeader" to="#">
           <p className="itemsNavHeader">Panier</p>
         </Link>
         <img className="headerStar" src={star} alt="image" />
