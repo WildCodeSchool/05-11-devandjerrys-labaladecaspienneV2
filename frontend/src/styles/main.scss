@@ -17,6 +17,24 @@
   --font2: "Alegreya";
   --font3: "EB Garamond";
 }
+@import "./header.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Alegreya&family=EB+Garamond:ital@1&display=swap%27");
+
+@font-face {
+  font-family: "Dream";
+  src: url("../assets/Font/Dream-Avenue.ttf");
+}
+
+:root {
+  --background-color: #151515;
+  --main-color: #ffffff;
+  --secondary-color: #804000;
+  --third-color: #004033;
+  --font1: "Dream";
+  --font2: "Alegreya";
+  --font3: "EB Garamond";
+}
 
 body {
   background-color: var(--background-color);
