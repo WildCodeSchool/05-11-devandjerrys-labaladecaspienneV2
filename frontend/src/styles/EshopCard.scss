@@ -1,0 +1,24 @@
+.Eshop {
+  display: flex;
+  height: 50vh;
+  margin: 30px;
+  justify-content: center;
+  align-items: center;
+
+  .Frame {
+    height: 50vh;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+  }
+  .price {
+    width: 5vw;
+  }
+  .Eshop-Price {
+    position: absolute; /* Position absolue */
+    top: 37%; /* Centrer verticalement */
+    left: 43%; /* Centrer horizontalement */
+    opacity: 0.3;
+  }
+}

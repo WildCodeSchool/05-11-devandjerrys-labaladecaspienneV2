@@ -1,6 +1,6 @@
 import Contact from "@pages/Contact"
 import { Route, Routes } from "react-router-dom"
-
+import EshopCard from "./components/EshopCard"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
 
@@ -16,6 +16,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+
       <Routes>
         <Route path="/" element={<Splash />} />
         <Route path="/home" element={<Home />} />
@@ -25,6 +26,7 @@ function App() {
         <Route path="/artifacts" element={<Artifacts />} />
         <Route path="/artifacts/:id" element={<ArtifactDetails />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/eshop" element={<EshopCard />} />
       </Routes>
       <Footer />
     </div>
