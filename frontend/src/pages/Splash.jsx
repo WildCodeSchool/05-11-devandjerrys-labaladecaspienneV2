@@ -26,7 +26,7 @@ export default function Splash() {
           <Home />
         </div>
       }
-      <div class="glow-effect"></div>
+      <div className="glow-effect"></div>
     </div>
   )
 }
