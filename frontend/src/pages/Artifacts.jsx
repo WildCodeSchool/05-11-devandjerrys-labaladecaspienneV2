@@ -42,19 +42,19 @@ export default function Artifacts() {
           >
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 Potter
               </label>
             </div>
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 Lovecraft
               </label>
             </div>
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 Manga
               </label>
             </div>
@@ -70,19 +70,19 @@ export default function Artifacts() {
           >
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 Bijoux
               </label>
             </div>
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 Sculptures
               </label>
             </div>
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 Boites
               </label>
             </div>
@@ -98,19 +98,19 @@ export default function Artifacts() {
           >
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 Jusqu'à 50 €
               </label>
             </div>
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 50 € à 100 €
               </label>
             </div>
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 100 € et plus
               </label>
             </div>
