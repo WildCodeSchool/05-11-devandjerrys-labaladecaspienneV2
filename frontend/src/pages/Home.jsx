@@ -3,6 +3,7 @@ import Footer from "../components/Footer"
 import logo from "../assets/Images/logo_baladecaspienne.png"
 import deco from "../assets/Images/deco.png"
 import deco1 from "../assets/Images/deco1.png"
+import Burger from "@components/Burger"
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
         <h2>Les Immaginaires</h2>
         <img id="image3" className="image" src={deco1}></img>
       </div>
+      <Burger />
       <Footer />
     </div>
   )
