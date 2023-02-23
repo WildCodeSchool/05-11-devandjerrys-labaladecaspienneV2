@@ -1,10 +1,9 @@
-
-@import './Home.scss';
-@import './Header.scss';
+@import "./Home.scss";
+@import "./Header.scss";
 @import "./Artifact.scss";
 @import "./footer.scss";
 @import "./Contact.scss";
-
+@import "./CardTheme.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=Alegreya&family=EB+Garamond:ital@1&display=swap");
 @font-face {
@@ -39,6 +38,7 @@
   --font2: "Alegreya";
   --font3: "EB Garamond";
 }
+@import "./CardTheme.scss";
 
 body {
   background-color: var(--background-color);
