@@ -53,8 +53,18 @@
     }
 }
 /// Mobil ///
-@media (max-width: 560px) {
-    .Header {
+@media (max-width: 320px) {
+    .mainDivHeader {
+        display: flex;
+        align-items: flex-start;
+    }
+    .itemsNavHeader {
+        display: none;
+    }
+    .divLogoHeader {
+        display: none;
+    }
+    .logoHeader {
         display: none;
     }
 }
