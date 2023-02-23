@@ -1,5 +1,6 @@
 .Header {
     width: 100%;
+    font-family: var(--font2);
 
     .mainDivHeader {
         display: flex;
@@ -53,7 +54,7 @@
     }
 }
 /// Mobil ///
-@media (max-width: 320px) {
+@media (max-width: 560px) {
     .mainDivHeader {
         display: flex;
         align-items: flex-start;

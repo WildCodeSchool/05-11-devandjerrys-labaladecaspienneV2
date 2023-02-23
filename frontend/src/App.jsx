@@ -1,9 +1,5 @@
 import Contact from "@pages/Contact"
 import { Route, Routes } from "react-router-dom"
-
-import Footer from "./components/Footer"
-import Header from "./components/Header"
-
 import AdminPage from "./pages/AdminPage"
 import ArtifactDetails from "./pages/ArtifactDetails"
 import Artifacts from "./pages/Artifacts"
@@ -15,10 +11,6 @@ import Theme from "./pages/Themes"
 function App() {
   return (
     <div className="App">
-      <div>
-        <Header />{" "}
-      </div>
-
       <Routes>
         <Route path="/" element={<Splash />} />
         <Route path="/home" element={<Home />} />
@@ -29,9 +21,6 @@ function App() {
         <Route path="/artifacts/:id" element={<ArtifactDetails />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-      <div>
-        <Footer />{" "}
-      </div>
     </div>
   )
 }
