@@ -24,12 +24,12 @@ export default function Burger() {
         </div>
         <div className="right">
           <Link className="linkBurger" to="#">
-            <div className="text">Profil</div>
+            <div className="text">Contact</div>
           </Link>
         </div>
         <div className="righter">
           <Link className="linkBurger" to="#">
-            <div className="text">Panier</div>
+            <div className="text">Profil</div>
           </Link>
         </div>
       </div>

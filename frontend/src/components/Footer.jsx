@@ -1,4 +1,4 @@
-import Burger from "./Buger"
+import Burger from "./Burger"
 
 export default function Footer() {
   return (
