@@ -1,8 +1,7 @@
-import "../styles/header.scss"
-import logo from "../assets/logo_baladecaspienne.png"
-import star from "../assets/brown_star.png"
-import angleL from "../assets/white_angle_L.png"
-import angleR from "../assets/white_angle_R.png"
+import logo from "../assets/Images/logo_baladecaspienne.png"
+import star from "../assets/Images/brown_star.png"
+import angleL from "../assets/Images/white_angle_L.png"
+import angleR from "../assets/Images/white_angle_R.png"
 import { Link } from "react-router-dom"
 
 function Header() {
