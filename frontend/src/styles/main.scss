@@ -1,6 +1,7 @@
 @import "./home.scss";
 @import "./footer.scss";
 @import "./Contact.scss";
+@import "./App.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=Alegreya&family=EB+Garamond:ital@1&display=swap");
 @font-face {
@@ -38,7 +39,7 @@
 
 body {
   background-color: var(--background-color);
-  margin: 0;
+  // margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

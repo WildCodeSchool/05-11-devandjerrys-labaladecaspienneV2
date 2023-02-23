@@ -15,7 +15,10 @@ import Theme from "./pages/Themes"
 function App() {
   return (
     <div className="App">
-      <Header />
+      <div>
+        <Header />{" "}
+      </div>
+
       <Routes>
         <Route path="/" element={<Splash />} />
         <Route path="/home" element={<Home />} />
@@ -26,7 +29,9 @@ function App() {
         <Route path="/artifacts/:id" element={<ArtifactDetails />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-      <Footer />
+      <div>
+        <Footer />{" "}
+      </div>
     </div>
   )
 }
