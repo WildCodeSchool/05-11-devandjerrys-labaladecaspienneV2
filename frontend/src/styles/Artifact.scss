@@ -1,0 +1,76 @@
+/// TITLE HEAD ///
+.divHeadEshop {
+    .titleHeadEshop {
+        font-family: var(--font1);
+        font-size: 2.6vw;
+        color: var(--main-color);
+        margin-top: 9vh;
+        margin-bottom: 0;
+    }
+    .lineTitleEshop {
+        width: 40%;
+    }
+}
+.mainDivEshop {
+    display: flex;
+    flex-direction: row;
+    color: var(--main-color);
+    margin: 3vw 5vw 0 5vw;
+}
+/// DIV FILTERS ///
+.divFiltersEshop {
+    text-align: left;
+    width: 10%;
+}
+.titleFilters {
+    font-family: var(--font2);
+    font-size: 1.2vw;
+    font-weight: bold;
+}
+.itemsFilter {
+    font-family: var(--font2);
+    font-size: 1vw;
+    border-bottom: 1px solid white;
+    margin-bottom: 5px;
+}
+.itemsFilter:hover {
+    cursor: pointer;
+}
+.labelInputFilter {
+    font-family: var(--font2);
+    font-size: 1vw;
+}
+// .checkboxStyleEshop {
+//     color: var(--third-color);
+// }
+// .checkboxStyleEshop:checked {
+//     color: red;
+// }
+
+
+/// DIV ARTFACTS ///
+.divArtifactsEshop {
+    width: 90%;
+}
+
+/// Tablet ///
+@media (max-width: 768px) { 
+    .lineTitleEshop {
+        width: 55%;
+    }
+    .titleHeadEshop {
+        margin-top: 5vh;
+        font-size: 4vw;
+    }
+}
+
+/// Mobil ///
+@media (max-width: 380px) { 
+    .lineTitleEshop {
+        width: 60%;
+    }
+    .titleHeadEshop {
+        margin-top: -6vh;
+        font-size: 6.5vw;
+}
+}
