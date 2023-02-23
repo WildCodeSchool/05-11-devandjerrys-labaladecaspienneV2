@@ -1,11 +1,11 @@
-@import "./splash.scss";
-@import "./Home.scss";
-@import "./Header.scss";
+@import "./App.scss";
 @import "./Artifact.scss";
-@import "./footer.scss";
-@import "./Contact.scss";
 @import "./CardTheme.scss";
-
+@import "./Contact.scss";
+@import "./Footer.scss";
+@import "./Header.scss";
+@import "./Home.scss";
+@import "./splash.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=Alegreya&family=EB+Garamond:ital@1&display=swap");
 @font-face {
@@ -44,7 +44,7 @@
 
 body {
   background-color: var(--background-color);
-  margin: 0;
+  // margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
