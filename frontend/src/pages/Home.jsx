@@ -3,6 +3,7 @@ import Footer from "../components/Footer"
 import logo from "../assets/Images/logo_baladecaspienne.png"
 import deco from "../assets/Images/deco.png"
 import deco1 from "../assets/Images/deco1.png"
+import Burger from "@components/Burger"
 
 import { useState, useEffect } from "react"
 import axios from "axios"
@@ -49,6 +50,7 @@ export default function Home() {
           ))}
         </div>
       </div>
+      <Burger />
       <Footer />
     </div>
   )

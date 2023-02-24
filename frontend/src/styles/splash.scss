@@ -66,12 +66,12 @@
   opacity: 0;
   animation: apparition 5s ease 2s forwards;
 }
-// .Header,
-// .Footer {
-//   display: none;
-//   opacity: 0;
-//   animation: apparition 5s ease 2s forwards;
-// }
+.Header,
+.Footer {
+  // display: none;
+  opacity: 0;
+  animation: apparition 5s ease 2s forwards;
+}
 .glow-effect {
   width: 100%;
   height: 100%;
