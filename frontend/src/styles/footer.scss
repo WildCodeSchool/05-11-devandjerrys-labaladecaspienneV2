@@ -1,6 +1,4 @@
 .Footer {
-  // background: no-repeat url("../assets/Icons/wave.svg");
-
   width: 100%;
   .mainDivFooter {
     display: flex;
@@ -23,8 +21,8 @@
       height: 45px;
     }
     a :hover {
-      filter: brightness(0) saturate(100%) invert(23%) sepia(85%) saturate(907%)
-        hue-rotate(2deg) brightness(100%) contrast(102%);
+      filter: brightness(0) saturate(100%) invert(23%) sepia(85%) saturate(907%) hue-rotate(2deg) brightness(100%)
+        contrast(102%);
       transform: scale(1.2);
       transition: 0.5s;
     }

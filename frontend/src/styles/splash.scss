@@ -79,8 +79,8 @@
   top: 0;
   left: 0;
   z-index: -1;
-  background: radial-gradient(circle, #fff, rgba(255, 255, 255, 0) 70%);
-  animation: glow 10s ease-in-out infinite;
+  background: radial-gradient(circle, #fff, rgba(255, 255, 255, 0) 60%);
+  animation: glow 20s ease-in-out;
 }
 
 @keyframes glow {
@@ -89,7 +89,7 @@
     opacity: 0.5;
   }
   50% {
-    transform: translate(-50%, -50%) scale(1.5);
+    transform: translate(-50%, -50%) scale(2);
     opacity: 0.2;
   }
   100% {
