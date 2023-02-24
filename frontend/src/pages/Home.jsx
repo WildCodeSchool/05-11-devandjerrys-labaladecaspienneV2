@@ -4,7 +4,18 @@ import logo from "../assets/Images/logo_baladecaspienne.png"
 import deco from "../assets/Images/deco.png"
 import deco1 from "../assets/Images/deco1.png"
 
+import { useState, useEffect } from "react"
+import axios from "axios"
+// import { Link } from "react-router-dom"
+import CardTheme from "../components/CardTheme"
+
 export default function Home() {
+  const [themes, setThemes] = useState([])
+  useEffect(() => {
+    axios.get("http://localhost:5000/themes").then((response) => {
+      setThemes(response.data)
+    })
+  }, [])
   return (
     <div>
       <Header />
@@ -26,7 +37,17 @@ export default function Home() {
         </div>
         <img id="image2" className="image" src={deco1}></img>
         <h2>Les Immaginaires</h2>
+
         <img id="image3" className="image" src={deco1}></img>
+        <div className="card-theme">
+          {themes.map((theme) => (
+            <CardTheme
+              key={theme.id}
+              picture_theme={theme.picture_theme}
+              name_theme={theme.name_theme}
+            />
+          ))}
+        </div>
       </div>
       <Footer />
     </div>
