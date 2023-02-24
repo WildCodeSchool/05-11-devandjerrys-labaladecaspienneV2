@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react"
+// import { useEffect, useState } from "react"
 
 import CadreEshop from "../assets/Images/CadreEshop.png"
-import Artipicture from "../assets/Images/Artifact.png"
 
-export default function EshopCard({ id, price, image, name_arti }) {
+export default function EshopCard() {
+  // { id, price, image, name_arti }
   // const [isSeleted, setIsSelected] = useState([])
   // useEffect(() => {
   //   axios
