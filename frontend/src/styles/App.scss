@@ -1,0 +1,14 @@
+.App {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  font-family: var(--font2);
+  text-align: center;
+}
+
+@media (min-width: 560px) {
+  .BurgerBody {
+    display: none;
+  }
+}

@@ -1,58 +1,41 @@
-.FooterContainer {
-  position: absolute;
-  width: 99%;
-  height: 50px;
-  bottom: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  .Footer2 {
-    z-index: 1;
-    position: relative;
-    margin-bottom: -250px;
-    .FooterDeco {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: -85px;
-      img {
-        width: 100px;
-        height: 100px;
+.Footer {
+  width: 100%;
+  .mainDivFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .footerAngle {
+      height: 100px;
+      padding-bottom: 30px;
+      transform: rotate(180deg);
+      filter: drop-shadow(0px 0px 1px white);
+      .angleL {
+        padding-left: 5px;
+      }
+      .angleR {
+        padding-right: 5px;
       }
     }
-    .FooterIcons {
-      display: flex;
-      justify-content: space-evenly;
-
-      width: 80%;
-      margin-left: auto;
-      margin-right: auto;
-      .icon {
-        width: 25px;
-        height: 45px;
-      }
-      a :hover {
-        filter: brightness(0) saturate(100%) invert(23%) sepia(85%)
-          saturate(907%) hue-rotate(2deg) brightness(100%) contrast(102%);
-        transform: scale(1.2);
-        transition: 0.5s;
-      }
-      .star {
-        width: 45px;
-      }
+    .icon {
+      width: 25px;
+      height: 45px;
     }
-  }
-  .wave {
-    object-fit: cover;
-    // margin-top: -175px;
+    a :hover {
+      filter: brightness(0) saturate(100%) invert(23%) sepia(85%) saturate(907%)
+        hue-rotate(2deg) brightness(100%) contrast(102%);
+      transform: scale(1.2);
+      transition: 0.5s;
+    }
+    .footerStar {
+      height: 35px;
+      filter: drop-shadow(0px 0px 1px white);
+    }
   }
 }
 
-// @media (max-width: 768px) {
-//     .Footer1 {
-//         // display: none;
-//     }
-// }
-@media (max-width: 380px) {
-  .FooterContainer {
+// /// Mobil ///
+@media (max-width: 560px) {
+  .Footer {
     display: none;
   }
 }

@@ -1,9 +1,6 @@
 import Contact from "@pages/Contact"
 import { Route, Routes } from "react-router-dom"
 import EshopCard from "./components/EshopCard"
-import Footer from "./components/Footer"
-import Header from "./components/Header"
-
 import AdminPage from "./pages/AdminPage"
 import ArtifactDetails from "./pages/ArtifactDetails"
 import Artifacts from "./pages/Artifacts"
@@ -15,8 +12,6 @@ import Theme from "./pages/Themes"
 function App() {
   return (
     <div className="App">
-      <Header />
-
       <Routes>
         <Route path="/" element={<Splash />} />
         <Route path="/home" element={<Home />} />
@@ -28,7 +23,6 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/eshop" element={<EshopCard />} />
       </Routes>
-      <Footer />
     </div>
   )
 }

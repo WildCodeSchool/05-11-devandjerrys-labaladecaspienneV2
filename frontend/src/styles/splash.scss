@@ -78,9 +78,10 @@
     top: 0;
     left: 0;
     z-index: -1;
-    background: radial-gradient(circle, #fff, rgba(255, 255, 255, 0) 60%);
-    animation: glow 20s ease-in-out;
-    border-radius: 80%;
+    background: radial-gradient(circle, #fff, rgba(255, 255, 255, 0) 50%);
+    animation: glow 0s ease-in-out forwards;
+    border-radius: 50%;
+    animation-duration: 10s;
   }
 }
 @keyframes glow {
@@ -93,11 +94,10 @@
     opacity: 0.2;
   }
   100% {
-    transform: translate(-50%, -50%) scale(0.5);
-    opacity: 0.5;
+    transform: translate(-100%, -100%) scale(0.5);
+    opacity: 1;
   }
 }
-
 @keyframes apparition {
   0% {
     opacity: 0;
@@ -124,12 +124,14 @@
   }
 }
 @media screen and (max-width: 768px) {
-}
-.dleft {
-  width: 100%;
-  height: 100%;
-}
-.dright {
-  width: 100%;
-  height: 100%;
+  .door-container {
+    .dleft {
+      width: 100%;
+      height: 100%;
+    }
+    .dright {
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
