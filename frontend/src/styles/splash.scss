@@ -123,7 +123,7 @@
     transform: rotateY(-180deg);
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 380px) {
   .door-container {
     .dleft {
       width: 100%;
