@@ -3,7 +3,9 @@ import Footer from "../components/Footer"
 import Burger from "@components/Burger"
 import LineTop from "../assets/Images/head_line.png"
 import { AiFillCaretDown, AiFillCaretRight } from "react-icons/ai"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import axios from "axios"
+import EshopCard from "@components/EshopCard"
 
 export default function Artifacts() {
   const [showThemeListFilter, setShowThemeListFilter] = useState(false)
@@ -20,6 +22,12 @@ export default function Artifacts() {
     setShowPriceListFilter(!showPriceListFilter)
   }
 
+  const [artiSelect, setArtiSelect] = useState([])
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/artifacts")
+      .then((res) => setArtiSelect(res.data))
+  }, [])
   return (
     <div className="Artifacts">
       <Header />
@@ -122,9 +130,14 @@ export default function Artifacts() {
         </div>
         {/* DIV ARTEFACTS */}
         <div className="divArtifactsEshop">
-          <p>Image</p>
-          <p>Image</p>
-          <p>Image</p>
+          {artiSelect.map((arti) => (
+            <EshopCard
+              key={arti.id}
+              images={arti.images}
+              name_arti={arti.name_arti}
+              price={arti.price}
+            />
+          ))}
         </div>
       </div>
       <Burger />
