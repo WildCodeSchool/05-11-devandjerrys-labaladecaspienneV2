@@ -1,6 +1,8 @@
 import LineTop from "../assets/Images/head_line.png"
 import { AiFillCaretDown, AiFillCaretRight } from "react-icons/ai"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import axios from "axios"
+import EshopCard from "@components/EshopCard"
 
 export default function Artifacts() {
   const [showThemeListFilter, setShowThemeListFilter] = useState(false)
@@ -17,6 +19,12 @@ export default function Artifacts() {
     setShowPriceListFilter(!showPriceListFilter)
   }
 
+  const [artiSelect, setArtiSelect] = useState([])
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/artifacts")
+      .then((res) => setArtiSelect(res.data))
+  }, [])
   return (
     <div className="Artifacts">
       <div className="divHeadEshop">
@@ -42,19 +50,19 @@ export default function Artifacts() {
           >
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 Potter
               </label>
             </div>
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 Lovecraft
               </label>
             </div>
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 Manga
               </label>
             </div>
@@ -70,19 +78,19 @@ export default function Artifacts() {
           >
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 Bijoux
               </label>
             </div>
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 Sculptures
               </label>
             </div>
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 Boites
               </label>
             </div>
@@ -98,19 +106,19 @@ export default function Artifacts() {
           >
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 Jusqu'à 50 €
               </label>
             </div>
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 50 € à 100 €
               </label>
             </div>
             <div>
               <label className="labelInputFilter">
-                <input type="checkbox" />
+                <input type="checkbox" className="checkboxStyleEshop" />
                 100 € et plus
               </label>
             </div>
@@ -118,9 +126,14 @@ export default function Artifacts() {
         </div>
         {/* DIV ARTEFACTS */}
         <div className="divArtifactsEshop">
-          <p>Image</p>
-          <p>Image</p>
-          <p>Image</p>
+          {artiSelect.map((arti) => (
+            <EshopCard
+              key={arti.id}
+              images={arti.images}
+              name_arti={arti.name_arti}
+              price={arti.price}
+            />
+          ))}
         </div>
       </div>
     </div>
