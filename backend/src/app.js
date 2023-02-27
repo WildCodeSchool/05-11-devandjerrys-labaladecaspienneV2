@@ -31,9 +31,6 @@ app.use(router) // on envois la requet dans le fichier router.js
 
 app.use(express.static(path.join(__dirname, '../public')))
 
-// serve REACT APP
-console.info('yolo')
-
 const reactIndexFile = path.join(
   __dirname,
   '..',

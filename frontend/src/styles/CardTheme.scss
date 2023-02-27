@@ -1,7 +1,6 @@
 .buttonTheme {
     background-color: transparent;
     border: none;
-    
     .cardTheme {
         display: flex;
         flex-direction: column;
@@ -12,17 +11,18 @@
         background-repeat: no-repeat;
         background-size: contain;
         height: 280px;
-
         .cadre {
-            
-            height: 85%;
-            background-image: url("../assets/collier.jpg");
+            // height: 85%;
+            // background-image: url("../assets/collier.jpg");
             background-position: center;
             background-size: cover;
             border-radius: 280px 280px 0px 0px;
-            box-shadow: inset 0 0 2px 3px rgba($color: #ffffff, $alpha: 100%), 0 0 30px 5px rgba($color: #ffffff, $alpha: 0.35);
+            box-shadow: inset 0 0 2px 3px rgba($color: #ffffff, $alpha: 100%),
+                0 0 30px 5px rgba($color: #ffffff, $alpha: 0.35);
+            width: 135px;
+            height: 224px;
+            object-fit: cover;
         }
-
         .nomTheme {
             display: flex;
             justify-content: center;
@@ -33,6 +33,8 @@
             width: 230px;
             height: 30px;
             border-radius: 20px;
+            font-family: var(--font2);
+            font-size: larger;
             .themes {
                 color: #ffffff;
             }
@@ -42,11 +44,11 @@
 
 .buttonTheme:hover {
     .cadre {
-        box-shadow: inset 0 0 2px 3px rgba($color: #004033, $alpha: 100%), 0 0 30px 5px rgba($color: #004033, $alpha: 0.35);
-        border-color: #004033; 
+        box-shadow: inset 0 0 2px 3px rgba($color: #004033, $alpha: 100%),
+            0 0 30px 5px rgba($color: #004033, $alpha: 0.35);
+        border-color: #004033;
     }
     .nomTheme {
         background-color: #004033;
     }
-
 }

@@ -2,7 +2,8 @@
 @import "./Artifact.scss";
 @import "./CardTheme.scss";
 @import "./Contact.scss";
-@import "./Footer.scss";
+@import "./EshopCard.scss";
+@import "./footer.scss";
 @import "./header.scss";
 @import "./Home.scss";
 @import "./splash.scss";
@@ -27,6 +28,7 @@
 body {
   margin: 0;
   background-color: var(--background-color);
+  // margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
