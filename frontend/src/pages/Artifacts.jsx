@@ -1,3 +1,6 @@
+import Header from "../components/Header"
+import Footer from "../components/Footer"
+import Burger from "@components/Burger"
 import LineTop from "../assets/Images/head_line.png"
 import { AiFillCaretDown, AiFillCaretRight } from "react-icons/ai"
 import { useState } from "react"
@@ -19,6 +22,7 @@ export default function Artifacts() {
 
   return (
     <div className="Artifacts">
+      <Header />
       <div className="divHeadEshop">
         <div>
           <p className="titleHeadEshop">LA BALADE CASPIENNE</p>
@@ -123,6 +127,8 @@ export default function Artifacts() {
           <p>Image</p>
         </div>
       </div>
+      <Burger />
+      <Footer />
     </div>
   )
 }
