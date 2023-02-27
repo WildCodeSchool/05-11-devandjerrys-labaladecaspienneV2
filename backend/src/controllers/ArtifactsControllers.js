@@ -7,7 +7,8 @@ const browse = (req, res) => {
       const result = rows.map((arti) => {
         return {
           ...arti,
-          themesAll: arti.themesAll.split(','),
+          themesAll: arti.themesAll ? arti.themesAll.split(',') : [],
+
           images: arti.images.split(','),
         }
       })

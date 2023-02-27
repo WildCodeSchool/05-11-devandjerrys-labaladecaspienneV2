@@ -1,0 +1,98 @@
+.Eshop {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 410px;
+
+  .Image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    .ArtImage {
+      height: 615px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      filter: drop-shadow(4px 5px 3px var(--secondary-color));
+      border-radius: 280px 280px 0px 0px;
+      box-shadow: inset 0 0 2px 3px rgba($color: #ffffff, $alpha: 100%),
+        0 0 30px 5px rgba($color: #ffffff, $alpha: 0.35);
+    }
+
+    .Frame {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 280px 280px 0px 0px;
+    }
+  }
+  .E-Star {
+    width: 130px;
+    height: 122px;
+    position: relative;
+    display: flex;
+    bottom: 109px;
+    /* justify-content: center; */
+    left: 140px;
+  }
+  .Arti-name {
+    position: relative;
+    filter: drop-shadow(8px 11px 2px var(--background-color));
+    z-index: 1;
+    top: 350px;
+    color: var(--main-color);
+    font-family: var(--font3);
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .Eshop-Price {
+    position: relative;
+    bottom: 280px;
+    background-image: url("../assets/Images/etiquette.png");
+    background-position: center;
+    background-size: 100%;
+    min-width: 350px;
+    background-repeat: no-repeat;
+    background-position-y: 40px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  .price p {
+    font-weight: 700;
+    opacity: 1;
+    top: 20px;
+    position: relative;
+    color: var(--secondary-color);
+    font-family: var(--font1);
+    font-size: 60px;
+    filter: drop-shadow(4px 5px 3px var(--secondary-color));
+    text-align: center;
+    justify-content: center;
+    transition: opacity 0.3s ease-in-out;
+  }
+}
+.Eshop {
+  &:hover {
+    .price p,
+    .Arti-name {
+      filter: drop-shadow(1px 1px 0px var(--secondary-color));
+      opacity: 1;
+    }
+    .Eshop-Price {
+      opacity: 0.6;
+    }
+    .ArtImage {
+      opacity: 1;
+      filter: drop-shadow(8px 11px 10px var(--third-color));
+    }
+  }
+}
