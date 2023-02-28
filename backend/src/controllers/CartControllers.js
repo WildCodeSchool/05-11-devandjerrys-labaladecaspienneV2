@@ -1,20 +1,20 @@
 const models = require('../models')
 
-const browse = (req, res) => {
-  models.cart
-    .findAll()
-    .then(([rows]) => {
-      res.send(rows)
-    })
-    .catch((err) => {
-      console.error(err)
-      res.sendStatus(500)
-    })
-}
+// const browse = (req, res) => {
+//   models.cart
+//     .findAll()
+//     .then(([rows]) => {
+//       res.send(rows)
+//     })
+//     .catch((err) => {
+//       console.error(err)
+//       res.sendStatus(500)
+//     })
+// }
 
 const read = (req, res) => {
-  models.pcart
-    .find(req.params.id)
+  models.cart
+    .findOneCart(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
         res.sendStatus(404)
@@ -55,8 +55,23 @@ const add = (req, res) => {
 
   // TODO validations (length, format...)
 
-  models.pcart
+  models.cart
     .insert(cart)
+    .then(([result]) => {
+      res.location(`/pcart/${result.insertId}`).sendStatus(201)
+    })
+    .catch((err) => {
+      console.error(err)
+      res.sendStatus(500)
+    })
+}
+const addHasCart = (req, res) => {
+  const cart = req.body
+
+  // TODO validations (length, format...)
+
+  models.cart
+    .insertHasCart(cart)
     .then(([result]) => {
       res.location(`/pcart/${result.insertId}`).sendStatus(201)
     })
@@ -83,9 +98,10 @@ const destroy = (req, res) => {
 }
 
 module.exports = {
-  browse,
+  // browse,
   read,
   edit,
   add,
   destroy,
+  addHasCart,
 }

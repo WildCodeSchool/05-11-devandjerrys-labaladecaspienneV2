@@ -47,11 +47,13 @@ router.put('/users/:id', UsersControllers.edit)
 router.post('/users', UsersControllers.add)
 router.delete('/users/:id', UsersControllers.destroy)
 
-router.get('/cart', CartControllers.browse)
-router.get('/cart/:id', CartControllers.read)
-router.put('/cart/:id', CartControllers.edit)
-router.post('/cart', CartControllers.add)
+// router.get('/cart', CartControllers.browse) // si l'admin veut voir tous les paniers --pas important pour le moment
+router.get('/cart/:id', CartControllers.read) // pour visualiser le panier
+router.put('/cart/:id', CartControllers.edit) //
+router.post('/cart', CartControllers.add) // à utiliser pour attribuer un cart à chaque nouveau user
 router.delete('/cart/:id', CartControllers.destroy)
+router.post('/hascart', CartControllers.addHasCart) // OK - permet d'ajouter des artifacts au panier
+router.delete('/hascart/:id', CartControllers.addHasCart) // pour supprimer un article au panier
 
 router.get('/comments', CommentsControllers.browse)
 router.get('/comments/:id', CommentsControllers.read)
