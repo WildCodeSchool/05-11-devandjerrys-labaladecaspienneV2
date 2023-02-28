@@ -5,50 +5,58 @@ class ArtifactsManager extends AbstractManager {
     super({ table: 'artifacts' })
   }
 
-  // INNER JOIN pictures ON pictures.artifacts_id = ${this.table}.id
-
-  findArtifact(id) {
+  findAllArtifact() {
     return this.database.query(
-      `select * from  ${this.table}
-      INNER JOIN artifacts_has_themes AS at ON at.artifacts_id = ${this.table}.id
-      INNER JOIN themes ON at.themes_id = themes.id`,
-      [id]
+      `SELECT a.*, 
+      GROUP_CONCAT(DISTINCT CONCAT(themes.name_theme) SEPARATOR ',') AS themesAll, 
+      GROUP_CONCAT(DISTINCT CONCAT(p.url_img) SEPARATOR ',') AS images 
+      FROM ${this.table} as a 
+      LEFT JOIN artifacts_has_themes AS at ON at.artifacts_id = a.id 
+      LEFT JOIN themes ON at.themes_id = themes.id 
+      LEFT JOIN pictures as p ON a.id = p.artifacts_id 
+      GROUP BY a.id`
     )
   }
 
-  findAllArtifact(id) {
+  findOneArtifact(id) {
     return this.database.query(
-      `SELECT a.*,  GROUP_CONCAT(CONCAT(p.url_img) SEPARATOR ',\n') AS images
-      FROM ${this.table} as a
-      INNER JOIN pictures as p ON a.id = p.artifacts_id
-      GROUP BY  a.id
-      HAVING a.id=a.id`,
+      `SELECT a.*, 
+      GROUP_CONCAT(DISTINCT CONCAT(themes.name_theme) SEPARATOR ',') AS themesAll, 
+      GROUP_CONCAT(DISTINCT CONCAT(p.url_img) SEPARATOR ',') AS images 
+      FROM ${this.table} as a 
+      LEFT JOIN artifacts_has_themes AS at ON at.artifacts_id = a.id 
+      LEFT JOIN themes ON at.themes_id = themes.id 
+      LEFT JOIN pictures as p ON a.id = p.artifacts_id 
+      GROUP BY a.id
+      HAVING a.id=?`,
       [id]
     )
   }
 
   insert(artifact) {
     return this.database.query(
-      `insert into ${this.table} (name_arti, description_arti, price, stock, discount) values (?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (name_arti, description_arti, price, stock, discount, pictures_id) values (?, ?, ?, ?, ?, ?)`,
       [
         artifact.name_arti,
         artifact.description_arti,
         artifact.price,
         artifact.stock,
         artifact.discount,
+        artifact.pictures_id,
       ]
     )
   }
 
   update(artifact) {
     return this.database.query(
-      `update ${this.table} set name_arti = ?, description_arti = ?, price = ?, stock = ?, discount = ? where id = ?`,
+      `update ${this.table} set name_arti = ?, description_arti = ?, price = ?, stock = ?, discount = ?, pictures_id = ? where id = ?`,
       [
         artifact.name_arti,
         artifact.description_arti,
         artifact.price,
         artifact.stock,
         artifact.discount,
+        artifact.pictures_id,
         artifact.id,
       ]
     )

@@ -5,6 +5,29 @@ class EventsManager extends AbstractManager {
     super({ table: 'events' })
   }
 
+  findAllEvents() {
+    return this.database.query(
+      `SELECT e.*, 
+      GROUP_CONCAT(DISTINCT CONCAT(themes.name_theme) SEPARATOR ',') AS themesEvent
+      FROM ${this.table} as e
+      LEFT JOIN events_has_themes AS et ON et.events_id = e.id 
+      LEFT JOIN themes ON et.themes_id = themes.id 
+      GROUP BY e.id`
+    )
+  }
+
+  findOneEvent(id) {
+    return this.database.query(
+      `SELECT e.*, 
+      GROUP_CONCAT(DISTINCT CONCAT(themes.name_theme) SEPARATOR ',') AS themesEvent
+      FROM ${this.table} as e
+      LEFT JOIN events_has_themes AS et ON et.events_id = e.id 
+      LEFT JOIN themes ON et.themes_id = themes.id 
+      GROUP BY e.id`,
+      [id]
+    )
+  }
+
   insert(event) {
     return this.database.query(
       event.price,

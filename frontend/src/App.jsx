@@ -1,5 +1,6 @@
 import Contact from "@pages/Contact"
 import { Route, Routes } from "react-router-dom"
+import EshopCard from "./components/EshopCard"
 import AdminPage from "./pages/AdminPage"
 import ArtifactDetails from "./pages/ArtifactDetails"
 import Artifacts from "./pages/Artifacts"
@@ -20,6 +21,7 @@ function App() {
         <Route path="/artifacts" element={<Artifacts />} />
         <Route path="/artifacts/:id" element={<ArtifactDetails />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/eshop" element={<EshopCard />} />
       </Routes>
     </div>
   )
