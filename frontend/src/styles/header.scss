@@ -34,6 +34,7 @@
       .itemsNavHeader:hover {
         transform: scale(1.2);
         transition: 0.5s;
+
       }
       .divLogoHeader {
         background-color: var(--secondary-color);
@@ -67,7 +68,8 @@
     display: none;
   }
   .divLogoHeader {
-    display: none;
+    visibility: hidden;
+
   }
   .logoHeader {
     display: none;
