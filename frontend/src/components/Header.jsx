@@ -14,7 +14,7 @@ function Header() {
           <p className="itemsNavHeader">Boutique</p>
         </Link>
         <img className="headerStar" src={star} alt="image" />
-        <Link className="linkHeader" to="#">
+        <Link className="linkHeader" to="/about">
           <p className="itemsNavHeader">Qui suis-je ?</p>
         </Link>
         <Link className="linkHeader" to="/home">
