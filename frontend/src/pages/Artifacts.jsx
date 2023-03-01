@@ -1,5 +1,9 @@
+import Header from "../components/Header"
+import Footer from "../components/Footer"
+import Burger from "@components/Burger"
 import LineTop from "../assets/Images/head_line.png"
 import { AiFillCaretDown, AiFillCaretRight } from "react-icons/ai"
+import { RiFilter3Line } from "react-icons/ri"
 import { useState, useEffect } from "react"
 import axios from "axios"
 import EshopCard from "@components/EshopCard"
@@ -8,6 +12,7 @@ export default function Artifacts() {
   const [showThemeListFilter, setShowThemeListFilter] = useState(false)
   const [showCatListFilter, setShowCatListFilter] = useState(false)
   const [showPriceListFilter, setShowPriceListFilter] = useState(false)
+  const [showAllFilters, setShowAllFilters] = useState(false)
 
   const handleThemeFilterClick = () => {
     setShowThemeListFilter(!showThemeListFilter)
@@ -18,6 +23,9 @@ export default function Artifacts() {
   const handlePriceFilterClick = () => {
     setShowPriceListFilter(!showPriceListFilter)
   }
+  const handleAllFiltersClick = () => {
+    setShowAllFilters(!showAllFilters)
+  }
 
   const [artiSelect, setArtiSelect] = useState([])
   useEffect(() => {
@@ -27,6 +35,7 @@ export default function Artifacts() {
   }, [])
   return (
     <div className="Artifacts">
+      <Header />
       <div className="divHeadEshop">
         <div>
           <p className="titleHeadEshop">LA BALADE CASPIENNE</p>
@@ -36,95 +45,7 @@ export default function Artifacts() {
         </div>
       </div>
       <div className="mainDivEshop">
-        {/* DIV FILTERS */}
-        <div className="divFiltersEshop">
-          <p className="titleFilters">Tous les artéfacts</p>
-          {/* par thèmes */}
-          <p className="itemsFilter" onClick={handleThemeFilterClick}>
-            {showThemeListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
-            Par thèmes
-          </p>
-          <div
-            id="themeListFilter"
-            style={{ display: showThemeListFilter ? "block" : "none" }}
-          >
-            <div>
-              <label className="labelInputFilter">
-                <input type="checkbox" className="checkboxStyleEshop" />
-                Potter
-              </label>
-            </div>
-            <div>
-              <label className="labelInputFilter">
-                <input type="checkbox" className="checkboxStyleEshop" />
-                Lovecraft
-              </label>
-            </div>
-            <div>
-              <label className="labelInputFilter">
-                <input type="checkbox" className="checkboxStyleEshop" />
-                Manga
-              </label>
-            </div>
-          </div>
-          {/* par catégories */}
-          <p className="itemsFilter" onClick={handleCatFilterClick}>
-            {showCatListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
-            Par catégories
-          </p>
-          <div
-            id="catListFilter"
-            style={{ display: showCatListFilter ? "block" : "none" }}
-          >
-            <div>
-              <label className="labelInputFilter">
-                <input type="checkbox" className="checkboxStyleEshop" />
-                Bijoux
-              </label>
-            </div>
-            <div>
-              <label className="labelInputFilter">
-                <input type="checkbox" className="checkboxStyleEshop" />
-                Sculptures
-              </label>
-            </div>
-            <div>
-              <label className="labelInputFilter">
-                <input type="checkbox" className="checkboxStyleEshop" />
-                Boites
-              </label>
-            </div>
-          </div>
-          {/* par prix */}
-          <p className="itemsFilter" onClick={handlePriceFilterClick}>
-            {showPriceListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
-            Par prix
-          </p>
-          <div
-            id="priceListFilter"
-            style={{ display: showPriceListFilter ? "block" : "none" }}
-          >
-            <div>
-              <label className="labelInputFilter">
-                <input type="checkbox" className="checkboxStyleEshop" />
-                Jusqu'à 50 €
-              </label>
-            </div>
-            <div>
-              <label className="labelInputFilter">
-                <input type="checkbox" className="checkboxStyleEshop" />
-                50 € à 100 €
-              </label>
-            </div>
-            <div>
-              <label className="labelInputFilter">
-                <input type="checkbox" className="checkboxStyleEshop" />
-                100 € et plus
-              </label>
-            </div>
-          </div>
-        </div>
-        {/* DIV ARTEFACTS */}
+        {/* ********** DIV ARTEFACTS ********** */}
         <div className="divArtifactsEshop">
           {artiSelect.map((arti) => (
             <EshopCard
@@ -135,7 +56,115 @@ export default function Artifacts() {
             />
           ))}
         </div>
+        <div className="divAllFilters">
+          <div className="divTitleFilters" onClick={handleAllFiltersClick}>
+            <p className="titleFilters">
+              <RiFilter3Line />
+              Filter les artéfacts
+            </p>
+          </div>
+          {/* ********** DIV FILTERS ********** */}
+          <div
+            className="divFiltersEshop"
+            style={{ display: showAllFilters ? "block" : "none" }}
+          >
+            {/* <p className="titleFilters">Tous les artéfacts</p> */}
+            {/* par thèmes */}
+            <p className="itemsFilter" onClick={handleThemeFilterClick}>
+              {showThemeListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
+              Par thèmes
+            </p>
+            <div
+              id="themeListFilter"
+              style={{ display: showThemeListFilter ? "block" : "none" }}
+            >
+              <div>
+                <label className="labelInputFilter">
+                  <input type="checkbox" className="checkboxStyleEshop" />
+                  Potter
+                </label>
+              </div>
+              <div>
+                <label className="labelInputFilter">
+                  <input type="checkbox" className="checkboxStyleEshop" />
+                  Lovecraft
+                </label>
+              </div>
+              <div>
+                <label className="labelInputFilter">
+                  <input type="checkbox" className="checkboxStyleEshop" />
+                  Manga
+                </label>
+              </div>
+            </div>
+            {/* ***** par catégories ***** */}
+            <p className="itemsFilter" onClick={handleCatFilterClick}>
+              {showCatListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
+              Par catégories
+            </p>
+            <div
+              id="catListFilter"
+              style={{ display: showCatListFilter ? "block" : "none" }}
+            >
+              <div>
+                <label className="labelInputFilter">
+                  <input type="checkbox" className="checkboxStyleEshop" />
+                  Bijoux
+                </label>
+              </div>
+              <div>
+                <label className="labelInputFilter">
+                  <input type="checkbox" className="checkboxStyleEshop" />
+                  Sculptures
+                </label>
+              </div>
+              <div>
+                <label className="labelInputFilter">
+                  <input type="checkbox" className="checkboxStyleEshop" />
+                  Boites
+                </label>
+              </div>
+            </div>
+            {/* ***** par prix ***** */}
+            <p className="itemsFilter" onClick={handlePriceFilterClick}>
+              {showPriceListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
+              Par prix
+            </p>
+            <div
+              id="priceListFilter"
+              style={{ display: showPriceListFilter ? "block" : "none" }}
+            >
+              <div>
+                <label className="labelInputFilter">
+                  <input type="checkbox" className="checkboxStyleEshop" />
+                  Jusqu'à 50 €
+                </label>
+              </div>
+              <div>
+                <label className="labelInputFilter">
+                  <input type="checkbox" className="checkboxStyleEshop" />
+                  50 € à 100 €
+                </label>
+              </div>
+              <div>
+                <label className="labelInputFilter">
+                  <input type="checkbox" className="checkboxStyleEshop" />
+                  100 € et plus
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      {/* ********** DIV FILTERS Mobil ********** */}
+      <div className="flexFiltersMobil">
+        <div className="divButtonFilter" onClick={handleAllFiltersClick}>
+          <RiFilter3Line />
+          Filtrer
+        </div>
+      </div>
+      <Burger />
+      <Footer />
     </div>
   )
 }
