@@ -19,12 +19,37 @@ class CartManager extends AbstractManager {
     )
   }
 
+  findOneHasCart(id) {
+    return this.database.query(
+      `SELECT *
+      FROM cart_has_artifacts AS ha 
+      WHERE (id_cart_has_artifacts = ?)`,
+      [id]
+    )
+  }
+
+  updateHasCart(cart) {
+    return this.database.query(
+      `UPDATE cart_has_artifacts SET quantity = ? WHERE (id_cart_has_artifacts = ?)`,
+      [cart.quantity, cart.id]
+    )
+  }
+
+  deleteHasCart(id) {
+    return this.database.query(
+      `delete from cart_has_artifacts WHERE (id_cart_has_artifacts = ?)`,
+      [id]
+    )
+  }
+
   findOneCart(id) {
     return this.database.query(
-      `SELECT name_arti, price, quantity, (price * quantity) AS total 
+      `SELECT name_arti, price, quantity, (price * quantity) AS total, MAX(url_img) AS url_img
       FROM cart_has_artifacts AS ha 
       LEFT JOIN artifacts AS a ON ha.artifacts_id=a.id
-      WHERE ha.cart_id=?`,
+      LEFT JOIN pictures AS p ON p.artifacts_id = a.id
+      WHERE ha.cart_id=?
+      GROUP BY ha.artifacts_id, name_arti, price, quantity, total`,
       [id]
     )
   }
@@ -32,7 +57,7 @@ class CartManager extends AbstractManager {
   update(cart) {
     return this.database.query(
       `update ${this.table} set users_id = ?, date = ? where id = ?`,
-      [cart.num_cmd, cart.comments_id, cart.users_id]
+      [cart.users_id, cart.date]
     )
   }
 }

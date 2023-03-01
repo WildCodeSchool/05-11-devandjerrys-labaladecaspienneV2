@@ -48,12 +48,15 @@ router.post('/users', UsersControllers.add)
 router.delete('/users/:id', UsersControllers.destroy)
 
 // router.get('/cart', CartControllers.browse) // si l'admin veut voir tous les paniers --pas important pour le moment
-router.get('/cart/:id', CartControllers.read) // pour visualiser le panier
-router.put('/cart/:id', CartControllers.edit) //
-router.post('/cart', CartControllers.add) // à utiliser pour attribuer un cart à chaque nouveau user
-router.delete('/cart/:id', CartControllers.destroy)
+router.get('/cart/:id', CartControllers.read) // OK - pour visualiser tout le panier attribuer à 1 client
+// router.put('/cart/:id', CartControllers.edit) // NON FAIT - pas necessaire
+// router.post('/cart', CartControllers.add) // NON FAIT - à utiliser pour attribuer un cart à chaque nouveau user
+// router.delete('/cart/:id', CartControllers.destroy)// NON FAIT - pas necessaire sauf si possibilité au client de supprimer son profil
+
+router.get('/hascart/:id', CartControllers.readHasCart) // OK - pas necessaire mais pour tester
+router.put('/hascart/:id', CartControllers.editHasCart) // OK pour modifier la quantité d'un article du panier
 router.post('/hascart', CartControllers.addHasCart) // OK - permet d'ajouter des artifacts au panier
-router.delete('/hascart/:id', CartControllers.addHasCart) // pour supprimer un article au panier
+router.delete('/hascart/:id', CartControllers.destroyHasCart) // OK - pour supprimer un article au panier
 
 router.get('/comments', CommentsControllers.browse)
 router.get('/comments/:id', CommentsControllers.read)
