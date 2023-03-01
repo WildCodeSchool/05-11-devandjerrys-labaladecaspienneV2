@@ -34,9 +34,11 @@
   text-align: left;
 }
 .titleFilters {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   font-family: var(--font2);
   font-size: 1em;
-  text-align: left;
 }
 .itemsFilter {
   font-family: var(--font2);
@@ -52,7 +54,7 @@
   font-size: 0.8em;
 }
 /// DIV FILTERS Mobil ///
-.flexFiltersMobil {
+.divFlexFiltersMobil {
   display: flex;
   justify-content: center;
 }
@@ -67,6 +69,7 @@
   margin: 15px 0px;
   cursor: pointer;
 }
+
 // .divButtonFilter:hover {
 //   transform: scale(1.1);
 //   filter: drop-shadow(0px 0px 1px white);
