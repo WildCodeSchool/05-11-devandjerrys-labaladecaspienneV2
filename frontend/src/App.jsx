@@ -1,3 +1,4 @@
+import About from "./pages/About"
 import Contact from "@pages/Contact"
 import { Route, Routes } from "react-router-dom"
 import EshopCard from "./components/EshopCard"
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Splash />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/adminpage" element={<AdminPage />} />
         <Route path="/theme" element={<Theme />} />
         <Route path="/theme/:id" element={<ThemeDetails />} />
