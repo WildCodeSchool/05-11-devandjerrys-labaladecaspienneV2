@@ -8,8 +8,7 @@ const browse = (req, res) => {
         return {
           ...arti,
           themesAll: arti.themesAll ? arti.themesAll.split(',') : [],
-
-          images: arti.images.split(','),
+          images: arti.images ? arti.images.split(',') : [],
         }
       })
       res.send(result)
