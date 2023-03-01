@@ -34,7 +34,6 @@
       .itemsNavHeader:hover {
         transform: scale(1.2);
         transition: 0.5s;
-
       }
       .divLogoHeader {
         background-color: var(--secondary-color);
@@ -44,6 +43,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+      .divLogoHeader:hover {
+        transform: scale(1.1);
+        filter: drop-shadow(0px 0px 2px white);
+        transition: 0.4s;
       }
       .logoHeader {
         height: 40px;
@@ -69,7 +73,6 @@
   }
   .divLogoHeader {
     visibility: hidden;
-
   }
   .logoHeader {
     display: none;

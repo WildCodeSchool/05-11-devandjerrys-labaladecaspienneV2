@@ -10,15 +10,18 @@ import EshopCard from "@components/EshopCard"
 
 export default function Artifacts() {
   const [showThemeListFilter, setShowThemeListFilter] = useState(false)
-  const [showCatListFilter, setShowCatListFilter] = useState(false)
   const [showPriceListFilter, setShowPriceListFilter] = useState(false)
   const [showAllFilters, setShowAllFilters] = useState(false)
+  const [artiSelect, setArtiSelect] = useState([])
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/artifacts")
+      .then((res) => setArtiSelect(res.data))
+  }, [])
 
   const handleThemeFilterClick = () => {
     setShowThemeListFilter(!showThemeListFilter)
-  }
-  const handleCatFilterClick = () => {
-    setShowCatListFilter(!showCatListFilter)
   }
   const handlePriceFilterClick = () => {
     setShowPriceListFilter(!showPriceListFilter)
@@ -27,12 +30,11 @@ export default function Artifacts() {
     setShowAllFilters(!showAllFilters)
   }
 
-  const [artiSelect, setArtiSelect] = useState([])
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/artifacts")
-      .then((res) => setArtiSelect(res.data))
-  }, [])
+  // const categories choice
+  const handleCheckboxChange = (e) => {}
+
+  // fin const potter choice
+
   return (
     <div className="Artifacts">
       <Header />
@@ -53,17 +55,18 @@ export default function Artifacts() {
               images={arti.images}
               name_arti={arti.name_arti}
               price={arti.price}
+              id={arti.id}
             />
           ))}
         </div>
+        {/* ********** DIV FILTERS ********** */}
         <div className="divAllFilters">
           <div className="divTitleFilters" onClick={handleAllFiltersClick}>
-            <p className="titleFilters">
+            <div className="titleFilters">
               <RiFilter3Line />
               Filter les artéfacts
-            </p>
+            </div>
           </div>
-          {/* ********** DIV FILTERS ********** */}
           <div
             className="divFiltersEshop"
             style={{ display: showAllFilters ? "block" : "none" }}
@@ -80,48 +83,24 @@ export default function Artifacts() {
             >
               <div>
                 <label className="labelInputFilter">
-                  <input type="checkbox" className="checkboxStyleEshop" />
-                  Potter
+                  <input
+                    type="checkbox"
+                    className="checkboxStyleEshop"
+                    onChange={handleCheckboxChange}
+                  />
+                  Science fiction
                 </label>
               </div>
               <div>
                 <label className="labelInputFilter">
                   <input type="checkbox" className="checkboxStyleEshop" />
-                  Lovecraft
+                  Créatures imaginaires
                 </label>
               </div>
               <div>
                 <label className="labelInputFilter">
                   <input type="checkbox" className="checkboxStyleEshop" />
-                  Manga
-                </label>
-              </div>
-            </div>
-            {/* ***** par catégories ***** */}
-            <p className="itemsFilter" onClick={handleCatFilterClick}>
-              {showCatListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
-              Par catégories
-            </p>
-            <div
-              id="catListFilter"
-              style={{ display: showCatListFilter ? "block" : "none" }}
-            >
-              <div>
-                <label className="labelInputFilter">
-                  <input type="checkbox" className="checkboxStyleEshop" />
-                  Bijoux
-                </label>
-              </div>
-              <div>
-                <label className="labelInputFilter">
-                  <input type="checkbox" className="checkboxStyleEshop" />
-                  Sculptures
-                </label>
-              </div>
-              <div>
-                <label className="labelInputFilter">
-                  <input type="checkbox" className="checkboxStyleEshop" />
-                  Boites
+                  Fantastique
                 </label>
               </div>
             </div>
@@ -157,7 +136,7 @@ export default function Artifacts() {
         </div>
       </div>
       {/* ********** DIV FILTERS Mobil ********** */}
-      <div className="flexFiltersMobil">
+      <div className="divFlexFiltersMobil">
         <div className="divButtonFilter" onClick={handleAllFiltersClick}>
           <RiFilter3Line />
           Filtrer
