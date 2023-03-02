@@ -14,6 +14,7 @@ export default function Artifacts() {
   const [showAllFilters, setShowAllFilters] = useState(false)
   const [artiSelect, setArtiSelect] = useState([])
   const [filteredValue, setFilteredValue] = useState("")
+  const [themeSelect, setThemeSelect] = useState([])
   //   const [selectedThemes, setSelectedThemes] = useState([]) // nouveau state pour les thèmes sélectionnés
 
   useEffect(() => {
@@ -22,7 +23,6 @@ export default function Artifacts() {
       .then((res) => setArtiSelect(res.data))
   }, [])
 
-  const [themeSelect, setThemeSelect] = useState([])
   useEffect(() => {
     axios
       .get("http://localhost:5000/themes")
