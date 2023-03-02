@@ -10,11 +10,11 @@ import EshopCard from "@components/EshopCard"
 
 export default function Artifacts() {
   const [showThemeListFilter, setShowThemeListFilter] = useState(false)
-  //   const [showPriceListFilter, setShowPriceListFilter] = useState(false)
+  // SI FILTRE par PRIX //  const [showPriceListFilter, setShowPriceListFilter] = useState(false)
   const [showAllFilters, setShowAllFilters] = useState(false)
   const [artiSelect, setArtiSelect] = useState([])
   const [filteredValue, setFilteredValue] = useState("")
-  //   const [selectedThemes, setSelectedThemes] = useState([]) // nouveau state pour les thèmes sélectionnés
+  const [themeSelect, setThemeSelect] = useState([])
 
   useEffect(() => {
     axios
@@ -22,7 +22,6 @@ export default function Artifacts() {
       .then((res) => setArtiSelect(res.data))
   }, [])
 
-  const [themeSelect, setThemeSelect] = useState([])
   useEffect(() => {
     axios
       .get("http://localhost:5000/themes")
@@ -32,28 +31,25 @@ export default function Artifacts() {
   const handleThemeFilterClick = () => {
     setShowThemeListFilter(!showThemeListFilter)
   }
+  //   A AJOUTER si on souhaite FILTRER par PRIX
   //   const handlePriceFilterClick = () => {
   //     setShowPriceListFilter(!showPriceListFilter)
   //   }
   const handleAllFiltersClick = () => {
     setShowAllFilters(!showAllFilters)
   }
-
+  // WHAT ? >>> Prend en charge l'évènement quand on clique sur la checkbox en modifiant
+  // >>>>>>>>>> le state associé et en réintilisant le map si le state est vide
   const handleFilterChange = (e) => {
-    setFilteredValue(e.target.value)
+    if (e.target.checked) {
+      setFilteredValue((prev) => prev + e.target.value)
+    } else {
+      setFilteredValue((prev) => prev.replace(e.target.value, ""))
+    }
+    if (filteredValue === e.target.value) {
+      setFilteredValue("")
+    }
   }
-
-  //   const handleThemeCheckboxChange = (e) => {
-  //     // nouvelle fonction pour gérer les cases à cocher
-  //     const { name, checked } = e.target
-  //     if (checked) {
-  //       setSelectedThemes((prevSelectedThemes) => [...prevSelectedThemes, name])
-  //     } else {
-  //       setSelectedThemes((prevSelectedThemes) =>
-  //         prevSelectedThemes.filter((theme) => theme !== name)
-  //       )
-  //     }
-  //   }
 
   return (
     <div className="Artifacts">
@@ -67,42 +63,25 @@ export default function Artifacts() {
         </div>
       </div>
       <div className="mainDivEshop">
-        {/* ********** DIV ARTEFACTS ********** */}
-        <div className="divArtifactsEshop">
-          {filteredValue === ""
-            ? artiSelect.map((arti) => (
-                <EshopCard
-                  key={arti.id}
-                  images={arti.images}
-                  name_arti={arti.name_arti}
-                  price={arti.price}
-                />
-              ))
-            : artiSelect
-                .filter((arti) => arti.themesAll.includes(filteredValue))
-                .map((arti) => (
-                  <EshopCard
-                    key={arti.id}
-                    images={arti.images}
-                    name_arti={arti.name_arti}
-                    price={arti.price}
-                  />
-                ))}
+        {/* ********** DIV FILTERS Mobil ********** */}
+        <div className="divFlexFiltersMobil">
+          <div className="divButtonFilter" onClick={handleAllFiltersClick}>
+            <RiFilter3Line />
+            Filtrer
+          </div>
         </div>
         {/* ********** DIV FILTERS ********** */}
         <div className="divAllFilters">
-          <div className="divTitleFilters" onClick={handleAllFiltersClick}>
+          {/* <div className="divTitleFilters" onClick={handleAllFiltersClick}>
             <p className="titleFilters">
               <RiFilter3Line />
               Filter les artéfacts
             </p>
-          </div>
+          </div> */}
           <div
             className="divFiltersEshop"
             style={{ display: showAllFilters ? "block" : "none" }}
           >
-            <p className="titleFilters">Tous les artéfacts</p>
-            par thèmes
             <p className="itemsFilter" onClick={handleThemeFilterClick}>
               {showThemeListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
               Par thèmes
@@ -131,7 +110,7 @@ export default function Artifacts() {
                 </label>
               </div>
             </div>
-            {/* ***** par prix ***** */}
+            {/* ***** SECTION A AJOUTER SI ON SOUHAITE FILTRER par prix ***** */}
             {/* <p className="itemsFilter" onClick={handlePriceFilterClick}>
               {showPriceListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
               Par prix
@@ -161,14 +140,34 @@ export default function Artifacts() {
             </div> */}
           </div>
         </div>
-      </div>
-      {/* ********** DIV FILTERS Mobil ********** */}
-      <div className="divFlexFiltersMobil">
-        <div className="divButtonFilter" onClick={handleAllFiltersClick}>
-          <RiFilter3Line />
-          Filtrer
+        {/* ********** DIV ARTEFACTS ********** */}
+        <div className="divArtifactsEshop">
+          {/* WHAT ?  */}
+          {/* si filteredValue est vide (pas de case cochée > map de tous les items)  */}
+          {/* si filteredValue est remplis (case cochée > map des items correspondants au thème)  */}
+          {/* relatif à l'état du state filteredValue : vide ou non  */}
+          {filteredValue === ""
+            ? artiSelect.map((arti) => (
+                <EshopCard
+                  key={arti.id}
+                  images={arti.images}
+                  name_arti={arti.name_arti}
+                  price={arti.price}
+                />
+              ))
+            : artiSelect
+                .filter((arti) => arti.themesAll.includes(filteredValue))
+                .map((arti) => (
+                  <EshopCard
+                    key={arti.id}
+                    images={arti.images}
+                    name_arti={arti.name_arti}
+                    price={arti.price}
+                  />
+                ))}
         </div>
       </div>
+
       <Burger />
       <Footer />
     </div>

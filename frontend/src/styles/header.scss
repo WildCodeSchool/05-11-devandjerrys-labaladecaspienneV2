@@ -57,13 +57,16 @@
 }
 
 /// Tablet ///
-@media (max-width: 768px) {
+// @media (max-width: 768px) {
+//   .headerStar {
+//     display: none;
+//   }
+// }
+/// Mobil ///
+@media (max-width: 560px) {
   .headerStar {
     display: none;
   }
-}
-/// Mobil ///
-@media (max-width: 560px) {
   .mainDivHeader {
     display: flex;
     align-items: flex-start;
