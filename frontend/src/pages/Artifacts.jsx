@@ -10,9 +10,11 @@ import EshopCard from "@components/EshopCard"
 
 export default function Artifacts() {
   const [showThemeListFilter, setShowThemeListFilter] = useState(false)
-  const [showPriceListFilter, setShowPriceListFilter] = useState(false)
+  //   const [showPriceListFilter, setShowPriceListFilter] = useState(false)
   const [showAllFilters, setShowAllFilters] = useState(false)
   const [artiSelect, setArtiSelect] = useState([])
+  const [filteredValue, setFilteredValue] = useState("")
+  //   const [selectedThemes, setSelectedThemes] = useState([]) // nouveau state pour les thèmes sélectionnés
 
   useEffect(() => {
     axios
@@ -20,20 +22,38 @@ export default function Artifacts() {
       .then((res) => setArtiSelect(res.data))
   }, [])
 
+  const [themeSelect, setThemeSelect] = useState([])
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/themes")
+      .then((res) => setThemeSelect(res.data))
+  }, [])
+
   const handleThemeFilterClick = () => {
     setShowThemeListFilter(!showThemeListFilter)
   }
-  const handlePriceFilterClick = () => {
-    setShowPriceListFilter(!showPriceListFilter)
-  }
+  //   const handlePriceFilterClick = () => {
+  //     setShowPriceListFilter(!showPriceListFilter)
+  //   }
   const handleAllFiltersClick = () => {
     setShowAllFilters(!showAllFilters)
   }
 
-  // const categories choice
-  const handleCheckboxChange = (e) => {}
+  const handleFilterChange = (e) => {
+    setFilteredValue(e.target.value)
+  }
 
-  // fin const potter choice
+  //   const handleThemeCheckboxChange = (e) => {
+  //     // nouvelle fonction pour gérer les cases à cocher
+  //     const { name, checked } = e.target
+  //     if (checked) {
+  //       setSelectedThemes((prevSelectedThemes) => [...prevSelectedThemes, name])
+  //     } else {
+  //       setSelectedThemes((prevSelectedThemes) =>
+  //         prevSelectedThemes.filter((theme) => theme !== name)
+  //       )
+  //     }
+  //   }
 
   return (
     <div className="Artifacts">
@@ -49,23 +69,33 @@ export default function Artifacts() {
       <div className="mainDivEshop">
         {/* ********** DIV ARTEFACTS ********** */}
         <div className="divArtifactsEshop">
-          {artiSelect.map((arti) => (
-            <EshopCard
-              key={arti.id}
-              images={arti.images}
-              name_arti={arti.name_arti}
-              price={arti.price}
-              id={arti.id}
-            />
-          ))}
+          {filteredValue === ""
+            ? artiSelect.map((arti) => (
+                <EshopCard
+                  key={arti.id}
+                  images={arti.images}
+                  name_arti={arti.name_arti}
+                  price={arti.price}
+                />
+              ))
+            : artiSelect
+                .filter((arti) => arti.themesAll.includes(filteredValue))
+                .map((arti) => (
+                  <EshopCard
+                    key={arti.id}
+                    images={arti.images}
+                    name_arti={arti.name_arti}
+                    price={arti.price}
+                  />
+                ))}
         </div>
         {/* ********** DIV FILTERS ********** */}
         <div className="divAllFilters">
           <div className="divTitleFilters" onClick={handleAllFiltersClick}>
-            <div className="titleFilters">
+            <p className="titleFilters">
               <RiFilter3Line />
               Filter les artéfacts
-            </div>
+            </p>
           </div>
           <div
             className="divFiltersEshop"
@@ -83,29 +113,26 @@ export default function Artifacts() {
             >
               <div>
                 <label className="labelInputFilter">
-                  <input
-                    type="checkbox"
-                    className="checkboxStyleEshop"
-                    onChange={handleCheckboxChange}
-                  />
-                  Science fiction
-                </label>
-              </div>
-              <div>
-                <label className="labelInputFilter">
-                  <input type="checkbox" className="checkboxStyleEshop" />
-                  Créatures imaginaires
-                </label>
-              </div>
-              <div>
-                <label className="labelInputFilter">
-                  <input type="checkbox" className="checkboxStyleEshop" />
-                  Fantastique
+                  {themeSelect.map((theme) => (
+                    <div key={theme.id}>
+                      <input
+                        type="checkbox"
+                        className="checkboxStyleEshop"
+                        name={`theme_${theme.id}`}
+                        id={`theme_${theme.id}`}
+                        onChange={handleFilterChange}
+                        value={theme.name_theme}
+                      />
+                      <label htmlFor={`theme_${theme.id}`}>
+                        {theme.name_theme}
+                      </label>
+                    </div>
+                  ))}
                 </label>
               </div>
             </div>
             {/* ***** par prix ***** */}
-            <p className="itemsFilter" onClick={handlePriceFilterClick}>
+            {/* <p className="itemsFilter" onClick={handlePriceFilterClick}>
               {showPriceListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
               Par prix
             </p>
@@ -131,7 +158,7 @@ export default function Artifacts() {
                   100 € et plus
                 </label>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
