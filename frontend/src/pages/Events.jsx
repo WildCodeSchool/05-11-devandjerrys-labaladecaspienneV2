@@ -22,10 +22,25 @@ export default function Events() {
       <Header />
       <div className="EventsBody">
         <h1 className="headTitle">LA BALADE CASPIENNE</h1>
-        <img id="lDesign1" className="ligneDesign" src={deco}></img>
-        <img id="lDesign2" className="ligneDesign" src={deco1}></img>
+        <img
+          id="lDesign1"
+          className="ligneDesign"
+          alt="ligne de séparation"
+          src={deco}
+        ></img>
+        <img
+          id="lDesign2"
+          className="ligneDesign"
+          alt="ligne de séparation"
+          src={deco1}
+        ></img>
         <h2 className="eventTitle">Evènements à venir</h2>
-        <img id="lDesign3" className="ligneDesign" src={deco1}></img>
+        <img
+          id="lDesign3"
+          className="ligneDesign"
+          alt="ligne de séparation"
+          src={deco1}
+        ></img>
         <div id="introEvent">
           Pour faire la lumière sur les prochains évènements ou conventions où
           vous pouvez me retrouver, cliquez sur la bougie...
@@ -41,7 +56,11 @@ export default function Events() {
         </div>
         <div className="eventsHistory">
           <h3 className="eventTitle">Evènements passés</h3>
-          <img className="lineTitleEvent" src={LineTop} alt="image" />
+          <img
+            className="lineTitleEvent"
+            src={LineTop}
+            alt="ligne de séparation"
+          />
         </div>
       </div>
       <div className="holder">
