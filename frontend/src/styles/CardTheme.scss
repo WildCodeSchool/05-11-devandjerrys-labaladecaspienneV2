@@ -1,6 +1,7 @@
 .buttonTheme {
   background-color: transparent;
   border: none;
+  margin-bottom: 150px;
   .cardTheme {
     display: flex;
     flex-direction: column;
@@ -17,7 +18,11 @@
       // background-image: url("../assets/collier.jpg");
       background-position: center;
       // background: rgb(255, 255, 255);
-      background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(128, 64, 0, 1) 100%);
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(128, 64, 0, 1) 100%
+      );
       background-size: cover;
       border-radius: 280px 280px 0px 0px;
       box-shadow: inset 0 0 2px 3px rgba($color: #ffffff, $alpha: 100%),
@@ -57,5 +62,11 @@
     .nomTheme {
       background-color: #004033;
     }
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .buttonTheme {
+    display: none;
   }
 }
