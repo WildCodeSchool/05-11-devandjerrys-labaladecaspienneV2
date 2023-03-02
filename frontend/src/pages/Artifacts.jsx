@@ -101,8 +101,8 @@ export default function Artifacts() {
             className="divFiltersEshop"
             style={{ display: showAllFilters ? "block" : "none" }}
           >
-            {/* <p className="titleFilters">Tous les artéfacts</p> */}
-            {/* par thèmes */}
+            <p className="titleFilters">Tous les artéfacts</p>
+            par thèmes
             <p className="itemsFilter" onClick={handleThemeFilterClick}>
               {showThemeListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
               Par thèmes

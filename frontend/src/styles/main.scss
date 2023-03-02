@@ -1,5 +1,6 @@
 @import "./App.scss";
 @import "./Artifact.scss";
+@import "./ButtonCart.scss";
 @import "./CardTheme.scss";
 @import "./Contact.scss";
 @import "./EshopCard.scss";
@@ -31,4 +32,18 @@ body {
   background-color: var(--background-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: (--background-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }
