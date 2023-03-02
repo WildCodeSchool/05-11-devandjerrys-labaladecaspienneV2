@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import { useState } from "react"
 
 export default function EshopCard(props) {
-  const [isSelected, setIsSelected] = useState(false)
+  const [setIsSelected] = useState(false)
 
   const handleClick = () => {
     setIsSelected(true)
