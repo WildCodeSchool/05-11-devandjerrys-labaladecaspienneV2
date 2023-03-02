@@ -1,8 +1,8 @@
 /// TITLE HEAD ///
 .mainDivEshop {
   display: flex;
-  flex-direction: row-reverse;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   color: var(--main-color);
   margin: 3vw 5vw 0 5vw;
 }
@@ -26,7 +26,7 @@
 
 /// DIV FILTERS ///
 .divAllFilters {
-  width: 12%;
+  width: 15%;
 }
 .divTitleFilters {
   cursor: pointer;
@@ -64,7 +64,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--secondary-color);
-  width: 45%;
+  width: 100%;
   border-radius: 5px;
   padding: 3px;
   margin: 15px 0px;
@@ -79,14 +79,14 @@
 ///
 /// Gestion mobile de l'affichage des filtres et du bouton ///
 
-@media (min-width: 768px) {
-  .divFiltersEshop {
-    display: block;
-  }
-  .divButtonFilter {
-    display: none;
-  }
-}
+// @media (min-width: 768px) {
+//   .divFiltersEshop {
+//     display: block;
+//   }
+//   .divButtonFilter {
+//     display: none;
+//   }
+// }
 
 /// Tablet ///
 @media (max-width: 768px) {
@@ -99,13 +99,13 @@
   }
   .mainDivEshop {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
     // margin: 3vw 5vw 0 5vw;
   }
-  .divTitleFilters {
-    display: none;
-  }
+  // .divTitleFilters {
+  //   display: none;
+  // }
   .divAllFilters {
     width: 45%;
   }
@@ -115,6 +115,10 @@
 @media (max-width: 380px) {
   .lineTitleEshop {
     width: 60%;
+  }
+  .themeListFilter {
+    display: block;
+    margin-left: 10px;
   }
   .titleHeadEshop {
     margin-top: -6vh;
