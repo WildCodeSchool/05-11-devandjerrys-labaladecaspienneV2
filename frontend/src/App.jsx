@@ -1,14 +1,18 @@
-import About from "./pages/About"
-import Contact from "@pages/Contact"
+// import { useState } from "react"
 import { Route, Routes } from "react-router-dom"
+
 import EshopCard from "./components/EshopCard"
+
+import About from "./pages/About"
 import AdminPage from "./pages/AdminPage"
 import ArtifactDetails from "./pages/ArtifactDetails"
 import Artifacts from "./pages/Artifacts"
+import Contact from "./pages/Contact"
 import Home from "./pages/Home"
 import Splash from "./pages/Splash"
 import ThemeDetails from "./pages/ThemeDetails"
 import Theme from "./pages/Themes"
+import UserAccount from "./pages/UserAccount"
 import Cart from "./pages/Cart"
 
 function App() {
@@ -26,6 +30,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/eshop" element={<EshopCard />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/useraccount" element={<UserAccount />} />
       </Routes>
     </div>
   )
