@@ -10,14 +10,12 @@ import EshopCard from "@components/EshopCard"
 
 export default function Artifacts() {
   const [showThemeListFilter, setShowThemeListFilter] = useState(false)
-  const [filteredValue, setFilteredValue] = useState("")
+  //   const [showPriceListFilter, setShowPriceListFilter] = useState(false)
   const [showAllFilters, setShowAllFilters] = useState(false)
-  // const [selectedThemes, setSelectedThemes] = useState([]) // nouveau state pour les thèmes sélectionnés
-  const handleThemeFilterClick = () => {
-    setShowThemeListFilter(!showThemeListFilter)
-  }
-
   const [artiSelect, setArtiSelect] = useState([])
+  const [filteredValue, setFilteredValue] = useState("")
+  //   const [selectedThemes, setSelectedThemes] = useState([]) // nouveau state pour les thèmes sélectionnés
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/artifacts")
@@ -31,25 +29,31 @@ export default function Artifacts() {
       .then((res) => setThemeSelect(res.data))
   }, [])
 
-  const handleFilterChange = (e) => {
-    setFilteredValue(e.target.value)
+  const handleThemeFilterClick = () => {
+    setShowThemeListFilter(!showThemeListFilter)
   }
-
+  //   const handlePriceFilterClick = () => {
+  //     setShowPriceListFilter(!showPriceListFilter)
+  //   }
   const handleAllFiltersClick = () => {
     setShowAllFilters(!showAllFilters)
   }
 
-  // const handleThemeCheckboxChange = (e) => {
-  //   // nouvelle fonction pour gérer les cases à cocher
-  //   const { name, checked } = e.target
-  //   if (checked) {
-  //     setSelectedThemes((prevSelectedThemes) => [...prevSelectedThemes, name])
-  //   } else {
-  //     setSelectedThemes((prevSelectedThemes) =>
-  //       prevSelectedThemes.filter((theme) => theme !== name)
-  //     )
+  const handleFilterChange = (e) => {
+    setFilteredValue(e.target.value)
+  }
+
+  //   const handleThemeCheckboxChange = (e) => {
+  //     // nouvelle fonction pour gérer les cases à cocher
+  //     const { name, checked } = e.target
+  //     if (checked) {
+  //       setSelectedThemes((prevSelectedThemes) => [...prevSelectedThemes, name])
+  //     } else {
+  //       setSelectedThemes((prevSelectedThemes) =>
+  //         prevSelectedThemes.filter((theme) => theme !== name)
+  //       )
+  //     }
   //   }
-  // }
 
   return (
     <div className="Artifacts">
@@ -85,6 +89,7 @@ export default function Artifacts() {
                   />
                 ))}
         </div>
+        {/* ********** DIV FILTERS ********** */}
         <div className="divAllFilters">
           <div className="divTitleFilters" onClick={handleAllFiltersClick}>
             <p className="titleFilters">
@@ -92,7 +97,6 @@ export default function Artifacts() {
               Filter les artéfacts
             </p>
           </div>
-          {/* ********** DIV FILTERS ********** */}
           <div
             className="divFiltersEshop"
             style={{ display: showAllFilters ? "block" : "none" }}
@@ -127,7 +131,42 @@ export default function Artifacts() {
                 </label>
               </div>
             </div>
+            {/* ***** par prix ***** */}
+            {/* <p className="itemsFilter" onClick={handlePriceFilterClick}>
+              {showPriceListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
+              Par prix
+            </p>
+            <div
+              id="priceListFilter"
+              style={{ display: showPriceListFilter ? "block" : "none" }}
+            >
+              <div>
+                <label className="labelInputFilter">
+                  <input type="checkbox" className="checkboxStyleEshop" />
+                  Jusqu'à 50 €
+                </label>
+              </div>
+              <div>
+                <label className="labelInputFilter">
+                  <input type="checkbox" className="checkboxStyleEshop" />
+                  50 € à 100 €
+                </label>
+              </div>
+              <div>
+                <label className="labelInputFilter">
+                  <input type="checkbox" className="checkboxStyleEshop" />
+                  100 € et plus
+                </label>
+              </div>
+            </div> */}
           </div>
+        </div>
+      </div>
+      {/* ********** DIV FILTERS Mobil ********** */}
+      <div className="divFlexFiltersMobil">
+        <div className="divButtonFilter" onClick={handleAllFiltersClick}>
+          <RiFilter3Line />
+          Filtrer
         </div>
       </div>
       <Burger />
