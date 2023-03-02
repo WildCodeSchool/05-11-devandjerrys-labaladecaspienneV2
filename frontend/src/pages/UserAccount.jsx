@@ -3,11 +3,16 @@ import Footer from "../components/Footer"
 import Burger from "../components/Burger"
 
 import Separator from "../assets/Images/separateur.png"
+import LineTop from "../assets/Images/head_line.png"
 
 export default function UserAccount() {
   return (
-    <div>
+    <>
       <Header />
+      <div className="divHeadEshop">
+        <p className="titleHeadEshop">LA BALADE CASPIENNE</p>
+        <img className="lineTitleEshop" src={LineTop} alt="image" />
+      </div>
       <div className="UserAccountPage">
         <div className="UserDivGrid">
           <div className="UserGridDivs Grid1">
@@ -25,7 +30,7 @@ export default function UserAccount() {
             </div>
           </div>
           <div className="UserGridDivs Grid2">
-            {/* <span className="Grid2Title">Connexions</span> */}
+            <span className="Grid2Title">Connexions</span>
             <div className="Grid2Div">
               <p>
                 Email : <br /> ............
@@ -72,6 +77,6 @@ export default function UserAccount() {
       </div>
       <Burger />
       <Footer />
-    </div>
+    </>
   )
 }
