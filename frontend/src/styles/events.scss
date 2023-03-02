@@ -15,32 +15,32 @@
   color: var(--main-color);
 }
 
-#paragraph {
+#introEvent {
   //font-size: 1.2vw;
   margin-top: 60px;
   margin-bottom: 60px;
-  text-align: justify;
+  text-align: center;
   color: white;
   margin-left: 200px;
   margin-right: 200px;
 }
-#image1 {
+#lDesign1 {
   width: 30%;
   margin-bottom: 6vh;
   height: auto;
 }
 
-#image2 {
+#lDesign2 {
   width: 30vw;
   height: auto;
 }
-#image3 {
+#lDesign3 {
   width: 30vw;
   height: auto;
   transform: rotate(180deg);
 }
 
-.image {
+.ligneDesign {
   //display: flex;
   //align-self: center;
   background-repeat: no-repeat;
@@ -56,7 +56,9 @@
   padding: 30px;
 }
 
-BOUGIE *,
+// SHOW/HIDE
+
+// BOUGIE
 *:before,
 *:after {
   margin: 0;
