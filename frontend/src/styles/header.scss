@@ -1,71 +1,83 @@
 .Header {
-    width: 100%;
-    font-family: var(--font2);
+  width: 100%;
+  font-family: var(--font2);
 
-    .mainDivHeader {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 5em;
-        .headerAngle {
-            height: 100px;
-            padding-top: 30px;
-            filter: drop-shadow(0px 0px 1px white);
-            .angleL {
-                padding-left: 5px;
-            }
-            .angleR {
-                padding-right: 5px;
-            }
-        }
-
-        .headerStar {
-            height: 35px;
-            filter: drop-shadow(0px 0px 1px white);
-        }
-        .linkHeader {
-            text-decoration: none;
-            .itemsNavHeader {
-                font-style: var(--font2);
-                font-size: 1em;
-                color: var(--main-color);
-                text-align: center;
-            }
-            .divLogoHeader {
-                background-color: var(--secondary-color);
-                height: 55px;
-                width: 55px;
-                border-radius: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .logoHeader {
-                height: 40px;
-            }
-        }
+  .mainDivHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5em;
+    .headerAngle {
+      height: 100px;
+      padding-top: 30px;
+      filter: drop-shadow(0px 0px 1px white);
+      .angleL {
+        padding-left: 5px;
+      }
+      .angleR {
+        padding-right: 5px;
+      }
     }
+
+    .headerStar {
+      height: 35px;
+      filter: drop-shadow(0px 0px 1px white);
+    }
+    .linkHeader {
+      text-decoration: none;
+      .itemsNavHeader {
+        font-style: var(--font2);
+        font-size: 1em;
+        color: var(--main-color);
+        text-align: center;
+      }
+      .itemsNavHeader:hover {
+        transform: scale(1.2);
+        transition: 0.5s;
+      }
+      .divLogoHeader {
+        background-color: var(--secondary-color);
+        height: 55px;
+        width: 55px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .divLogoHeader:hover {
+        transform: scale(1.1);
+        filter: drop-shadow(0px 0px 2px white);
+        transition: 0.4s;
+      }
+      .logoHeader {
+        height: 40px;
+      }
+    }
+  }
 }
 
 /// Tablet ///
-@media (max-width: 768px) {
-    .headerStar {
-        display: none;
-    }
-}
+// @media (max-width: 768px) {
+//   .headerStar {
+//     display: none;
+//   }
+// }
 /// Mobil ///
 @media (max-width: 560px) {
-    .mainDivHeader {
-        display: flex;
-        align-items: flex-start;
-    }
-    .itemsNavHeader {
-        display: none;
-    }
-    .divLogoHeader {
-        display: none;
-    }
-    .logoHeader {
-        display: none;
-    }
+  .headerStar {
+    display: none;
+  }
+  .mainDivHeader {
+    display: flex;
+    align-items: flex-start;
+  }
+  .itemsNavHeader {
+    display: none;
+  }
+  .divLogoHeader {
+    visibility: hidden;
+  }
+  .logoHeader {
+    display: none;
+  }
 }

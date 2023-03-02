@@ -1,5 +1,6 @@
 @import "./App.scss";
 @import "./Artifact.scss";
+@import "./ButtonCart.scss";
 @import "./CardTheme.scss";
 @import "./Contact.scss";
 @import "./EshopCard.scss";
@@ -9,6 +10,10 @@
 @import "./splash.scss";
 @import "./burger.scss";
 @import "./EshopDetails.scss";
+@import "./CardThemeCarrousel.scss";
+@import "./about.scss";
+@import "./UserAccount.scss";
+
 @import url("https://fonts.googleapis.com/css2?family=Alegreya&family=EB+Garamond:ital@1&display=swap");
 @font-face {
   font-family: "Dream";
@@ -26,13 +31,24 @@
 }
 
 body {
+  height: 100vh;
+  width: 100vw;
   margin: 0;
   background-color: var(--background-color);
-  // margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.App {
-  text-align: center;
+body::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: (--background-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }

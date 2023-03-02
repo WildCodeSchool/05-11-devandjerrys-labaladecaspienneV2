@@ -9,6 +9,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 // import { Link } from "react-router-dom"
 import CardTheme from "../components/CardTheme"
+import CardThemeCarrousel from "../components/CardThemeCarrousel"
 
 export default function Home() {
   const [themes, setThemes] = useState([])
@@ -17,6 +18,7 @@ export default function Home() {
       setThemes(response.data)
     })
   }, [])
+
   return (
     <div>
       <Header />
@@ -27,13 +29,23 @@ export default function Home() {
         <h3>Cultures de l'imaginer?</h3>
         <div id="paragraph">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.Ipsam
-            assumenda eos, reiciendis quibusdam est soluta quos provident ea
-            voluptatem expedita dicta, qui maxime, ullam quam nobis repellat
-            illum distinctio beatae! Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Magni perferendis omnis ullam! Possimus modi totam
-            cum deserunt? Tempore iste consectetur quam enim quod aperiam, non
-            numquam minus labore, veritatis soluta?
+            Entrez dans le monde fascinant de la culture de l'imaginaire, où les
+            histoires fantastiques prennent vie dans des créations artisanales
+            uniques inspirés par les contes de fées, les légendes et les mythes
+            de toutes cultures.
+          </p>
+          <p>
+            Chaque pièce est conçue avec soin et passion, en utilisant des
+            matériaux de qualité pour vous offrir une expérience magique et
+            enchanteur. Vous pourrez trouver des artéfacts, objets ou bijoux et
+            bien d'autres créations encore renfermant toute la magie de
+            l'imaginaire. Chaque article est fabriqué à la main avec amour, pour
+            vous offrir une expérience inoubliable et vous emporter dans un
+            monde imaginaire où tout est possible.
+          </p>
+          <p>
+            Venez découvrir la collection d'articles artisanaux de la culture de
+            l'imaginaire et laissez votre esprit s'évader.
           </p>
         </div>
         <img id="image2" className="image" src={deco1}></img>
@@ -46,6 +58,17 @@ export default function Home() {
               key={theme.id}
               picture_theme={theme.picture_theme}
               name_theme={theme.name_theme}
+              description_theme={theme.description_theme}
+            />
+          ))}
+        </div>
+        <div className="card-themeResp">
+          {themes.map((theme) => (
+            <CardThemeCarrousel
+              key={theme.id}
+              picture_theme={theme.picture_theme}
+              name_theme={theme.name_theme}
+              description_theme={theme.description_theme}
             />
           ))}
         </div>

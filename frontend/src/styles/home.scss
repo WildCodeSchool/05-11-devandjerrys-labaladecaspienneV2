@@ -1,65 +1,101 @@
 h1,
 h2,
 h3 {
-    text-align: center;
-    color: white;
+  text-align: center;
+  color: var(--main-color);
 }
 
 h1 {
-    font-size: 3.6vw;
-    margin-bottom: 0;
-    font-family: var(--font1);
+  font-size: 3.6vw;
+  margin-bottom: 0;
+  font-family: var(--font1);
 }
 h2 {
-    margin-top: 0;
-    margin-bottom: 5px;
-    font-size: 2.8vw;
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 2.8vw;
 }
 // h3 {
 //     //font-size: 1.8vw;
 // }
 #paragraph {
-    //font-size: 1.2vw;
-    margin-top: 60px;
-    margin-bottom: 60px;
-    text-align: justify;
-    color: white;
-    margin-left: 200px;
-    margin-right: 200px;
+  //font-size: 1.2vw;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  text-align: justify;
+  color: white;
+  margin-left: 200px;
+  margin-right: 200px;
 }
 #image1 {
-    width: 30%;
-    height: auto;
+  width: 30%;
+  height: auto;
 }
 #mobil {
-    display: none;
+  display: none;
 }
 #image2 {
-    width: 30vw;
-    height: auto;
+  width: 30vw;
+  height: auto;
 }
 #image3 {
-    width: 30vw;
-    height: auto;
-    transform: rotate(180deg);
+  width: 30vw;
+  height: auto;
+  transform: rotate(180deg);
 }
 
 .image {
-    //display: flex;
-    //align-self: center;
-    background-repeat: no-repeat;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
+  //display: flex;
+  //align-self: center;
+  background-repeat: no-repeat;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+// .card-theme {
+//   padding-left: 33px;
+//   display: flex;
+// }
+.card-theme > div {
+  display: inline-block;
+  width: 31%;
+  margin-right: 2%;
+}
+
+.card-theme > div:nth-child(3n) {
+  margin-right: 0;
+}
+
+@media only screen and (max-width: 750px) {
+  .card-themeResp {
+    padding-left: 33px;
+    display: flex;
+    overflow: auto;
+    justify-content: space-between;
+    width: 72%;
+    height: 100%;
+    margin-left: 12%;
+  }
+  // .card-themeResp::-webkit-scrollbar {
+  //   display: none;
+  // }
+  .card-themeResp::-webkit-scrollbar-button {
+    display: flex;
+  }
 }
 @media only screen and (max-width: 768px) {
-    #mobil {
-        display: block;
-    }
+  #mobil {
+    display: block;
+  }
+  #paragraph {
+    margin-left: 80px;
+    margin-right: 80px;
+  }
 }
-.card-theme {
-    display: flex;
-    justify-content: center;
-    padding: 30px;
-}
+// .card-theme {
+//   display: flex;
+//   justify-content: center;
+//   padding: 30px;
+//   flex-wrap: wrap;
+// }

@@ -1,35 +1,49 @@
 /// TITLE HEAD ///
-.divHeadEshop {
-  .titleHeadEshop {
-    font-family: var(--font1);
-    font-size: 2.6vw;
-    color: var(--main-color);
-    margin-top: 9vh;
-    margin-bottom: 0;
-  }
-  .lineTitleEshop {
-    width: 40%;
-  }
-}
 .mainDivEshop {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   color: var(--main-color);
   margin: 3vw 5vw 0 5vw;
 }
+
+.titleHeadEshop {
+  font-family: var(--font1);
+  font-size: 2em;
+  color: var(--main-color);
+  margin-top: 9vh;
+  margin-bottom: 0;
+}
+.lineTitleEshop {
+  width: 40%;
+}
+
+/// DIV ARTFACTS ///
+.divArtifactsEshop {
+  width: 88%;
+  display: flex;
+}
+
 /// DIV FILTERS ///
+.divAllFilters {
+  width: 15%;
+}
+.divTitleFilters {
+  cursor: pointer;
+}
 .divFiltersEshop {
   text-align: left;
-  width: 10%;
 }
 .titleFilters {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   font-family: var(--font2);
-  font-size: 1.2vw;
-  font-weight: bold;
+  font-size: 1em;
 }
 .itemsFilter {
   font-family: var(--font2);
-  font-size: 1vw;
+  font-size: 0.8em;
   border-bottom: 1px solid white;
   margin-bottom: 5px;
 }
@@ -38,20 +52,41 @@
 }
 .labelInputFilter {
   font-family: var(--font2);
-  font-size: 1vw;
+  font-size: 0.8em;
 }
-// .checkboxStyleEshop {
-//     color: var(--third-color);
-// }
-// .checkboxStyleEshop:checked {
-//     color: red;
+/// DIV FILTERS Mobil ///
+.divFlexFiltersMobil {
+  display: flex;
+  justify-content: center;
+}
+.divButtonFilter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondary-color);
+  width: 100%;
+  border-radius: 5px;
+  padding: 3px;
+  margin: 15px 0px;
+  cursor: pointer;
+}
+
+// .divButtonFilter:hover {
+//   transform: scale(1.1);
+//   filter: drop-shadow(0px 0px 1px white);
 // }
 
-/// DIV ARTFACTS ///
-.divArtifactsEshop {
-  display: flex;
-  flex-wrap: wrap;
-}
+///
+/// Gestion mobile de l'affichage des filtres et du bouton ///
+
+// @media (min-width: 768px) {
+//   .divFiltersEshop {
+//     display: block;
+//   }
+//   .divButtonFilter {
+//     display: none;
+//   }
+// }
 
 /// Tablet ///
 @media (max-width: 768px) {
@@ -59,8 +94,20 @@
     width: 55%;
   }
   .titleHeadEshop {
-    margin-top: 5vh;
-    font-size: 4vw;
+    margin-top: 0vh;
+    font-size: 1.5em;
+  }
+  .mainDivEshop {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    // margin: 3vw 5vw 0 5vw;
+  }
+  // .divTitleFilters {
+  //   display: none;
+  // }
+  .divAllFilters {
+    width: 45%;
   }
 }
 
@@ -69,8 +116,12 @@
   .lineTitleEshop {
     width: 60%;
   }
+  .themeListFilter {
+    display: block;
+    margin-left: 10px;
+  }
   .titleHeadEshop {
     margin-top: -6vh;
-    font-size: 6.5vw;
+    font-size: 7vw;
   }
 }
