@@ -9,6 +9,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 // import { Link } from "react-router-dom"
 import CardTheme from "../components/CardTheme"
+import CardThemeCarrousel from "../components/CardThemeCarrousel"
 
 export default function Home() {
   const [themes, setThemes] = useState([])
@@ -17,6 +18,7 @@ export default function Home() {
       setThemes(response.data)
     })
   }, [])
+
   return (
     <div>
       <Header />
@@ -46,6 +48,17 @@ export default function Home() {
               key={theme.id}
               picture_theme={theme.picture_theme}
               name_theme={theme.name_theme}
+              description_theme={theme.description_theme}
+            />
+          ))}
+        </div>
+        <div className="card-themeResp">
+          {themes.map((theme) => (
+            <CardThemeCarrousel
+              key={theme.id}
+              picture_theme={theme.picture_theme}
+              name_theme={theme.name_theme}
+              description_theme={theme.description_theme}
             />
           ))}
         </div>
