@@ -16,10 +16,10 @@ export default function Splash() {
   return (
     <div className={`door-container ${isOpen ? "open" : ""}`}>
       <div className="door-left">
-        <img className="left" src={porteGauche} alt="Porte gauchee" />
+        <img className="dleft" src={porteGauche} alt="Porte gauchee" />
       </div>
       <div className="door-right">
-        <img className="right" src={porteDroite} alt="Porte droite" />
+        <img className="dright" src={porteDroite} alt="Porte droite" />
       </div>
       {
         <div className="splash-home">

@@ -2,9 +2,16 @@ const models = require('../models')
 
 const browse = (req, res) => {
   models.artifacts
-    .findAll()
+    .findAllArtifact()
     .then(([rows]) => {
-      res.send(rows)
+      const result = rows.map((arti) => {
+        return {
+          ...arti,
+          themesAll: arti.themesAll ? arti.themesAll.split(',') : [],
+          images: arti.images ? arti.images.split(',') : [],
+        }
+      })
+      res.send(result)
     })
     .catch((err) => {
       console.error(err)
@@ -14,12 +21,20 @@ const browse = (req, res) => {
 
 const read = (req, res) => {
   models.artifacts
-    .findAllArtifact(req.params.id)
+    .findOneArtifact(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
         res.sendStatus(404)
       } else {
-        res.send(rows[0])
+        // ALGO POUR CREER UN TABLEAU DES IMAGES ET THEMES
+        const result = rows.map((arti) => {
+          return {
+            ...arti,
+            themesAll: arti.themesAll.split(','),
+            images: arti.images.split(','),
+          }
+        })
+        res.send(result[0])
       }
     })
     .catch((err) => {
