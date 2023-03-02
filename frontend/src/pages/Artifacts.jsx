@@ -10,21 +10,11 @@ import EshopCard from "@components/EshopCard"
 
 export default function Artifacts() {
   const [showThemeListFilter, setShowThemeListFilter] = useState(false)
-  const [showCatListFilter, setShowCatListFilter] = useState(false)
-  const [showPriceListFilter, setShowPriceListFilter] = useState(false)
+  const [filteredValue, setFilteredValue] = useState("")
   const [showAllFilters, setShowAllFilters] = useState(false)
-
+  // const [selectedThemes, setSelectedThemes] = useState([]) // nouveau state pour les thèmes sélectionnés
   const handleThemeFilterClick = () => {
     setShowThemeListFilter(!showThemeListFilter)
-  }
-  const handleCatFilterClick = () => {
-    setShowCatListFilter(!showCatListFilter)
-  }
-  const handlePriceFilterClick = () => {
-    setShowPriceListFilter(!showPriceListFilter)
-  }
-  const handleAllFiltersClick = () => {
-    setShowAllFilters(!showAllFilters)
   }
 
   const [artiSelect, setArtiSelect] = useState([])
@@ -33,6 +23,34 @@ export default function Artifacts() {
       .get("http://localhost:5000/artifacts")
       .then((res) => setArtiSelect(res.data))
   }, [])
+
+  const [themeSelect, setThemeSelect] = useState([])
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/themes")
+      .then((res) => setThemeSelect(res.data))
+  }, [])
+
+  const handleFilterChange = (e) => {
+    setFilteredValue(e.target.value)
+  }
+
+  const handleAllFiltersClick = () => {
+    setShowAllFilters(!showAllFilters)
+  }
+
+  // const handleThemeCheckboxChange = (e) => {
+  //   // nouvelle fonction pour gérer les cases à cocher
+  //   const { name, checked } = e.target
+  //   if (checked) {
+  //     setSelectedThemes((prevSelectedThemes) => [...prevSelectedThemes, name])
+  //   } else {
+  //     setSelectedThemes((prevSelectedThemes) =>
+  //       prevSelectedThemes.filter((theme) => theme !== name)
+  //     )
+  //   }
+  // }
+
   return (
     <div className="Artifacts">
       <Header />
@@ -47,14 +65,25 @@ export default function Artifacts() {
       <div className="mainDivEshop">
         {/* ********** DIV ARTEFACTS ********** */}
         <div className="divArtifactsEshop">
-          {artiSelect.map((arti) => (
-            <EshopCard
-              key={arti.id}
-              images={arti.images}
-              name_arti={arti.name_arti}
-              price={arti.price}
-            />
-          ))}
+          {filteredValue === ""
+            ? artiSelect.map((arti) => (
+                <EshopCard
+                  key={arti.id}
+                  images={arti.images}
+                  name_arti={arti.name_arti}
+                  price={arti.price}
+                />
+              ))
+            : artiSelect
+                .filter((arti) => arti.themesAll.includes(filteredValue))
+                .map((arti) => (
+                  <EshopCard
+                    key={arti.id}
+                    images={arti.images}
+                    name_arti={arti.name_arti}
+                    price={arti.price}
+                  />
+                ))}
         </div>
         <div className="divAllFilters">
           <div className="divTitleFilters" onClick={handleAllFiltersClick}>
@@ -68,8 +97,8 @@ export default function Artifacts() {
             className="divFiltersEshop"
             style={{ display: showAllFilters ? "block" : "none" }}
           >
-            {/* <p className="titleFilters">Tous les artéfacts</p> */}
-            {/* par thèmes */}
+            <p className="titleFilters">Tous les artéfacts</p>
+            par thèmes
             <p className="itemsFilter" onClick={handleThemeFilterClick}>
               {showThemeListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
               Par thèmes
@@ -80,87 +109,25 @@ export default function Artifacts() {
             >
               <div>
                 <label className="labelInputFilter">
-                  <input type="checkbox" className="checkboxStyleEshop" />
-                  Potter
-                </label>
-              </div>
-              <div>
-                <label className="labelInputFilter">
-                  <input type="checkbox" className="checkboxStyleEshop" />
-                  Lovecraft
-                </label>
-              </div>
-              <div>
-                <label className="labelInputFilter">
-                  <input type="checkbox" className="checkboxStyleEshop" />
-                  Manga
-                </label>
-              </div>
-            </div>
-            {/* ***** par catégories ***** */}
-            <p className="itemsFilter" onClick={handleCatFilterClick}>
-              {showCatListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
-              Par catégories
-            </p>
-            <div
-              id="catListFilter"
-              style={{ display: showCatListFilter ? "block" : "none" }}
-            >
-              <div>
-                <label className="labelInputFilter">
-                  <input type="checkbox" className="checkboxStyleEshop" />
-                  Bijoux
-                </label>
-              </div>
-              <div>
-                <label className="labelInputFilter">
-                  <input type="checkbox" className="checkboxStyleEshop" />
-                  Sculptures
-                </label>
-              </div>
-              <div>
-                <label className="labelInputFilter">
-                  <input type="checkbox" className="checkboxStyleEshop" />
-                  Boites
-                </label>
-              </div>
-            </div>
-            {/* ***** par prix ***** */}
-            <p className="itemsFilter" onClick={handlePriceFilterClick}>
-              {showPriceListFilter ? <AiFillCaretDown /> : <AiFillCaretRight />}
-              Par prix
-            </p>
-            <div
-              id="priceListFilter"
-              style={{ display: showPriceListFilter ? "block" : "none" }}
-            >
-              <div>
-                <label className="labelInputFilter">
-                  <input type="checkbox" className="checkboxStyleEshop" />
-                  Jusqu'à 50 €
-                </label>
-              </div>
-              <div>
-                <label className="labelInputFilter">
-                  <input type="checkbox" className="checkboxStyleEshop" />
-                  50 € à 100 €
-                </label>
-              </div>
-              <div>
-                <label className="labelInputFilter">
-                  <input type="checkbox" className="checkboxStyleEshop" />
-                  100 € et plus
+                  {themeSelect.map((theme) => (
+                    <div key={theme.id}>
+                      <input
+                        type="checkbox"
+                        className="checkboxStyleEshop"
+                        name={`theme_${theme.id}`}
+                        id={`theme_${theme.id}`}
+                        onChange={handleFilterChange}
+                        value={theme.name_theme}
+                      />
+                      <label htmlFor={`theme_${theme.id}`}>
+                        {theme.name_theme}
+                      </label>
+                    </div>
+                  ))}
                 </label>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      {/* ********** DIV FILTERS Mobil ********** */}
-      <div className="flexFiltersMobil">
-        <div className="divButtonFilter" onClick={handleAllFiltersClick}>
-          <RiFilter3Line />
-          Filtrer
         </div>
       </div>
       <Burger />
