@@ -17,6 +17,8 @@ export default function Events() {
       setEvents(response.data)
     })
   }, [])
+
+  const [show, setShow] = useState(true)
   return (
     <div>
       <Header />
@@ -45,33 +47,38 @@ export default function Events() {
           Pour faire la lumière sur les prochains évènements ou conventions où
           vous pouvez me retrouver, cliquez sur la bougie...
         </div>
-        <div className="card-event">
-          {events.map((event) => (
-            <CardEvent
-              key={event.id}
-              picture_theme={event.picture_event}
-              name_theme={event.name_event}
+        {show && (
+          <div className="card-event">
+            hello card
+            {events.map((event) => (
+              <CardEvent
+                key={event.id}
+                picture_theme={event.picture_event}
+                name_theme={event.name_event}
+              />
+            ))}
+          </div>
+        )}
+        {show && (
+          <div className="eventsHistory">
+            <h3 className="eventTitle">Evènements passés</h3>
+            <img
+              className="lineTitleEvent"
+              src={LineTop}
+              alt="ligne de séparation"
             />
-          ))}
-        </div>
-        <div className="eventsHistory">
-          <h3 className="eventTitle">Evènements passés</h3>
-          <img
-            className="lineTitleEvent"
-            src={LineTop}
-            alt="ligne de séparation"
-          />
-        </div>
+          </div>
+        )}
       </div>
       <div className="holder">
-        <div className="candle">
-          <div className="blinking-glow"></div>
+        <div className="candle" onClick={() => setShow(!show)}>
+          {show && <div className="blinking-glow"></div>}
           <div className="thread"></div>
-          <div className="glow"></div>
-          <div className="flame"></div>
+          {show && <div className="glow"></div>}
+          {show && <div className="flame"></div>}
         </div>
       </div>
-
+      {/* <button onClick={() => setShow(!show)}></button> */}
       <Burger />
       <Footer />
     </div>
