@@ -1,14 +1,18 @@
-import About from "./pages/About"
-import Contact from "@pages/Contact"
+// import { useState } from "react"
 import { Route, Routes } from "react-router-dom"
+
 import EshopCard from "./components/EshopCard"
+
+import About from "./pages/About"
 import AdminPage from "./pages/AdminPage"
 import ArtifactDetails from "./pages/ArtifactDetails"
 import Artifacts from "./pages/Artifacts"
+import Contact from "./pages/Contact"
 import Home from "./pages/Home"
 import Splash from "./pages/Splash"
 import ThemeDetails from "./pages/ThemeDetails"
 import Theme from "./pages/Themes"
+import UserAccount from "./pages/UserAccount"
 
 function App() {
   return (
@@ -24,6 +28,7 @@ function App() {
         <Route path="/artifacts/:id" element={<ArtifactDetails />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/eshop" element={<EshopCard />} />
+        <Route path="/useraccount" element={<UserAccount />} />
       </Routes>
     </div>
   )
