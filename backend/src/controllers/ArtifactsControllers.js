@@ -9,7 +9,7 @@ const browse = (req, res) => {
           ...arti,
           themesAll: arti.themesAll ? arti.themesAll.split(',') : [],
 
-          images: arti.images.split(','),
+          images: arti.images ? arti.images.split(',') : [],
         }
       })
       res.send(result)
@@ -31,8 +31,9 @@ const read = (req, res) => {
         const result = rows.map((arti) => {
           return {
             ...arti,
-            themesAll: arti.themesAll.split(','),
-            images: arti.images.split(','),
+
+            themesAll: arti.themesAll ? arti.themesAll.split(',') : [],
+            images: arti.images ? arti.images.split(',') : [],
           }
         })
         res.send(result[0])

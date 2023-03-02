@@ -132,6 +132,7 @@ export default function Artifacts() {
               images={arti.images}
               name_arti={arti.name_arti}
               price={arti.price}
+              id={arti.id}
             />
           ))}
         </div>

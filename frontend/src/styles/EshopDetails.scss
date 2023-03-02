@@ -1,0 +1,229 @@
+.Esd-All {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .Esd-All p {
+    font-size: 16px;
+    font-family: var(--font2);
+  }
+  .E-title {
+    margin: 50px;
+  }
+  .E-title h2 {
+    font-size: 36px;
+  }
+  .E-title h3 {
+    margin: 50px 0 30px 0;
+    font-family: "EB Garamond";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 63px;
+    text-align: center;
+  }
+  .E-deco {
+    height: 66px;
+    margin-bottom: 100px;
+  }
+
+  .E-desciption {
+    max-width: 100ch;
+    margin: 130px 0 70px 0;
+    text-align: justify;
+    width: 840px;
+    color: var(--main-color);
+    font-family: var(--font2);
+    font-size: 24px;
+  }
+
+  .Esd-pictures {
+    margin: 80px 0 50px 0;
+    display: flex;
+    align-items: center;
+    height: 600px;
+    width: 760px;
+  }
+  .mainPicture img {
+    margin: 10px;
+    width: 444px;
+    height: 550px;
+    object-fit: contain;
+    display: flex;
+  }
+  .picture2-3 {
+    width: 230px;
+    display: flex;
+    object-fit: cover;
+    flex-direction: column;
+  }
+  .picture2 img {
+    margin-top: 10px;
+    width: 216px;
+    height: 293px;
+    object-fit: cover;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .picture3 img {
+    margin-bottom: 10px;
+    width: 217px;
+    height: 170px;
+    object-fit: cover;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Esd-price {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 579px;
+    left: 705px;
+    background-image: url(/src/assets/Images/etiquette.png);
+    background-position: center;
+    text-align: center;
+    color: var(--secondary-color);
+    font-weight: 700;
+    font-size: 40px;
+    width: 142px;
+    height: 85px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+  .E-stock {
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    bottom: 577px;
+    left: 719px;
+    width: 107px;
+    height: 262px;
+    background-color: var(--main-color);
+    border-radius: 15px;
+    color: var(--third-color);
+  }
+  .E-stock p {
+    margin: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-family: var(--font2);
+  }
+
+  .Esd-star {
+    width: 71px;
+    height: 67px;
+  }
+  .E-deco2 {
+    height: 66px;
+    margin-bottom: 100px;
+  }
+  .Esd-stock {
+    display: none;
+  }
+}
+@media screen and (max-width: 980px) and (min-width: 320px) {
+  .Esd-All {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100vw;
+    align-items: center;
+
+    .Esd-All p {
+      justify-content: center;
+    }
+    .E-title {
+      margin: 10px;
+    }
+    .E-title h2 {
+      width: 70%;
+    }
+    .E-title h3 {
+      width: 70%;
+    }
+    .E-deco {
+      height: 30px;
+      margin-bottom: 100px;
+    }
+    .E-desciption {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: justify;
+      width: 500px;
+    }
+    p {
+      text-align: center;
+    }
+    .Esd-pictures {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+    .mainPicture img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 506px;
+    }
+
+    .picture2-3 {
+      display: flex;
+      object-fit: cover;
+      flex-direction: row-reverse;
+    }
+    .picture2 img {
+      margin: 10px;
+      width: 204px;
+      height: 115px;
+      object-fit: cover;
+      flex-direction: row;
+    }
+
+    .picture3 img {
+      margin: 10px;
+      width: 217px;
+      height: 114px;
+      object-fit: cover;
+      flex-direction: row;
+    }
+
+    .Esd-price {
+      position: initial;
+      justify-content: center;
+      display: flex;
+      background-image: url(/src/assets/Images/etiquette.png);
+      background-size: contain;
+      width: 500px;
+    }
+    .E-stock {
+      display: none;
+    }
+    .Esd-stock {
+      height: 63px;
+      background-color: var(--main-color);
+      background-size: contain;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      border-radius: 15px;
+      font-family: var(--font2);
+      color: var(--third-color);
+      text-overflow: clip;
+
+      p {
+        font-size: 20px;
+        font-weight: 700;
+      }
+    }
+
+    .Esd-star {
+      display: none;
+    }
+    .E-deco2 {
+      display: none;
+    }
+  }
+}
