@@ -2,7 +2,7 @@ h1,
 h2,
 h3 {
   text-align: center;
-  color: white;
+  color: var(--main-color);
 }
 
 h1 {
@@ -57,9 +57,14 @@ h2 {
   #mobil {
     display: block;
   }
+  #paragraph {
+    margin-left: 80px;
+    margin-right: 80px;
+  }
 }
 .card-theme {
   display: flex;
   justify-content: center;
   padding: 30px;
+  flex-wrap: wrap;
 }
