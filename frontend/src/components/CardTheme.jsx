@@ -9,12 +9,14 @@ export default function CardTheme(props) {
     <div>
       <button className="buttonTheme">
         <div className="cardTheme">
-          <img
-            src={cadres}
-            style={{ backgroundImage: `url(${backgroundCadre})` }}
-            alt="cadre"
-            className="cadre"
-          />
+          <div className="colorCadre">
+            <img
+              src={cadres}
+              style={{ backgroundImage: `url(${backgroundCadre})` }}
+              alt="cadre"
+              className="cadre"
+            />
+          </div>
           <div className="nomTheme">
             <h3 className="themes">{props.name_theme}</h3>
           </div>

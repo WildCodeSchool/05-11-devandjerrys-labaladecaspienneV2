@@ -5,12 +5,12 @@ export default function Burger() {
     <div className="BurgerBody">
       <div className="all">
         <div className="lefter">
-          <Link className="linkBurger" to="/theme">
+          <Link className="linkBurger" to="/artifacts">
             <div className="text">Boutique</div>
           </Link>
         </div>
         <div className="left">
-          <Link className="linkBurger" to="#">
+          <Link className="linkBurger" to="/artist">
             <div className="text">Artiste</div>
           </Link>
         </div>
@@ -23,12 +23,12 @@ export default function Burger() {
           </Link>
         </div>
         <div className="right">
-          <Link className="linkBurger" to="#">
+          <Link className="linkBurger" to="/contact">
             <div className="text">Contact</div>
           </Link>
         </div>
         <div className="righter">
-          <Link className="linkBurger" to="#">
+          <Link className="linkBurger" to="/profil">
             <div className="text">Profil</div>
           </Link>
         </div>

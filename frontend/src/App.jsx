@@ -12,6 +12,7 @@ import Home from "./pages/Home"
 import Splash from "./pages/Splash"
 import ThemeDetails from "./pages/ThemeDetails"
 import Theme from "./pages/Themes"
+import Events from "@pages/Events"
 import UserAccount from "./pages/UserAccount"
 import Cart from "./pages/Cart"
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="/artifacts" element={<Artifacts />} />
         <Route path="/artifacts/:id" element={<ArtifactDetails />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/events" element={<Events />} />
         <Route path="/eshop" element={<EshopCard />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/useraccount" element={<UserAccount />} />
