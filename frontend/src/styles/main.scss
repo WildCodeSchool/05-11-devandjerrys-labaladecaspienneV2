@@ -33,10 +33,10 @@
   --desktop-size2: 55px;
   --desktop-size3: 22px;
   --desktop-size4: 18px;
-  --mobile-size1: 30px; /*calc(var(--desktop-size1) * 0.85);*/
-  --mobile-size2: 25px;
-  --mobile-size3: 15px;
-  --mobile-size4: 15px;
+  --mobile-size1: calc(var(--desktop-size1) - 20px);
+  --mobile-size2: calc(var(--desktop-size2) - 25px);
+  --mobile-size3: calc(var(--desktop-size3) - 8px);
+  --mobile-size4: calc(var(--desktop-size3) - 3px);
 }
 
 body {
