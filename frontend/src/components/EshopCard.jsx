@@ -7,9 +7,7 @@ import { useState } from "react"
 export default function EshopCard(props) {
   const [setIsSelected] = useState(false)
 
-  const handleClick = () => {
-    setIsSelected(true)
-  }
+  const handleClick = () => !setIsSelected
 
   const artiLink = `/eshopdetails/${props.id}`
   console.info(artiLink)

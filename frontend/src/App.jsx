@@ -1,10 +1,10 @@
 // import { useState } from "react"
 import { Route, Routes } from "react-router-dom"
-
+// import EshopCard from "./components/EshopCard"
 import About from "./pages/About"
 import AdminPage from "./pages/AdminPage"
-import ArtifactDetails from "./pages/ArtifactDetails"
-import Artifacts from "./pages/Artifacts"
+// import ArtifactDetails from "./pages/ArtifactDetails"
+import Eshop from "./pages/Eshop"
 import Contact from "./pages/Contact"
 import Home from "./pages/Home"
 import Splash from "./pages/Splash"
@@ -23,12 +23,13 @@ function App() {
         <Route path="/adminpage" element={<AdminPage />} />
         <Route path="/theme" element={<Theme />} />
         <Route path="/theme/:id" element={<ThemeDetails />} />
-        <Route path="/artifacts" element={<Artifacts />} />
-        <Route path="/artifacts/:id" element={<ArtifactDetails />} />
+        <Route path="/eshop" element={<Eshop />} />
+        {/* <Route path="/artifacts/:id" element={<ArtifactDetails />} /> */}
         <Route path="/contact" element={<Contact />} />
-        <Route path="/eshopdetails" element={<EshopDetails />} />
+        {/* <Route path="/eshopdetails" element={<EshopDetails />} /> */}
         <Route path="/eshopdetails/:id" element={<EshopDetails />} />
         <Route path="/useraccount" element={<UserAccount />} />
+        {/* <Route path="/eshopcard" element={<EshopCard />} /> */}
       </Routes>
     </div>
   )

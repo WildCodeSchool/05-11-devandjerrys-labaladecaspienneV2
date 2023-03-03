@@ -17,7 +17,7 @@ export default function EshopDetails() {
     axios
       .get(`http://localhost:5000/artifacts/${id}`)
       .then((res) => setArtifactChosen(res.data))
-      .catch((error) => console.error(error))
+    // .catch((error) => console.error(error))
   }, [id])
 
   if (artifactChosen.images) {
@@ -47,6 +47,7 @@ export default function EshopDetails() {
           <img className="E-deco" src={Deco2} alt="décoration" />
           <div className="E-desciption">
             <p>{artifactChosen.description_arti}</p>
+            <p>{artifactChosen.themesAll}</p>
             <div className="Esd-pictures">
               <div className="picture2-3">
                 {pictureGroups[0].map((image, index) => (
