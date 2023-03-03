@@ -1,0 +1,54 @@
+.About {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nameH {
+  margin-top: 5vh;
+}
+.aboutMe {
+  margin-top: 5vh;
+  margin-left: 15vh;
+  margin-right: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photoPres {
+  display: flex;
+  align-items: center;
+}
+
+.img-alex {
+  margin: 5vh;
+  width: 320px;
+  border-radius: 25px;
+}
+
+.textPres {
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutText {
+  margin: 5vh;
+  text-align: justify;
+  color: white;
+}
+
+.videoDiv {
+  margin: 10vh;
+  height: 30vh;
+  width: 30vw;
+}
+
+.videoAngle {
+  width: 100%;
+}
+
+@media only screen and (max-width: 1024px) {
+  .photoPres {
+    flex-direction: column;
+  }
+}
