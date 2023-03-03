@@ -29,6 +29,14 @@
   --font1: "Dream";
   --font2: "Alegreya";
   --font3: "EB Garamond";
+  --desktop-size1: 65px;
+  --desktop-size2: 55px;
+  --desktop-size3: 22px;
+  --desktop-size4: 18px;
+  --mobile-size1: 30px; /*calc(var(--desktop-size1) * 0.85);*/
+  --mobile-size2: 25px;
+  --mobile-size3: 15px;
+  --mobile-size4: 15px;
 }
 
 body {

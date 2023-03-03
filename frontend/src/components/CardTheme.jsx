@@ -18,7 +18,7 @@ export default function CardTheme(props) {
             />
           </div>
           <div className="nomTheme">
-            <h3 className="themes">{props.name_theme}</h3>
+            <h4 className="themes">{props.name_theme}</h4>
           </div>
         </div>
       </button>
