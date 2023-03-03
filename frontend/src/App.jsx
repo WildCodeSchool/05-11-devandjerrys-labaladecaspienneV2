@@ -1,6 +1,6 @@
 // import { useState } from "react"
 import { Route, Routes } from "react-router-dom"
-// import About from "./pages/About"
+import About from "./pages/About"
 import AdminPage from "./pages/AdminPage"
 // import ArtifactDetails from "./pages/ArtifactDetails"
 import Eshop from "./pages/Eshop"
@@ -20,7 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Splash />} />
         <Route path="/home" element={<Home />} />
-        {/* <Route path="/about" element={<About />} /> */}
+        <Route path="/about" element={<About />} />
         <Route path="/adminpage" element={<AdminPage />} />
         <Route path="/theme" element={<Theme />} />
         <Route path="/theme/:id" element={<ThemeDetails />} />
