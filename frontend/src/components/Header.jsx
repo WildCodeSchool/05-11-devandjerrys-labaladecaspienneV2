@@ -14,7 +14,7 @@ function Header() {
       <div className="mainDivHeader">
         <img className="headerAngle angleL" src={angleL} alt="image" />
         <img className="headerStar" src={star} alt="image" />
-        <Link className="linkHeader" to="/artifacts">
+        <Link className="linkHeader" to="/eshop">
           <p className="itemsNavHeader">Boutique</p>
         </Link>
         <img className="headerStar" src={star} alt="image" />
