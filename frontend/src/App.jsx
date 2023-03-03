@@ -12,6 +12,7 @@ import Home from "./pages/Home"
 import Splash from "./pages/Splash"
 import ThemeDetails from "./pages/ThemeDetails"
 import Theme from "./pages/Themes"
+import Events from "@pages/Events"
 import UserAccount from "./pages/UserAccount"
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/artifacts" element={<Artifacts />} />
         <Route path="/artifacts/:id" element={<ArtifactDetails />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/events" element={<Events />} />
         <Route path="/eshop" element={<EshopCard />} />
         <Route path="/useraccount" element={<UserAccount />} />
       </Routes>
