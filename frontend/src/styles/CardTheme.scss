@@ -13,23 +13,23 @@
     background-size: contain;
     height: 280px;
     margin: 35px;
-    .cadre {
-      // height: 85%;
-      // background-image: url("../assets/collier.jpg");
-      background-position: center;
-      // background: rgb(255, 255, 255);
+    .colorCadre {
       background: radial-gradient(
         circle,
         rgba(255, 255, 255, 1) 0%,
         rgba(128, 64, 0, 1) 100%
       );
-      background-size: cover;
       border-radius: 280px 280px 0px 0px;
-      box-shadow: inset 0 0 2px 3px rgba($color: #ffffff, $alpha: 100%),
-        0 0 30px 5px rgba($color: #ffffff, $alpha: 0.35);
-      width: 144px;
-      height: 236px;
-      object-fit: cover;
+      .cadre {
+        background-size: cover;
+        background-position: center;
+        border-radius: 280px 280px 0px 0px;
+        box-shadow: inset 0 0 2px 3px rgba($color: #ffffff, $alpha: 100%),
+          0 0 30px 5px rgba($color: #ffffff, $alpha: 0.35);
+        width: 144px;
+        height: 236px;
+        object-fit: cover;
+      }
     }
     .nomTheme {
       display: flex;
