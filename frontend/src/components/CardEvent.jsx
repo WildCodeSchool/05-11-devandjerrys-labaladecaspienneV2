@@ -11,8 +11,8 @@ export default function CardEvent(props) {
           style={{ backgroundImage: `url(${cadres})` }}
         >
           <img src={props.picture_theme} alt="cadre" className="cadre" />
-          <div className="nomEvent">
-            <h3 className="events">{props.name_event}</h3>
+          <div className="nameEvent">
+            <h3 className="events">{props.name_event}test</h3>
           </div>
         </div>
       </button>

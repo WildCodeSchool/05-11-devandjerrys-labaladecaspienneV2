@@ -1,54 +1,54 @@
-.buttonTheme {
-    background-color: transparent;
-    border: none;
-    .cardTheme {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-image: url("../assets/cadreExterieur.svg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        height: 280px;
-        .cadre {
-            // height: 85%;
-            // background-image: url("../assets/collier.jpg");
-            background-position: center;
-            background-size: cover;
-            border-radius: 280px 280px 0px 0px;
-            box-shadow: inset 0 0 2px 3px rgba($color: #ffffff, $alpha: 100%),
-                0 0 30px 5px rgba($color: #ffffff, $alpha: 0.35);
-            width: 135px;
-            height: 224px;
-            object-fit: cover;
-        }
-        .nomTheme {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: -40px;
-            margin-bottom: 0px;
-            background-color: #804000;
-            width: 230px;
-            height: 30px;
-            border-radius: 20px;
-            font-family: var(--font2);
-            font-size: larger;
-            .themes {
-                color: #ffffff;
-            }
-        }
+.buttonEvent {
+  background-color: transparent;
+  border: none;
+  .cardEvent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../assets/cadreExterieur.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 280px;
+    .cadre {
+      // height: 85%;
+      // background-image: url("../assets/collier.jpg");
+      background-position: center;
+      background-size: cover;
+      border-radius: 280px 280px 0px 0px;
+      box-shadow: inset 0 0 2px 3px rgba($color: #ffffff, $alpha: 100%),
+        0 0 30px 5px rgba($color: #ffffff, $alpha: 0.35);
+      width: 135px;
+      height: 224px;
+      object-fit: cover;
     }
+    .nomEvent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -40px;
+      margin-bottom: 0px;
+      background-color: #804000;
+      width: 230px;
+      height: 30px;
+      border-radius: 20px;
+      font-family: var(--font2);
+      font-size: larger;
+      .events {
+        color: #ffffff;
+      }
+    }
+  }
 }
 
-.buttonTheme:hover {
-    .cadre {
-        box-shadow: inset 0 0 2px 3px rgba($color: #004033, $alpha: 100%),
-            0 0 30px 5px rgba($color: #004033, $alpha: 0.35);
-        border-color: #004033;
-    }
-    .nomTheme {
-        background-color: #004033;
-    }
+.buttonEvent:hover {
+  .cadre {
+    box-shadow: inset 0 0 2px 3px rgba($color: #004033, $alpha: 100%),
+      0 0 30px 5px rgba($color: #004033, $alpha: 0.35);
+    border-color: #004033;
+  }
+  .nomEvent {
+    background-color: #004033;
+  }
 }

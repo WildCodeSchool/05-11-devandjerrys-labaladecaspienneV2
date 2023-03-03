@@ -1,4 +1,4 @@
-//TITRES
+//***************TITRES*********************************
 
 .headTitle {
   font-size: 2.6vw;
@@ -50,15 +50,153 @@
   width: 40%;
 }
 
-.card-theme {
-  display: flex;
-  justify-content: center;
+//************************* CARD TEST FRONT*************************
+
+// .eventsBody {
+//   display: flex;
+// }
+
+.card-event {
+  //   align-items: space-around;
+  //   justify-content: space-around;
   padding: 30px;
+  opacity: 1;
+  transition: opacity 3s ease-in-out;
+  //   width: 230px;
+  //   height: 30px;
+  margin-right: 0;
+
+  //   border-radius: 50%;
+  //   background: var(--third-color);
+  //   -webkit-filter: blur(50px);
+  //   -moz-filter: blur(60px);
+  //   -o-filter: blur(60px);
+  //   -ms-filter: blur(60px);
+  //   filter: blur(60px);
+  //   animation: blinkIt 0.1s infinite;
 }
 
-// SHOW/HIDE
+.event-container .event {
+  box-shadow: 0 4px 25px -8px rgba(227, 112, 4, 0.4);
+  display: flex;
+  border-radius: 8px;
+  margin: 32px 32px;
+  //   max-width: 700px;
+}
 
-// BOUGIE
+.event-left {
+  background: var(--third-color);
+  min-width: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--main-color);
+  padding: 8px 48px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 8px 0 0 8px;
+}
+
+.event .event-left .date {
+  font-size: 56px;
+}
+
+.event .event-left .month {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.event-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 24px;
+}
+
+.event-title {
+  font-size: 35px;
+  margin: 24px 0 10px 0;
+  color: var(--third-color);
+  text-transform: uppercase;
+}
+.info-contain {
+  display: flex;
+  flex-direction: row;
+}
+
+.event-infos {
+  background: var(--third-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  padding: 8px;
+  border-radius: 16px;
+  margin: 24px 0;
+  font-size: 14px;
+}
+.event-infos:hover {
+  cursor: pointer;
+  background-color: var(--secondary-color);
+}
+
+@media (max-width: 550px) {
+  .event {
+    flex-direction: column;
+  }
+  .event-left {
+    padding: 0;
+    border-radius: 8px 8px 0 0;
+  }
+  .event .event-left .event-date .date,
+  .event .event-left .event-date .month {
+    display: inline-block;
+    font-size: 24px;
+  }
+  .event-date {
+    padding: 10px 0;
+  }
+  .event-title {
+    font-size: 24px;
+  }
+}
+
+.event-description {
+  color: var(--main-color);
+}
+
+// ******************************SHOW/HIDE****************************************
+
+.show {
+  //   opacity: 1;
+  //   transition: opacity 3s ease-in-out;
+  animation: scale-up-vertical-bottom 1.5s linear;
+}
+// @keyframes show {
+//   0% {
+//     transform: scaleY(0.4);
+//     transform-origin: center bottom;
+//   }
+//   100% {
+//     transform: scaleY(1);
+//     transform-origin: center bottom;
+//   }
+// }
+
+// ************************PAST EVENT****************************************
+
+.listPast {
+  list-style: none;
+  a {
+    color: var(--secondary-color);
+    font-size: 25px;
+  }
+  a:hover {
+    color: var(--third-color);
+  }
+}
+
+// ************************BOUGIE****************************************
 *:before,
 *:after {
   margin: 0;
@@ -73,6 +211,9 @@
   width: 150px;
   height: 400px;
   position: relative;
+  :hover {
+    cursor: pointer;
+  }
 }
 
 .holder *,
