@@ -70,7 +70,10 @@ export default function Artifacts() {
                   price={arti.price}
                 />
               ))
-            : artiSelect
+            : artiSelect.filter((arti) =>
+                arti.themesAll.includes(filteredValue)
+              ).length > 0
+            ? artiSelect
                 .filter((arti) => arti.themesAll.includes(filteredValue))
                 .map((arti) => (
                   <EshopCard
@@ -79,7 +82,12 @@ export default function Artifacts() {
                     name_arti={arti.name_arti}
                     price={arti.price}
                   />
-                ))}
+                ))
+            : filteredValue !== "" && (
+                <p className="articleNone">
+                  Aucun article dans cette catégorie.
+                </p>
+              )}
         </div>
       </div>
 
