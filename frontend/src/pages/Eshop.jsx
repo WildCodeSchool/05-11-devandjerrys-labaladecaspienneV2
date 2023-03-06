@@ -10,11 +10,20 @@ export default function Artifacts() {
   const [artiSelect, setArtiSelect] = useState([])
   const [filteredValue, setFilteredValue] = useState("")
   const [themeSelect, setThemeSelect] = useState([])
+  const handleCardClick = (arti) => {
+    console.info("Id de l'objet cliqué :", arti.id)
+  }
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/artifacts")
-      .then((res) => setArtiSelect(res.data))
+    axios.get("http://localhost:5000/artifacts").then((res) => {
+      const artifactsWithId = res.data.map((artifact) => {
+        return {
+          ...artifact,
+          id: artifact.id,
+        }
+      })
+      setArtiSelect(artifactsWithId)
+    })
   }, [])
 
   useEffect(() => {
@@ -60,14 +69,17 @@ export default function Artifacts() {
           </div>
         </div>
         {/* ********** DIV ARTEFACTS ********** */}
+
         <div className="divArtifactsEshop">
           {filteredValue === ""
             ? artiSelect.map((arti) => (
                 <EshopCard
                   key={arti.id}
+                  id={arti.id}
                   images={arti.images}
                   name_arti={arti.name_arti}
                   price={arti.price}
+                  onClick={() => handleCardClick(arti)}
                 />
               ))
             : artiSelect.filter((arti) =>
@@ -78,6 +90,7 @@ export default function Artifacts() {
                 .map((arti) => (
                   <EshopCard
                     key={arti.id}
+                    id={arti.id}
                     images={arti.images}
                     name_arti={arti.name_arti}
                     price={arti.price}
