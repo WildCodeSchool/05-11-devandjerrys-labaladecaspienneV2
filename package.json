@@ -32,10 +32,10 @@
     "cross-env": "^7.0.3",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.6.1",
-    "husky": "^8.0.3"
+    "husky": "^8.0.3",
+    "migrate": "^1.8.0"
   },
   "dependencies": {
-    "migrate": "^1.8.0",
     "react-router-dom": "^6.8.2"
   }
 }
