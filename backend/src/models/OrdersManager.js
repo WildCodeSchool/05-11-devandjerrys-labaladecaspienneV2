@@ -72,7 +72,7 @@ class OrdersManager extends AbstractManager {
 
   update(order) {
     return this.database.query(
-      `update ${this.table} set num_cmd = ?, comments_id = ?, users_id = ? where id = ?`,
+      `update ${this.table} set num_cmd = ?, comments_id = ?, users_id = ?, order_amount = ?, where id = ?`,
       [
         order.num_cmd,
         order.comments_id,
