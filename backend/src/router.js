@@ -23,11 +23,20 @@ router.put('/events/:id', EventsControllers.edit)
 router.post('/events', EventsControllers.add)
 router.delete('/events/:id', EventsControllers.destroy)
 
-router.get('/orders', OrdersControllers.browse)
-router.get('/orders/:id', OrdersControllers.read)
+// router.get('/orders', OrdersControllers.browse)
+router.get('/orders', OrdersControllers.read)
+// router.get('/orders/:id', OrdersControllers.read)
+router.get('/orders/:id', OrdersControllers.readById)
+
 router.put('/orders/:id', OrdersControllers.edit)
 router.post('/orders', OrdersControllers.add)
 router.delete('/orders/:id', OrdersControllers.destroy)
+
+router.get('/hasorders', OrdersControllers.readHasOrder)
+router.get('/hasorders/:id', OrdersControllers.readOneHasOrder)
+// router.put('/hasorders/:id', OrdersControllers.edit)
+// router.post('/hasorders', OrdersControllers.add)
+// router.delete('/hasorders/:id', OrdersControllers.destroy)
 
 router.get('/pictures', PicturesControllers.browse)
 router.get('/pictures/:id', PicturesControllers.read)

@@ -141,7 +141,7 @@ CREATE TABLE `comments` (
   `date_create` date DEFAULT NULL,
   `data_update` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,6 +150,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (1,'cccccccc','2002-02-02','2002-02-02'),(2,'dddddddddddddd','2010-10-10','2010-10-10');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,12 +223,13 @@ CREATE TABLE `orders` (
   `num_cmd` int DEFAULT NULL,
   `comments_id` int NOT NULL,
   `users_id` int NOT NULL,
+  `order_amount` double DEFAULT NULL,
   PRIMARY KEY (`id`,`comments_id`,`users_id`),
   KEY `fk_commande_users1_idx` (`users_id`),
   KEY `fk_commandes_comments1_idx` (`comments_id`),
   CONSTRAINT `fk_commande_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`),
   CONSTRAINT `fk_commandes_comments1` FOREIGN KEY (`comments_id`) REFERENCES `comments` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -236,6 +238,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (2,1,1,1,NULL),(5,2,2,2,NULL);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -249,6 +252,7 @@ DROP TABLE IF EXISTS `orders_has_artifact`;
 CREATE TABLE `orders_has_artifact` (
   `orders_id` int NOT NULL,
   `artifact_id` int NOT NULL,
+  `quantity` int DEFAULT NULL,
   PRIMARY KEY (`orders_id`,`artifact_id`),
   KEY `fk_orders_has_artifact_artifact1_idx` (`artifact_id`),
   KEY `fk_orders_has_artifact_orders1_idx` (`orders_id`),
@@ -263,6 +267,7 @@ CREATE TABLE `orders_has_artifact` (
 
 LOCK TABLES `orders_has_artifact` WRITE;
 /*!40000 ALTER TABLE `orders_has_artifact` DISABLE KEYS */;
+INSERT INTO `orders_has_artifact` VALUES (2,1,NULL);
 /*!40000 ALTER TABLE `orders_has_artifact` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -372,4 +377,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-02  9:38:55
+-- Dump completed on 2023-03-07 13:58:45
