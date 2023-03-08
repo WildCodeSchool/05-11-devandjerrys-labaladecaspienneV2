@@ -4,7 +4,8 @@ import logo from "../assets/Images/logo_baladecaspienne.png"
 import deco from "../assets/Images/deco.png"
 import deco1 from "../assets/Images/deco1.png"
 import Burger from "@components/Burger"
-
+import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
+import { Carousel } from "react-responsive-carousel"
 import { useState, useEffect } from "react"
 import axios from "axios"
 // import { Link } from "react-router-dom"
@@ -62,7 +63,7 @@ export default function Home() {
             />
           ))}
         </div>
-        <div className="card-themeResp">
+        <Carousel showIndicators={true} showStatus={false}>
           {themes.map((theme) => (
             <CardThemeCarrousel
               key={theme.id}
@@ -71,7 +72,7 @@ export default function Home() {
               description_theme={theme.description_theme}
             />
           ))}
-        </div>
+        </Carousel>
       </div>
       <Burger />
       <Footer />

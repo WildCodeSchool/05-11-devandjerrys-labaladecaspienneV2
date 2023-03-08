@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
--- Host: localhost    Database: bd_caspienne
+-- Host: 127.0.0.1    Database: bd_caspienne
 -- ------------------------------------------------------
 -- Server version	8.0.31
 
@@ -305,7 +305,7 @@ DROP TABLE IF EXISTS `themes`;
 CREATE TABLE `themes` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name_theme` varchar(55) DEFAULT NULL,
-  `description_theme` longtext,
+  `description_theme` varchar(700) DEFAULT NULL,
   `picture_theme` longtext,
   `archive_theme` int DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -372,4 +372,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-02  9:38:55
+-- Dump completed on 2023-03-06 15:41:29

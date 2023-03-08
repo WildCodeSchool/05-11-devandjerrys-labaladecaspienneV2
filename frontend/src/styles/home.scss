@@ -53,10 +53,7 @@ h2 {
   margin-right: auto;
   width: 40%;
 }
-// .card-theme {
-//   padding-left: 33px;
-//   display: flex;
-// }
+
 .card-theme > div {
   display: inline-block;
   width: 31%;
@@ -66,22 +63,22 @@ h2 {
 .card-theme > div:nth-child(3n) {
   margin-right: 0;
 }
+.carousel {
+  display: none;
+}
 
 @media only screen and (max-width: 750px) {
-  .card-themeResp {
-    padding-left: 33px;
+  .carousel {
     display: flex;
-    overflow: auto;
-    justify-content: space-between;
-    width: 72%;
-    height: 100%;
-    margin-left: 12%;
-  }
-  // .card-themeResp::-webkit-scrollbar {
-  //   display: none;
-  // }
-  .card-themeResp::-webkit-scrollbar-button {
-    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+    .control-dots {
+      position: relative;
+      padding: 0;
+    }
+    .control-arrow {
+      width: 135px;
+    }
   }
 }
 @media only screen and (max-width: 768px) {
@@ -93,9 +90,3 @@ h2 {
     margin-right: 80px;
   }
 }
-// .card-theme {
-//   display: flex;
-//   justify-content: center;
-//   padding: 30px;
-//   flex-wrap: wrap;
-// }
