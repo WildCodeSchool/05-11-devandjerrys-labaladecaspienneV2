@@ -27,7 +27,9 @@ export default function Home() {
         <img id="mobil" className="image" src={logo}></img>
         <h1>LA BALADE CASPIENNE</h1>
         <img id="image1" className="image" src={deco}></img>
-        <h3>Cultures de l'imaginer?</h3>
+        <h2>
+          Une promenade, une histoire au coeur de la culture de l'imaginaire.
+        </h2>
         <div id="paragraph">
           <p>
             Entrez dans le monde fascinant de la culture de l'imaginaire, où les
