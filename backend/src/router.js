@@ -69,12 +69,8 @@ router.delete('/hascart/:id', CartControllers.destroyHasCart) // OK - pour suppr
 
 router.get('/comments', CommentsControllers.browse) // Ok
 router.get('/comments/:id', CommentsControllers.read) // Ok
-router.put('/comments/:id', CommentsControllers.edit)
-// Message d'erreur Console VSCode :
-// sql: "update comments set content = 'bla bla', date_create = '2022-02-01', where id = ?",
-// sqlState: '42000',
-// sqlMessage: "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where id = ?' at line 1"
+router.put('/comments/:id', CommentsControllers.edit) // Ok
 router.post('/comments', CommentsControllers.add) // Ok
-router.delete('/comments/:id', CommentsControllers.destroy)
+// router.delete('/comments/:id', CommentsControllers.destroy)
 
 module.exports = router
