@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
--- Host: localhost    Database: bd_caspienne
+-- Host: 127.0.0.1    Database: bd_caspienne
 -- ------------------------------------------------------
 -- Server version	8.0.31
 
@@ -311,7 +311,7 @@ DROP TABLE IF EXISTS `themes`;
 CREATE TABLE `themes` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name_theme` varchar(55) DEFAULT NULL,
-  `description_theme` longtext,
+  `description_theme` varchar(700) DEFAULT NULL,
   `picture_theme` longtext,
   `archive_theme` int DEFAULT NULL,
   PRIMARY KEY (`id`)
