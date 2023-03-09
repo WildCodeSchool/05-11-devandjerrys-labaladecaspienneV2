@@ -5,28 +5,39 @@ class CommentsManager extends AbstractManager {
     super({ table: 'comments' })
   }
 
+  // Route POST testée ok
   insert(comment) {
     return this.database.query(
-      `insert into ${this.table} (content, date_create, date_update) values (?, ?, ?)`,
-      [comment.content, comment.date_create, comment.date_update]
+      `insert into ${this.table} (content, date_create) values (?, ?)`,
+      [comment.content, comment.date_create]
     )
   }
 
+  // update(comment) {
+  //   return this.database.query(
+  //     update ${this.table} set content = ?, date_create = ?, date_update = ? where id = ?,
+  //     [comment.content, comment.date_create, comment.date_update]
+  //   )
+  // }
+
+  // Route qui fonctionne sur Workbench SANS date_update > unknown
   update(comment) {
     return this.database.query(
-      `update ${this.table} set content = ?, date_create = ?, date_update = ? where id = ?`,
-      [comment.content, comment.date_create, comment.date_update]
+      `update ${this.table} set content = ?, date_create = ?, where id = ?`,
+      [comment.content, comment.date_create]
     )
   }
 
+  // Route GET findAllComments testée ok
   findAllComments() {
     return this.database.query(
       `SELECT content, nickname, comments.date_create FROM ${this.table}
       JOIN orders ON comments_id = comments.id
-      JOIN users ON users_id = users.id;`
+      JOIN users ON users_id = users.id`
     )
   }
 
+  // Route GET findOneComments testée ok
   findOneComments(id) {
     return this.database.query(
       `SELECT c.id, content, nickname, c.date_create 

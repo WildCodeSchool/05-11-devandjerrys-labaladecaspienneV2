@@ -1,4 +1,5 @@
 const models = require('../models')
+const { hashPassword } = require('../services/argonHelper')
 
 const browse = (req, res) => {
   models.users
@@ -50,20 +51,29 @@ const edit = (req, res) => {
     })
 }
 
-const add = (req, res) => {
+const add = async (req, res) => {
   const user = req.body
 
   // TODO validations (length, format...)
 
-  models.users
-    .insert(user)
-    .then(([result]) => {
-      res.location(`/users/${result.insertId}`).sendStatus(201)
+  try {
+    // Hasher le mot de passe avec la fonction hashPassword()
+    const hashedPassword = await hashPassword(user.password)
+
+    // Mettre à jour le mot de passe de l'utilisateur avec le hash
+    user.password = hashedPassword
+
+    const [result] = await models.users.insert({
+      ...req.body,
+      password: hashedPassword,
     })
-    .catch((err) => {
-      console.error(err)
-      res.sendStatus(500)
-    })
+    // const result = await add({ ...req.body, password: hashedPassword })
+
+    res.location(`users/${result.insertId}`).sendStatus(201)
+  } catch (err) {
+    console.error(err)
+    res.sendStatus(500)
+  }
 }
 
 const destroy = (req, res) => {

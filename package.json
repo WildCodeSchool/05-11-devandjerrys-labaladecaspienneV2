@@ -36,6 +36,9 @@
     "migrate": "^1.8.0"
   },
   "dependencies": {
+    "argon2": "^0.30.3",
+    "joi": "^17.8.3",
+    "jsonwebtoken": "^9.0.0",
     "react-router-dom": "^6.8.2"
   }
 }
