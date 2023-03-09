@@ -16,17 +16,16 @@ class CommentsManager extends AbstractManager {
   // Route UPDATE testée ok
   update(comment) {
     return this.database.query(
-      `update ${this.table} set content = ?, date_update = ?, where id = ?`,
-      [comment.content, comment.date_update]
+      `update ${this.table} set content = ?, date_create = ?, date_update = ? where id = ?`,
+      [comment.content, comment.date_create, comment.date_update]
     )
   }
-
   // Route GET findAllComments testée ok
   findAllComments() {
     return this.database.query(
       `SELECT content, nickname, comments.date_create FROM ${this.table}
       JOIN orders ON comments_id = comments.id
-      JOIN users ON users_id = users.id;`
+      JOIN users ON users_id = users.id`
     )
   }
 
