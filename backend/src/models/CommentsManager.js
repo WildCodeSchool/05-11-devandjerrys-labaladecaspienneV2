@@ -20,6 +20,7 @@ class CommentsManager extends AbstractManager {
       [comment.content, comment.date_create, comment.date_update]
     )
   }
+
   // Route GET findAllComments testée ok
   findAllComments() {
     return this.database.query(
