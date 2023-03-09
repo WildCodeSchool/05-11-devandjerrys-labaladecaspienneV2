@@ -7,6 +7,7 @@ import Star from "../assets/Images/brown_star.png"
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { useParams } from "react-router-dom"
+import ButtonCart from "@components/ButtonCart"
 
 export default function EshopDetails() {
   const { id } = useParams()
@@ -95,6 +96,7 @@ export default function EshopDetails() {
                 Livraison en 1 à 2 semaines
               </p>
             </div>
+            <ButtonCart />
             <div>
               <img className="E-deco2" src={Deco2} alt="décoration" />
             </div>

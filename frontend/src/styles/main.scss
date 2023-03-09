@@ -1,19 +1,21 @@
+@import "./about.scss";
 @import "./App.scss";
-@import "./Eshop.scss";
+@import "./burger.scss";
 @import "./ButtonCart.scss";
 @import "./CardTheme.scss";
+@import "./CardEvent.scss";
+@import "./CardThemeCarrousel.scss";
 @import "./cart.scss";
+@import "./CartArtifact.scss";
 @import "./Contact.scss";
+@import "./Eshop.scss";
 @import "./EshopCard.scss";
-@import "./footer.scss";
-@import "./header.scss";
-@import "./Home.scss";
-@import "./splash.scss";
-@import "./burger.scss";
 @import "./EshopDetails.scss";
 @import "./events.scss";
-@import "./CardThemeCarrousel.scss";
-@import "./about.scss";
+@import "./footer.scss";
+@import "./header.scss";
+@import "./home.scss";
+@import "./splash.scss";
 @import "./UserAccount.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=Alegreya&family=EB+Garamond:ital@1&display=swap");
@@ -34,10 +36,10 @@
   --desktop-size2: 55px;
   --desktop-size3: 22px;
   --desktop-size4: 18px;
-  --mobile-size1: 30px; /*calc(var(--desktop-size1) * 0.85);*/
-  --mobile-size2: 25px;
-  --mobile-size3: 15px;
-  --mobile-size4: 15px;
+  --mobile-size1: calc(var(--desktop-size1) - 20px);
+  --mobile-size2: calc(var(--desktop-size2) - 25px);
+  --mobile-size3: calc(var(--desktop-size3) - 8px);
+  --mobile-size4: calc(var(--desktop-size3) - 3px);
 }
 
 body {

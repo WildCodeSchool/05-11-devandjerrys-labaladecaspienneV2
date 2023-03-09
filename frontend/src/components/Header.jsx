@@ -37,7 +37,7 @@ function Header() {
           </Link>
         )}
         <img className="headerStar" src={star} alt="image" />
-        <Link className="linkHeader" to="#">
+        <Link className="linkHeader" to="/cart">
           <p className="itemsNavHeader">Panier</p>
         </Link>
         <img className="headerStar" src={star} alt="image" />
