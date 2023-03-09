@@ -37,11 +37,16 @@
   appearance: auto;
   margin-top: 5px;
 }
-
+.articleNone {
+  text-align: center;
+  color: var(--secondary-color);
+  font-size: 20px;
+}
 /// DIV ARTFACTS ///
 .divArtifactsEshop {
   width: 88%;
   display: flex;
+  justify-content: center;
 }
 
 /// Tablet ///
