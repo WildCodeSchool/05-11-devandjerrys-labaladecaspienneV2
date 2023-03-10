@@ -9,6 +9,7 @@ import Home from "./pages/Home"
 import Splash from "./pages/Splash"
 import ThemeDetails from "./pages/ThemeDetails"
 import Theme from "./pages/Themes"
+import HomeModalTheme from "./components/HomeModalTheme"
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/artifacts/:id" element={<ArtifactDetails />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/eshop" element={<EshopCard />} />
+        <Route path="/homeModal" element={<HomeModalTheme />} />
       </Routes>
     </div>
   )
