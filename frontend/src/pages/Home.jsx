@@ -4,11 +4,13 @@ import logo from "../assets/Images/logo_baladecaspienne.png"
 import deco from "../assets/Images/deco.png"
 import deco1 from "../assets/Images/deco1.png"
 import Burger from "@components/Burger"
-
+import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
+import { Carousel } from "react-responsive-carousel"
 import { useState, useEffect } from "react"
 import axios from "axios"
 // import { Link } from "react-router-dom"
 import CardTheme from "../components/CardTheme"
+import CardThemeCarrousel from "../components/CardThemeCarrousel"
 
 export default function Home() {
   const [themes, setThemes] = useState([])
@@ -17,6 +19,7 @@ export default function Home() {
       setThemes(response.data)
     })
   }, [])
+
   return (
     <div>
       <Header />
@@ -24,7 +27,9 @@ export default function Home() {
         <img id="mobil" className="image" src={logo}></img>
         <h1>LA BALADE CASPIENNE</h1>
         <img id="image1" className="image" src={deco}></img>
-        <h3>Cultures de l'imaginer?</h3>
+        <h2>
+          Une promenade, une histoire au coeur de la culture de l'imaginaire.
+        </h2>
         <div id="paragraph">
           <p>
             Entrez dans le monde fascinant de la culture de l'imaginaire, où les
@@ -56,9 +61,20 @@ export default function Home() {
               key={theme.id}
               picture_theme={theme.picture_theme}
               name_theme={theme.name_theme}
+              description_theme={theme.description_theme}
             />
           ))}
         </div>
+        <Carousel showIndicators={true} showStatus={false}>
+          {themes.map((theme) => (
+            <CardThemeCarrousel
+              key={theme.id}
+              picture_theme={theme.picture_theme}
+              name_theme={theme.name_theme}
+              description_theme={theme.description_theme}
+            />
+          ))}
+        </Carousel>
       </div>
       <Burger />
       <Footer />

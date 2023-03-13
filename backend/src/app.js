@@ -17,7 +17,7 @@ const cors = require('cors')
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL ?? 'http://localhost:3000',
+    origin: process.env.FRONTEND_URL ?? 'http://localhost:3000/',
     optionsSuccessStatus: 200,
   }) // on donne les droit a au front de ce connecter
 )
@@ -27,7 +27,7 @@ const router = require('./router') // on importe notre routeur
 
 app.use(router) // on envois la requet dans le fichier router.js
 
-// serve the `backend/public` folder for public resources
+// serve the backend/public folder for public resources
 
 app.use(express.static(path.join(__dirname, '../public')))
 

@@ -1,16 +1,20 @@
+import { useState } from "react"
+import { Link } from "react-router-dom"
+
 import logo from "../assets/Images/logo_baladecaspienne.png"
 import star from "../assets/Images/brown_star.png"
 import angleL from "../assets/Images/white_angle_L.png"
 import angleR from "../assets/Images/white_angle_R.png"
-import { Link } from "react-router-dom"
 
 function Header() {
+  const { isAuthenticated } = useState()
+
   return (
     <div className="Header">
       <div className="mainDivHeader">
         <img className="headerAngle angleL" src={angleL} alt="image" />
         <img className="headerStar" src={star} alt="image" />
-        <Link className="linkHeader" to="/artifacts">
+        <Link className="linkHeader" to="/eshop">
           <p className="itemsNavHeader">Boutique</p>
         </Link>
         <img className="headerStar" src={star} alt="image" />
@@ -22,11 +26,18 @@ function Header() {
             <img className="logoHeader" src={logo} alt="image" />
           </div>
         </Link>
-        <Link className="linkHeader" to="#">
-          <p className="itemsNavHeader">Connexion</p>
-        </Link>
+        {/* METTRE isAuthenticated A LA PLACE DE !isAuthenticated POUR AFFICHER CONNEXION */}
+        {(!isAuthenticated && (
+          <Link className="linkHeader" to="/useraccount">
+            <p className="itemsNavHeader">Mon Profil</p>
+          </Link>
+        )) || (
+          <Link className="linkHeader" to="/login">
+            <p className="itemsNavHeader">Connexion</p>
+          </Link>
+        )}
         <img className="headerStar" src={star} alt="image" />
-        <Link className="linkHeader" to="#">
+        <Link className="linkHeader" to="/cart">
           <p className="itemsNavHeader">Panier</p>
         </Link>
         <img className="headerStar" src={star} alt="image" />

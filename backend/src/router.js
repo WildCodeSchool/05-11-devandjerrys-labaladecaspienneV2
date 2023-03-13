@@ -1,5 +1,5 @@
 const express = require('express')
-
+const { verifyToken, verifyPassword } = require('./services/argonHelper')
 const router = express.Router()
 
 const ArtifactsControllers = require('./controllers/ArtifactsControllers')
@@ -23,11 +23,20 @@ router.put('/events/:id', EventsControllers.edit)
 router.post('/events', EventsControllers.add)
 router.delete('/events/:id', EventsControllers.destroy)
 
-router.get('/orders', OrdersControllers.browse)
-router.get('/orders/:id', OrdersControllers.read)
+// router.get('/orders', OrdersControllers.browse)
+router.get('/orders', OrdersControllers.read)
+// router.get('/orders/:id', OrdersControllers.read)
+router.get('/orders/:id', OrdersControllers.readById)
+
 router.put('/orders/:id', OrdersControllers.edit)
 router.post('/orders', OrdersControllers.add)
 router.delete('/orders/:id', OrdersControllers.destroy)
+
+router.get('/hasorders', OrdersControllers.readHasOrder)
+router.get('/hasorders/:id', OrdersControllers.readOneHasOrder)
+// router.put('/hasorders/:id', OrdersControllers.edit)
+// router.post('/hasorders', OrdersControllers.add)
+router.delete('/hasorders/:id', OrdersControllers.destroy)
 
 router.get('/pictures', PicturesControllers.browse)
 router.get('/pictures/:id', PicturesControllers.read)
@@ -43,9 +52,12 @@ router.delete('/themes/:id', ThemesControllers.destroy)
 
 router.get('/users', UsersControllers.browse)
 router.get('/users/:id', UsersControllers.read)
-router.put('/users/:id', UsersControllers.edit)
+router.post('/users/login', verifyPassword, UsersControllers.edit) // vérifier avec le front si la connexion est ok
 router.post('/users', UsersControllers.add)
-router.delete('/users/:id', UsersControllers.destroy)
+// Routes à protéger**************************
+
+router.put('/users/:id', verifyToken, UsersControllers.edit)
+router.delete('/users/:id', verifyToken, UsersControllers.destroy)
 
 // router.get('/cart', CartControllers.browse) // si l'admin veut voir tous les paniers --pas important pour le moment
 router.get('/cart/:id', CartControllers.read) // OK - pour visualiser tout le panier attribuer à 1 client

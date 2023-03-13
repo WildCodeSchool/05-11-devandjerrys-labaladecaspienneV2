@@ -33,5 +33,18 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.6.1",
     "husky": "^8.0.3"
+  },
+  "dependencies": {
+
+    "argon2": "^0.30.3",
+    "joi": "^17.8.3",
+    "jsonwebtoken": "^9.0.0",
+
+    "react-responsive-carousel": "^3.2.23",
+    "husky": "^8.0.3",
+    "migrate": "^1.8.0",
+  
+
+    "react-router-dom": "^6.8.2"
   }
 }

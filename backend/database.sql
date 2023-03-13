@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
--- Host: localhost    Database: bd_caspienne
+-- Host: 127.0.0.1    Database: bd_caspienne
 -- ------------------------------------------------------
 -- Server version	8.0.31
 
@@ -139,9 +139,10 @@ CREATE TABLE `comments` (
   `id` int NOT NULL AUTO_INCREMENT,
   `content` longtext,
   `date_create` date DEFAULT NULL,
-  `data_update` date DEFAULT NULL,
+  `date_update` date DEFAULT NULL,
+  `actived` tinyint DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,6 +151,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (1,'dddddddd','2002-02-02','2023-03-09',1),(2,'dddddddddddddd','2010-10-10','2010-10-10',1);
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,14 +222,15 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `id` int NOT NULL AUTO_INCREMENT,
   `num_cmd` int DEFAULT NULL,
-  `comments_id` int NOT NULL,
+  `comments_id` int DEFAULT NULL,
   `users_id` int NOT NULL,
-  PRIMARY KEY (`id`,`comments_id`,`users_id`),
+  `order_amount` double DEFAULT NULL,
+  PRIMARY KEY (`id`,`users_id`),
   KEY `fk_commande_users1_idx` (`users_id`),
   KEY `fk_commandes_comments1_idx` (`comments_id`),
   CONSTRAINT `fk_commande_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`),
   CONSTRAINT `fk_commandes_comments1` FOREIGN KEY (`comments_id`) REFERENCES `comments` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -236,6 +239,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (2,1,1,1,100),(6,2,2,2,30);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -249,6 +253,7 @@ DROP TABLE IF EXISTS `orders_has_artifact`;
 CREATE TABLE `orders_has_artifact` (
   `orders_id` int NOT NULL,
   `artifact_id` int NOT NULL,
+  `quantity` int DEFAULT NULL,
   PRIMARY KEY (`orders_id`,`artifact_id`),
   KEY `fk_orders_has_artifact_artifact1_idx` (`artifact_id`),
   KEY `fk_orders_has_artifact_orders1_idx` (`orders_id`),
@@ -263,6 +268,7 @@ CREATE TABLE `orders_has_artifact` (
 
 LOCK TABLES `orders_has_artifact` WRITE;
 /*!40000 ALTER TABLE `orders_has_artifact` DISABLE KEYS */;
+INSERT INTO `orders_has_artifact` VALUES (2,1,3);
 /*!40000 ALTER TABLE `orders_has_artifact` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -305,7 +311,7 @@ DROP TABLE IF EXISTS `themes`;
 CREATE TABLE `themes` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name_theme` varchar(55) DEFAULT NULL,
-  `description_theme` longtext,
+  `description_theme` varchar(700) DEFAULT NULL,
   `picture_theme` longtext,
   `archive_theme` int DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -335,7 +341,7 @@ CREATE TABLE `users` (
   `lastname` varchar(45) DEFAULT NULL,
   `firstname` varchar(45) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
+  `password` varchar(150) DEFAULT NULL,
   `birthday` date DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `number_delivery` varchar(45) DEFAULT NULL,
@@ -350,7 +356,7 @@ CREATE TABLE `users` (
   `country_bill` varchar(55) DEFAULT NULL,
   `is_admin` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -359,7 +365,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'jDO','DOE','John','jd@gmail','pass','2011-01-01','1251654',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'MDE','TAS','Mar','mario@hjsdh','pass','1980-07-31','4555',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'jDO','DOE','John','jd@gmail','pass','2011-01-01','1251654',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'MDE','TAS','Mar','mario@hjsdh','pass','1980-07-31','4555',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,NULL,'Doe','Jane','jane.doe@monmail.com','jesuislemdp',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,NULL,'Doe','Janet','janet.doe@monmail.com','jesuislemdp',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,NULL,'Doe','Julie','julie.doe@monmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,NULL,'Doe','Julien','julien.doe@monmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,NULL,'Doe','Julienne','julienne.doe@monmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(8,NULL,'Doe','Jules','jules.doe@monmail.com','$argon2id$v=19$m=65536,t=5,p=1$owy3bxLTz8Is+GnAgbDjfw$yJqa2YtDk3IFI56d+eSM/bIEFW1icWbj326RvH3RnkA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(9,NULL,'Doe','Jean','jean.doe@monmail.com','$argon2id$v=19$m=65536,t=5,p=1$OXmPllVdT23c+OEZWE4Zbw$XoMV2CBTwKE3Fu/dDPJenP9JyXDJ/nq5L73CHHkyGhA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -372,4 +378,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-02  9:38:55
+-- Dump completed on 2023-03-09 16:45:47
