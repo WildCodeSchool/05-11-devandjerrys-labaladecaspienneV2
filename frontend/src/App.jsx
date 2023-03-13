@@ -9,11 +9,11 @@ import Home from "./pages/Home"
 import Splash from "./pages/Splash"
 import ThemeDetails from "./pages/ThemeDetails"
 import Theme from "./pages/Themes"
+import HomeModalTheme from "./components/HomeModalTheme"
 import EshopDetails from "./pages/EshopDetails"
 import Events from "@pages/Events"
 import UserAccount from "./pages/UserAccount"
 import Cart from "./pages/Cart"
-
 function App() {
   return (
     <div className="App">
@@ -27,6 +27,8 @@ function App() {
         <Route path="/eshop" element={<Eshop />} />
         {/* <Route path="/artifacts/:id" element={<ArtifactDetails />} /> */}
         <Route path="/contact" element={<Contact />} />
+        {/* <Route path="/eshop" element={<EshopCard />} /> */}
+        <Route path="/homeModal" element={<HomeModalTheme />} />
         {/* <Route path="/eshopdetails" element={<EshopDetails />} /> */}
         <Route path="/eshopdetails/:id" element={<EshopDetails />} />
         <Route path="/events" element={<Events />} />
