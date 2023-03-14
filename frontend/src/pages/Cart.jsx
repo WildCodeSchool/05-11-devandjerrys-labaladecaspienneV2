@@ -11,11 +11,35 @@ function Cart() {
   const [cartArti, setCartArti] = useState([])
   const [totalAmount, setTotalAmount] = useState()
 
-  useEffect(() => {
+  const getData = (id) => {
     axios
-      .get(`http://localhost:5000/cart/1`)
+      .get(`http://localhost:5000/cart/${id}`)
       .then((res) => setCartArti(res.data))
       .catch((err) => console.error(err))
+  }
+
+  const updateCart = (id, quantity, isDeleted) => {
+    if (!isDeleted) {
+      const newQuantity = quantity
+      axios
+        .put(`http://localhost:5000/hascart/${id}`, { quantity: newQuantity })
+        .then((res) => {
+          setCartArti((prevState) =>
+            prevState.map((arti) =>
+              arti.id_cart_has_artifacts === id
+                ? { ...arti, quantity: newQuantity }
+                : arti
+            )
+          )
+        })
+        .catch((err) => console.error(err))
+    } else {
+      getData(1) // insérer l'id de l'utilisateur connecté
+    }
+  }
+
+  useEffect(() => {
+    getData(1) // insérer l'id de l'utilisateur connecté
   }, [])
 
   useEffect(() => {
@@ -25,31 +49,7 @@ function Cart() {
     setTotalAmount(newTotalAmount)
   }, [cartArti])
 
-  const updateCart = (id, quantity, action) => {
-    let newQuantity = quantity
-
-    if (action === "add") {
-      newQuantity += 1
-    } else if (action === "remove") {
-      newQuantity -= 1
-    }
-
-    axios
-      .put(`http://localhost:5000/hascart/${id}`, { quantity: newQuantity })
-      .then((res) => {
-        const updatedCartArti = cartArti.map((arti) =>
-          arti.id === id ? { ...arti, quantity: newQuantity } : arti
-        )
-        setCartArti(updatedCartArti)
-        const newTotalAmount = updatedCartArti.reduce(
-          (acc, arti) => acc + arti.price * arti.quantity,
-          0
-        )
-        setTotalAmount(newTotalAmount)
-      })
-
-      .catch((err) => console.error(err))
-  }
+  // const
 
   return (
     <div className="mainCart">

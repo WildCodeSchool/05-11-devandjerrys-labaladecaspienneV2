@@ -29,10 +29,11 @@ class CartManager extends AbstractManager {
   }
 
   updateHasCart(cart) {
-    return this.database.query(
+    const result = this.database.query(
       `UPDATE cart_has_artifacts SET quantity = ? WHERE (id_cart_has_artifacts = ?)`,
       [cart.quantity, cart.id]
     )
+    return result
   }
 
   deleteHasCart(id) {
