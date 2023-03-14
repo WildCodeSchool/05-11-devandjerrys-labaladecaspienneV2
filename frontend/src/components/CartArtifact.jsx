@@ -47,25 +47,27 @@ function CartArtifact(props) {
         <div className="CartArtifactImg">
           <img src={props.url_img} alt={props.name_arti} />
         </div>
-        <div className="CartArtifactName">
-          <p>{props.name_arti}</p>
-        </div>
-        <div className="CartArtifactQty">
-          <CiCircleMinus
-            onClick={() => handleQuantityChange(quantity - 1)}
-            className={quantity > 1 ? "" : "hide"}
-          />
-          <p>{quantity} </p>
-          <CiCirclePlus onClick={() => handleQuantityChange(quantity + 1)} />
-        </div>
-        <div className="CartArtifactPrice">
-          <p>{props.price} €</p>
-        </div>
-        <div className="CartArtifactTotal">
-          <p>{amount} €</p>
-        </div>
-        <div className="CartArtifactDelete">
-          <CiTrash onClick={handleDelete} />
+        <div className="CartArtifactInfo">
+          <div className="CartArtifactName">
+            <p>{props.name_arti}</p>
+          </div>
+          <div className="CartArtifactQty">
+            <CiCircleMinus
+              onClick={() => handleQuantityChange(quantity - 1)}
+              className={quantity > 1 ? "" : "hide"}
+            />
+            <p>{quantity} </p>
+            <CiCirclePlus onClick={() => handleQuantityChange(quantity + 1)} />
+          </div>
+          <div className="CartArtifactPrice">
+            <p>{props.price} €</p>
+          </div>
+          <div className="CartArtifactTotal">
+            <p>{amount} €</p>
+          </div>
+          <div className="CartArtifactDelete">
+            <CiTrash onClick={handleDelete} />
+          </div>
         </div>
       </div>
       <div className="Star">
