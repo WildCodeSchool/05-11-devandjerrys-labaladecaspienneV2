@@ -96,7 +96,7 @@ export default function EshopDetails() {
                 Livraison en 1 à 2 semaines
               </p>
             </div>
-            <ButtonCart />
+            <ButtonCart artifactChosen={artifactChosen} />
             <div>
               <img className="E-deco2" src={Deco2} alt="décoration" />
             </div>

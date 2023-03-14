@@ -12,7 +12,7 @@ function CartArtifact(props) {
     axios
       .delete(`http://localhost:5000/hascart/${props.id_cart_has_artifacts}`)
       .then((res) => {
-        props.updateCart(props.id_cart_has_artifacts, null, "delete")
+        props.updateCart(props.id_cart_has_artifacts, null, true)
         setDeleted(true)
       })
       .catch((err) => {
@@ -30,12 +30,7 @@ function CartArtifact(props) {
         total: newTotal,
       })
       .then((res) => {
-        props.updateCart(
-          props.id_cart_has_artifacts,
-          newQuantity,
-          null,
-          newTotal
-        )
+        props.updateCart(props.id_cart_has_artifacts, newQuantity, false)
       })
       .catch((err) => {
         console.error(err)
