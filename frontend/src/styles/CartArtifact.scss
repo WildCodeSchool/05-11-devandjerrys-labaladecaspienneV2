@@ -34,26 +34,74 @@
                 object-fit: cover;
             }
         }
-        // .CartArtifactName {
-        // }
-        .CartArtifactQty {
+        .CartArtifactInfo {
             display: flex;
-            // flex-direction: column;
-            width: 100px;
-            justify-content: space-around;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 65%;
             align-items: center;
-            .hide {
-                display: none;
+
+            .CartArtifactQty {
+                display: flex;
+                // flex-direction: column;
+                width: 100px;
+                justify-content: space-around;
+                align-items: center;
+                .hide {
+                    display: none;
+                }
             }
         }
-        // .CartArtifactPrice {
-        // }
-        // .CartArtifactTotal {
-        // }
     }
     .Star {
         img {
-            width: 30px;
+            width: 50px;
+        }
+    }
+}
+// /// Mobil ///
+@media (max-width: 750px) {
+    .MainCartArtifact1 {
+        .MainCartArtifact2 {
+            width: 90vw;
+            .CartArtifactImg {
+                img {
+                    width: 120px;
+                    height: 120px;
+                    object-fit: cover;
+                }
+            }
+
+            .CartArtifactInfo {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                grid-column-gap: 15px;
+                grid-row-gap: 60px;
+                p {
+                    margin: 0;
+                }
+                .CartArtifactName {
+                    grid-area: 1 / 1 / 2 / 2;
+                }
+                .CartArtifactQty {
+                    grid-area: 2 / 1 / 3 / 2;
+                }
+                .CartArtifactPrice {
+                    grid-area: 1 / 2 / 2 / 3;
+                }
+                .CartArtifactTotal {
+                    grid-area: 2 / 2 / 3 / 3;
+                }
+                .CartArtifactDelete {
+                    grid-area: 1 / 3 / 3 / 4;
+                }
+            }
+        }
+        .Star {
+            img {
+                width: 30px;
+            }
         }
     }
 }
