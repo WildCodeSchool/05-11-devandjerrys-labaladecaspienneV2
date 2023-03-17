@@ -1,0 +1,46 @@
+.HomeModal{
+    background-color: #004033; 
+    display: flex; 
+    flex-wrap: wrap;
+    //columns: 100% 1;
+    justify-content: center;
+
+}
+.decorTop, .decorBut{
+    filter:saturate(0) brightness(100);
+    margin: 20px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+
+}
+.decorBut>img{
+    transform: rotate(180deg);
+    width: 80%;
+}
+.decorTop>img{
+    width: 80%;
+    
+}
+.foto>img{
+   max-width: 300px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 0px rgba(94, 94, 94,0.5);
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.foto{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.description{
+    background-color:  rgba(207, 207, 207, 0.1);
+    padding: 12%;
+    margin: 6%;
+    border-radius: 10px;
+    text-align: center;
+
+}

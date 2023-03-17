@@ -1,0 +1,32 @@
+.contact {
+  p {
+    font-family: var(--font1);
+    color: var(--main-color);
+    font-size: 4vw;
+    margin: 5px;
+  }
+}
+.form-control {
+  margin: 20px;
+  display: flex;
+  width: 300px;
+  height: 25px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba($color: #b0b0b0, $alpha: 0.2);
+  color: white;
+}
+.inputBox {
+  align-items: center;
+  flex-flow: column nowrap;
+  display: flex;
+}
+#message {
+  width: 300px;
+  height: 200px;
+  background-image: url("../assets/contacte.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  //background-position: center;
+  background-blend-mode: lighten;
+}

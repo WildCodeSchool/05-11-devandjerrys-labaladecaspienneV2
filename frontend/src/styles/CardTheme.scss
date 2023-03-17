@@ -1,0 +1,69 @@
+.buttonTheme {
+  background-color: transparent;
+  border: none;
+  margin-bottom: 150px;
+  .cardTheme {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../assets/cadreExterieur.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 280px;
+    margin: 35px;
+    .colorCadre {
+      background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(128, 64, 0, 1) 100%);
+      border-radius: 280px 280px 0px 0px;
+      .cadre {
+        background-size: cover;
+        background-position: center;
+        border-radius: 280px 280px 0px 0px;
+        box-shadow: inset 0 0 2px 3px rgba($color: #ffffff, $alpha: 100%),
+          0 0 30px 5px rgba($color: #ffffff, $alpha: 0.35);
+        width: 144px;
+        height: 236px;
+        object-fit: cover;
+      }
+    }
+    .nomTheme {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -40px;
+      margin-bottom: 0px;
+      background-color: #804000;
+      width: 230px;
+      height: 30px;
+      border-radius: 20px;
+      font-family: var(--font2);
+      font-size: larger;
+      .themes {
+        color: #ffffff;
+        font-size: larger;
+      }
+    }
+  }
+}
+
+.buttonTheme:hover {
+  .cardTheme {
+    transform: scale(1.1);
+    transition-duration: 0.9s;
+    .cadre {
+      box-shadow: inset 0 0 2px 3px rgba($color: #004033, $alpha: 100%),
+        0 0 30px 5px rgba($color: #ffffff /* #004033*/, $alpha: 0.35);
+      border-color: #004033;
+    }
+    .nomTheme {
+      background-color: #004033;
+    }
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .buttonTheme {
+    display: none;
+  }
+}
