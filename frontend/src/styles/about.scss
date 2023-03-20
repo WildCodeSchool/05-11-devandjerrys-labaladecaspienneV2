@@ -61,6 +61,11 @@
     }
   }
 }
+.divAboutShare {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15vh;
+}
 
 @media only screen and (max-width: 1024px) {
   .photoPres {

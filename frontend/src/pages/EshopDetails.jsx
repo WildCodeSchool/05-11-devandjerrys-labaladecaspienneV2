@@ -1,6 +1,7 @@
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Burger from "../components/Burger"
+import Share from "@components/Share"
 import Deco from "../assets/Images/deco.png"
 import Deco2 from "../assets/Images/head_line.png"
 import Star from "../assets/Images/brown_star.png"
@@ -80,6 +81,9 @@ export default function EshopDetails() {
             </div>
             <div className="Esd-price">
               <p>{artifactChosen.price}€</p>
+            </div>
+            <div className="E-Share">
+              <Share />
             </div>
             <div className="E-stock">
               <h4>En stock</h4>
