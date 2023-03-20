@@ -31,7 +31,8 @@ function App() {
         <Route path="/eshopdetails/:id" element={<EshopDetails />} />
         <Route path="/events" element={<Events />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/useraccount" element={<UserAccount />} />
+        {/* <Route path="/useraccount" element={<UserAccount />} /> */}
+        <Route path="/useraccount/:id" element={<UserAccount />} />
         {/* <Route path="/eshopcard" element={<EshopCard />} /> */}
       </Routes>
     </div>

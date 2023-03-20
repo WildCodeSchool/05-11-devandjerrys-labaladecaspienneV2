@@ -1,5 +1,4 @@
 const argon2 = require('argon2')
-// const { optional } = require('joi')
 const jwt = require('jsonwebtoken')
 
 const hashingOptions = {
@@ -9,45 +8,47 @@ const hashingOptions = {
   parallelism: 1,
 }
 
-const hashPassword = (plainPassword) => {
-  return argon2
-    .hash(plainPassword, hashingOptions)
+const hashPassword = (req, res, next) => {
+  argon2
+    .hash(req.body.password, hashingOptions)
     .then((hashedPassword) => {
-      console.info(hashedPassword)
-      return hashedPassword
-    })
+      console.log(hashedPassword)
 
+      req.body.hashedPassword = hashedPassword
+      delete req.body.password
+
+      next()
+    })
     .catch((err) => {
       console.error(err)
-      throw new Error('Error hashing password')
+      res.sendStatus(500)
     })
 }
 
-const verifyPassword = (plainPassword, hashedPassword, user) => {
-  return argon2
-    .verify(plainPassword, hashedPassword, hashingOptions)
+const verifyPassword = (req, res, next) => {
+  console.log('=====poulet02', req.body)
+  if (!req.body.email || !req.body.password) {
+    res.sendStatus(401)
+    return
+  }
+  console.log('=====poulet03')
+  argon2
+    .verify(req.body.password, req.user.hashedPassword)
     .then((isVerified) => {
       if (isVerified) {
-        user.send('Credentials are valid')
-        const payload = { sub: user.id }
-
+        const payload = { sub: req.user.id }
         const token = jwt.sign(payload, process.env.JWT_SECRET, {
           expiresIn: '1h',
         })
-        const { hashedPassword, ...userWithoutHash } = user
-        return { token, user: userWithoutHash }
-        // delete req.user.hashedPassword
-        // res.send({ token, user: req.user })
+        delete req.user.hashedPassword
+        console.log({ token, user: req.user })
       } else {
-        // res.sendStatus(401)
-        throw new Error('Incorrect password')
+        console.log('Authentication failed')
       }
     })
-    .catch((err) => {
-      console.error(err)
-      //   res.sendStatus(500)
-    })
+    .catch((err) => console.error(err))
 }
+
 const verifyToken = (req, res, next) => {
   try {
     const authorizationHeader = req.get('Authorization')
@@ -63,7 +64,7 @@ const verifyToken = (req, res, next) => {
     }
 
     req.payload = jwt.verify(token, process.env.JWT_SECRET)
-    console.info(verifyToken)
+
     next()
   } catch (err) {
     console.error(err)
