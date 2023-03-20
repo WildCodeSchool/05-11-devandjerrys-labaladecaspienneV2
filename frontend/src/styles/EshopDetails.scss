@@ -204,6 +204,9 @@
       background-size: contain;
       width: 500px;
     }
+    .E-share {
+      display: none;
+    }
     .E-stock {
       display: none;
     }
@@ -219,6 +222,7 @@
       font-family: var(--font2);
       color: var(--third-color);
       text-overflow: clip;
+      margin-bottom: 20px;
 
       p {
         font-size: 20px;

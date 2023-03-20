@@ -13,18 +13,11 @@ class CommentsManager extends AbstractManager {
     )
   }
 
-  // update(comment) {
-  //   return this.database.query(
-  //     update ${this.table} set content = ?, date_create = ?, date_update = ? where id = ?,
-  //     [comment.content, comment.date_create, comment.date_update]
-  //   )
-  // }
-
-  // Route qui fonctionne sur Workbench SANS date_update > unknown
+  // Route UPDATE testée ok
   update(comment) {
     return this.database.query(
-      `update ${this.table} set content = ?, date_create = ?, where id = ?`,
-      [comment.content, comment.date_create]
+      `update ${this.table} set content = ?, date_create = ?, date_update = ? where id = ?`,
+      [comment.content, comment.date_create, comment.date_update]
     )
   }
 
@@ -51,9 +44,9 @@ class CommentsManager extends AbstractManager {
     )
   }
 
-  deleteComments(id) {
-    return this.database.query(`DELETE FROM comments WHERE id = ?`, [id])
-  }
+  // deleteComments(id) {
+  //   return this.database.query(`DELETE FROM comments WHERE id = ?`, [id])
+  // }
 }
 
 module.exports = CommentsManager

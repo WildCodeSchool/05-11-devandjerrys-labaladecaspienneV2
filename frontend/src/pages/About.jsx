@@ -2,6 +2,7 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Burger from "../components/Burger"
 import PlayerVideo from "../components/PlayerVideo"
+import Share from "@components/Share"
 import { Link } from "react-router-dom"
 
 import LineTop from "../assets/Images/head_line.png"
@@ -69,6 +70,9 @@ export default function About() {
           <PlayerVideo />
           <img className="videoAngle" src={LineTop} alt="image" />
         </div>
+      </div>
+      <div className="divAboutShare">
+        <Share />
       </div>
       <Burger />
       <Footer />

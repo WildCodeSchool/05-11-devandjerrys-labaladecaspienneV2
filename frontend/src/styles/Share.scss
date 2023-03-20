@@ -1,0 +1,41 @@
+.mainDivShare {
+  position: relative;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #1fe0;
+}
+.toggled {
+  padding: 5px;
+  transition: opacity 1s ease-in-out;
+}
+.toggle {
+  padding: 5px;
+  transition: opacity 1s ease-in-out;
+}
+.iconsRS {
+  padding: 5px;
+}
+.divToggle {
+  //   padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--third-color);
+  border-radius: 50%;
+  margin-right: 15px;
+  margin-bottom: 8px;
+  height: 30px;
+  width: 30px;
+}
+.shareIcon {
+  height: 20px;
+  width: 20px;
+  object-fit: contain;
+}
+.closeIcon {
+  height: 14px;
+  width: 14px;
+  object-fit: contain;
+}
