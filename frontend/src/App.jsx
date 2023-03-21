@@ -12,6 +12,8 @@ import EshopDetails from "./pages/EshopDetails"
 import Events from "@pages/Events"
 import UserAccount from "./pages/UserAccount"
 import Cart from "./pages/Cart"
+import Payment from "./pages/Payment"
+
 function App() {
   return (
     <div className="App">
@@ -26,6 +28,9 @@ function App() {
         <Route path="/eshopdetails/:id" element={<EshopDetails />} />
         <Route path="/events" element={<Events />} />
         <Route path="/cart" element={<Cart />} />
+        {/* <Route path="/useraccount" element={<UserAccount />} /> */}
+        <Route path="/useraccount/:id" element={<UserAccount />} />
+        <Route path="/payment" element={<Payment />} />
         <Route path="/useraccount" element={<UserAccount />} />
       </Routes>
     </div>

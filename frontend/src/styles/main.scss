@@ -18,6 +18,9 @@
 @import "./splash.scss";
 @import "./Theme.scss";
 @import "./UserAccount.scss";
+@import "./ModalConnexion.scss";
+@import "./Share.scss";
+@import "./Payment.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=Alegreya&family=EB+Garamond:ital@1&display=swap");
 @font-face {
@@ -30,9 +33,9 @@
   --main-color: #ffffff;
   --secondary-color: #804000;
   --third-color: #004033;
-  --font1: "Dream";
-  --font2: "Alegreya";
-  --font3: "EB Garamond";
+  --font1: "Dream", serif;
+  --font2: "Alegreya", serif;
+  --font3: "EB Garamond", serif;
   --desktop-size1: 65px;
   --desktop-size2: 55px;
   --desktop-size3: 22px;

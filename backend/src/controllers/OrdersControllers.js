@@ -11,7 +11,21 @@ const read = (req, res) => {
       res.sendStatus(500)
     })
 }
-
+const readByuser = (req, res) => {
+  models.orders
+    .findOrderByUser(req.params.id)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404)
+      } else {
+        res.send(rows)
+      }
+    })
+    .catch((err) => {
+      console.error(err)
+      res.sendStatus(500)
+    })
+}
 const readById = (req, res) => {
   models.orders
     .findOneOrder(req.params.id)
@@ -120,4 +134,5 @@ module.exports = {
   readById,
   readHasOrder,
   readOneHasOrder,
+  readByuser,
 }
