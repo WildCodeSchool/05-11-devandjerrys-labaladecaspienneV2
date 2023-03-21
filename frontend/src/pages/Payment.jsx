@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useLocation } from "react-router-dom"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import LineTop from "../assets/Images/head_line.png"
@@ -7,8 +8,12 @@ import Visa from "../assets/Images/visa.png"
 import VirB from "../assets/Images/virement.png"
 
 function Payment() {
+  const location = useLocation()
   const [showFormPayment, setShowFormPayment] = useState(false)
   const [paymentReceived, setPaymentReceived] = useState(false)
+  const totalAmount = location.state
+
+  console.info("Total amount in Payment :", totalAmount)
 
   const toggleFormPayment = () => {
     setShowFormPayment(!showFormPayment)
@@ -32,7 +37,7 @@ function Payment() {
         <p className="titlePayment">Paiement en ligne</p>
       </div>
       <p className="pPayment">Montant total de votre commande :</p>
-      <p className="pCost">(value) €</p>
+      <p className="pCost">{totalAmount} €</p>
       <p className="pPayment">Veuillez choisir un mode de paiement</p>
       <div className="divPayment">
         <div className="divPaypal">
