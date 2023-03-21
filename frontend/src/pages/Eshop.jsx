@@ -15,6 +15,14 @@ export default function Artifacts() {
   }
 
   useEffect(() => {
+    const selectedTheme = localStorage.getItem("selectedTheme")
+    if (selectedTheme) {
+      setFilteredValue(selectedTheme)
+      localStorage.removeItem("selectedTheme")
+    }
+  }, [])
+
+  useEffect(() => {
     axios.get("http://localhost:5000/artifacts").then((res) => {
       const artifactsWithId = res.data.map((artifact) => {
         return {
@@ -58,6 +66,7 @@ export default function Artifacts() {
               className="selectStyle"
               id="themeSelect"
               onChange={handleFilterChange}
+              value={filteredValue}
             >
               <option value="">Tous les thèmes</option>
               {themeSelect.map((theme) => (
@@ -98,7 +107,7 @@ export default function Artifacts() {
                 ))
             : filteredValue !== "" && (
                 <p className="articleNone">
-                  Aucun article dans cette catégorie.
+                  Pas encore d'artifact pour ce thème.
                 </p>
               )}
         </div>

@@ -5,9 +5,17 @@ import logo from "../assets/Images/logo_baladecaspienne.png"
 import star from "../assets/Images/brown_star.png"
 import angleL from "../assets/Images/white_angle_L.png"
 import angleR from "../assets/Images/white_angle_R.png"
+import ModalConnexion from "./ModalConnexion"
 
 function Header() {
-  const { isAuthenticated } = useState()
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [openModal, setOpenModal] = useState(false)
+
+  const toggleModal = () => setOpenModal(!openModal)
+
+  const handleAuthClick = () => {
+    setIsAuthenticated(!isAuthenticated)
+  }
 
   return (
     <div className="Header">
@@ -26,15 +34,18 @@ function Header() {
             <img className="logoHeader" src={logo} alt="image" />
           </div>
         </Link>
-        {/* METTRE isAuthenticated A LA PLACE DE !isAuthenticated POUR AFFICHER CONNEXION */}
-        {(!isAuthenticated && (
+        {isAuthenticated ? (
           <Link className="linkHeader" to="/useraccount">
-            <p className="itemsNavHeader">Mon Profil</p>
+            <span className="itemsNavHeader" onClick={handleAuthClick}>
+              Me connecter
+            </span>
           </Link>
-        )) || (
-          <Link className="linkHeader" to="/login">
-            <p className="itemsNavHeader">Connexion</p>
-          </Link>
+        ) : (
+          <div className="linkHeader">
+            <span className="itemsNavHeader" onClick={toggleModal}>
+              Mon profil
+            </span>
+          </div>
         )}
         <img className="headerStar" src={star} alt="image" />
         <Link className="linkHeader" to="/cart">
@@ -43,8 +54,14 @@ function Header() {
         <img className="headerStar" src={star} alt="image" />
         <img className="headerAngle angleR" src={angleR} alt="image" />
       </div>
+      {openModal && (
+        <ModalConnexion
+          isOpen={openModal}
+          closeModal={toggleModal}
+          handleAuthClick={handleAuthClick}
+        />
+      )}
     </div>
   )
 }
-
 export default Header

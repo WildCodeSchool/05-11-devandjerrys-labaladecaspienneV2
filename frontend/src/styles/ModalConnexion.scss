@@ -1,0 +1,87 @@
+.MC-all {
+  background: var(--third-color);
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  width: 500px;
+  position: fixed;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--main-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  text-shadow: rgb(9, 9, 9) 1px 10px 10px;
+  z-index: 5;
+}
+.Mc-coin {
+  // height: 70px;
+}
+.MC-co2 {
+  display: flex;
+  margin-bottom: 30px;
+  background-color: var(--secondary-color);
+  color: var(--main-color);
+  box-shadow: #181717;
+}
+.MC-co1 {
+  position: relative;
+  bottom: 260px;
+  left: 245px;
+  background-color: var(--secondary-color);
+  color: var(--main-color);
+  font-size: 12px;
+  box-shadow: #181717;
+}
+.MC-co:hover {
+  background: linear-gradient(0deg, #181717, #080707), rgba(14, 27, 46, 0.74);
+}
+.MC-connexion {
+  display: flex;
+  justify-content: center;
+}
+.MC-co:active {
+  box-shadow: 0 5px rgb(239, 235, 236);
+  transform: translateY(5px);
+}
+.MC-email {
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+}
+.Email {
+  height: 25px;
+  padding-left: 10px;
+}
+.MC-password {
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-right: 45px;
+}
+#passWord {
+  height: 25px;
+  padding-left: 10px;
+  display: inline-block;
+}
+input[type="checkbox"] {
+  accent-color: var(--third-color);
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  display: inline-block;
+}
+.check {
+  position: relative;
+  position: relative;
+  bottom: 33px;
+  left: 185px;
+}
+.MC-bttn {
+}
