@@ -30,7 +30,9 @@ app.use(router) // on envois la requet dans le fichier router.js
 // serve the backend/public folder for public resources
 
 app.use(express.static(path.join(__dirname, '../public')))
-
+// app.get('*', (req, res) => {
+//   res.status(404).json({ message: 'Not found!' })
+// })
 const reactIndexFile = path.join(
   __dirname,
   '..',

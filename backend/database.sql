@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: bd_caspienne
+-- Host: localhost    Database: bd_caspienne
 -- ------------------------------------------------------
 -- Server version	8.0.31
 
@@ -142,7 +142,7 @@ CREATE TABLE `comments` (
   `date_update` date DEFAULT NULL,
   `actived` tinyint DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +151,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'dddddddd','2002-02-02','2023-03-09',1),(2,'dddddddddddddd','2010-10-10','2010-10-10',1);
+INSERT INTO `comments` VALUES (1,'dddddddd','2002-02-02','2023-03-09',1),(2,'dddddddddddddd','2010-10-10','2010-10-10',1),(3,'ssssssss','2023-01-01','2023-01-01',1);
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,7 +230,7 @@ CREATE TABLE `orders` (
   KEY `fk_commandes_comments1_idx` (`comments_id`),
   CONSTRAINT `fk_commande_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`),
   CONSTRAINT `fk_commandes_comments1` FOREIGN KEY (`comments_id`) REFERENCES `comments` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +239,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (2,1,1,1,100),(6,2,2,2,30);
+INSERT INTO `orders` VALUES (2,1,1,1,100),(6,2,2,2,30),(14,5,NULL,18,150),(15,7,NULL,18,22),(16,6,NULL,18,45);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -311,7 +311,7 @@ DROP TABLE IF EXISTS `themes`;
 CREATE TABLE `themes` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name_theme` varchar(55) DEFAULT NULL,
-  `description_theme` varchar(700) DEFAULT NULL,
+  `description_theme` longtext,
   `picture_theme` longtext,
   `archive_theme` int DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -356,7 +356,7 @@ CREATE TABLE `users` (
   `country_bill` varchar(55) DEFAULT NULL,
   `is_admin` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -365,7 +365,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'jDO','DOE','John','jd@gmail','pass','2011-01-01','1251654',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'MDE','TAS','Mar','mario@hjsdh','pass','1980-07-31','4555',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,NULL,'Doe','Jane','jane.doe@monmail.com','jesuislemdp',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,NULL,'Doe','Janet','janet.doe@monmail.com','jesuislemdp',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,NULL,'Doe','Julie','julie.doe@monmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,NULL,'Doe','Julien','julien.doe@monmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,NULL,'Doe','Julienne','julienne.doe@monmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(8,NULL,'Doe','Jules','jules.doe@monmail.com','$argon2id$v=19$m=65536,t=5,p=1$owy3bxLTz8Is+GnAgbDjfw$yJqa2YtDk3IFI56d+eSM/bIEFW1icWbj326RvH3RnkA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(9,NULL,'Doe','Jean','jean.doe@monmail.com','$argon2id$v=19$m=65536,t=5,p=1$OXmPllVdT23c+OEZWE4Zbw$XoMV2CBTwKE3Fu/dDPJenP9JyXDJ/nq5L73CHHkyGhA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'jDO','DOE','John','jd@gmail','pass','2011-01-01','1251654',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'MDE','TAS','Mar','mario@hjsdh','pass','1980-07-31','4555',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(18,'juju21','Doe','jules','jules.doe@monmail.com','$argon2id$v=19$m=65536,t=5,p=1$O+ymU4S+MG4laNbiJ6SSLw$mqfLKmMdXQYg6YmsvU4arnOQU8FUOG4sheBSFd1oaoc','2001-01-01','540797821','25','rue du chateau','50500','londres','france','50500','rue du chateau','50500','londres','france',NULL),(21,NULL,NULL,NULL,'helene.doe@monmail.com','$argon2id$v=19$m=65536,t=5,p=1$k5/6bAOtQidkr5MHzfZtEQ$KZd6/1VlPsqo3WWLeaekWWwAYyh/1i7WndkM3UuPOfQ',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(22,NULL,NULL,NULL,'helene.doe@monmail.com','$argon2id$v=19$m=65536,t=5,p=1$QnMN8KvLCqgQ9atd+pElbA$po6WRQ/LENJj3ETWk7OnRHqwMPEyw8LNIgtSwWij9/c',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(23,NULL,NULL,NULL,'cecilia.doe@monmail.com','$argon2id$v=19$m=65536,t=5,p=1$wYWRp495Yd7JGqKb9ucb4Q$3aWjSWo5s6sFu2a2aq9njNKPZE57HkjIf7RkFUALFtw',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(24,'jo','doe','jojo','jo@mail.com','mdp','2002-02-02','44444444','25','rue du chateau','50500','londres','france','50500','rue du chateau','50500','londres','france',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -378,4 +378,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-09 16:45:47
+-- Dump completed on 2023-03-21 11:21:31
