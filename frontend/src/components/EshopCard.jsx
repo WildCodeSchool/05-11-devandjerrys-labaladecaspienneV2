@@ -28,9 +28,7 @@ export default function EshopCard(props) {
         </section>
 
         <div className="Eshop-Price">
-          <div className="price">
-            <p>{props.price} €</p>
-          </div>
+          <p>{props.price} €</p>
         </div>
       </div>
     </Link>

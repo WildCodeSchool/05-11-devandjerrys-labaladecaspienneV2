@@ -1,0 +1,79 @@
+.HomeModal {
+    background-color: #004033;
+    display: flex;
+    flex-direction: column;
+    //columns: 100% 1;
+    justify-content: center;
+    align-items: center;
+    .decorTop,
+    .decorBut {
+        filter: saturate(0) brightness(100);
+        margin: 15px;
+        width: 40vw;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+    }
+    .decorBut > img {
+        transform: rotate(180deg);
+        width: 80%;
+    }
+    .decorTop > img {
+        width: 80%;
+    }
+    .description {
+        background-color: rgba(207, 207, 207, 0.1);
+        padding: 20px;
+        margin: 50px;
+        text-align: center;
+        color: var(--main-color);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        width: 575px;
+        h1 {
+            font-family: var(--font1);
+            font-size: var(--desktop-size2);
+        }
+        h2 {
+            text-shadow: 1px 1px 2px black;
+        }
+        .textDescription {
+            text-align: justify;
+            line-height: 30px;
+            font-size: larger;
+        }
+        .themeArtifacts {
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+            .mainArtifactList {
+                display: flex;
+                flex-direction: column;
+                .artifactList {
+                    // transform: scale(0.7);
+                    //
+                    display: flex;
+                    .Eshop {
+                        transform: scale(0.7);
+                        height: 200px;
+                    }
+                }
+            }
+            .noArtifact {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                .message {
+                    color: var(--main-color);
+                    font-family: var(--font1);
+                    font-size: xx-large;
+                    font-weight: bold;
+                    padding: 20px;
+                    text-shadow: 1px 1px 2px black;
+                }
+            }
+        }
+    }
+}

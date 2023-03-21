@@ -130,7 +130,7 @@ const addHasCart = (req, res) => {
   models.cart
     .insertHasCart(cart)
     .then(([result]) => {
-      res.location(`/pcart/${result.insertId}`).sendStatus(201)
+      res.location(`/cart/${result.insertId}`).sendStatus(201)
     })
     .catch((err) => {
       console.error(err)
