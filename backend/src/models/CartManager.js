@@ -29,10 +29,11 @@ class CartManager extends AbstractManager {
   }
 
   updateHasCart(cart) {
-    return this.database.query(
+    const result = this.database.query(
       `UPDATE cart_has_artifacts SET quantity = ? WHERE (id_cart_has_artifacts = ?)`,
       [cart.quantity, cart.id]
     )
+    return result
   }
 
   deleteHasCart(id) {
@@ -44,12 +45,12 @@ class CartManager extends AbstractManager {
 
   findOneCart(id) {
     return this.database.query(
-      `SELECT name_arti, price, quantity, (price * quantity) AS total, MAX(url_img) AS url_img
+      `SELECT ha.id_cart_has_artifacts, name_arti, price, quantity, (price * quantity) AS total, MAX(url_img) AS url_img
       FROM cart_has_artifacts AS ha 
       LEFT JOIN artifacts AS a ON ha.artifacts_id=a.id
       LEFT JOIN pictures AS p ON p.artifacts_id = a.id
       WHERE ha.cart_id=?
-      GROUP BY ha.artifacts_id, name_arti, price, quantity, total`,
+      GROUP BY ha.artifacts_id, name_arti, price, quantity, total, ha.id_cart_has_artifacts`,
       [id]
     )
   }

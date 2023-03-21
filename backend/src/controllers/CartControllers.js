@@ -17,7 +17,7 @@ const read = (req, res) => {
     .findOneCart(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
-        res.sendStatus(404)
+        res.status(200).send([])
       } else {
         res.send(rows)
       }
@@ -111,6 +111,8 @@ const editHasCart = (req, res) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404)
       } else {
+        // models.cart.findOneCart()
+
         res.sendStatus(204)
       }
     })

@@ -1,0 +1,180 @@
+.mainDivPayment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--main-color);
+  //   margin: 3vw 5vw 0 5vw;
+}
+
+.titleHeadPayment {
+  font-family: var(--font1);
+  font-size: 2em;
+  color: var(--main-color);
+  margin-top: 9vh;
+  margin-bottom: 0;
+}
+.lineTitlePayment {
+  width: 40vw;
+}
+.divTitlePayment {
+  background-color: var(--third-color);
+  width: 80vw;
+  margin: 20px 0px;
+  border-radius: 3px;
+}
+.titlePayment {
+  font-size: 1.3rem;
+}
+.pCost {
+  background-color: var(--main-color);
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-top: 0px;
+  font-size: 1.5rem;
+  color: black;
+}
+.divPayment {
+  display: flex;
+  height: 10rem;
+}
+.divPaypal,
+.divVisa,
+.divVirement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 50%;
+  height: 6rem;
+  width: 6rem;
+  margin: 10px;
+  transition: all 0.3s;
+}
+
+.divPaypal:hover,
+.divVisa:hover,
+.divVirement:hover {
+  transform: scale(1.1);
+  border: 5px solid var(--secondary-color);
+}
+.imgPaypal {
+  width: 4.5rem;
+  object-fit: cover;
+}
+.imgVisa {
+  width: 4rem;
+  object-fit: cover;
+}
+.imgVirement {
+  width: 5rem;
+  object-fit: cover;
+}
+.formPayment {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  background-color: white;
+  color: black;
+  font-family: "serif";
+  border-radius: 3px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease-out, max-height 0.6s ease-out;
+}
+.formPayment.visible {
+  opacity: 1;
+  max-height: 600px; /* Choisir une valeur appropriée en fonction de la hauteur de votre formulaire */
+}
+.pTPayment {
+  color: var(--third-color);
+  font-size: 1.5em;
+}
+.secondDivForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  padding: 1em 2em 2em 2em;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.secondDivForm p {
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.secondDivForm label {
+  display: block;
+  font-weight: 600;
+  margin-top: 1em;
+}
+
+.secondDivForm input {
+  font-family: "serif";
+  display: block;
+  width: 97%;
+  padding: 0.5em;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 14px;
+}
+
+.secondDivForm input:focus {
+  border-bottom: 2px solid var(--third-color);
+  background-color: rgb(221, 230, 223);
+  outline: none;
+}
+
+.thirdDivForm {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1em;
+}
+
+.thirdDivForm input {
+  font-family: "serif";
+  width: 50%;
+}
+
+.secondDivForm button {
+  display: block;
+  width: 100%;
+  padding: 0.75em;
+  margin-top: 2em;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: var(--third-color);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.secondDivForm button:hover {
+  background-color: #2a8e6b;
+}
+
+.secondDivForm button:focus {
+  outline: none;
+}
+.fourDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.divConfirmPayment {
+  font-size: 1.3em;
+  margin: 10px;
+}
+.spanConfirm {
+  background-color: var(--third-color);
+  font-size: 1.5em;
+}
+@media (max-width: 560px) {
+  .formPayment {
+    width: 80vw;
+  }
+}

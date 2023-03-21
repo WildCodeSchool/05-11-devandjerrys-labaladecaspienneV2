@@ -1,12 +1,14 @@
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Burger from "../components/Burger"
+import Share from "@components/Share"
 import Deco from "../assets/Images/deco.png"
 import Deco2 from "../assets/Images/head_line.png"
 import Star from "../assets/Images/brown_star.png"
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { useParams } from "react-router-dom"
+import ButtonCart from "@components/ButtonCart"
 
 export default function EshopDetails() {
   const { id } = useParams()
@@ -81,6 +83,9 @@ export default function EshopDetails() {
             <div className="Esd-price">
               <p>{artifactChosen.price}€</p>
             </div>
+            <div className="E-Share">
+              <Share />
+            </div>
             <div className="E-stock">
               <h4>En stock</h4>
               <img className="Esd-star" src={Star} alt="star" />
@@ -95,6 +100,7 @@ export default function EshopDetails() {
                 Livraison en 1 à 2 semaines
               </p>
             </div>
+            <ButtonCart artifactChosen={artifactChosen} />
             <div>
               <img className="E-deco2" src={Deco2} alt="décoration" />
             </div>

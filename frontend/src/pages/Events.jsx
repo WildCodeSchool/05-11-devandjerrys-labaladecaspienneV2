@@ -18,7 +18,7 @@ export default function Events() {
     })
   }, [])
 
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(false)
   return (
     <div>
       <Header />

@@ -10,7 +10,7 @@ export default function Burger() {
           </Link>
         </div>
         <div className="left">
-          <Link className="linkBurger" to="/artist">
+          <Link className="linkBurger" to="/about">
             <div className="text">Artiste</div>
           </Link>
         </div>

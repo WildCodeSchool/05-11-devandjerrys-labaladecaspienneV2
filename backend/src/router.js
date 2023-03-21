@@ -76,10 +76,10 @@ router.put('/hascart/:id', CartControllers.editHasCart) // OK pour modifier la q
 router.post('/hascart', CartControllers.addHasCart) // OK - permet d'ajouter des artifacts au panier
 router.delete('/hascart/:id', CartControllers.destroyHasCart) // OK - pour supprimer un article au panier
 
-router.get('/comments', CommentsControllers.browse)
-router.get('/comments/:id', CommentsControllers.read)
-router.put('/comments/:id', CommentsControllers.edit)
-router.post('/comments', CommentsControllers.add)
-router.delete('/comments/:id', CommentsControllers.destroy)
+router.get('/comments', CommentsControllers.browse) // Ok
+router.get('/comments/:id', CommentsControllers.read) // Ok
+router.put('/comments/:id', CommentsControllers.edit) // Ok
+router.post('/comments', CommentsControllers.add) // Ok
+// router.delete('/comments/:id', CommentsControllers.destroy)
 
 module.exports = router
