@@ -14,7 +14,7 @@ import EshopDetails from "./pages/EshopDetails"
 import Events from "@pages/Events"
 import UserAccount from "./pages/UserAccount"
 import Cart from "./pages/Cart"
-import Payment from "./components/Payment"
+import Payment from "./pages/Payment"
 
 function App() {
   return (
