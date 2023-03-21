@@ -1,5 +1,5 @@
 const express = require('express')
-const { verifyToken, verifyPassword } = require('./services/argonHelper')
+const { verifyToken } = require('./services/argonHelper')
 const router = express.Router()
 
 const ArtifactsControllers = require('./controllers/ArtifactsControllers')
@@ -27,6 +27,7 @@ router.delete('/events/:id', EventsControllers.destroy)
 router.get('/orders', OrdersControllers.read)
 // router.get('/orders/:id', OrdersControllers.read)
 router.get('/orders/:id', OrdersControllers.readById)
+router.get('/users/:id/orders', OrdersControllers.readByuser)
 
 router.put('/orders/:id', OrdersControllers.edit)
 router.post('/orders', OrdersControllers.add)

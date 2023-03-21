@@ -10,13 +10,19 @@ import { useParams } from "react-router-dom"
 export default function UserAccount() {
   const { id } = useParams()
   const [userData, setUserData] = useState([])
+  const [userOrder, setUserOrder] = useState([])
 
   useEffect(() => {
     axios.get(`http://localhost:5000/users/${id}`).then((response) => {
       setUserData(response.data)
     })
   }, [id])
-
+  useEffect(() => {
+    axios.get(`http://localhost:5000/users/${id}/orders`).then((response) => {
+      setUserOrder(response.data)
+      // console.log(userOrder)
+    })
+  }, [id])
   return (
     <>
       <Header />
@@ -42,7 +48,7 @@ export default function UserAccount() {
               </div>
             </div>
             <div className="UserGridDivs Grid2">
-              <span className="Grid2Title">Connexions</span>
+              <span className="Grid2Title">Connexion</span>
               <div className="Grid2Div">
                 <p>
                   Email : <br /> {userData?.email}
@@ -52,11 +58,9 @@ export default function UserAccount() {
             <div className="UserGridDivs Grid3">
               <span className="Grid3Title">Commandes / Historique</span>
               <div className="Grid3Div">
-                {userData?.orders?.map((order) => (
+                {userOrder.map((order) => (
                   <div key={order.id}>
-                    <p>
-                      N° commande : {order.num_cmd} état : {order.status}
-                    </p>
+                    <p>N° commande : {order.num_cmd}</p>
                     <p>Montant payé: {order.order_amount}€</p>
                     <img className="UserSeparator" src={Separator} alt="" />
                   </div>

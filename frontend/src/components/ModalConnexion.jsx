@@ -78,7 +78,9 @@ function ModalConnexion({ isOpen, closeModal }) {
             onClick={() => myFunction()}
           />
           {isLoggedIn ? (
-            <div>Vous êtes connecté!</div>
+            <div>
+              <p>Vous êtes connecté!</p>
+            </div>
           ) : (
             <button className="MC-bttn" type="submit">
               Se connecter

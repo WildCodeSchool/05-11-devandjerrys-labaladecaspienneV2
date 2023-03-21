@@ -12,7 +12,10 @@ function Header() {
   const [openModal, setOpenModal] = useState(false)
 
   const toggleModal = () => setOpenModal(!openModal)
-  const handleAuthClick = () => setIsAuthenticated(!isAuthenticated)
+
+  const handleAuthClick = () => {
+    setIsAuthenticated(!isAuthenticated)
+  }
 
   return (
     <div className="Header">
@@ -33,15 +36,15 @@ function Header() {
         </Link>
         {isAuthenticated ? (
           <Link className="linkHeader" to="/useraccount">
-            <p className="itemsNavHeader" onClick={handleAuthClick}>
-              Mon Profil
-            </p>
+            <span className="itemsNavHeader" onClick={handleAuthClick}>
+              Me connecter
+            </span>
           </Link>
         ) : (
           <div className="linkHeader">
-            <p className="itemsNavHeader" onClick={toggleModal}>
-              Mon Profil
-            </p>
+            <span className="itemsNavHeader" onClick={toggleModal}>
+              Mon profil
+            </span>
           </div>
         )}
         <img className="headerStar" src={star} alt="image" />
@@ -61,5 +64,4 @@ function Header() {
     </div>
   )
 }
-
 export default Header

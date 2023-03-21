@@ -46,7 +46,7 @@ class CommentsManager extends AbstractManager {
       ON o.comments_id = c.id
       JOIN users AS u 
       ON o.users_id = u.id
-      HAVING id=?`,
+      WHERE c.id = ?`,
       [id]
     )
   }

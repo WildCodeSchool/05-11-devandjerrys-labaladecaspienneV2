@@ -12,7 +12,7 @@ const hashPassword = (req, res, next) => {
   argon2
     .hash(req.body.password, hashingOptions)
     .then((hashedPassword) => {
-      console.log(hashedPassword)
+      // console.log(hashedPassword)
 
       req.body.hashedPassword = hashedPassword
       delete req.body.password
@@ -26,12 +26,12 @@ const hashPassword = (req, res, next) => {
 }
 
 const verifyPassword = (req, res, next) => {
-  console.log('=====poulet02', req.body)
+  // console.log( req.body)
   if (!req.body.email || !req.body.password) {
     res.sendStatus(401)
     return
   }
-  console.log('=====poulet03')
+
   argon2
     .verify(req.body.password, req.user.hashedPassword)
     .then((isVerified) => {
@@ -41,9 +41,9 @@ const verifyPassword = (req, res, next) => {
           expiresIn: '1h',
         })
         delete req.user.hashedPassword
-        console.log({ token, user: req.user })
+        console.info({ token, user: req.user })
       } else {
-        console.log('Authentication failed')
+        console.info('Authentication failed')
       }
     })
     .catch((err) => console.error(err))

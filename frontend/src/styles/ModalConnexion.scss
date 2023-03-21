@@ -22,9 +22,9 @@
 }
 .MC-co2 {
   display: flex;
-  margin-top: 30px;
-  background-color: var(--main-color);
-  color: var(--background-color);
+  margin-bottom: 30px;
+  background-color: var(--secondary-color);
+  color: var(--main-color);
   box-shadow: #181717;
 }
 .MC-co1 {
@@ -39,7 +39,10 @@
 .MC-co:hover {
   background: linear-gradient(0deg, #181717, #080707), rgba(14, 27, 46, 0.74);
 }
-
+.MC-connexion {
+  display: flex;
+  justify-content: center;
+}
 .MC-co:active {
   box-shadow: 0 5px rgb(239, 235, 236);
   transform: translateY(5px);
