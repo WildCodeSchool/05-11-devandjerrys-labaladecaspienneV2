@@ -5,7 +5,7 @@ export default function Burger() {
     <div className="BurgerBody">
       <div className="all">
         <div className="lefter">
-          <Link className="linkBurger" to="/artifacts">
+          <Link className="linkBurger" to="/eshop">
             <div className="text">Boutique</div>
           </Link>
         </div>
@@ -28,7 +28,7 @@ export default function Burger() {
           </Link>
         </div>
         <div className="righter">
-          <Link className="linkBurger" to="/profil">
+          <Link className="linkBurger" to="/useraccount">
             <div className="text">Profil</div>
           </Link>
         </div>

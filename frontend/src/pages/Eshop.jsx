@@ -107,7 +107,7 @@ export default function Artifacts() {
                 ))
             : filteredValue !== "" && (
                 <p className="articleNone">
-                  Aucun article dans cette catégorie.
+                  Pas encore d'artifact pour ce thème.
                 </p>
               )}
         </div>
