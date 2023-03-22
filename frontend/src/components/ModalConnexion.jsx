@@ -6,7 +6,9 @@ function ModalConnexion({ isOpen, closeModal }) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [setNewUser] = useState("")
   const navigate = useNavigate()
+  const [showCreateAccount, setShowCreateAccount] = useState(false)
 
   const handleClick = (e) => {
     e.preventDefault()
@@ -26,7 +28,6 @@ function ModalConnexion({ isOpen, closeModal }) {
           localStorage.setItem("token", res.data.token)
           // console.log( res.data.id)
           const userId = res.data.id
-
           navigate(`/useraccount/${userId}`)
           closeModal(false)
         }
@@ -36,6 +37,31 @@ function ModalConnexion({ isOpen, closeModal }) {
       })
   }
 
+  const handleCreateAccount = (e) => {
+    e.preventDefault()
+
+    axios
+      .post(`http://localhost:5000/users`, {
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        if (res.data.insertId) {
+          setNewUser(true)
+          localStorage.setItem("res.data.insertId", res.data.insertId)
+          const newUserId = res.data.insertId
+          navigate(`/useraccount/${newUserId}`)
+          alert("Votre compte a été créé avec succès!")
+          closeModal(false)
+        } else {
+          alert("Votre compte a été créé avec succès!")
+        }
+      })
+      .catch((error) => {
+        console.error(error)
+        alert("Une erreur est survenue lors de la création de votre compte.")
+      })
+  }
   const myFunction = () => {
     const x = document.getElementById("passWord")
     if (x.type === "password") {
@@ -82,11 +108,30 @@ function ModalConnexion({ isOpen, closeModal }) {
               <p>Vous êtes connecté!</p>
             </div>
           ) : (
-            <button className="MC-bttn" type="submit">
-              Se connecter
-            </button>
+            <>
+              <button className="MC-bttn" type="submit">
+                Se connecter
+              </button>
+              {showCreateAccount && (
+                <>
+                  <button className="MC-bttn" onClick={handleCreateAccount}>
+                    Bienvenue !
+                  </button>
+                </>
+              )}
+
+              {!showCreateAccount && (
+                <button
+                  className="MC-bttn"
+                  onClick={() => setShowCreateAccount(true)}
+                >
+                  Créer un compte
+                </button>
+              )}
+            </>
           )}
         </form>
+
         <div className="footer">
           <button className="MC-co2" onClick={() => closeModal(false)}>
             Annuler

@@ -74,14 +74,13 @@ class UsersManager extends AbstractManager {
 
   update(user) {
     return this.database.query(
-      `update ${this.table} set nickname = ? , lastname  = ? , firstname = ? , email = ? , password = ? , birthday = ? , phone = ? , number_delivery = ? , adress_delivery = ? , zip_delivery = ? , town_delivery = ? , country_delivery = ? , number_bill = ? , adress_bill = ? , zip_bill = ? , town_bill = ? , country_bill = ? , is_admin = ? where id = ? `,
+      `update ${this.table} set nickname = ? , lastname  = ? , firstname = ? , email = ? , password = ?  , phone = ? , number_delivery = ? , adress_delivery = ? , zip_delivery = ? , town_delivery = ? , country_delivery = ? , number_bill = ? , adress_bill = ? , zip_bill = ? , town_bill = ? , country_bill = ? , is_admin = ? where id = ? `,
       [
         user.nickname,
         user.lastname,
         user.firstname,
         user.email,
         user.password,
-        user.birthday,
         user.phone,
         user.number_delivery,
         user.adress_delivery,

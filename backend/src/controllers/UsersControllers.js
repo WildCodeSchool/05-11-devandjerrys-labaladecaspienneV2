@@ -5,6 +5,29 @@ const jwt = require('jsonwebtoken')
 
 const argon2 = require('argon2')
 
+// const updateUsers = (req, res) => {
+//   const id = parseInt(req.params.id)
+//   const { email, hashedPassword } = req.body
+
+//   this.database
+//     .query('update users set  email = ?, hashedPassword =?, where id = ?', [
+//       email,
+
+//       hashedPassword,
+//       id,
+//     ])
+//     .then(([result]) => {
+//       if (result.affectedRows === 0) {
+//         res.status(404).send('Not Found')
+//       } else {
+//         res.sendStatus(204)
+//       }
+//     })
+//     .catch((err) => {
+//       console.error(err)
+//       res.status(500).send('Error editing the user')
+//     })
+// }
 const login = async (req, res) => {
   const { email, password } = req.body
 
@@ -67,7 +90,7 @@ const read = (req, res) => {
 
 const edit = (req, res) => {
   const user = req.body
-
+  console.log('Hello', req.body)
   user.id = parseInt(req.params.id, 10)
 
   models.users
@@ -88,14 +111,23 @@ const edit = (req, res) => {
 const add = async (req, res) => {
   const user = req.body
 
+  // TODO validations (length, format...)
+
   try {
+    // Hasher le mot de passe avec la fonction hashPassword()
     const hashedPassword = await hashPassword(user.password)
 
+    // Mettre à jour le mot de passe de l'utilisateur avec le hash
     user.password = hashedPassword
 
-    const result = await add({ ...req.body, password: hashedPassword })
+    const [result] = await models.users.insert({
+      ...req.body,
+      password: hashedPassword,
+    })
+    // const result = await add({ ...req.body, password: hashedPassword })
 
     res.location(`users/${result.insertId}`).sendStatus(201)
+    console.log(result.insertId)
   } catch (err) {
     console.error(err)
     res.sendStatus(500)

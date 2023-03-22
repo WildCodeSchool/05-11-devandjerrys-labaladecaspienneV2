@@ -225,6 +225,7 @@ CREATE TABLE `orders` (
   `comments_id` int DEFAULT NULL,
   `users_id` int NOT NULL,
   `order_amount` double DEFAULT NULL,
+  `status` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`,`users_id`),
   KEY `fk_commande_users1_idx` (`users_id`),
   KEY `fk_commandes_comments1_idx` (`comments_id`),
