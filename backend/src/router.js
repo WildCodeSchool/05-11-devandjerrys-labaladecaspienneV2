@@ -1,5 +1,5 @@
 const express = require('express')
-const { verifyToken } = require('./services/argonHelper')
+// const { verifyToken } = require('./services/argonHelper')
 const router = express.Router()
 
 const ArtifactsControllers = require('./controllers/ArtifactsControllers')

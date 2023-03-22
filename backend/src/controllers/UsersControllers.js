@@ -90,7 +90,7 @@ const read = (req, res) => {
 
 const edit = (req, res) => {
   const user = req.body
-  console.log('Hello', req.body)
+  // console.log('Hello', req.body)
   user.id = parseInt(req.params.id, 10)
 
   models.users
@@ -127,7 +127,7 @@ const add = async (req, res) => {
     // const result = await add({ ...req.body, password: hashedPassword })
 
     res.location(`users/${result.insertId}`).sendStatus(201)
-    console.log(result.insertId)
+    // console.log(result.insertId)
   } catch (err) {
     console.error(err)
     res.sendStatus(500)
