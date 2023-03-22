@@ -1,7 +1,6 @@
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Burger from "../components/Burger"
-import Commande from "../components/Commande"
 import Separator from "../assets/Images/separateur.png"
 import LineTop from "../assets/Images/head_line.png"
 
