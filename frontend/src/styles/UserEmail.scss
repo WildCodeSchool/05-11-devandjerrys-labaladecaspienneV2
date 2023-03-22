@@ -1,0 +1,49 @@
+.userEmail {
+  color: white;
+  .titreConnexion {
+    margin-bottom: -4px;
+    text-align: center;
+  }
+  .cadreEmail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .cadreHaut {
+      .cadreHG {
+        height: 15vh;
+      }
+      .cadreHD {
+        height: 15vh;
+      }
+    }
+    .cadreConnexion {
+      position: absolute;
+      .entreEmail {
+        margin-bottom: 7px;
+        .titreEmail {
+        }
+        .inputEmail {
+        }
+      }
+      .separateur {
+        width: 200px;
+      }
+      .entreMotdepasse {
+        margin-bottom: 50px;
+        .titreMotdepasse {
+        }
+        .inputMotdepasse {
+        }
+      }
+    }
+    .cadreBas {
+      .cadreBG {
+        height: 15vh;
+      }
+      .cadreBD {
+        height: 15vh;
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+.pageUser {
+  display: flex;
+  flex-direction: column;
+  color: var(--main-color);
+  font-family: var(--font1);
+  align-content: center;
+  margin-top: 50px;
+  .titrePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+    .titre {
+      display: flex;
+
+      margin-top: 30px;
+      margin-bottom: 0;
+      font-size: 2em;
+    }
+    .headLine {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 500px;
+    }
+  }
+  .toutContenaire {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .contenaireGauche {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .userEmail {
+        margin-bottom: 40px;
+      }
+    }
+    .horizontal {
+      display: none;
+    }
+    .vertical {
+      display: flex;
+      height: 65vh;
+    }
+    .commande {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 949px) {
+  .pageUser {
+    .titrePage {
+      .titre {
+        font-size: 1.5em;
+      }
+      .headLine {
+        width: 300px;
+      }
+    }
+    .toutContenaire {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+      .contenaireGauche {
+        margin-bottom: 50px;
+      }
+      .horizontal {
+        display: flex;
+        width: 45vw;
+        margin-bottom: 20px;
+      }
+      .vertical {
+        display: none;
+      }
+    }
+  }
+}

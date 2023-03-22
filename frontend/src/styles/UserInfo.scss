@@ -1,0 +1,55 @@
+.allUserProfil {
+  display: flex;
+  .userInfo {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .titreInfo {
+      display: flex;
+
+      margin-bottom: -10px;
+    }
+    .coinHaut {
+      display: flex;
+      .coinHG {
+        height: 200px;
+      }
+      .coinHD {
+        height: 200px;
+      }
+    }
+    .allEncart {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: -175px;
+      width: 350px;
+      height: 350px;
+      overflow-y: auto;
+
+      .encart {
+        display: flex;
+        flex-direction: column;
+        .encartSousTitre {
+          display: flex;
+          flex-direction: column;
+        }
+        .separateur {
+          margin-top: 50px;
+        }
+      }
+    }
+    .coinBas {
+      display: flex;
+      margin-top: -165px;
+      .coinBG {
+        height: 200px;
+      }
+      .coinBD {
+        height: 200px;
+      }
+    }
+  }
+}
