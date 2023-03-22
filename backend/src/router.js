@@ -1,5 +1,5 @@
 const express = require('express')
-const { verifyToken } = require('./services/argonHelper')
+// const { verifyToken } = require('./services/argonHelper')
 const router = express.Router()
 
 const ArtifactsControllers = require('./controllers/ArtifactsControllers')
@@ -62,8 +62,8 @@ router.post(
 router.post('/users', UsersControllers.add)
 // Routes à protéger**************************
 
-router.put('/users/:id', verifyToken, UsersControllers.edit)
-router.delete('/users/:id', verifyToken, UsersControllers.destroy)
+router.put('/users/:id', UsersControllers.edit)
+// router.delete('/users/:id', verifyToken, UsersControllers.destroy)
 
 // router.get('/cart', CartControllers.browse) // si l'admin veut voir tous les paniers --pas important pour le moment
 router.get('/cart/:id', CartControllers.read) // OK - pour visualiser tout le panier attribuer à 1 client
@@ -76,10 +76,10 @@ router.put('/hascart/:id', CartControllers.editHasCart) // OK pour modifier la q
 router.post('/hascart', CartControllers.addHasCart) // OK - permet d'ajouter des artifacts au panier
 router.delete('/hascart/:id', CartControllers.destroyHasCart) // OK - pour supprimer un article au panier
 
-router.get('/comments', CommentsControllers.browse) // Ok
-router.get('/comments/:id', CommentsControllers.read) // Ok
-router.put('/comments/:id', CommentsControllers.edit) // Ok
-router.post('/comments', CommentsControllers.add) // Ok
-// router.delete('/comments/:id', CommentsControllers.destroy)
+router.get('/comments', CommentsControllers.browse)
+router.get('/comments/:id', CommentsControllers.read)
+router.put('/comments/:id', CommentsControllers.edit)
+router.post('/comments', CommentsControllers.add)
+router.delete('/comments/:id', CommentsControllers.destroy)
 
 module.exports = router

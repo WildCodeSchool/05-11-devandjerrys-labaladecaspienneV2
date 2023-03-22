@@ -35,21 +35,32 @@
 
   .E-desciption {
     max-width: 100ch;
-    margin: 130px 0 70px 0;
     text-align: justify;
     width: 840px;
     color: var(--main-color);
     font-family: var(--font2);
     font-size: 24px;
   }
-
-  .Esd-pictures {
-    margin: 80px 0 50px 0;
-    display: flex;
-    align-items: center;
-    height: 600px;
-    width: 760px;
+  .Esd-share {
+    position: relative;
+    padding: 5px;
+    transition: opacity 1s ease-in-out;
+    bottom: 1025px;
   }
+  .Esd-bttn {
+    position: relative;
+    bottom: 595px;
+    left: 684px;
+  }
+}
+
+.Esd-pictures {
+  margin: 80px 0 50px 0;
+  display: flex;
+  align-items: center;
+  height: 557px;
+  width: 700px;
+
   .mainPicture img {
     margin: 10px;
     width: 444px;
@@ -80,61 +91,65 @@
     display: flex;
     flex-direction: column;
   }
-
-  .Esd-price {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    bottom: 579px;
-    left: 705px;
-    background-image: url(/src/assets/Images/etiquette.png);
-    background-position: center;
-    text-align: center;
-    color: var(--secondary-color);
-    font-weight: 700;
-    font-size: 40px;
-    width: 142px;
-    height: 85px;
-    background-size: 100%;
-    background-repeat: no-repeat;
-  }
-  .E-stock {
-    padding: 10px;
-    text-align: center;
-    position: relative;
-    bottom: 577px;
-    left: 719px;
-    width: 107px;
-    height: 262px;
-    background-color: var(--main-color);
-    border-radius: 15px;
-    color: var(--third-color);
-  }
-  .E-stock p {
-    margin: 10px;
-    text-align: center;
-    font-size: 16px;
-    font-family: var(--font2);
-  }
-
-  .Esd-star {
-    width: 71px;
-    height: 67px;
-  }
-  .E-deco2 {
-    height: 66px;
-    margin-bottom: 100px;
-  }
-  .Esd-stock {
-    display: none;
-  }
 }
-@media screen and (max-width: 980px) and (max-width: 560px) {
+.Esd-price {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 579px;
+  left: 711px;
+  background-image: url(/src/assets/Images/etiquette.png);
+  background-position: center;
+  text-align: center;
+  color: var(--secondary-color);
+  font-weight: 700;
+  font-size: 40px;
+  width: 142px;
+  height: 85px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.E-stock {
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  bottom: 608px;
+  left: 719px;
+  width: 107px;
+  height: 262px;
+  background-color: var(--main-color);
+  border-radius: 15px;
+  color: var(--third-color);
+}
+.E-stock p {
+  margin: 10px;
+  text-align: center;
+  font-size: 16px;
+  font-family: var(--font2);
+}
+
+.Esd-star {
+  width: 71px;
+  height: 67px;
+}
+.E-deco2 {
+  height: 66px;
+  margin-bottom: 100px;
+}
+.Esd-stock {
+  display: none;
+}
+
+@media screen and (max-width: 560px) {
+  .BurgerBody {
+    width: 500px;
+    // justify-content: center;
+    // align-items: center;
+  }
   .Esd-All {
     margin-left: auto;
     margin-right: auto;
-    width: 100vw;
     align-items: center;
 
     .Esd-All p {
@@ -142,12 +157,6 @@
     }
     .E-title {
       margin: 10px;
-    }
-    .E-title h2 {
-      width: 70%;
-    }
-    .E-title h3 {
-      width: 70%;
     }
     .E-deco {
       height: 30px;
@@ -158,10 +167,26 @@
       justify-content: center;
       flex-direction: column;
       text-align: justify;
-      width: 500px;
+      width: 480px;
+      height: 840px;
     }
+
+    .Esd-bttn {
+      position: relative;
+      bottom: 190px;
+      left: 158px;
+    }
+
     p {
       text-align: center;
+    }
+    .Esd-text {
+      position: relative;
+      top: 954px;
+      margin: 20px 0 20px 0;
+    }
+    .Esd-theme {
+      margin: 110px 0 16px 0;
     }
     .Esd-pictures {
       display: flex;
@@ -172,7 +197,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 506px;
+      padding: 10px;
+      width: 400px;
     }
 
     .picture2-3 {
@@ -203,12 +229,18 @@
       background-image: url(/src/assets/Images/etiquette.png);
       background-size: contain;
       width: 500px;
+      margin-bottom: 120px;
+      margin-top: 110px;
     }
-    .E-share {
-      display: none;
+    .Esd-share {
+      display: flex;
+      flex-direction: column-reverse;
+      bottom: 1160px;
+      right: 20px;
     }
     .E-stock {
       display: none;
+      width: 80%;
     }
     .Esd-stock {
       height: 63px;
@@ -223,6 +255,8 @@
       color: var(--third-color);
       text-overflow: clip;
       margin-bottom: 20px;
+      margin-left: 48px;
+      width: 397px;
 
       p {
         font-size: 20px;
