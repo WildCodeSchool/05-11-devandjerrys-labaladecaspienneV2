@@ -7,9 +7,7 @@ import Eshop from "./pages/Eshop"
 import Contact from "./pages/Contact"
 import Home from "./pages/Home"
 import Splash from "./pages/Splash"
-import ThemeDetails from "./pages/ThemeDetails"
-import Theme from "./pages/Themes"
-import HomeModalTheme from "./components/HomeModalTheme"
+import Theme from "./components/Theme"
 import EshopDetails from "./pages/EshopDetails"
 import Events from "@pages/Events"
 import UserAccount from "./pages/UserAccount"
@@ -24,14 +22,9 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/adminpage" element={<AdminPage />} />
-        <Route path="/theme" element={<Theme />} />
-        <Route path="/theme/:id" element={<ThemeDetails />} />
         <Route path="/eshop" element={<Eshop />} />
-        {/* <Route path="/artifacts/:id" element={<ArtifactDetails />} /> */}
         <Route path="/contact" element={<Contact />} />
-        {/* <Route path="/eshop" element={<EshopCard />} /> */}
-        <Route path="/homeModal" element={<HomeModalTheme />} />
-        {/* <Route path="/eshopdetails" element={<EshopDetails />} /> */}
+        <Route path="/theme/:id" element={<Theme />} />
         <Route path="/eshopdetails/:id" element={<EshopDetails />} />
         <Route path="/events" element={<Events />} />
         <Route path="/cart" element={<Cart />} />
@@ -39,7 +32,6 @@ function App() {
         <Route path="/useraccount/:id" element={<UserAccount />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/useraccount" element={<UserAccount />} />
-        {/* <Route path="/eshopcard" element={<EshopCard />} /> */}
       </Routes>
     </div>
   )

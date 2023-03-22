@@ -41,6 +41,7 @@
     "joi": "^17.8.3",
     "jsonwebtoken": "^9.0.0",
     "migrate": "^1.8.0",
+    "react-modal": "^3.16.1",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.8.2"
   }

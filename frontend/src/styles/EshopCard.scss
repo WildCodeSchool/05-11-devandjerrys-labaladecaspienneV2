@@ -59,17 +59,17 @@
     background-repeat: no-repeat;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-  }
-  .price p {
-    font-weight: 700;
-    opacity: 1;
-    color: var(--secondary-color);
-    font-family: var(--font1);
-    font-size: 36px;
-    filter: drop-shadow(4px 5px 3px var(--secondary-color));
-    text-align: center;
-    justify-content: center;
-    transition: opacity 0.3s ease-in-out;
+    p {
+      font-weight: 700;
+      opacity: 1;
+      color: var(--secondary-color);
+      font-family: var(--font1);
+      font-size: 36px;
+      filter: drop-shadow(4px 5px 3px var(--secondary-color));
+      text-align: center;
+      justify-content: center;
+      transition: opacity 0.3s ease-in-out;
+    }
   }
 }
 .Eshop {
