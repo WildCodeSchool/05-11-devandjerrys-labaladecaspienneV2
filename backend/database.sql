@@ -126,7 +126,7 @@ CREATE TABLE `cart_has_artifacts` (
 
 LOCK TABLES `cart_has_artifacts` WRITE;
 /*!40000 ALTER TABLE `cart_has_artifacts` DISABLE KEYS */;
-INSERT INTO `cart_has_artifacts` VALUES (1,1,1,5),(2,1,2,2),(3,2,3,1);
+INSERT INTO `cart_has_artifacts` VALUES (3,2,3,1);
 /*!40000 ALTER TABLE `cart_has_artifacts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,16 +224,16 @@ DROP TABLE IF EXISTS `orders`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `orders` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `num_cmd` int DEFAULT NULL,
+  `num_cmd` bigint DEFAULT NULL,
   `comments_id` int DEFAULT NULL,
   `users_id` int NOT NULL,
-  `order_amount` double DEFAULT NULL,
+  `orderAmount` double DEFAULT NULL,
   PRIMARY KEY (`id`,`users_id`),
   KEY `fk_commande_users1_idx` (`users_id`),
   KEY `fk_commandes_comments1_idx` (`comments_id`),
   CONSTRAINT `fk_commande_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`),
   CONSTRAINT `fk_commandes_comments1` FOREIGN KEY (`comments_id`) REFERENCES `comments` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -242,7 +242,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (2,1,1,1,100),(6,2,2,2,30),(14,5,NULL,18,150),(15,7,NULL,18,22),(16,6,NULL,18,45);
+INSERT INTO `orders` VALUES (2,1,1,1,100),(6,2,2,2,30),(14,5,NULL,18,150),(15,7,NULL,18,22),(16,6,NULL,18,45),(17,23032023223146,NULL,1,175);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -271,7 +271,7 @@ CREATE TABLE `orders_has_artifact` (
 
 LOCK TABLES `orders_has_artifact` WRITE;
 /*!40000 ALTER TABLE `orders_has_artifact` DISABLE KEYS */;
-INSERT INTO `orders_has_artifact` VALUES (2,1,3);
+INSERT INTO `orders_has_artifact` VALUES (2,1,3),(17,1,5),(17,2,2);
 /*!40000 ALTER TABLE `orders_has_artifact` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -381,4 +381,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-23 21:53:31
+-- Dump completed on 2023-03-23 22:32:45
