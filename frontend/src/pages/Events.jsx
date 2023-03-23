@@ -20,7 +20,7 @@ export default function Events() {
   const [show, setShow] = useState(false)
 
   // Etats pour la pagination
-  const [page, setPage] = useState(1) // Pagination en cours
+  // const [page, setPage] = useState(1) // Pagination en cours
 
   // Filtrer les événements passés
   const pastEvents = events.filter((event) => {
@@ -38,10 +38,10 @@ export default function Events() {
   ]
 
   // Calculer le nombre de pages
-  const pageCount = Math.ceil(pastEvents.length / 10)
+  // const pageCount = Math.ceil(pastEvents.length / 10)
 
   // Obtenir les événements à afficher pour la page en cours
-  const displayedEvents = pastEvents.slice((page - 1) * 10, page * 10)
+  // const displayedEvents = pastEvents.slice((page - 1) * 10, page * 10)
 
   // Composant pour afficher les événements passés pour une année donnée
   const EventsByYear = ({ year, events }) => (
@@ -169,6 +169,7 @@ export default function Events() {
               {pastEventYears.map((year) => (
                 <button
                   key={year}
+                  className="listPast"
                   onClick={() => setShow(year === show ? false : year)}
                 >
                   {year}
@@ -190,16 +191,16 @@ export default function Events() {
             })}
 
             {/* Pagination cliquable pour les événements passés */}
-            <div className="pagination">
+            {/* <div className="pagination">
               {Array.from({ length: pageCount }, (_, i) => (
                 <button key={i + 1} onClick={() => setPage(i + 1)}>
                   {pastEventYears[i]}
                 </button>
               ))}
-            </div>
+            </div> */}
 
             {/* Affichage des événements passés pour la page en cours */}
-            {displayedEvents.map((event) => (
+            {/* {displayedEvents.map((event) => (
               <CardEvent
                 key={event.id}
                 picture_event={event.picture_event}
@@ -209,9 +210,9 @@ export default function Events() {
                 place_event={event.place_event}
                 link_event={event.link_event}
               />
-            ))}
+            ))} */}
 
-            <ul className="listPast" role={"tablist"}>
+            {/* <ul className="listPast" role={"tablist"}>
               <li>
                 <a
                   href="#tab_2023"
@@ -236,7 +237,7 @@ export default function Events() {
                   <span>2022</span>
                 </a>
               </li>
-            </ul>
+            </ul> */}
           </div>
         )}
       </div>

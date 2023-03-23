@@ -30,7 +30,7 @@ export default function CardEvent(props) {
               target="_blank"
               rel="noopener noreferrer"
               className="event-infos"
-              style={{ textDecoration: "none", color: "black" }}
+              style={{ textDecoration: "none", color: "#ffffff" }}
             >
               {props.place_event}
             </a>
@@ -39,7 +39,7 @@ export default function CardEvent(props) {
               target="_blank"
               rel="noopener noreferrer"
               className="event-infos"
-              style={{ textDecoration: "none", color: "black" }}
+              style={{ textDecoration: "none", color: "#ffffff" }}
             >
               Site de l'évènement
             </a>

@@ -23,6 +23,7 @@
   color: white;
   margin-left: 200px;
   margin-right: 200px;
+  font-size: large;
 }
 #lDesign1 {
   width: 30%;
@@ -118,6 +119,7 @@
   margin: 24px 0 10px 0;
   color: var(--third-color);
   text-transform: uppercase;
+  font-weight: bold;
 }
 .info-contain {
   display: flex;
@@ -187,13 +189,16 @@
 
 .listPast {
   list-style: none;
-  a {
-    color: var(--secondary-color);
-    font-size: 25px;
-  }
-  a:hover {
-    color: var(--third-color);
-  }
+  color: var(--secondary-color);
+  font-size: 25px;
+  background: none;
+  border: none;
+  margin-bottom: 50px;
+}
+
+.listPast:hover {
+  color: var(--third-color);
+  cursor: pointer;
 }
 
 // ************************BOUGIE****************************************
