@@ -10,11 +10,28 @@ export default function Artifacts() {
   const [artiSelect, setArtiSelect] = useState([])
   const [filteredValue, setFilteredValue] = useState("")
   const [themeSelect, setThemeSelect] = useState([])
+  const handleCardClick = (arti) => {
+    console.info("Id de l'objet cliqué :", arti.id)
+  }
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/artifacts")
-      .then((res) => setArtiSelect(res.data))
+    const selectedTheme = localStorage.getItem("selectedTheme")
+    if (selectedTheme) {
+      setFilteredValue(selectedTheme)
+      localStorage.removeItem("selectedTheme")
+    }
+  }, [])
+
+  useEffect(() => {
+    axios.get("http://localhost:5000/artifacts").then((res) => {
+      const artifactsWithId = res.data.map((artifact) => {
+        return {
+          ...artifact,
+          id: artifact.id,
+        }
+      })
+      setArtiSelect(artifactsWithId)
+    })
   }, [])
 
   useEffect(() => {
@@ -49,6 +66,7 @@ export default function Artifacts() {
               className="selectStyle"
               id="themeSelect"
               onChange={handleFilterChange}
+              value={filteredValue}
             >
               <option value="">Tous les thèmes</option>
               {themeSelect.map((theme) => (
@@ -60,26 +78,38 @@ export default function Artifacts() {
           </div>
         </div>
         {/* ********** DIV ARTEFACTS ********** */}
+
         <div className="divArtifactsEshop">
           {filteredValue === ""
             ? artiSelect.map((arti) => (
                 <EshopCard
                   key={arti.id}
+                  id={arti.id}
                   images={arti.images}
                   name_arti={arti.name_arti}
                   price={arti.price}
+                  onClick={() => handleCardClick(arti)}
                 />
               ))
-            : artiSelect
+            : artiSelect.filter((arti) =>
+                arti.themesAll.includes(filteredValue)
+              ).length > 0
+            ? artiSelect
                 .filter((arti) => arti.themesAll.includes(filteredValue))
                 .map((arti) => (
                   <EshopCard
                     key={arti.id}
+                    id={arti.id}
                     images={arti.images}
                     name_arti={arti.name_arti}
                     price={arti.price}
                   />
-                ))}
+                ))
+            : filteredValue !== "" && (
+                <p className="articleNone">
+                  Pas encore d'artifact pour ce thème.
+                </p>
+              )}
         </div>
       </div>
 

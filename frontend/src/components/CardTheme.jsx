@@ -1,25 +1,33 @@
 import cadres from "../assets/cadreInterieur.svg"
-
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
+// import { useState } from "react"
 
 export default function CardTheme(props) {
   const backgroundCadre = props.picture_theme
-
+  const themeLink = `/theme/${props.id}`
   return (
-    <div>
-      <button className="buttonTheme">
+    <Link to={themeLink} style={{ textDecoration: "none" }}>
+      <button
+        className="buttonTheme"
+        onClick={(event) => {
+          event.preventDefault()
+          props.onClick()
+        }}
+      >
         <div className="cardTheme">
-          <img
-            src={cadres}
-            style={{ backgroundImage: `url(${backgroundCadre})` }}
-            alt="cadre"
-            className="cadre"
-          />
+          <div className="colorCadre">
+            <img
+              src={cadres}
+              style={{ backgroundImage: `url(${backgroundCadre})` }}
+              alt="cadre"
+              className="cadre"
+            />
+          </div>
           <div className="nomTheme">
-            <h3 className="themes">{props.name_theme}</h3>
+            <h4 className="themes">{props.name_theme}</h4>
           </div>
         </div>
       </button>
-    </div>
+    </Link>
   )
 }

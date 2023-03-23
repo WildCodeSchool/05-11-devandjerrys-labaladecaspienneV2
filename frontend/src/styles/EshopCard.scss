@@ -1,10 +1,9 @@
 .Eshop {
-  margin: auto;
+  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 410px;
 
   .Image {
     display: flex;
@@ -14,7 +13,7 @@
     height: 100%;
 
     .ArtImage {
-      height: 615px;
+      height: 280px;
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
@@ -34,19 +33,15 @@
     }
   }
   .E-Star {
-    width: 130px;
-    height: 122px;
+    width: 83px;
     position: relative;
-    display: flex;
-    bottom: 109px;
-    /* justify-content: center; */
-    left: 140px;
+    bottom: 63px;
   }
   .Arti-name {
     position: relative;
     filter: drop-shadow(8px 11px 2px var(--background-color));
     z-index: 1;
-    top: 350px;
+    top: 132px;
     color: var(--main-color);
     font-family: var(--font3);
     font-size: 20px;
@@ -56,28 +51,25 @@
 
   .Eshop-Price {
     position: relative;
-    bottom: 280px;
+    bottom: 165px;
     background-image: url("../assets/Images/etiquette.png");
     background-position: center;
     background-size: 100%;
-    min-width: 350px;
+    min-width: 116px;
     background-repeat: no-repeat;
-    background-position-y: 40px;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-  }
-  .price p {
-    font-weight: 700;
-    opacity: 1;
-    top: 20px;
-    position: relative;
-    color: var(--secondary-color);
-    font-family: var(--font1);
-    font-size: 60px;
-    filter: drop-shadow(4px 5px 3px var(--secondary-color));
-    text-align: center;
-    justify-content: center;
-    transition: opacity 0.3s ease-in-out;
+    p {
+      font-weight: 700;
+      opacity: 1;
+      color: var(--secondary-color);
+      font-family: var(--font1);
+      font-size: 36px;
+      filter: drop-shadow(4px 5px 3px var(--secondary-color));
+      text-align: center;
+      justify-content: center;
+      transition: opacity 0.3s ease-in-out;
+    }
   }
 }
 .Eshop {
