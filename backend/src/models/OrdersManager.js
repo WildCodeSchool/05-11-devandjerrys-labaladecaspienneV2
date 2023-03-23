@@ -17,8 +17,7 @@ class OrdersManager extends AbstractManager {
     return this.database.query(
       // order.price,
       `INSERT INTO orders_has_artifact (orders_id, artifact_id, quantity) values ?`,
-      [values] // Version inititale
-      // [id, order.artifact_id, order.quantity]
+      [values] // Version inititale// [id, order.artifact_id, order.quantity]
     )
   }
 

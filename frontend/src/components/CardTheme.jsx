@@ -18,7 +18,11 @@ export default function CardTheme(props) {
           <div className="colorCadre">
             <img
               src={cadres}
-              style={{ backgroundImage: `url(${backgroundCadre})` }}
+              style={{
+                backgroundImage: `url(${
+                  import.meta.env.VITE_BACKEND_URL + backgroundCadre
+                })`,
+              }}
               alt="cadre"
               className="cadre"
             />

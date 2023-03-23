@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
 -- Host: localhost    Database: bd_caspienne
 -- ------------------------------------------------------
--- Server version	8.0.32
+-- Server version	8.0.31
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -24,15 +24,27 @@ DROP TABLE IF EXISTS `artifacts`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `artifacts` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name_arti` varchar(45) DEFAULT NULL,
+  `name_arti` varchar(60) NOT NULL,
   `description_arti` longtext,
-  `price` double DEFAULT NULL,
-  `stock` int DEFAULT NULL,
-  `discount` int DEFAULT NULL,
-  `archive_arti` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `price` double NOT NULL,
+  `stock` int NOT NULL,
+  `discount` double DEFAULT NULL,
+  `archive_arti` int NOT NULL,
+  `matiere_arti` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_arti_UNIQUE` (`name_arti`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `artifacts`
+--
+
+LOCK TABLES `artifacts` WRITE;
+/*!40000 ALTER TABLE `artifacts` DISABLE KEYS */;
+INSERT INTO `artifacts` VALUES (1,'Collier','Inspiration Lovecrafttienne - Monstre 3cm - Ruban 35.56cm (modulable) ',25,1,NULL,0,'Bois, Ruban'),(2,'Collier Fongus','Fongus 4cm - Ruban 35.56cm (modulable) ',25,1,NULL,0,'Ruban, Polymère'),(3,'Sculpture Fongus','h 12cm / L 10cm',40,1,NULL,0,'Bois, Polymère, Verre'),(4,'Bracelet Lotus','S ( 16CM-19CM ) M ( 19CM /- 22CM)',20,1,NULL,0,'Polymère'),(5,'Ras de cou Veuve Noir','Araignée - h 7cm / L 4cm',40,1,NULL,0,'Polymère, Acier doré, Perle rocaille, Verre, Ruban'),(6,'Collier Pierre de Lune','50,8 cm',20,1,NULL,0,'Acier doré, Pierre de Lune'),(7,'Cadre Fongus','h 20cm / L 12cm',35,1,NULL,0,'Bois, Polymère'),(8,'Boîte Necronomicon ','Inspiration Lovecrafttienne h 26cm / L 20cm',80,1,NULL,0,'Bois, Polymère'),(9,'Cadre','Inspiration Lovecrafttienne - h 20cm / L 12cm',35,1,NULL,0,'Bois, Polymère'),(10,'Boîte','Inspiration Lovecrafttienne - Cube de 12cm (env)',48,1,NULL,0,'Bois, Polymère');
+/*!40000 ALTER TABLE `artifacts` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `artifacts_has_themes`
@@ -53,6 +65,16 @@ CREATE TABLE `artifacts_has_themes` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `artifacts_has_themes`
+--
+
+LOCK TABLES `artifacts_has_themes` WRITE;
+/*!40000 ALTER TABLE `artifacts_has_themes` DISABLE KEYS */;
+INSERT INTO `artifacts_has_themes` VALUES (1,1),(2,1),(3,1),(4,1),(5,1),(6,1),(7,1),(1,3),(8,3),(9,3),(10,3),(8,5),(9,5),(10,5),(1,8),(8,8),(9,8),(10,8),(2,9),(3,9),(4,9),(5,9),(7,9);
+/*!40000 ALTER TABLE `artifacts_has_themes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `cart`
 --
 
@@ -67,6 +89,16 @@ CREATE TABLE `cart` (
   CONSTRAINT `fk_panier_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cart`
+--
+
+LOCK TABLES `cart` WRITE;
+/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+INSERT INTO `cart` VALUES (1,1),(2,2);
+/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `cart_has_artifacts`
@@ -87,6 +119,16 @@ CREATE TABLE `cart_has_artifacts` (
   CONSTRAINT `fk_cart_has_artifacts_cart1` FOREIGN KEY (`cart_id`) REFERENCES `cart` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cart_has_artifacts`
+--
+
+LOCK TABLES `cart_has_artifacts` WRITE;
+/*!40000 ALTER TABLE `cart_has_artifacts` DISABLE KEYS */;
+INSERT INTO `cart_has_artifacts` VALUES (3,2,3,1);
+/*!40000 ALTER TABLE `cart_has_artifacts` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `comments`
@@ -125,7 +167,7 @@ DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name_event` varchar(100) NOT NULL,
-  `description_event` longtext NOT NULL,
+  `description_event` longtext,
   `date_event_begginning` date NOT NULL,
   `date_event_end` date DEFAULT NULL,
   `place_event` varchar(55) NOT NULL,
@@ -133,8 +175,18 @@ CREATE TABLE `events` (
   `archive_event` int DEFAULT NULL,
   `link_event` longtext,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `events`
+--
+
+LOCK TABLES `events` WRITE;
+/*!40000 ALTER TABLE `events` DISABLE KEYS */;
+INSERT INTO `events` VALUES (1,'Festival Medivéval','Spectacles équestres, groupe de musique déambulatoire, marché d\'artisans et diverses animations sur les deux jours. Multiples restaurations sur site. Spectacle de feu le samedi soir.','2023-06-17','2023-06-18','Mecquignies (59)','https://scontent-cdg4-1.xx.fbcdn.net/v/t39.30808-6/309273457_209649984750751_8782038235405505558_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=vQ3IJvSYMroAX9AI6tW&_nc_ht=scontent-cdg4-1.xx&oh=00_AfDdYnKFSgsGkZFuVSlAPpaRx1ZRthvh7mBQThh-_10utA&oe=64202C62',0,'https://www.facebook.com/people/Medievale-Mecquignies/100071172511682/?paipv=0&eav=AfaCaEiDAPD9wjo2EjVzakMHH4owaEQScAI1mgG8yCM_97jwo6gAohFZoKeM2JLRdLs&_rdr'),(2,'Ludigeek','Le temps d’un week-end, plongez dans la culture du comics, du manga et du jeu d’arcade','2023-10-28','2023-10-29','Halluin(59)','https://scontent-cdg4-1.xx.fbcdn.net/v/t39.30808-6/326154842_1350127862498759_6220042926693798284_n.jpg?stp=dst-jpg_s960x960&_nc_cat=104&ccb=1-7&_nc_sid=e3f864&_nc_ohc=SmulDT5B5AYAX9UFBpb&_nc_oc=AQmWwQb_08hBYMMKnYN9PpNri2i-9K2cEixq8ZbW_27cBXvLpv4KbwmviafdaQrpTqRlyYd0G60rGFD_ICweynHX&_nc_ht=scontent-cdg4-1.xx&oh=00_AfBDKUzfHgkcz4sF5mgH34g_q0sld32lZ5l-3kTp8qrGNA&oe=641F4CF0',0,'https://www.facebook.com/Ludigeek');
+/*!40000 ALTER TABLE `events` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `events_has_themes`
@@ -155,6 +207,15 @@ CREATE TABLE `events_has_themes` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `events_has_themes`
+--
+
+LOCK TABLES `events_has_themes` WRITE;
+/*!40000 ALTER TABLE `events_has_themes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `events_has_themes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `orders`
 --
 
@@ -163,7 +224,7 @@ DROP TABLE IF EXISTS `orders`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `orders` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `num_cmd` int DEFAULT NULL,
+  `num_cmd` bigint DEFAULT NULL,
   `comments_id` int DEFAULT NULL,
   `users_id` int NOT NULL,
   `orderAmount` double DEFAULT NULL,
@@ -172,7 +233,7 @@ CREATE TABLE `orders` (
   KEY `fk_commandes_comments1_idx` (`comments_id`),
   CONSTRAINT `fk_commande_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`),
   CONSTRAINT `fk_commandes_comments1` FOREIGN KEY (`comments_id`) REFERENCES `comments` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +242,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (2,1,1,1,100),(6,2,2,2,30),(14,5,NULL,18,150),(15,7,NULL,18,22),(16,6,NULL,18,45);
+INSERT INTO `orders` VALUES (2,1,1,1,100),(6,2,2,2,30),(14,5,NULL,18,150),(15,7,NULL,18,22),(16,6,NULL,18,45),(17,23032023223146,NULL,1,175);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,7 +271,7 @@ CREATE TABLE `orders_has_artifact` (
 
 LOCK TABLES `orders_has_artifact` WRITE;
 /*!40000 ALTER TABLE `orders_has_artifact` DISABLE KEYS */;
-INSERT INTO `orders_has_artifact` VALUES (2,1,3);
+INSERT INTO `orders_has_artifact` VALUES (2,1,3),(17,1,5),(17,2,2);
 /*!40000 ALTER TABLE `orders_has_artifact` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -225,13 +286,22 @@ CREATE TABLE `pictures` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name_img` longtext,
   `url_img` longtext,
-  `is_active` int DEFAULT NULL,
   `artifacts_id` int NOT NULL,
   PRIMARY KEY (`id`,`artifacts_id`),
   KEY `fk_pictures_artifacts1_idx` (`artifacts_id`),
   CONSTRAINT `fk_pictures_artifacts1` FOREIGN KEY (`artifacts_id`) REFERENCES `artifacts` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pictures`
+--
+
+LOCK TABLES `pictures` WRITE;
+/*!40000 ALTER TABLE `pictures` DISABLE KEYS */;
+INSERT INTO `pictures` VALUES (1,'1CollierInspirationLovecrafitienne-1.png','/public/uploads/1CollierInspirationLovecrafitienne-1.png',1),(2,'1CollierInspirationLovecrafitienne-2.png','/public/uploads/1CollierInspirationLovecrafitienne-2.png',1),(3,'2CollierFongus-1.png','/public/uploads/2CollierFongus-1.png',2),(4,'2CollierFongus-2.png','/public/uploads/2CollierFongus-2.png',2),(5,'3ScultureFongus-1.png','/public/uploads/3ScultureFongus-1.png',3),(6,'3ScultureFongus-2.png','/public/uploads/3ScultureFongus-2.png',3),(7,'4BraceletLotus-1.png','/public/uploads/4BraceletLotus-1.png',4),(8,'4BraceletLotus-2.png','/public/uploads/4BraceletLotus-2.png',4),(9,'5RasDeCouVeuveNoire-1.png','/public/uploads/5RasDeCouVeuveNoire-1.png',5),(10,'5RasDeCouVeuveNoire-2.png','/public/uploads/5RasDeCouVeuveNoire-2.png',5),(11,'5RasDeCouVeuveNoire-3.png','/public/uploads/5RasDeCouVeuveNoire-3.png',5),(12,'6CollierPierreDeLune-1.png','/public/uploads/6CollierPierreDeLune-1.png',6),(13,'6CollierPierreDeLune-2.png','/public/uploads/6CollierPierreDeLune-2.png',6),(14,'8Necronomicon-1.png','/public/uploads/8Necronomicon-1.png',8),(15,'8Necronomicon-2.png','/public/uploads/8Necronomicon-2.png',8),(16,'8Necronomicon-3.png','/public/uploads/8Necronomicon-3.png',8),(17,'10BoiteLovecrafitienne-1.png','/public/uploads/10BoiteLovecrafitienne-1.png',10),(18,'10BoiteLovecrafitienne-2.png','/public/uploads/10BoiteLovecrafitienne-2.png',10),(20,'7CadreFongus-1.jpg','/public/uploads/7CadreFongus-1.jpg',7),(21,'7CadreFongus-2.jpg','/public/uploads/7CadreFongus-2.jpg',7),(22,'9CadreInspiLovecrafttienne-1.jpg','/public/uploads/9CadreInspiLovecrafttienne-1.jpg',9);
+/*!40000 ALTER TABLE `pictures` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `themes`
@@ -243,12 +313,23 @@ DROP TABLE IF EXISTS `themes`;
 CREATE TABLE `themes` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name_theme` varchar(55) DEFAULT NULL,
-  `description_theme` varchar(700) DEFAULT NULL,
+  `description_theme` longtext,
   `picture_theme` longtext,
-  `archive_theme` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `archive_theme` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name_theme_UNIQUE` (`name_theme`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `themes`
+--
+
+LOCK TABLES `themes` WRITE;
+/*!40000 ALTER TABLE `themes` DISABLE KEYS */;
+INSERT INTO `themes` VALUES (1,'La fantasy','Les histoires fantastiques, qui mettent en scène des mondes imaginaires remplis de créatures magiques, de héros courageux et d\'aventures épiques, sont un sujet de prédilection pour les fans de la culture de l\'imaginaire. Des œuvres célèbres comme Le Seigneur des Anneaux de J.R.R. Tolkien, Harry Potter de J.K. Rowling et Le Trône de Fer de George R.R. Martin ont captivé des millions de lecteurs et de spectateurs.','/public/uploads/fantasy.png',0),(2,'La science-fiction','La science-fiction explore des mondes futuristes ou alternatifs, souvent peuplés d\'extraterrestres, de robots et de technologies avancées. Les thèmes abordés peuvent inclure la dystopie, l\'exploration spatiale, l\'intelligence artificielle, le voyage dans le temps et bien plus encore. Des œuvres célèbres comme 1984 de George Orwell, Blade Runner de Ridley Scott et La Guerre des étoiles de George Lucas ont inspiré des générations de fans de la culture de l\'imaginaire.','/public/uploads/sf.png',0),(3,'Les monstres','Les monstres ont une place importante dans la culture de l\'imaginaire, que ce soit dans les histoires d\'horreur, les films fantastiques ou les jeux vidéo. Les monstres peuvent prendre de nombreuses formes différentes, allant des créatures mythologiques comme les dragons et les minotaures aux monstres modernes tels que les vampires et les loups-garous. Des œuvres célèbres comme Frankenstein de Mary Shelley et la série de films Godzilla ont ouvert de nouvelles portes à des nouveaux monstres de l\'imaginaire.','/public/uploads/monstre.png',0),(4,'La magie','La magie est un thème courant dans la culture de l\'imaginaire, souvent associée à la fantasy. Les histoires de magie peuvent inclure des sorciers, des sortilèges, des artefacts magiques et des créatures mystiques. Des œuvres célèbres telles que la série Harry Potter de J.K. Rowling et la trilogie Le Magicien d\'Oz de L. Frank Baum ont captivé des millions de fans à travers le monde.','/public/uploads/magie.png',0),(5,'L\'occultisme','L\'occultisme est un domaine qui explore les forces mystérieuses et surnaturelles qui existent\nau-delà de la compréhension humaine. Les histoires d\'occultisme peuvent inclure des pratiques\nésotériques, des rituels magiques, des démons et des esprits. Des œuvres célèbres telles que le\nNécronomicon de H. P Lovecraft et la série TV Supernatural ont inspiré des fans de la culture de\nl\'imaginaire.\r','/public/uploads/occultisme.png',0),(6,'Les jeux vidéo','Les jeux vidéo sont une forme populaire de la culture de l\'imaginaire, offrant des\nexpériences immersives dans des mondes fantastiques et des scénarios passionnants. Les genres de jeux\nvidéo comprennent la fantasy, la science-fiction, les jeux de rôle et les jeux de survie. Des jeux célèbres\ncomme Final Fantasy, The Legend of Zelda et World of Warcraft ont captivé des millions de joueurs à\ntravers le monde.','/public/uploads/jeanxvideo.png',0),(7,'Les mangas et les animes','Les mangas et les animes sont des formes populaires de la culture de\nl\'imaginaire originaires du Japon. Les mangas sont des bandes dessinées japonaises, tandis que les\nanimes sont des séries animées. Les thèmes courants dans les mangas et les animes incluent la fantasy, la\nscience-fiction, l\'horreur et le surnaturel. Des œuvres célèbres telles que Dragon Ball, Naruto et Sailor\nMoon ont inspiré des fans du monde entier.','/public/uploads/manga.png',0),(8,'L\'horreur','L\'horreur est un autre thème populaire dans la culture de l\'imaginaire. Les histoires d\'horreur\nse concentrent souvent sur des événements effrayants et surnaturels, mettant en scène des créatures\nterrifiantes, des fantômes, des zombies, des monstres, des vampires et des loups-garous. Les œuvres\nd\'horreur peuvent également inclure des éléments de suspense, de mystère et de gore. Des œuvres\ncélèbres telles que les romans de H.P Lovecraft avec les Récits Horrifique présentant de nombreuses\ncréatures et mystère de l\'horreur, de Stephen King, le film The Shining de Stanley Kubrick, la série TV\nAmerican Horror Story et les jeux vidéo comme Resident Evil sont des célèbres pilier de l\'horreur.\r','/public/uploads/horreur.png',0),(9,'La féérie','Les histoires de féerie mettent souvent en scène des créatures fantastiques telles que les fées,\nles nymphes, les lutins, les elfes et les gnomes, ainsi que des mondes féériques remplis de magie et de\nmerveilles. Les histoires de féerie ont une longue histoire dans la littérature,remontant aux contes de fées\net aux légendes médiévales, et continuent d\'inspirer des œuvres populaires telles que la série TV\nOnceUpon a Time et le film Le Monde de Narnia. La féerie est donc un thème important dans la culture de\nl\'imaginaire, qui offre des possibilités infinies pour des histoires captivantes et des univers magiques.\r','/public/uploads/feerie.png',0),(10,'Le médiéval','Les histoires médiévales sont souvent ancrées dans un contexte historique et mettent en scène des rois, des chevaliers, des princesses et des batailles épiques. Les romans de fantasy médiévale tels que Le Seigneur des Anneaux de J.R.R. Tolkien et la série de George R.R. Martin, Le Trône de Fer, ont été particulièrement populaires ces dernières années, ainsi que des jeux vidéo comme Skyrim et des films comme Robin des Bois. Le thème médiéval offre des possibilités pour des histoires riches en personnages et en intrigue, et permet aux lecteurs, joueurs et spectateurs de s\'immerger dans un monde différent et fascinant.','/public/uploads/Medieval.png',0);
+/*!40000 ALTER TABLE `themes` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `users`
@@ -300,4 +381,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-21 11:21:31
+-- Dump completed on 2023-03-23 22:32:45

@@ -46,6 +46,7 @@ class CartManager extends AbstractManager {
       [id]
     )
   }
+
   deleteAllHasCart(id) {
     return this.database.query(
       `delete from cart_has_artifacts WHERE (cart_id = ?)`,

@@ -77,10 +77,8 @@ const add = (req, res) => {
   }
 
   const orderNumber = generateOrderNumber()
-
   // Ajouter la propriété order_number à l'objet order
   order.num_cmd = orderNumber
-
   // Insérer l'objet order dans la base de données
   models.orders
     .insert(order)
@@ -89,17 +87,17 @@ const add = (req, res) => {
         return [result.insertId, info.id, info.quantity]
       })
       console.info(values)
-      models.orders
-        .insertOrderHasArtifact(values)
-        .then((res1) => {
-          models.cart
-            .deleteAllHasCart(order.users_id)
-            .then((res2) => {
-              console.info(
-                `Commande insérée avec succès dans la table Orders: ${result.insertId},  ${order.users_id}`)
-              res.location(`/ orders / ${result.insertId}`).sendStatus(201)
-            }).catch(err => console.error(err))
-        })
+      models.orders.insertOrderHasArtifact(values).then((res1) => {
+        models.cart
+          .deleteAllHasCart(order.users_id)
+          .then((res2) => {
+            console.info(
+              `Commande insérée avec succès dans la table Orders: ${result.insertId},  ${order.users_id}`
+            )
+            res.location(`/ orders / ${result.insertId}`).sendStatus(201)
+          })
+          .catch((err) => console.error(err))
+      })
     })
     .catch((err) => {
       console.error(err)
