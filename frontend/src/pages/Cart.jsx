@@ -48,6 +48,7 @@ function Cart() {
     }, 0)
     setTotalAmount(newTotalAmount)
   }, [cartArti])
+  console.info("Total amount in Payment:", totalAmount)
 
   // const
 
@@ -74,14 +75,17 @@ function Cart() {
               <p>{totalAmount} €</p>
             </div>
             <div className="Button">
-              <input
-                className="buttonCart"
-                type="button"
-                value="Valider mon panier"
-              />
+              <Link to="/payment" state={{ totalAmount, cartArti }}>
+                <input
+                  className="buttonCart"
+                  type="button"
+                  value="Valider mon panier"
+                />
+              </Link>
             </div>
             <div className="CartMentions">
-              <p>Les frais de livraison seront ajoutés à l'étape suivante.</p>
+              {/* <p>Les frais de livraison seront ajoutés à l'étape suivante.</p> */}
+              <p>Les frais de livraison sont offerts.</p>
             </div>
           </>
         ) : (

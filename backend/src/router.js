@@ -4,7 +4,7 @@ const multer = require('multer')
 
 const upload = multer({ dest: 'public/uploads' })
 
-const { verifyToken } = require('./services/argonHelper')
+// const { verifyToken } = require('./services/argonHelper')
 const router = express.Router()
 
 const ArtifactsControllers = require('./controllers/ArtifactsControllers')
@@ -23,7 +23,7 @@ router.post('/artifacts', ArtifactsControllers.add)
 router.delete('/artifacts/:id', ArtifactsControllers.destroy)
 
 router.get('/events', EventsControllers.browse)
-router.get('/events/:id', EventsControllers.read)
+// router.get('/events/:id', EventsControllers.read)
 router.put('/events/:id', EventsControllers.edit)
 router.post('/events', EventsControllers.add)
 router.delete('/events/:id', EventsControllers.destroy)
@@ -41,7 +41,7 @@ router.delete('/orders/:id', OrdersControllers.destroy)
 router.get('/hasorders', OrdersControllers.readHasOrder)
 router.get('/hasorders/:id', OrdersControllers.readOneHasOrder)
 // router.put('/hasorders/:id', OrdersControllers.edit)
-// router.post('/hasorders', OrdersControllers.add)
+router.post('/hasorders', OrdersControllers.add)
 router.delete('/hasorders/:id', OrdersControllers.destroy)
 
 router.get('/pictures', PicturesControllers.browse)
@@ -78,8 +78,8 @@ router.post(
 router.post('/users', UsersControllers.add)
 // Routes à protéger**************************
 
-router.put('/users/:id', verifyToken, UsersControllers.edit)
-router.delete('/users/:id', verifyToken, UsersControllers.destroy)
+router.put('/users/:id', UsersControllers.edit)
+// router.delete('/users/:id', verifyToken, UsersControllers.destroy)
 
 // router.get('/cart', CartControllers.browse) // si l'admin veut voir tous les paniers --pas important pour le moment
 router.get('/cart/:id', CartControllers.read) // OK - pour visualiser tout le panier attribuer à 1 client
@@ -87,15 +87,15 @@ router.get('/cart/:id', CartControllers.read) // OK - pour visualiser tout le pa
 // router.post('/cart', CartControllers.add) // NON FAIT - à utiliser pour attribuer un cart à chaque nouveau user
 // router.delete('/cart/:id', CartControllers.destroy)// NON FAIT - pas necessaire sauf si possibilité au client de supprimer son profil
 
-router.get('/hascart/:id', CartControllers.readHasCart) // OK - pas necessaire mais pour tester
+router.get('/hascart/:id', CartControllers.readHasCart) // OK nécessaire pour récupérer les infos et incrémenter la table orders
 router.put('/hascart/:id', CartControllers.editHasCart) // OK pour modifier la quantité d'un article du panier
 router.post('/hascart', CartControllers.addHasCart) // OK - permet d'ajouter des artifacts au panier
 router.delete('/hascart/:id', CartControllers.destroyHasCart) // OK - pour supprimer un article au panier
 
-router.get('/comments', CommentsControllers.browse) // Ok
-router.get('/comments/:id', CommentsControllers.read) // Ok
-router.put('/comments/:id', CommentsControllers.edit) // Ok
-router.post('/comments', CommentsControllers.add) // Ok
-// router.delete('/comments/:id', CommentsControllers.destroy)
+router.get('/comments', CommentsControllers.browse)
+router.get('/comments/:id', CommentsControllers.read)
+router.put('/comments/:id', CommentsControllers.edit)
+router.post('/comments', CommentsControllers.add)
+router.delete('/comments/:id', CommentsControllers.destroy)
 
 module.exports = router

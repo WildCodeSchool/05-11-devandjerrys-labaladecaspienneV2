@@ -2,6 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  .titleHeadEshop {
+    font-family: var(--font1);
+    font-size: 2em;
+    color: var(--main-color);
+    margin-top: 9vh;
+    margin-bottom: 0;
+  }
+  .lineTitleEshop {
+    width: 540px;
+  }
   .nameH {
     margin-top: 5vh;
     color: var(--main-color);

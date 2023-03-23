@@ -40,7 +40,9 @@ export default function EshopDetails() {
 
   return (
     <div>
-      <Header />
+      <div className="Esd-Header">
+        <Header />
+      </div>
       <div className="Esd-All" key={artifactChosen.id}>
         <div className="E-Title">
           <h3>LA BALADE CASPIENNE</h3>
@@ -48,9 +50,13 @@ export default function EshopDetails() {
           <h2>{artifactChosen.name_arti}</h2>
           <img className="E-deco" src={Deco2} alt="décoration" />
           <div className="E-desciption">
-            <p>Description : {artifactChosen.description_arti}</p>
-            <p>Matières utilisées: {artifactChosen.matiere_arti}</p>
-            <p>Les themes: {artifactChosen.themesAll}</p>
+            <div className="Esd-text">
+              <p>Description : {artifactChosen.description_arti}</p>
+            </div>
+            <div className="Esd-theme">
+              <p>Matières utilisées: {artifactChosen.matiere_arti}</p>
+              <p>Les themes: {artifactChosen.themesAll}</p>
+            </div>
             <div className="Esd-pictures">
               <div className="picture2-3">
                 {pictureGroups[0].map((image, index) => (
@@ -93,8 +99,10 @@ export default function EshopDetails() {
             <div className="Esd-price">
               <p>{artifactChosen.price}€</p>
             </div>
-            <div className="E-Share">
-              <Share />
+            <div className="Esd-share">
+              <div className="E-Share">
+                <Share />
+              </div>
             </div>
             <div className="E-stock">
               <h4>En stock</h4>
@@ -110,8 +118,8 @@ export default function EshopDetails() {
                 Livraison en 1 à 2 semaines
               </p>
             </div>
-            <div className="EshopDetailsButton">
-              <ButtonCart artifacts_id={artifactChosen.id} />
+            <div className="Esd-bttn">
+              <ButtonCart artifactChosen={artifactChosen} />
             </div>
             <div>
               <img className="E-deco2" src={Deco2} alt="décoration" />

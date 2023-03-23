@@ -20,7 +20,11 @@ export default function CardThemeCarrousel(props) {
             <div className="colorCadreResp">
               <img
                 src={cadres}
-                style={{ backgroundImage: `url(${backgroundCadre})` }}
+                style={{
+                  backgroundImage: `url(${
+                    import.meta.env.VITE_BACKEND_URL + backgroundCadre
+                  })`,
+                }}
                 alt="cadre"
                 className="cadreResp"
               />
