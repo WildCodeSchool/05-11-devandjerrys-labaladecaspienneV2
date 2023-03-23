@@ -29,16 +29,15 @@ function Payment() {
 
   const saveOrderToDatabase = async (totalAmount, cartArti) => {
     try {
-      const order_amount = totalAmount
       const orderResponse = await axios.post("http://localhost:5000/orders", {
         users_id: 1, // voir pour récupérer l'id de l'utilisateur
-        order_amount: totalAmount,
+        orderAmount: totalAmount,
         articleInfos: [...cartArti],
       })
+      console.info(orderResponse)
     } catch (error) {
       console.error("Error saving order to database:", error)
     }
-    console.info("contenu de order_id :", order_id)
   }
 
   return (

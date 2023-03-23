@@ -7,8 +7,8 @@ class OrdersManager extends AbstractManager {
 
   insert(order) {
     return this.database.query(
-      `insert into ${this.table} (num_cmd, comments_id, users_id, order_amount) values (?, ?, ?, ?)`,
-      [order.num_cmd, order.comments_id, order.users_id, order.order_amount]
+      `insert into ${this.table} (num_cmd, comments_id, users_id, orderAmount) values (?, ?, ?, ?)`,
+      [order.num_cmd, order.comments_id, order.users_id, order.orderAmount]
     )
   }
 
@@ -87,7 +87,7 @@ class OrdersManager extends AbstractManager {
         order.comments_id,
         order.users_id,
         order.id,
-        order.order_amount,
+        order.orderAmount,
       ]
     )
   }
