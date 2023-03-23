@@ -67,19 +67,48 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   const order = req.body
+  // console.info(order)
 
-  // TODO validations (length, format...)
+  // algo générateur numéro de commande
+  function generateOrderNumber() {
+    const today = new Date();
+    const date = today.toLocaleString().replace(/\D/g, '');
+    return `${date}`;
+  }
 
+  const orderNumber = generateOrderNumber()
+
+  // Ajouter la propriété order_number à l'objet order
+  order.num_cmd = orderNumber;
+
+  // Insérer l'objet order dans la base de données
   models.orders
     .insert(order)
     .then(([result]) => {
-      res.location(`/orders/${result.insertId}`).sendStatus(201)
+      const values = order.articleInfos.map(info => {
+
+        return [result.insertId, info.id, info.quantity]
+      })
+      console.log(values)
+      models.orders
+        .insertOrderHasArtifact(values)
+        .then((res1) => {
+          models.cart
+            .deleteAllHasCart(order.users_id)
+            .then((res2) => {
+              console.info(`Commande insérée avec succès dans la table Orders: ${result.insertId},  ${order.users_id}`)
+              res.location(`/ orders / ${result.insertId}`).sendStatus(201)
+            }).catch(err => console.error(err))
+
+        })
     })
     .catch((err) => {
       console.error(err)
       res.sendStatus(500)
     })
 }
+
+
 
 const destroy = (req, res) => {
   models.orders
