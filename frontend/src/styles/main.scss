@@ -1,24 +1,30 @@
+@import "./about.scss";
 @import "./App.scss";
-@import "./Eshop.scss";
+@import "./burger.scss";
 @import "./ButtonCart.scss";
 @import "./CardTheme.scss";
+@import "./CardEvent.scss";
+@import "./CardThemeCarrousel.scss";
 @import "./cart.scss";
+@import "./CartArtifact.scss";
 @import "./Contact.scss";
+@import "./Eshop.scss";
 @import "./EshopCard.scss";
-@import "./footer.scss";
-@import "./header.scss";
-@import "./Home.scss";
-@import "./splash.scss";
-@import "./burger.scss";
 @import "./EshopDetails.scss";
 @import "./events.scss";
-@import "./CardThemeCarrousel.scss";
-@import "./about.scss";
+@import "./footer.scss";
+@import "./header.scss";
+@import "./home.scss";
+@import "./splash.scss";
+@import "./Theme.scss";
 @import "./UserAccount.scss";
 @import "./Commande.scss";
 @import "./UserEmail.scss";
 @import "./UserInfo.scss";
 @import "./UserAccountSecond.scss";
+@import "./ModalConnexion.scss";
+@import "./Share.scss";
+@import "./Payment.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=Alegreya&family=EB+Garamond:ital@1&display=swap");
 @font-face {
@@ -31,17 +37,17 @@
   --main-color: #ffffff;
   --secondary-color: #804000;
   --third-color: #004033;
-  --font1: "Dream";
-  --font2: "Alegreya";
-  --font3: "EB Garamond";
+  --font1: "Dream", serif;
+  --font2: "Alegreya", serif;
+  --font3: "EB Garamond", serif;
   --desktop-size1: 65px;
   --desktop-size2: 55px;
   --desktop-size3: 22px;
   --desktop-size4: 18px;
-  --mobile-size1: 30px; /*calc(var(--desktop-size1) * 0.85);*/
-  --mobile-size2: 25px;
-  --mobile-size3: 15px;
-  --mobile-size4: 15px;
+  --mobile-size1: calc(var(--desktop-size1) - 20px);
+  --mobile-size2: calc(var(--desktop-size2) - 25px);
+  --mobile-size3: calc(var(--desktop-size3) - 8px);
+  --mobile-size4: calc(var(--desktop-size3) - 3px);
 }
 
 body {
@@ -65,4 +71,25 @@ body::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: darkgrey;
   outline: 1px solid slategrey;
+}
+.overlayTheme {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modalTheme {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  border-radius: 20px;
+  padding: 0px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }

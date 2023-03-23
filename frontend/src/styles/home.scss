@@ -57,12 +57,30 @@
     display: inline-block;
     width: 31%;
     margin-right: 2%;
-  }
 
-  .card-theme > div:nth-child(3n) {
-    margin-right: 0;
+    .close {
+      svg {
+        transform: scale(1.2);
+        filter: brightness(0) saturate(100%) invert(23%) sepia(85%) saturate(907%) hue-rotate(2deg) brightness(100%)
+          contrast(102%);
+      }
+      svg:hover {
+        transform: scale(1.4);
+        transition-duration: 0.5s;
+        // box-shadow: 2px 2px 2px 2px #656565;
+      }
+
+      svg:active {
+        transform: scale(0.8);
+      }
+    }
   }
 }
+
+.card-theme > div:nth-child(3n) {
+  margin-right: 0;
+}
+
 .carousel {
   display: none;
 }
@@ -88,8 +106,8 @@
       display: block;
     }
     #paragraph {
-      margin-left: 80px;
-      margin-right: 80px;
+      margin-left: 70px;
+      margin-right: 70px;
       font-size: var(--mobile-size3);
     }
     h1 {

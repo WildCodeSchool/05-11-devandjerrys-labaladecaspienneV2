@@ -15,7 +15,7 @@
   margin-bottom: 0;
 }
 .lineTitleEshop {
-  width: 40%;
+  width: 540px;
 }
 
 /// DIV FILTERS ///
@@ -38,15 +38,19 @@
   margin-top: 5px;
 }
 .articleNone {
-  text-align: center;
-  color: var(--secondary-color);
-  font-size: 20px;
+  color: var(--main-color);
+  font-family: var(--font1);
+  font-size: larger;
+  font-weight: bold;
+  margin: 10%;
+  padding: 20px;
+  text-shadow: 1px 1px 2px black;
 }
 /// DIV ARTFACTS ///
 .divArtifactsEshop {
   width: 88%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 /// Tablet ///

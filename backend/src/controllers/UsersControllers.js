@@ -1,4 +1,64 @@
 const models = require('../models')
+const { hashPassword } = require('../services/argonHelper')
+
+const jwt = require('jsonwebtoken')
+
+const argon2 = require('argon2')
+
+// const updateUsers = (req, res) => {
+//   const id = parseInt(req.params.id)
+//   const { email, hashedPassword } = req.body
+
+//   this.database
+//     .query('update users set  email = ?, hashedPassword =?, where id = ?', [
+//       email,
+
+//       hashedPassword,
+//       id,
+//     ])
+//     .then(([result]) => {
+//       if (result.affectedRows === 0) {
+//         res.status(404).send('Not Found')
+//       } else {
+//         res.sendStatus(204)
+//       }
+//     })
+//     .catch((err) => {
+//       console.error(err)
+//       res.status(500).send('Error editing the user')
+//     })
+// }
+const login = async (req, res) => {
+  const { email, password } = req.body
+
+  try {
+    const [user] = await models.users.findOne(email)
+    console.info(email, password, user.id)
+    if (!user) {
+      res
+        .status(401)
+        .json({ message: 'Authentication failed. User not found.' })
+      return
+    }
+    console.info(password, user[0].password, user[0].id)
+    const passwordMatch = await argon2.verify(user[0].password, password)
+
+    if (!passwordMatch) {
+      res
+        .status(401)
+        .json({ message: 'Authentication failed. Invalid password.' })
+      return
+    }
+
+    const token = jwt.sign({ userId: user[0].id }, process.env.JWT_SECRET, {
+      expiresIn: '1h',
+    })
+    res.status(200).json({ token, id: user[0].id })
+  } catch (err) {
+    console.error(err)
+    res.sendStatus(500)
+  }
+}
 
 const browse = (req, res) => {
   models.users
@@ -30,9 +90,7 @@ const read = (req, res) => {
 
 const edit = (req, res) => {
   const user = req.body
-
-  // TODO validations (length, format...)
-
+  // console.log('Hello', req.body)
   user.id = parseInt(req.params.id, 10)
 
   models.users
@@ -50,20 +108,30 @@ const edit = (req, res) => {
     })
 }
 
-const add = (req, res) => {
+const add = async (req, res) => {
   const user = req.body
 
   // TODO validations (length, format...)
 
-  models.users
-    .insert(user)
-    .then(([result]) => {
-      res.location(`/users/${result.insertId}`).sendStatus(201)
+  try {
+    // Hasher le mot de passe avec la fonction hashPassword()
+    const hashedPassword = await hashPassword(user.password)
+
+    // Mettre à jour le mot de passe de l'utilisateur avec le hash
+    user.password = hashedPassword
+
+    const [result] = await models.users.insert({
+      ...req.body,
+      password: hashedPassword,
     })
-    .catch((err) => {
-      console.error(err)
-      res.sendStatus(500)
-    })
+    // const result = await add({ ...req.body, password: hashedPassword })
+
+    res.location(`users/${result.insertId}`).sendStatus(201)
+    // console.log(result.insertId)
+  } catch (err) {
+    console.error(err)
+    res.sendStatus(500)
+  }
 }
 
 const destroy = (req, res) => {
@@ -88,4 +156,5 @@ module.exports = {
   edit,
   add,
   destroy,
+  login,
 }

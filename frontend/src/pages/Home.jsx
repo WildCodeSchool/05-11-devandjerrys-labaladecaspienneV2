@@ -8,9 +8,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loa
 import { Carousel } from "react-responsive-carousel"
 import { useState, useEffect } from "react"
 import axios from "axios"
-// import { Link } from "react-router-dom"
 import CardTheme from "../components/CardTheme"
 import CardThemeCarrousel from "../components/CardThemeCarrousel"
+import Modal from "react-modal"
+import Theme from "@components/Theme"
+import { CiCircleRemove } from "react-icons/ci"
 
 export default function Home() {
   const [themes, setThemes] = useState([])
@@ -19,6 +21,14 @@ export default function Home() {
       setThemes(response.data)
     })
   }, [])
+  const [selectedThemeId, setSelectedThemeId] = useState(null)
+  const selectedTheme = themes.find((theme) => theme.id === selectedThemeId)
+  const openModal = (themeId) => {
+    setSelectedThemeId(themeId)
+  }
+  const closeModal = () => {
+    setSelectedThemeId(null)
+  }
 
   return (
     <div>
@@ -59,16 +69,35 @@ export default function Home() {
           {themes.map((theme) => (
             <CardTheme
               key={theme.id}
+              id={theme.id}
               picture_theme={theme.picture_theme}
               name_theme={theme.name_theme}
               description_theme={theme.description_theme}
+              onClick={() => openModal(theme.id)}
             />
           ))}
+
+          <Modal
+            isOpen={selectedThemeId !== null}
+            onRequestClose={closeModal}
+            className="modalTheme"
+            overlayClassName="overlayTheme"
+          >
+            <CiCircleRemove className="close" onClick={closeModal} />
+            {selectedTheme && (
+              <Theme
+                id={selectedTheme.id}
+                name_theme={selectedTheme.name_theme}
+                description_theme={selectedTheme.description_theme}
+              />
+            )}
+          </Modal>
         </div>
         <Carousel showIndicators={true} showStatus={false}>
           {themes.map((theme) => (
             <CardThemeCarrousel
               key={theme.id}
+              id={theme.id}
               picture_theme={theme.picture_theme}
               name_theme={theme.name_theme}
               description_theme={theme.description_theme}

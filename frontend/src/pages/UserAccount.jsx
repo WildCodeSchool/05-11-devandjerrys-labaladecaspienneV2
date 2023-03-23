@@ -1,78 +1,120 @@
+import { useState, useEffect } from "react"
+import axios from "axios"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Burger from "../components/Burger"
 import Separator from "../assets/Images/separateur.png"
 import LineTop from "../assets/Images/head_line.png"
+import { useParams } from "react-router-dom"
 
 export default function UserAccount() {
+  const { id } = useParams()
+  const [userData, setUserData] = useState([])
+  const [userOrder, setUserOrder] = useState([])
+  const [isEditing, setIsEditing] = useState(false)
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/users/${id}`).then((response) => {
+      setUserData(response.data)
+    })
+  }, [id])
+  useEffect(() => {
+    axios.get(`http://localhost:5000/users/${id}/orders`).then((response) => {
+      setUserOrder(response.data)
+      // console.log(userOrder)
+    })
+  }, [id])
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    axios
+      .put(`http://localhost:5000/users/${id}`, userData)
+      .then((response) => {
+        // console.log("Poulette", response.data)
+        setUserData(response.data)
+        setIsEditing(false)
+      })
+      .catch((error) => {
+        console.error("Erreur :", error)
+      })
+
+    axios.get(`http://localhost:5000/users/${id}`).then((response) => {
+      setUserOrder(response.data)
+    })
+  }
   return (
     <>
       <Header />
-      <div className="divHeadEshop">
+      <div className="divHeadEshop" key={userData.id}>
         <p className="titleHeadEshop">LA BALADE CASPIENNE</p>
         <img className="lineTitleEshop" src={LineTop} alt="image" />
       </div>
       <div className="UserAccountPage">
-        <div className="UserDivGrid">
-          <div className="UserGridDivs Grid1">
-            <span className="Grid1Title">Profil</span>
-            <div className="Grid1Div">
-              <p>Nom de Famille = Mitchell's</p>
-              <img className="UserSeparator" src={Separator} alt="" />
-              <p>Prénom = John</p>
-              <img className="UserSeparator" src={Separator} alt="" />
-              <p>Adresse = 40, Avenue de la Liberté</p>
-              <img className="UserSeparator" src={Separator} alt="" />
-              <p>Code Postal = 940677</p>
-              <img className="UserSeparator" src={Separator} alt="" />
-              <p>Ville = Pas Trouvé</p>
+        {userData && (
+          <div className="UserDivGrid">
+            <div className="UserGridDivs Grid1">
+              <span className="Grid1Title">Profil</span>
+              <div className="Grid1Div">
+                <p>Nom de Famille : {userData?.lastname}</p>
+                <img className="UserSeparator" src={Separator} alt="" />
+                {isEditing ? (
+                  <form onSubmit={handleSubmit}>
+                    <label htmlFor="firstname">Prénom</label>
+                    <input
+                      type="text"
+                      name="firstname"
+                      id="firstname"
+                      value={userData?.firstname}
+                      onChange={(event) =>
+                        setUserData({
+                          ...userData,
+                          firstname: event.target.value,
+                        })
+                      }
+                    />
+                    <button type="submit">Enregistrer</button>
+                  </form>
+                ) : (
+                  <div>
+                    <p>Prénom : {userData?.firstname}</p>
+                    <button onClick={() => setIsEditing(true)}>Modifier</button>
+                  </div>
+                )}
+                <img className="UserSeparator" src={Separator} alt="" />
+                <p>{userData?.adress_delivery}</p>
+                <img className="UserSeparator" src={Separator} alt="" />
+                <p>{userData?.zip_delivery}</p>
+                <img className="UserSeparator" src={Separator} alt="" />
+                <p>{userData?.country_delivery}</p>
+              </div>
+            </div>
+            <div className="UserGridDivs Grid2">
+              <span className="Grid2Title">Connexion</span>
+              <div className="Grid2Div">
+                <p>
+                  Email : <br /> {userData?.email}
+                </p>
+              </div>
+            </div>
+            <div className="UserGridDivs Grid3">
+              <span className="Grid3Title">Commandes / Historique</span>
+              <div className="Grid3Div">
+                {userOrder.length === 0 ? (
+                  <p>Pas de commande, pour le moment...</p>
+                ) : (
+                  userOrder.map((order) => (
+                    <div key={order.id}>
+                      <p>N° commande : {order.num_cmd}</p>
+                      <p> état : {order.status}</p>
+                      <p>Montant payé: {order.order_amount}€</p>
+                      <img className="UserSeparator" src={Separator} alt="" />
+                    </div>
+                  ))
+                )}
+              </div>
             </div>
           </div>
-          <div className="UserGridDivs Grid2">
-            <span className="Grid2Title">Connexions</span>
-            <div className="Grid2Div">
-              <p>
-                Email : <br /> ............
-              </p>
-              <img className="UserSeparator" src={Separator} alt="" />
-              <p>
-                Mot de Passe : <br /> ............
-              </p>
-            </div>
-          </div>
-          <div className="UserGridDivs Grid3">
-            <span className="Grid3Title">Commandes / Historique</span>
-            <div className="Grid3Div">
-              <p>N° commande : 564496549 état : Livré</p>
-              <p>état : Livré</p>
-              <p>Montant payé: 156,9€</p>
-              <img className="UserSeparator" src={Separator} alt="" />
-              <p>N° commande : 564496549 état : Livré</p>
-              <p>état : Livré</p>
-              <p>Montant payé: 156,9€</p>
-              <img className="UserSeparator" src={Separator} alt="" />
-              <p>N° commande : 564496549 état : Livré</p>
-              <p>état : Livré</p>
-              <p>Montant payé: 156,9€</p>
-              <img className="UserSeparator" src={Separator} alt="" />
-              <p>N° commande : 564496549 état : Livré</p>
-              <p>état : Livré</p>
-              <p>Montant payé: 156,9€</p>
-              <img className="UserSeparator" src={Separator} alt="" />
-              <p>N° commande : 564496549 état : Livré</p>
-              <p>état : Livré</p>
-              <p>Montant payé: 156,9€</p>
-              <img className="UserSeparator" src={Separator} alt="" />
-              <p>N° commande : 564496549 état : Livré</p>
-              <p>état : Livré</p>
-              <p>Montant payé: 156,9€</p>
-              <img className="UserSeparator" src={Separator} alt="" />
-              <p>N° commande : 564496549 état : Livré</p>
-              <p>état : Livré</p>
-              <p>Montant payé: 156,9€</p>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
       <Burger />
       <Footer />
