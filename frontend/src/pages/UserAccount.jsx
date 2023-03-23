@@ -11,6 +11,7 @@ export default function UserAccount() {
   const { id } = useParams()
   const [userData, setUserData] = useState([])
   const [userOrder, setUserOrder] = useState([])
+  const [isEditing, setIsEditing] = useState(false)
 
   useEffect(() => {
     axios.get(`http://localhost:5000/users/${id}`).then((response) => {
@@ -23,6 +24,24 @@ export default function UserAccount() {
       // console.log(userOrder)
     })
   }, [id])
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    axios
+      .put(`http://localhost:5000/users/${id}`, userData)
+      .then((response) => {
+        // console.log("Poulette", response.data)
+        setUserData(response.data)
+        setIsEditing(false)
+      })
+      .catch((error) => {
+        console.error("Erreur :", error)
+      })
+
+    axios.get(`http://localhost:5000/users/${id}`).then((response) => {
+      setUserOrder(response.data)
+    })
+  }
   return (
     <>
       <Header />
@@ -38,7 +57,29 @@ export default function UserAccount() {
               <div className="Grid1Div">
                 <p>Nom de Famille : {userData?.lastname}</p>
                 <img className="UserSeparator" src={Separator} alt="" />
-                <p>Prénom : {userData?.firstname}</p>
+                {isEditing ? (
+                  <form onSubmit={handleSubmit}>
+                    <label htmlFor="firstname">Prénom</label>
+                    <input
+                      type="text"
+                      name="firstname"
+                      id="firstname"
+                      value={userData?.firstname}
+                      onChange={(event) =>
+                        setUserData({
+                          ...userData,
+                          firstname: event.target.value,
+                        })
+                      }
+                    />
+                    <button type="submit">Enregistrer</button>
+                  </form>
+                ) : (
+                  <div>
+                    <p>Prénom : {userData?.firstname}</p>
+                    <button onClick={() => setIsEditing(true)}>Modifier</button>
+                  </div>
+                )}
                 <img className="UserSeparator" src={Separator} alt="" />
                 <p>{userData?.adress_delivery}</p>
                 <img className="UserSeparator" src={Separator} alt="" />
@@ -58,13 +99,18 @@ export default function UserAccount() {
             <div className="UserGridDivs Grid3">
               <span className="Grid3Title">Commandes / Historique</span>
               <div className="Grid3Div">
-                {userOrder.map((order) => (
-                  <div key={order.id}>
-                    <p>N° commande : {order.num_cmd}</p>
-                    <p>Montant payé: {order.order_amount}€</p>
-                    <img className="UserSeparator" src={Separator} alt="" />
-                  </div>
-                ))}
+                {userOrder.length === 0 ? (
+                  <p>Pas de commande, pour le moment...</p>
+                ) : (
+                  userOrder.map((order) => (
+                    <div key={order.id}>
+                      <p>N° commande : {order.num_cmd}</p>
+                      <p> état : {order.status}</p>
+                      <p>Montant payé: {order.order_amount}€</p>
+                      <img className="UserSeparator" src={Separator} alt="" />
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           </div>

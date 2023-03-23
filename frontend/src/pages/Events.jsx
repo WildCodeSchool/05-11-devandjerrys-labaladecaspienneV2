@@ -1,5 +1,6 @@
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import CardEvent from "../components/CardEvent"
 import deco from "../assets/Images/deco.png"
 import deco1 from "../assets/Images/deco1.png"
 import Burger from "@components/Burger"
@@ -7,8 +8,6 @@ import LineTop from "../assets/Images/head_line.png"
 
 import { useState, useEffect } from "react"
 import axios from "axios"
-// import { Link } from "react-router-dom"
-import CardEvent from "../components/CardEvent"
 
 export default function Events() {
   const [events, setEvents] = useState([])
@@ -19,6 +18,49 @@ export default function Events() {
   }, [])
 
   const [show, setShow] = useState(false)
+
+  // Etats pour la pagination
+  // const [page, setPage] = useState(1) // Pagination en cours
+
+  // Filtrer les événements passés
+  const pastEvents = events.filter((event) => {
+    const eventDate = new Date(event.date_event_begginning)
+    return eventDate.getFullYear() < new Date().getFullYear()
+  })
+
+  // Obtenir la liste des années d'événements passés
+  const pastEventYears = [
+    ...new Set(
+      pastEvents.map((event) =>
+        new Date(event.date_event_begginning).getFullYear()
+      )
+    ),
+  ]
+
+  // Calculer le nombre de pages
+  // const pageCount = Math.ceil(pastEvents.length / 10)
+
+  // Obtenir les événements à afficher pour la page en cours
+  // const displayedEvents = pastEvents.slice((page - 1) * 10, page * 10)
+
+  // Composant pour afficher les événements passés pour une année donnée
+  const EventsByYear = ({ year, events }) => (
+    <div className="eventsHistory show">
+      <h3 className="eventTitle">{year}</h3>
+      {events.map((event) => (
+        <CardEvent
+          key={event.id}
+          picture_event={event.picture_event}
+          name_event={event.name_event}
+          description_event={event.description_event}
+          date_event_begginning={event.date_event_begginning}
+          place_event={event.place_event}
+          link_event={event.link_event}
+        />
+      ))}
+    </div>
+  )
+
   return (
     <div>
       <Header />
@@ -49,7 +91,7 @@ export default function Events() {
         </div>
         {show && (
           <div className="card-event show">
-            <div className="event-container">
+            {/* <div className="event-container">
               <div className="event">
                 <div className="event-left">
                   <div className="event-date">
@@ -92,15 +134,25 @@ export default function Events() {
                   </div>
                 </div>
               </div>
-            </div>
-            {events.map((event) => (
-              <CardEvent
-                key={event.id}
-                picture_event={event.picture_event}
-                name_event={event.name_event}
-                date_event={event.date_event}
-              />
-            ))}
+            </div> */}
+            {events.map((event) => {
+              const eventDate = new Date(event.date_event_begginning)
+              if (eventDate >= new Date()) {
+                return (
+                  <CardEvent
+                    key={event.id}
+                    picture_event={event.picture_event}
+                    name_event={event.name_event}
+                    description_event={event.description_event}
+                    date_event_begginning={event.date_event_begginning}
+                    place_event={event.place_event}
+                    link_event={event.link_event}
+                  />
+                )
+              } else {
+                return null
+              }
+            })}
           </div>
         )}
         {show && (
@@ -111,7 +163,56 @@ export default function Events() {
               src={LineTop}
               alt="ligne de séparation"
             />
-            <ul className="listPast" role={"tablist"}>
+
+            {/* Pagination pour les événements passés */}
+            <div className="pagination">
+              {pastEventYears.map((year) => (
+                <button
+                  key={year}
+                  className="listPast"
+                  onClick={() => setShow(year === show ? false : year)}
+                >
+                  {year}
+                </button>
+              ))}
+            </div>
+
+            {/* Affichage des événements passés pour chaque année */}
+            {pastEventYears.map((year) => {
+              const eventsByYear = pastEvents.filter(
+                (event) =>
+                  new Date(event.date_event_begginning).getFullYear() === year
+              )
+              return (
+                show === year && (
+                  <EventsByYear key={year} year={year} events={eventsByYear} />
+                )
+              )
+            })}
+
+            {/* Pagination cliquable pour les événements passés */}
+            {/* <div className="pagination">
+              {Array.from({ length: pageCount }, (_, i) => (
+                <button key={i + 1} onClick={() => setPage(i + 1)}>
+                  {pastEventYears[i]}
+                </button>
+              ))}
+            </div> */}
+
+            {/* Affichage des événements passés pour la page en cours */}
+            {/* {displayedEvents.map((event) => (
+              <CardEvent
+                key={event.id}
+                picture_event={event.picture_event}
+                name_event={event.name_event}
+                description_event={event.description_event}
+                date_event_begginning={event.date_event_begginning}
+                place_event={event.place_event}
+                link_event={event.link_event}
+              />
+            ))} */}
+
+            {/* <ul className="listPast" role={"tablist"}>
               <li>
                 <a
                   href="#tab_2023"
@@ -136,7 +237,7 @@ export default function Events() {
                   <span>2022</span>
                 </a>
               </li>
-            </ul>
+            </ul> */}
           </div>
         )}
       </div>

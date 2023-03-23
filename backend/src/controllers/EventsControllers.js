@@ -2,21 +2,33 @@ const models = require('../models')
 
 const browse = (req, res) => {
   models.events
-    .findAllEvents()
+    .findAll()
     .then(([rows]) => {
-      const result = rows.map((event) => {
-        return {
-          ...event,
-          themesEvent: event.themesEvent.split(','),
-        }
-      })
-      res.send(result)
+      res.send(rows)
     })
     .catch((err) => {
       console.error(err)
       res.sendStatus(500)
     })
 }
+
+// const browse = (req, res) => {
+//   models.events
+//     .findAll()
+//     .then(([rows]) => {
+//       const result = rows.map((event) => {
+//         return {
+//           ...event,
+//           themesEvent: event.themesEvent.split(','),
+//         }
+//       })
+//       res.send(result)
+//     })
+//     .catch((err) => {
+//       console.error(err)
+//       res.sendStatus(500)
+//     })
+// }
 
 const read = (req, res) => {
   models.events
