@@ -18,7 +18,7 @@ router.post('/artifacts', ArtifactsControllers.add)
 router.delete('/artifacts/:id', ArtifactsControllers.destroy)
 
 router.get('/events', EventsControllers.browse)
-router.get('/events/:id', EventsControllers.read)
+// router.get('/events/:id', EventsControllers.read)
 router.put('/events/:id', EventsControllers.edit)
 router.post('/events', EventsControllers.add)
 router.delete('/events/:id', EventsControllers.destroy)
