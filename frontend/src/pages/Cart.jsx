@@ -75,7 +75,7 @@ function Cart() {
               <p>{totalAmount} €</p>
             </div>
             <div className="Button">
-              <Link to="/payment" state={totalAmount}>
+              <Link to="/payment" state={{ totalAmount, cartArti }}>
                 <input
                   className="buttonCart"
                   type="button"

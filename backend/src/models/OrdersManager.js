@@ -7,17 +7,18 @@ class OrdersManager extends AbstractManager {
 
   insert(order) {
     return this.database.query(
-      order.price,
-      `insert into ${this.table} (num_cmd, comments_id, users_id, order_amount) values (?, ?, ?, ?)`,
-      [order.num_cmd, order.comments_id, order.users_id, order.order_amount]
+      `insert into ${this.table} (num_cmd, comments_id, users_id, orderAmount) values (?, ?, ?, ?)`,
+      [order.num_cmd, order.comments_id, order.users_id, order.orderAmount]
     )
   }
 
-  insertOrderHasArtifact(order) {
+  // insertOrderHasArtifact(order, id) {
+  insertOrderHasArtifact(values) {
     return this.database.query(
-      order.price,
-      `INSERT INTO orders_has_artifacts (orders_id, artifact_id, quantity) values (?, ?, ?)`,
-      [order.orders_id, order.artifact_id, order.quantity]
+      // order.price,
+      `INSERT INTO orders_has_artifact (orders_id, artifact_id, quantity) values ?`,
+      [values] // Version inititale
+      // [id, order.artifact_id, order.quantity]
     )
   }
 
@@ -86,7 +87,7 @@ class OrdersManager extends AbstractManager {
         order.comments_id,
         order.users_id,
         order.id,
-        order.order_amount,
+        order.orderAmount,
       ]
     )
   }

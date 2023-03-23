@@ -21,8 +21,12 @@ class CartManager extends AbstractManager {
 
   findOneHasCart(id) {
     return this.database.query(
-      `SELECT *
+      `SELECT ha.cart_id, ha.artifacts_id, ha.quantity, orders.id
       FROM cart_has_artifacts AS ha 
+      JOIN cart 
+      ON ha.cart_id=cart.id
+      JOIN orders
+      ON orders.users_id=cart.users_id
       WHERE (id_cart_has_artifacts = ?)`,
       [id]
     )
@@ -42,10 +46,16 @@ class CartManager extends AbstractManager {
       [id]
     )
   }
+  deleteAllHasCart(id) {
+    return this.database.query(
+      `delete from cart_has_artifacts WHERE (cart_id = ?)`,
+      [id]
+    )
+  }
 
   findOneCart(id) {
     return this.database.query(
-      `SELECT ha.id_cart_has_artifacts, name_arti, price, quantity, (price * quantity) AS total, MAX(url_img) AS url_img
+      `SELECT ha.id_cart_has_artifacts, a.id, name_arti, price, quantity, (price * quantity) AS total, MAX(url_img) AS url_img
       FROM cart_has_artifacts AS ha 
       LEFT JOIN artifacts AS a ON ha.artifacts_id=a.id
       LEFT JOIN pictures AS p ON p.artifacts_id = a.id

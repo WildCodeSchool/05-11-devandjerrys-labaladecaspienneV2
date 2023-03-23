@@ -36,7 +36,7 @@ router.delete('/orders/:id', OrdersControllers.destroy)
 router.get('/hasorders', OrdersControllers.readHasOrder)
 router.get('/hasorders/:id', OrdersControllers.readOneHasOrder)
 // router.put('/hasorders/:id', OrdersControllers.edit)
-// router.post('/hasorders', OrdersControllers.add)
+router.post('/hasorders', OrdersControllers.add)
 router.delete('/hasorders/:id', OrdersControllers.destroy)
 
 router.get('/pictures', PicturesControllers.browse)
@@ -71,7 +71,7 @@ router.get('/cart/:id', CartControllers.read) // OK - pour visualiser tout le pa
 // router.post('/cart', CartControllers.add) // NON FAIT - à utiliser pour attribuer un cart à chaque nouveau user
 // router.delete('/cart/:id', CartControllers.destroy)// NON FAIT - pas necessaire sauf si possibilité au client de supprimer son profil
 
-router.get('/hascart/:id', CartControllers.readHasCart) // OK - pas necessaire mais pour tester
+router.get('/hascart/:id', CartControllers.readHasCart) // OK nécessaire pour récupérer les infos et incrémenter la table orders
 router.put('/hascart/:id', CartControllers.editHasCart) // OK pour modifier la quantité d'un article du panier
 router.post('/hascart', CartControllers.addHasCart) // OK - permet d'ajouter des artifacts au panier
 router.delete('/hascart/:id', CartControllers.destroyHasCart) // OK - pour supprimer un article au panier
