@@ -27,14 +27,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    .aboutText {
+      margin: 5vh;
+      text-align: justify;
+      color: var(--main-color);
+      line-height: 2.5;
+      font-size: larger;
+    }
     .photoPres {
       display: flex;
       align-items: center;
-      .aboutText {
-        margin: 5vh;
-        text-align: justify;
-        color: var(--main-color);
-      }
+
       .img-alex {
         margin: 5vh;
         width: 320px;

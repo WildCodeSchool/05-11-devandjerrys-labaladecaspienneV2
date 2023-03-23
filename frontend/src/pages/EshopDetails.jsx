@@ -48,14 +48,18 @@ export default function EshopDetails() {
           <h2>{artifactChosen.name_arti}</h2>
           <img className="E-deco" src={Deco2} alt="décoration" />
           <div className="E-desciption">
-            <p>{artifactChosen.description_arti}</p>
-            <p>{artifactChosen.themesAll}</p>
+            <p>Description : {artifactChosen.description_arti}</p>
+            <p>Matières utilisées: {artifactChosen.matiere_arti}</p>
+            <p>Les themes: {artifactChosen.themesAll}</p>
             <div className="Esd-pictures">
               <div className="picture2-3">
                 {pictureGroups[0].map((image, index) => (
                   <div key={`picture-2-${index}`}>
                     <div className="picture3">
-                      <img src={image} alt={`Image ${6 + index}`} />
+                      <img
+                        src={import.meta.env.VITE_BACKEND_URL + image}
+                        alt={`Image ${6 + index}`}
+                      />
                     </div>
                   </div>
                 ))}
@@ -64,7 +68,10 @@ export default function EshopDetails() {
                   {pictureGroups[1].map((image, index) => (
                     <div key={`picture-1-${index}`}>
                       <div className="picture2">
-                        <img src={image} alt={`Image ${3 + index}`} />
+                        <img
+                          src={import.meta.env.VITE_BACKEND_URL + image}
+                          alt={`Image ${3 + index}`}
+                        />
                       </div>
                     </div>
                   ))}
@@ -74,7 +81,10 @@ export default function EshopDetails() {
                 {pictureGroups[2].map((image, index) => (
                   <div key={`picture-0-${index}`}>
                     <div className="mainPicture">
-                      <img src={image} alt={`Image ${index}`} />
+                      <img
+                        src={import.meta.env.VITE_BACKEND_URL + image}
+                        alt={`Image ${index}`}
+                      />
                     </div>
                   </div>
                 ))}
@@ -100,7 +110,9 @@ export default function EshopDetails() {
                 Livraison en 1 à 2 semaines
               </p>
             </div>
-            <ButtonCart artifacts_id={artifactChosen.id} />
+            <div className="EshopDetailsButton">
+              <ButtonCart artifacts_id={artifactChosen.id} />
+            </div>
             <div>
               <img className="E-deco2" src={Deco2} alt="décoration" />
             </div>

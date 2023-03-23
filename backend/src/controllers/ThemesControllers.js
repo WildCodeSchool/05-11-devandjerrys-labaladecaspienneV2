@@ -1,5 +1,6 @@
 const models = require('../models')
-
+const fs = require('fs')
+const Joi = require('joi')
 const browse = (req, res) => {
   models.themes
     .findAll()
@@ -30,40 +31,89 @@ const read = (req, res) => {
 
 const edit = (req, res) => {
   const theme = req.body
+  const { originalname } = req.file
+  const { filename } = req.file
 
-  // TODO validations (length, format...)
+  const schema = Joi.object({
+    archive_theme: Joi.number().integer().min(0).max(1).required(),
+  })
+
+  const { error } = schema.validate({ archive_theme: theme.archive_theme })
+
+  if (error) {
+    res.status(400).send(error.details[0].message)
+    return
+  }
 
   theme.id = parseInt(req.params.id, 10)
-
-  models.themes
-    .update(theme)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404)
+  fs.rename(
+    `./public/uploads/${filename}`,
+    `./public/uploads/${originalname}`,
+    (err) => {
+      if (err) {
+        console.error(err)
+        res.sendStatus(500)
       } else {
-        res.sendStatus(204)
+        models.themes
+          .update(theme)
+          .then(([result]) => {
+            if (result.affectedRows === 0) {
+              res.sendStatus(404)
+            } else {
+              res.sendStatus(204)
+            }
+          })
+          .catch((err) => {
+            console.error(err)
+            res.sendStatus(500)
+          })
       }
-    })
-    .catch((err) => {
-      console.error(err)
-      res.sendStatus(500)
-    })
+    }
+  )
+  theme.picture_theme = `/public/uploads/${originalname}`
 }
 
 const add = (req, res) => {
   const theme = req.body
+  const { originalname } = req.file
+  const { filename } = req.file
+  const schema = Joi.object({
+    archive_theme: Joi.number().integer().min(0).max(1).required(),
+  })
 
-  // TODO validations (length, format...)
+  const { error } = schema.validate({ archive_theme: theme.archive_theme })
 
-  models.themes
-    .insert(theme)
-    .then(([result]) => {
-      res.location(`/themes/${result.insertId}`).sendStatus(201)
-    })
-    .catch((err) => {
-      console.error(err)
-      res.sendStatus(500)
-    })
+  if (error) {
+    res.status(400).send(error.details[0].message)
+    return
+  }
+
+  theme.id = parseInt(req.params.id, 10)
+  fs.rename(
+    `./public/uploads/${filename}`,
+    `./public/uploads/${originalname}`,
+    (err) => {
+      if (err) {
+        console.error(err)
+        res.sendStatus(500)
+      } else {
+        models.themes
+          .insert(theme)
+          .then(([result]) => {
+            if (result.affectedRows === 0) {
+              res.sendStatus(404)
+            } else {
+              res.sendStatus(204)
+            }
+          })
+          .catch((err) => {
+            console.error(err)
+            res.sendStatus(500)
+          })
+      }
+    }
+  )
+  theme.picture_theme = `/public/uploads/${originalname}`
 }
 
 const destroy = (req, res) => {

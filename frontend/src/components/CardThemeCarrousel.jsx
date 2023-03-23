@@ -38,7 +38,10 @@ export default function CardThemeCarrousel(props) {
             </div>
             <div className="descriptResp">
               <h3 className="descript">{props.description_theme}</h3>
-              <img src={props.picture_theme} className="imageDescript" />
+              <img
+                src={import.meta.env.VITE_BACKEND_URL + props.picture_theme}
+                className="imageDescript"
+              />
             </div>
             <div className="cadreBas">
               <img src={cadreBG} className="cadre" />

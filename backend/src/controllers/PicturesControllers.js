@@ -1,4 +1,5 @@
 const models = require('../models')
+const fs = require('fs')
 
 const browse = (req, res) => {
   models.pictures
@@ -30,40 +31,74 @@ const read = (req, res) => {
 
 const edit = (req, res) => {
   const picture = req.body
+  const { originalname } = req.file
+  const { filename } = req.file
 
   // TODO validations (length, format...)
 
   picture.id = parseInt(req.params.id, 10)
-
-  models.pictures
-    .update(picture)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404)
+  fs.rename(
+    `./public/uploads/${filename}`,
+    `./public/uploads/${originalname}`,
+    (err) => {
+      if (err) {
+        console.error(err)
+        res.sendStatus(500)
       } else {
-        res.sendStatus(204)
+        models.pictures
+          .update(picture)
+          .then(([result]) => {
+            if (result.affectedRows === 0) {
+              res.sendStatus(404)
+            } else {
+              res.sendStatus(204)
+            }
+          })
+          .catch((err) => {
+            console.error(err)
+            res.sendStatus(500)
+          })
       }
-    })
-    .catch((err) => {
-      console.error(err)
-      res.sendStatus(500)
-    })
+    }
+  )
+  picture.url_img = `/public/uploads/${originalname}`
+  picture.name_img = `${originalname}`
 }
 
 const add = (req, res) => {
   const picture = req.body
+  const { originalname } = req.file
+  const { filename } = req.file
 
   // TODO validations (length, format...)
 
-  models.pictures
-    .insert(picture)
-    .then(([result]) => {
-      res.location(`/pictures/${result.insertId}`).sendStatus(201)
-    })
-    .catch((err) => {
-      console.error(err)
-      res.sendStatus(500)
-    })
+  picture.id = parseInt(req.params.id, 10)
+  fs.rename(
+    `./public/uploads/${filename}`,
+    `./public/uploads/${originalname}`,
+    (err) => {
+      if (err) {
+        console.error(err)
+        res.sendStatus(500)
+      } else {
+        models.pictures
+          .insert(picture)
+          .then(([result]) => {
+            if (result.affectedRows === 0) {
+              res.sendStatus(404)
+            } else {
+              res.sendStatus(204)
+            }
+          })
+          .catch((err) => {
+            console.error(err)
+            res.sendStatus(500)
+          })
+      }
+    }
+  )
+  picture.url_img = `/public/uploads/${originalname}`
+  picture.name_img = `${originalname}`
 }
 
 const destroy = (req, res) => {
