@@ -18,16 +18,38 @@ class ThemesManager extends AbstractManager {
   }
 
   update(theme) {
-    return this.database.query(
-      `update ${this.table} set name_theme = ?, description_theme = ?, picture_theme = ?, archive_theme = ?,  where id = ?`,
-      [
-        theme.name_theme,
-        theme.description_theme,
-        theme.picture_theme,
-        theme.archive_theme,
-        theme.id,
-      ]
-    )
+    const fields = []
+    const values = []
+
+    if (theme.name_theme !== undefined) {
+      fields.push('name_theme = ?')
+      values.push(theme.name_theme)
+    }
+
+    if (theme.description_theme !== undefined) {
+      fields.push('description_theme = ?')
+      values.push(theme.description_theme)
+    }
+
+    if (theme.picture_theme !== undefined) {
+      fields.push('picture_theme = ?')
+      values.push(theme.picture_theme)
+    }
+
+    if (theme.archive_theme !== undefined) {
+      fields.push('archive_theme = ?')
+      values.push(theme.archive_theme)
+    }
+
+    if (fields.length === 0) {
+      throw new Error('No fields to update')
+    }
+
+    values.push(theme.id)
+
+    const sql = `UPDATE ${this.table} SET ${fields.join(', ')} WHERE id = ?`
+
+    return this.database.query(sql, values)
   }
 }
 

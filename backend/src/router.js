@@ -1,4 +1,9 @@
 const express = require('express')
+
+const multer = require('multer')
+
+const upload = multer({ dest: 'public/uploads' })
+
 // const { verifyToken } = require('./services/argonHelper')
 const router = express.Router()
 
@@ -36,20 +41,31 @@ router.delete('/orders/:id', OrdersControllers.destroy)
 router.get('/hasorders', OrdersControllers.readHasOrder)
 router.get('/hasorders/:id', OrdersControllers.readOneHasOrder)
 // router.put('/hasorders/:id', OrdersControllers.edit)
-// router.post('/hasorders', OrdersControllers.add)
+router.post('/hasorders', OrdersControllers.add)
 router.delete('/hasorders/:id', OrdersControllers.destroy)
 
 router.get('/pictures', PicturesControllers.browse)
 router.get('/pictures/:id', PicturesControllers.read)
-router.put('/pictures/:id', PicturesControllers.edit)
-router.post('/pictures', PicturesControllers.add)
+router.put('/pictures/:id', upload.single('url_img'), PicturesControllers.edit) // ok
+router.post('/pictures/', upload.single('url_img'), PicturesControllers.add) // ok
+
+// router.post('/pictures', upload.single('moi'), (req, res) => {
+//   if (!req.file) {
+//     return res.status(400).send('No file was uploaded.')
+//   }
+// })
+// app.post('/upload', upload.single('photo'),
 router.delete('/pictures/:id', PicturesControllers.destroy)
 
 router.get('/themes', ThemesControllers.browse)
-router.get('/themes/:id', ThemesControllers.read)
-router.put('/themes/:id', ThemesControllers.edit)
-router.post('/themes', ThemesControllers.add)
-router.delete('/themes/:id', ThemesControllers.destroy)
+router.get('/themes/:id', ThemesControllers.read) // ok
+router.put(
+  '/themes/:id',
+  upload.single('picture_theme'),
+  ThemesControllers.edit
+)
+router.post('/themes', upload.single('picture_theme'), ThemesControllers.add) // ok
+router.delete('/themes/:id', ThemesControllers.destroy) // ok
 
 router.get('/users', UsersControllers.browse)
 router.get('/users/:id', UsersControllers.read)
@@ -71,7 +87,7 @@ router.get('/cart/:id', CartControllers.read) // OK - pour visualiser tout le pa
 // router.post('/cart', CartControllers.add) // NON FAIT - à utiliser pour attribuer un cart à chaque nouveau user
 // router.delete('/cart/:id', CartControllers.destroy)// NON FAIT - pas necessaire sauf si possibilité au client de supprimer son profil
 
-router.get('/hascart/:id', CartControllers.readHasCart) // OK - pas necessaire mais pour tester
+router.get('/hascart/:id', CartControllers.readHasCart) // OK nécessaire pour récupérer les infos et incrémenter la table orders
 router.put('/hascart/:id', CartControllers.editHasCart) // OK pour modifier la quantité d'un article du panier
 router.post('/hascart', CartControllers.addHasCart) // OK - permet d'ajouter des artifacts au panier
 router.delete('/hascart/:id', CartControllers.destroyHasCart) // OK - pour supprimer un article au panier

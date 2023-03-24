@@ -82,14 +82,16 @@ export default function Artifacts() {
         <div className="divArtifactsEshop">
           {filteredValue === ""
             ? artiSelect.map((arti) => (
-                <EshopCard
-                  key={arti.id}
-                  id={arti.id}
-                  images={arti.images}
-                  name_arti={arti.name_arti}
-                  price={arti.price}
-                  onClick={() => handleCardClick(arti)}
-                />
+                <div className="eshop-card-wrapper" key={arti.id}>
+                  <EshopCard
+                    key={arti.id}
+                    id={arti.id}
+                    images={arti.images}
+                    name_arti={arti.name_arti}
+                    price={arti.price}
+                    onClick={() => handleCardClick(arti)}
+                  />
+                </div>
               ))
             : artiSelect.filter((arti) =>
                 arti.themesAll.includes(filteredValue)
@@ -97,13 +99,15 @@ export default function Artifacts() {
             ? artiSelect
                 .filter((arti) => arti.themesAll.includes(filteredValue))
                 .map((arti) => (
-                  <EshopCard
-                    key={arti.id}
-                    id={arti.id}
-                    images={arti.images}
-                    name_arti={arti.name_arti}
-                    price={arti.price}
-                  />
+                  <div className="eshop-card-wrapper" key={arti.id}>
+                    <EshopCard
+                      key={arti.id}
+                      id={arti.id}
+                      images={arti.images}
+                      name_arti={arti.name_arti}
+                      price={arti.price}
+                    />
+                  </div>
                 ))
             : filteredValue !== "" && (
                 <p className="articleNone">

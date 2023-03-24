@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  // padding: 50px;
 
   .Image {
     display: flex;
@@ -41,12 +42,15 @@
     position: relative;
     filter: drop-shadow(8px 11px 2px var(--background-color));
     z-index: 1;
-    top: 132px;
+    top: 350px;
     color: var(--main-color);
     font-family: var(--font3);
-    font-size: 20px;
+    font-size: var(--desktop-size4);
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
+    // h2 {
+    //   width: 154px;
+    // }
   }
 
   .Eshop-Price {

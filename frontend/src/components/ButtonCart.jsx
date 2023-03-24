@@ -17,7 +17,6 @@ function ButtonCart(props) {
         artifacts_id: idArti,
         quantity: 1,
       })
-
       .then((res) => setAddCart(res.data))
       .catch((err) => console.error(err))
   }
