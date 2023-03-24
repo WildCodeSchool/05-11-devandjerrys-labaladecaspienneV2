@@ -11,6 +11,8 @@ function ModalConnexion({ isOpen, closeModal }) {
   const [showCreateAccount, setShowCreateAccount] = useState(false)
   const token = localStorage.getItem("token")
 
+  console.info(token)
+
   const handleClick = (e) => {
     e.preventDefault()
     if (!isOpen) {
