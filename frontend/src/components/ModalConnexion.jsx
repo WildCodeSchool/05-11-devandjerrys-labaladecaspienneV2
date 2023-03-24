@@ -9,6 +9,7 @@ function ModalConnexion({ isOpen, closeModal }) {
   const [setNewUser] = useState("")
   const navigate = useNavigate()
   const [showCreateAccount, setShowCreateAccount] = useState(false)
+  const token = localStorage.getItem("token")
 
   const handleClick = (e) => {
     e.preventDefault()
@@ -51,7 +52,7 @@ function ModalConnexion({ isOpen, closeModal }) {
           localStorage.setItem("res.data.insertId", res.data.insertId)
           const newUserId = res.data.insertId
           navigate(`/useraccount/${newUserId}`)
-          alert("Votre compte a été créé avec succès!")
+          alert("Veuillez créer un compte!")
           closeModal(false)
         } else {
           alert("Votre compte a été créé avec succès!")

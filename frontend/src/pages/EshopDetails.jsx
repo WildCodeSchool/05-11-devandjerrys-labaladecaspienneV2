@@ -89,6 +89,9 @@ export default function EshopDetails() {
             <div className="Esd-price">
               <p>{artifactChosen.price}€</p>
             </div>
+            <div>
+              <img className="E-deco2" src={Deco2} alt="décoration" />
+            </div>
             <div className="Esd-share">
               <div className="E-Share">
                 <Share />
@@ -100,7 +103,7 @@ export default function EshopDetails() {
               <p>Livraison en</p>
               <p>1 à 2 semaines</p>
             </div>
-            <div> </div>
+
             <div className="Esd-stock">
               <p>
                 En stock
@@ -110,9 +113,6 @@ export default function EshopDetails() {
             </div>
             <div className="Esd-bttn">
               <ButtonCart artifactChosen={artifactChosen} />
-            </div>
-            <div>
-              <img className="E-deco2" src={Deco2} alt="décoration" />
             </div>
           </div>
         </div>

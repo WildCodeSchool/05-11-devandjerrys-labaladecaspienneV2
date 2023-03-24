@@ -53,11 +53,8 @@ router.delete('/themes/:id', ThemesControllers.destroy)
 
 router.get('/users', UsersControllers.browse)
 router.get('/users/:id', UsersControllers.read)
-router.post(
-  '/users/login/',
-
-  UsersControllers.login
-)
+router.post('/users/login/', UsersControllers.login)
+router.get('/logout', UsersControllers.logout)
 // vérifier avec le front si la connexion est ok
 router.post('/users', UsersControllers.add)
 // Routes à protéger**************************
