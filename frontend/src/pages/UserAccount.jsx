@@ -21,7 +21,6 @@ export default function UserAccount() {
   useEffect(() => {
     axios.get(`http://localhost:5000/users/${id}/orders`).then((response) => {
       setUserOrder(response.data)
-      // console.log(userOrder)
     })
   }, [id])
 
@@ -30,18 +29,22 @@ export default function UserAccount() {
     axios
       .put(`http://localhost:5000/users/${id}`, userData)
       .then((response) => {
-        // console.log("Poulette", response.data)
         setUserData(response.data)
         setIsEditing(false)
-      })
-      .catch((error) => {
-        console.error("Erreur :", error)
+        console.info("BIBI", id)
+        alert("Votre profil a été mis à jour")
+        window.location.href = `/eshop`
       })
 
     axios.get(`http://localhost:5000/users/${id}`).then((response) => {
       setUserOrder(response.data)
     })
   }
+  function handleLogout() {
+    localStorage.removeItem("token")
+    window.location.href = "/home"
+  }
+
   return (
     <>
       <Header />
@@ -72,7 +75,9 @@ export default function UserAccount() {
                         })
                       }
                     />
-                    <button type="submit">Enregistrer</button>
+                    <button onClick={() => setIsEditing(true)}>
+                      Enregistrer
+                    </button>
                   </form>
                 ) : (
                   <div>
@@ -111,6 +116,9 @@ export default function UserAccount() {
                     </div>
                   ))
                 )}
+                <div>
+                  <button onClick={handleLogout}>Se deconnecter</button>
+                </div>
               </div>
             </div>
           </div>

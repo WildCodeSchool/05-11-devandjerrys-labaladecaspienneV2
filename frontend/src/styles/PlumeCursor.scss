@@ -1,0 +1,16 @@
+// body {
+//   cursor: none;
+// }
+
+.plume-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  // height: 400px;
+  pointer-events: none;
+  // cursor: none;
+  z-index: 9999;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%)
+    contrast(100%);
+}
