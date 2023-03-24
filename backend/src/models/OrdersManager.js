@@ -68,7 +68,7 @@ class OrdersManager extends AbstractManager {
 
   findOrderByUser(id) {
     return this.database.query(
-      `SELECT id, num_cmd, comments_id, users_id, order_amount 
+      `SELECT id, num_cmd, comments_id, users_id, orderAmount 
       FROM ${this.table} WHERE   users_id = ?`,
       [id]
     )

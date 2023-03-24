@@ -44,7 +44,7 @@ export default function EshopDetails() {
         <Header />
       </div>
       <div className="Esd-All" key={artifactChosen.id}>
-        <div className="E-Title">
+        <div className="titleHeadEshop">
           <h3>LA BALADE CASPIENNE</h3>
           <img className="E-deco" src={Deco} alt="décoration" />
           <h2>{artifactChosen.name_arti}</h2>
