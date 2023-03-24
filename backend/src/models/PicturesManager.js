@@ -7,27 +7,15 @@ class PicturesManager extends AbstractManager {
 
   insert(picture) {
     return this.database.query(
-      picture.price,
-      `insert into ${this.table} (name_img, url_img, is_active, artifacts_id) values (?, ?, ?, ?)`,
-      [
-        picture.name_img,
-        picture.url_img,
-        picture.is_active,
-        picture.artifacts_id,
-      ]
+      `insert into ${this.table} (name_img, url_img, artifacts_id) values (?, ?, ?)`,
+      [picture.name_img, picture.url_img, picture.artifacts_id]
     )
   }
 
   update(picture) {
     return this.database.query(
-      `update ${this.table} set name_img = ?, url_img = ?, is_active = ?, artifacts_id = ?, where id = ?`,
-      [
-        picture.name_img,
-        picture.url_img,
-        picture.is_active,
-        picture.artifacts_id,
-        picture.id,
-      ]
+      `update ${this.table} set name_img = ?, url_img = ?, artifacts_id = ? where id = ?`,
+      [picture.name_img, picture.url_img, picture.artifacts_id, picture.id]
     )
   }
 }

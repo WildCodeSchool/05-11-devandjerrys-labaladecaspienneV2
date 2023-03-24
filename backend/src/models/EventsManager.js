@@ -31,26 +31,33 @@ class EventsManager extends AbstractManager {
   insert(event) {
     return this.database.query(
       event.price,
-      `insert into ${this.table} (name_event, date_event, description_event, picture_event, archive_event) values (?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (name_event, description_event, date_event_begginning, date_event_end, place_event, picture_event, archive_event, link_event) values (?, ?, ?, ?, ?)`,
       [
         event.name_event,
-        event.date_event,
         event.description_event,
+        event.date_event_begginning,
+        event.date_event_end,
+        event.place_event,
         event.picture_event,
         event.archive_event,
+        event.link_event,
+        event.id,
       ]
     )
   }
 
   update(event) {
     return this.database.query(
-      `update ${this.table} set name_event = ?, date_event = ?, description_event = ?, picture_event = ?, archive_event = ? where id = ?`,
+      `update ${this.table} set name_event = ?, description_event = ?, date_event_begginning = ?, date_event_end = ?, place_event = ?, picture_event = ?, archive_event = ? link_event = ? where id = ?`,
       [
         event.name_event,
-        event.date_event,
         event.description_event,
+        event.date_event_begginning,
+        event.date_event_end,
+        event.place_event,
         event.picture_event,
         event.archive_event,
+        event.link_event,
         event.id,
       ]
     )

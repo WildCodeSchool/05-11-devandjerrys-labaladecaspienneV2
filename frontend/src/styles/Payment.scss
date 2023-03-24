@@ -69,6 +69,11 @@
   width: 5rem;
   object-fit: cover;
 }
+.disappear {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .formPayment {
   display: flex;
   flex-direction: column;

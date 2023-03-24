@@ -20,7 +20,11 @@ export default function EshopCard(props) {
         <section className="Image">
           <div
             className="ArtImage"
-            style={{ backgroundImage: `url(${props.images[0]})` }}
+            style={{
+              backgroundImage: `url(${
+                import.meta.env.VITE_BACKEND_URL + props.images[0]
+              })`,
+            }}
           >
             <img className="Frame" src={CadreEshop} alt={props.name_arti} />
             <img className="E-Star" src={Star} alt="étoile" />

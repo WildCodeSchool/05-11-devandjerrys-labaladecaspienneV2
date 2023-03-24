@@ -67,14 +67,16 @@ export default function Home() {
         <img id="image3" className="image" src={deco1}></img>
         <div className="card-theme">
           {themes.map((theme) => (
-            <CardTheme
-              key={theme.id}
-              id={theme.id}
-              picture_theme={theme.picture_theme}
-              name_theme={theme.name_theme}
-              description_theme={theme.description_theme}
-              onClick={() => openModal(theme.id)}
-            />
+            <div className="card-wrapper" key={theme.id}>
+              <CardTheme
+                key={theme.id}
+                id={theme.id}
+                picture_theme={theme.picture_theme}
+                name_theme={theme.name_theme}
+                description_theme={theme.description_theme}
+                onClick={() => openModal(theme.id)}
+              />
+            </div>
           ))}
 
           <Modal

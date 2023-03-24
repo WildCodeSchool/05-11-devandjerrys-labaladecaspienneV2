@@ -58,6 +58,10 @@
                     .Eshop {
                         transform: scale(0.7);
                         height: 200px;
+                        padding: 0;
+                        .Arti-name {
+                            display: none;
+                        }
                     }
                 }
             }
