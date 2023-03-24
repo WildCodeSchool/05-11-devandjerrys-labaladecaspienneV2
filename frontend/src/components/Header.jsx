@@ -49,15 +49,6 @@ function Header() {
             </span>
           </div>
         )}
-        {/* <Link className="linkHeader" to="/useraccount">
-          <div
-            className="itemsNavHeader"
-            onClick={isAuthenticated ? handleAuthClick : toggleModal}
-          >
-            {isAuthenticated ? "Me connecter" : "Mon profil"}
-          </div>
-        </Link> */}
-
         <img className="headerStar" src={star} alt="image" />
         <Link className="linkHeader" to="/cart">
           <p className="itemsNavHeader">Panier</p>

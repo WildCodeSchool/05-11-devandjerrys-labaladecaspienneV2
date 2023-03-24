@@ -40,7 +40,7 @@ const login = async (req, res) => {
         .json({ message: 'Authentication failed. User not found.' })
       return
     }
-    console.info(password, user[0].password, user[0].id)
+    console.info(password, user[0].hashedPassword, user[0].id)
     const passwordMatch = await argon2.verify(user[0].password, password)
 
     if (!passwordMatch) {
@@ -58,6 +58,10 @@ const login = async (req, res) => {
     console.error(err)
     res.sendStatus(500)
   }
+}
+const logout = (req, res) => {
+  localStorage.removeItem('token')
+  res.sendStatus(200)
 }
 
 const browse = (req, res) => {
@@ -157,4 +161,5 @@ module.exports = {
   add,
   destroy,
   login,
+  logout,
 }

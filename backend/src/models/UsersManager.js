@@ -26,26 +26,6 @@ class UsersManager extends AbstractManager {
     ])
   }
 
-  // getByEmail = async (email) => {
-  //   const sql = `
-  //     SELECT *
-  //     FROM users
-  //     WHERE email = ?
-  //   `
-  //   const [rows] = await this.database.query(sql, [email])
-  //   if (rows.length === 0) {
-  //     throw new Error('User not found')
-  //   }
-
-  //   return rows[0]
-  // }
-  // findByEmail(id) {
-  //   return this.database.query(
-  //     `SELECT id, email FROM ${this.table} WHERE id = ?`,
-  //     [id]
-  //   )
-  // }
-
   insert(user) {
     return this.database.query(
       `insert into ${this.table} (nickname, lastname, firstname, email, password, birthday, phone, number_delivery, adress_delivery, zip_delivery, town_delivery, country_delivery, number_bill, adress_bill, zip_bill, town_bill, country_bill, is_admin ) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,? ,? , ?, ?, ?, ?)`,
