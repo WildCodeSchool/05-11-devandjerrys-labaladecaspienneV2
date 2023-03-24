@@ -33,7 +33,7 @@ class OrdersManager extends AbstractManager {
 
   findOneOrder(id) {
     return this.database.query(
-      `SELECT  u.lastname, u.firstname, u.email, u.phone, u.number_delivery, u.adress_delivery, u.zip_delivery, u.town_delivery, o.order_amount, a.name_arti ,oha.quantity
+      `SELECT  u.lastname, u.firstname, u.email, u.phone, u.number_delivery, u.adress_delivery, u.zip_delivery, u.town_delivery, o.orderAmount, a.name_arti ,oha.quantity
       FROM orders AS o
       JOIN users AS u ON o.users_id = u.id
       JOIN orders_has_artifact AS oha ON oha.orders_id = o.id
