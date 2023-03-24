@@ -1,4 +1,5 @@
 const express = require('express')
+const fs = require('fs')
 
 const multer = require('multer')
 
@@ -49,12 +50,29 @@ router.get('/pictures/:id', PicturesControllers.read)
 router.put('/pictures/:id', upload.single('url_img'), PicturesControllers.edit) // ok
 router.post('/pictures/', upload.single('url_img'), PicturesControllers.add) // ok
 
-// router.post('/pictures', upload.single('moi'), (req, res) => {
-//   if (!req.file) {
-//     return res.status(400).send('No file was uploaded.')
-//   }
-// })
-// app.post('/upload', upload.single('photo'),
+router.get('/avatar', (req, res) => {
+  // Vous pouvez remplacer cette partie par votre logique pour récupérer l'URL de l'image
+  const imageUrl = './public/uploads/Alexandra.jpg'
+
+  res.json({ imageUrl })
+})
+router.post('/avatar', upload.single('avatar'), (req, res) => {
+  const { originalname } = req.file
+
+  // On récupère le nom du fichier
+  const { filename } = req.file
+
+  // On utilise la fonction rename de fs pour renommer le fichier
+  fs.rename(
+    `./public/uploads/${filename}`,
+    `./public/uploads/${originalname}`,
+    (err) => {
+      if (err) throw err
+      res.send('File uploaded')
+    }
+  )
+})
+
 router.delete('/pictures/:id', PicturesControllers.destroy)
 
 router.get('/themes', ThemesControllers.browse)

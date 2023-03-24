@@ -4,11 +4,11 @@ import axios from "axios"
 
 function ButtonCart(props) {
   const [addCart, setAddCart] = useState([])
-  const [idArti, setIdArti] = useState(props.artifacts_id)
+  const [idArti, setIdArti] = useState(props.artifactChosen.id)
 
   useEffect(() => {
-    setIdArti(props.artifacts_id)
-  }, [props.artifacts_id])
+    setIdArti(props.artifactChosen.id)
+  }, [props.artifactChosen.id])
 
   const handleClick = () => {
     axios
