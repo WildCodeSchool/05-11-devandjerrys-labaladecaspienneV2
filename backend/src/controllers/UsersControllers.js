@@ -40,7 +40,7 @@ const login = async (req, res) => {
         .json({ message: 'Authentication failed. User not found.' })
       return
     }
-    console.info(password, user[0].password, user[0].id)
+    console.info(password, user[0].hashedPassword, user[0].id)
     const passwordMatch = await argon2.verify(user[0].password, password)
 
     if (!passwordMatch) {
