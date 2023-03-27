@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react"
 
-import Plume from "../assets/Images/plume.svg"
+import Plume from "../assets/Images/plume.png"
 
 function PlumeCursor() {
   const plumeRef = useRef(null)
