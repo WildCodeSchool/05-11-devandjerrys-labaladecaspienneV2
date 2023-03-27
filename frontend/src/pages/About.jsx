@@ -33,6 +33,9 @@ export default function About() {
         <p className="titleHeadEshop">LA BALADE CASPIENNE</p>
         <img className="lineTitleEshop" src={LineTop} alt="image" />
         <h2 className="nameH">Alexandra Panastier</h2>
+        <div className="divAboutShare">
+          <Share />
+        </div>
         <Link to="/events">
           <div className="AboutEvent">
             Calendrier des évènements pour rencontrer l'artiste
@@ -97,9 +100,6 @@ export default function About() {
           <PlayerVideo />
           <img className="videoAngle" src={LineTop} alt="image" />
         </div>
-      </div>
-      <div className="divAboutShare">
-        <Share />
       </div>
       <Burger />
       <Footer />
