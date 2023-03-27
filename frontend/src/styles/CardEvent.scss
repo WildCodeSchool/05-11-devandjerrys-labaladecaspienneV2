@@ -6,12 +6,13 @@
   //   align-items: space-around;
   //   justify-content: space-around;
   padding: 30px;
-  opacity: 1;
-  transition: opacity 3s ease-in-out;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
   //   width: 230px;
   //   height: 30px;
   margin-right: 0;
-
+  display: none;
+  visibility: collapse;
   //   border-radius: 50%;
   //   background: var(--third-color);
   //   -webkit-filter: blur(50px);
@@ -20,6 +21,11 @@
   //   -ms-filter: blur(60px);
   //   filter: blur(60px);
   //   animation: blinkIt 0.1s infinite;
+}
+.card-event.show {
+  opacity: 1;
+  visibility: visible;
+  display: block;
 }
 
 .event-container .event {

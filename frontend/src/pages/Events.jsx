@@ -10,6 +10,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 
 export default function Events() {
+  // Connexion BDD
   const [events, setEvents] = useState([])
   useEffect(() => {
     axios.get("http://localhost:5000/events").then((response) => {
@@ -17,7 +18,13 @@ export default function Events() {
     })
   }, [])
 
+  // Animation affichage
   const [show, setShow] = useState(false)
+  const handleShow = () => {
+    setTimeout(() => {
+      setShow(!show)
+    }, 100)
+  }
 
   // Etats pour la pagination
   // const [page, setPage] = useState(1) // Pagination en cours
@@ -89,9 +96,9 @@ export default function Events() {
           Pour faire la lumière sur les prochains évènements ou conventions où
           vous pouvez me retrouver, cliquez sur la bougie...
         </div>
-        {show && (
-          <div className="card-event show">
-            {/* <div className="event-container">
+        {/* {show && ( */}
+        <div className={`card-event ${show ? "show" : ""}`}>
+          {/* <div className="event-container">
               <div className="event">
                 <div className="event-left">
                   <div className="event-date">
@@ -135,63 +142,63 @@ export default function Events() {
                 </div>
               </div>
             </div> */}
-            {events.map((event) => {
-              const eventDate = new Date(event.date_event_begginning)
-              if (eventDate >= new Date()) {
-                return (
-                  <CardEvent
-                    key={event.id}
-                    picture_event={event.picture_event}
-                    name_event={event.name_event}
-                    description_event={event.description_event}
-                    date_event_begginning={event.date_event_begginning}
-                    place_event={event.place_event}
-                    link_event={event.link_event}
-                  />
-                )
-              } else {
-                return null
-              }
-            })}
-          </div>
-        )}
-        {show && (
-          <div className="eventsHistory show">
-            <h3 className="eventTitle">Evènements passés</h3>
-            <img
-              className="lineTitleEvent"
-              src={LineTop}
-              alt="ligne de séparation"
-            />
-
-            {/* Pagination pour les événements passés */}
-            <div className="pagination">
-              {pastEventYears.map((year) => (
-                <button
-                  key={year}
-                  className="listPast"
-                  onClick={() => setShow(year === show ? false : year)}
-                >
-                  {year}
-                </button>
-              ))}
-            </div>
-
-            {/* Affichage des événements passés pour chaque année */}
-            {pastEventYears.map((year) => {
-              const eventsByYear = pastEvents.filter(
-                (event) =>
-                  new Date(event.date_event_begginning).getFullYear() === year
-              )
+          {events.map((event) => {
+            const eventDate = new Date(event.date_event_begginning)
+            if (eventDate >= new Date()) {
               return (
-                show === year && (
-                  <EventsByYear key={year} year={year} events={eventsByYear} />
-                )
+                <CardEvent
+                  key={event.id}
+                  picture_event={event.picture_event}
+                  name_event={event.name_event}
+                  description_event={event.description_event}
+                  date_event_begginning={event.date_event_begginning}
+                  place_event={event.place_event}
+                  link_event={event.link_event}
+                />
               )
-            })}
+            } else {
+              return null
+            }
+          })}
+        </div>
+        {/* )} */}
+        {/* {show && ( */}
+        <div className={`card-event ${show ? "show" : ""}`}>
+          <h3 className="eventTitle">Evènements passés</h3>
+          <img
+            className="lineTitleEvent"
+            src={LineTop}
+            alt="ligne de séparation"
+          />
 
-            {/* Pagination cliquable pour les événements passés */}
-            {/* <div className="pagination">
+          {/* Pagination pour les événements passés */}
+          <div className="pagination">
+            {pastEventYears.map((year) => (
+              <button
+                key={year}
+                className="listPast"
+                onClick={() => setShow(year === show ? false : year)}
+              >
+                {year}
+              </button>
+            ))}
+          </div>
+
+          {/* Affichage des événements passés pour chaque année */}
+          {pastEventYears.map((year) => {
+            const eventsByYear = pastEvents.filter(
+              (event) =>
+                new Date(event.date_event_begginning).getFullYear() === year
+            )
+            return (
+              show === year && (
+                <EventsByYear key={year} year={year} events={eventsByYear} />
+              )
+            )
+          })}
+
+          {/* Pagination cliquable pour les événements passés */}
+          {/* <div className="pagination">
               {Array.from({ length: pageCount }, (_, i) => (
                 <button key={i + 1} onClick={() => setPage(i + 1)}>
                   {pastEventYears[i]}
@@ -199,8 +206,8 @@ export default function Events() {
               ))}
             </div> */}
 
-            {/* Affichage des événements passés pour la page en cours */}
-            {/* {displayedEvents.map((event) => (
+          {/* Affichage des événements passés pour la page en cours */}
+          {/* {displayedEvents.map((event) => (
               <CardEvent
                 key={event.id}
                 picture_event={event.picture_event}
@@ -212,7 +219,7 @@ export default function Events() {
               />
             ))} */}
 
-            {/* <ul className="listPast" role={"tablist"}>
+          {/* <ul className="listPast" role={"tablist"}>
               <li>
                 <a
                   href="#tab_2023"
@@ -238,11 +245,12 @@ export default function Events() {
                 </a>
               </li>
             </ul> */}
-          </div>
-        )}
+        </div>
+        {/* )} */}
       </div>
+      {/* Bougies-bouton pour afficher/masquer les éléments */}
       <div className="holder">
-        <div className="candle" onClick={() => setShow(!show)}>
+        <div className="candle" onClick={handleShow}>
           {show && <div className="blinking-glow"></div>}
           <div className="thread"></div>
           {show && <div className="glow"></div>}
