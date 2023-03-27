@@ -59,6 +59,10 @@ const login = async (req, res) => {
     res.sendStatus(500)
   }
 }
+const logout = (req, res) => {
+  localStorage.removeItem('token')
+  res.sendStatus(200)
+}
 
 const browse = (req, res) => {
   models.users
@@ -157,4 +161,5 @@ module.exports = {
   add,
   destroy,
   login,
+  logout,
 }

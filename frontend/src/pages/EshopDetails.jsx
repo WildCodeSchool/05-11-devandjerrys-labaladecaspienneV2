@@ -2,7 +2,6 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Burger from "../components/Burger"
 import Share from "@components/Share"
-import Deco from "../assets/Images/deco.png"
 import Deco2 from "../assets/Images/head_line.png"
 import Star from "../assets/Images/brown_star.png"
 import { useState, useEffect } from "react"
@@ -42,13 +41,19 @@ export default function EshopDetails() {
     <div>
       <div className="Esd-Header">
         <Header />
+      </div>{" "}
+      <div className="divHeadEshop">
+        <div>
+          <p className="titleHeadEshop">LA BALADE CASPIENNE</p>
+        </div>
+        <div>
+          <img className="lineTitleEshop" src={Deco2} alt="image" />
+        </div>
       </div>
       <div className="Esd-All" key={artifactChosen.id}>
-        <div className="E-Title">
-          <h3>LA BALADE CASPIENNE</h3>
-          <img className="E-deco" src={Deco} alt="décoration" />
+        <div className="titleHeadEshop1">
           <h2>{artifactChosen.name_arti}</h2>
-          <img className="E-deco" src={Deco2} alt="décoration" />
+          <img className="lineTitleEshop" src={Deco2} alt="décoration" />
           <div className="E-desciption">
             <div className="Esd-text">
               <p>Description : {artifactChosen.description_arti}</p>
@@ -99,6 +104,9 @@ export default function EshopDetails() {
             <div className="Esd-price">
               <p>{artifactChosen.price}€</p>
             </div>
+            <div>
+              {/* <img className="lineTitleEshop" src={Deco2} alt="décoration" /> */}
+            </div>
             <div className="Esd-share">
               <div className="E-Share">
                 <Share />
@@ -110,7 +118,7 @@ export default function EshopDetails() {
               <p>Livraison en</p>
               <p>1 à 2 semaines</p>
             </div>
-            <div> </div>
+
             <div className="Esd-stock">
               <p>
                 En stock
@@ -120,9 +128,6 @@ export default function EshopDetails() {
             </div>
             <div className="Esd-bttn">
               <ButtonCart artifactChosen={artifactChosen} />
-            </div>
-            <div>
-              <img className="E-deco2" src={Deco2} alt="décoration" />
             </div>
           </div>
         </div>

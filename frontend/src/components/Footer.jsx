@@ -15,7 +15,11 @@ function Footer() {
       {/* <img className="wave " src={wave} alt="greenWave" /> */}
       <div className="mainDivFooter">
         <img className="footerAngle angleL" src={angleR} alt="image" />
-        <a href="https://www.instagram.com" target="_blank" rel="noreferrer">
+        <a
+          href="https://www.instagram.com/sashakayaaa/"
+          target="_blank"
+          rel="noreferrer"
+        >
           <img src={Insta} className="icon" alt="instagram Logo" />
         </a>
         <img className="footerStar" src={star} alt="image" />
