@@ -62,7 +62,7 @@ function Theme({ id }) {
                   <input
                     className="buttonCart"
                     type="button"
-                    value="Voir les autres artifacts"
+                    value="Voir les autres artéfacts"
                     onClick={() => handleButtonClick(themeChosen?.name_theme)}
                   />
                 </Link>
