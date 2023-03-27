@@ -21,9 +21,9 @@ export default function Events() {
   // Animation affichage
   const [show, setShow] = useState(false)
   const handleShow = () => {
-    setTimeout(() => {
-      setShow(!show)
-    }, 100)
+    // setTimeout(() => {
+    setShow(!show)
+    // }, 100)
   }
 
   // Etats pour la pagination
@@ -97,7 +97,13 @@ export default function Events() {
           vous pouvez me retrouver, cliquez sur la bougie...
         </div>
         {/* {show && ( */}
-        <div className={`card-event ${show ? "show" : ""}`}>
+        <div
+          className={`card-event ${show ? "show" : ""}`}
+          style={{
+            opacity: show ? 1 : 0,
+            transition: "opacity 0.5s ease-in-out",
+          }}
+        >
           {/* <div className="event-container">
               <div className="event">
                 <div className="event-left">
