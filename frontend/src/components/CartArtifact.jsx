@@ -45,7 +45,10 @@ function CartArtifact(props) {
     <div className="MainCartArtifact1">
       <div className="MainCartArtifact2">
         <div className="CartArtifactImg">
-          <img src={props.url_img} alt={props.name_arti} />
+          <img
+            src={import.meta.env.VITE_BACKEND_URL + props.url_img}
+            alt={props.name_arti}
+          />
         </div>
         <div className="CartArtifactInfo">
           <div className="CartArtifactName">

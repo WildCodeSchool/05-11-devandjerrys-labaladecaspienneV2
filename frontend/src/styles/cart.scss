@@ -3,6 +3,16 @@
     flex-direction: column;
     align-items: center;
     color: var(--main-color);
+    .titleHeadEshop {
+        font-family: var(--font1);
+        font-size: 2em;
+        color: var(--main-color);
+        margin-top: 9vh;
+        margin-bottom: 0;
+    }
+    .lineTitleEshop {
+        width: 540px;
+    }
     .divCartArtifact {
         .totalPanier {
             width: 80vw;

@@ -39,9 +39,12 @@ function Theme({ id }) {
         <h1>{themeChosen?.name_theme}</h1>
         <div className="themeArtifacts">
           {(() => {
-            const filteredArtifacts = artiSelect.filter((arti) =>
-              arti.themesAll.includes(themeChosen?.name_theme)
-            )
+            const filteredArtifacts = artiSelect
+
+              .filter((arti) =>
+                arti.themesAll.includes(themeChosen?.name_theme)
+              )
+              .slice(0, 3)
             return filteredArtifacts.length > 0 ? (
               <div className="mainArtifactList">
                 <div className="artifactList">

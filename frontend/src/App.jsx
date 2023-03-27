@@ -14,10 +14,12 @@ import UserAccount from "./pages/UserAccountSecond"
 import Cart from "./pages/Cart"
 import Commande from "./components/UserInfo"
 import Payment from "./pages/Payment"
+import PlumeCursor from "@components/PlumeCursor"
 
 function App() {
   return (
     <div className="App">
+      <PlumeCursor />
       <Routes>
         <Route path="/" element={<Splash />} />
         <Route path="/home" element={<Home />} />
