@@ -2,7 +2,7 @@ const models = require('../models')
 
 const read = (req, res) => {
   models.orders
-    .findAll()
+    .findAllOrder()
     .then(([rows]) => {
       res.send(rows)
     })
