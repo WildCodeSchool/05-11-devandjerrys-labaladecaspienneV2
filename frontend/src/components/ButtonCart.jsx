@@ -5,6 +5,7 @@ function ButtonCart(props) {
   const [addCart, setAddCart] = useState([])
   const [idArti, setIdArti] = useState(props.artifactChosen.id)
   // const [userData, setUserData] = useState([])
+  console.info(addCart)
 
   useEffect(() => {
     setIdArti(props.artifactChosen.id)
@@ -16,7 +17,7 @@ function ButtonCart(props) {
   //     setUserData(response.data)
   //   })
   // }, [id])
-  ////////////////
+  //
 
   const handleClick = () => {
     axios

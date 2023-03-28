@@ -100,7 +100,6 @@ function Cart() {
   //   setTotalAmount(newTotalAmount)
   // }, [cartArti])
   // console.info("Total amount in Payment:", totalAmount)
-  /////////////////////////////////////////////////////
 
   return (
     <div className="mainCart">

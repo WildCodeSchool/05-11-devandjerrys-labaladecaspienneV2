@@ -1,14 +1,14 @@
+// eslint-disable-next-line
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Burger from "../components/Burger"
 import Share from "@components/Share"
 import Deco2 from "../assets/Images/head_line.png"
-import Star from "../assets/Images/brown_star.png"
+// import Star from "../assets/Images/brown_star.png"
 import { useState, useEffect } from "react"
 import axios from "axios"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import ButtonCart from "@components/ButtonCart"
-import { Link } from "react-router-dom"
 
 export default function EshopDetails() {
   const { id } = useParams()
