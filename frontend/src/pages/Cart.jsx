@@ -10,6 +10,8 @@ import { Link } from "react-router-dom"
 function Cart() {
   const [cartArti, setCartArti] = useState([])
   const [totalAmount, setTotalAmount] = useState()
+  // ------------Test get --------------------
+  // const [userId, setUserId] = useState(null)
 
   const getData = (id) => {
     axios
@@ -50,7 +52,55 @@ function Cart() {
   }, [cartArti])
   console.info("Total amount in Payment:", totalAmount)
 
-  // const
+  // ------------------- A TESTER QUAND CONNEXION OK ------------------------------
+  // const getData = () => {
+  //   axios
+  //     .get(`http://localhost:5000/cart/${userId}`)
+  //     .then((res) => setCartArti(res.data))
+  //     .catch((err) => console.error(err))
+  //   console.info("user id :", userId)
+  // }
+
+  // const updateCart = (id, quantity, isDeleted) => {
+  //   if (!isDeleted) {
+  //     const newQuantity = quantity
+  //     axios
+  //       .put(`http://localhost:5000/hascart/${id}`, { quantity: newQuantity })
+  //       .then((res) => {
+  //         setCartArti((prevState) =>
+  //           prevState.map((arti) =>
+  //             arti.id_cart_has_artifacts === id
+  //               ? { ...arti, quantity: newQuantity }
+  //               : arti
+  //           )
+  //         )
+  //       })
+  //       .catch((err) => console.error(err))
+  //   } else {
+  //     getData(userId)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   axios.get(`http://localhost:5000/users/${userId}`).then((response) => {
+  //     setUserData(response.data)
+  //   })
+  // }, [userId])
+
+  // useEffect(() => {
+  //   if (userId) {
+  //     getData()
+  //   }
+  // }, [userId])
+
+  // useEffect(() => {
+  //   const newTotalAmount = cartArti.reduce((acc, arti) => {
+  //     return acc + arti.price * arti.quantity
+  //   }, 0)
+  //   setTotalAmount(newTotalAmount)
+  // }, [cartArti])
+  // console.info("Total amount in Payment:", totalAmount)
+  /////////////////////////////////////////////////////
 
   return (
     <div className="mainCart">

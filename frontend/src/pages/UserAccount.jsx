@@ -111,7 +111,7 @@ export default function UserAccount() {
                     <div key={order.id}>
                       <p>N° commande : {order.num_cmd}</p>
                       <p> état : {order.status}</p>
-                      <p>Montant payé: {order.order_amount}€</p>
+                      <p>Montant payé: {order.orderAmount}€</p>
                       <img className="UserSeparator" src={Separator} alt="" />
                     </div>
                   ))

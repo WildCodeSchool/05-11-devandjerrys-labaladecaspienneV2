@@ -1,4 +1,4 @@
-// import { useLocation } from "react-router-dom"
+// QUAND SITE DEPLOYÉ à remplacer par > import { useLocation } from "react-router-dom"
 import { useState } from "react"
 import {
   FacebookShareButton,
@@ -16,7 +16,7 @@ import iconShare from "../assets/Images/share-white.png"
 import iconClose from "../assets/Images/close.png"
 
 function Share() {
-  //   const shareUrl = useLocation()
+  // QUAND SITE DEPLOYÉ à remplacer par > const shareUrl = useLocation()
   const shareUrl = "http://www.google.fr"
 
   const [isToggled, setToggled] = useState(false)
