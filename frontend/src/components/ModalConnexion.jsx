@@ -140,10 +140,7 @@ export default function ModalConnexion({ isOpen, closeModal }) {
                 Se connecter
               </button>
               {showCreateAccount ? (
-                <button
-                  className="MC-bttn"
-                  onClick={() => setShowCreateAccount(false)}
-                >
+                <button className="MC-bttn" onClick={handleCreateAccount}>
                   Créer un compte
                 </button>
               ) : null}
