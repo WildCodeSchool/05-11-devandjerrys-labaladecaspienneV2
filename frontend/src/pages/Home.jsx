@@ -62,7 +62,7 @@ export default function Home() {
           </p>
         </div>
         <img id="image2" className="image" src={deco1}></img>
-        <h2>Les Immaginaires</h2>
+        <h2>Les Imaginaires</h2>
 
         <img id="image3" className="image" src={deco1}></img>
         <div className="card-theme">
