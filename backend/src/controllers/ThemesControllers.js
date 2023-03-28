@@ -30,10 +30,29 @@ const read = (req, res) => {
 }
 
 const edit = (req, res) => {
+  const themeId = parseInt(req.params.id, 10)
   const theme = req.body
-  const { originalname } = req.file
-  const { filename } = req.file
 
+  if (req.file) {
+    const { originalname, filename } = req.file
+    theme.picture_theme = `/public/uploads/${originalname}`
+    fs.rename(
+      `./public/uploads/${filename}`,
+      `./public/uploads/${originalname}`,
+      (err) => {
+        if (err) {
+          console.error(err)
+          res.sendStatus(500)
+        }
+      }
+    )
+  }
+
+  theme.id = themeId
+
+  validateAndUpdateTheme(theme, res)
+}
+const validateAndUpdateTheme = (theme, res) => {
   const schema = Joi.object({
     archive_theme: Joi.number().integer().min(0).max(1).required(),
   })
@@ -45,32 +64,19 @@ const edit = (req, res) => {
     return
   }
 
-  theme.id = parseInt(req.params.id, 10)
-  fs.rename(
-    `./public/uploads/${filename}`,
-    `./public/uploads/${originalname}`,
-    (err) => {
-      if (err) {
-        console.error(err)
-        res.sendStatus(500)
+  models.themes
+    .update(theme)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404)
       } else {
-        models.themes
-          .update(theme)
-          .then(([result]) => {
-            if (result.affectedRows === 0) {
-              res.sendStatus(404)
-            } else {
-              res.sendStatus(204)
-            }
-          })
-          .catch((err) => {
-            console.error(err)
-            res.sendStatus(500)
-          })
+        res.sendStatus(204)
       }
-    }
-  )
-  theme.picture_theme = `/public/uploads/${originalname}`
+    })
+    .catch((err) => {
+      console.error(err)
+      res.sendStatus(500)
+    })
 }
 
 const add = (req, res) => {

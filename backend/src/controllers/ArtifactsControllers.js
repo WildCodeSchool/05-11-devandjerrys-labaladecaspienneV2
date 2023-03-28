@@ -75,7 +75,7 @@ const add = (req, res) => {
   models.artifacts
     .insert(artifact)
     .then(([result]) => {
-      res.location(`/artifacts/${result.insertId}`).sendStatus(201)
+      res.status(201).json({ id: result.insertId })
     })
     .catch((err) => {
       console.error(err)
