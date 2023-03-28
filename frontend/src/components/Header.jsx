@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import logo from "../assets/Images/logo_baladecaspienne.png"
 import star from "../assets/Images/brown_star.png"
@@ -10,6 +10,8 @@ import ModalConnexion from "./ModalConnexion"
 function Header() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [openModal, setOpenModal] = useState(false)
+  const token = localStorage.getItem("token")
+  const navigate = useNavigate()
 
   const toggleModal = () => {
     setOpenModal((prevState) => !prevState)
@@ -19,6 +21,15 @@ function Header() {
     setIsAuthenticated(!isAuthenticated)
   }
 
+  const handleMonProfilClick = () => {
+    const userData = JSON.parse(localStorage.getItem("userData"))
+
+    if (token) {
+      navigate(`/useraccount/${userData.id}`, token)
+    } else {
+      toggleModal()
+    }
+  }
   return (
     <div className="Header">
       <div className="mainDivHeader">
@@ -44,7 +55,7 @@ function Header() {
           </Link>
         ) : (
           <div className="linkHeader">
-            <span className="itemsNavHeader" onClick={toggleModal}>
+            <span className="itemsNavHeader" onClick={handleMonProfilClick}>
               Mon profil
             </span>
           </div>
@@ -56,7 +67,7 @@ function Header() {
         <img className="headerStar" src={star} alt="image" />
         <img className="headerAngle angleR" src={angleR} alt="image" />
       </div>
-      {openModal && (
+      {!token && (
         <ModalConnexion
           isOpen={openModal}
           closeModal={toggleModal}
@@ -66,4 +77,5 @@ function Header() {
     </div>
   )
 }
+
 export default Header

@@ -10,8 +10,9 @@ import Splash from "./pages/Splash"
 import Theme from "./components/Theme"
 import EshopDetails from "./pages/EshopDetails"
 import Events from "@pages/Events"
-import UserAccount from "./pages/UserAccount"
+import UserAccount from "./pages/UserAccountSecond"
 import Cart from "./pages/Cart"
+
 import Payment from "./pages/Payment"
 import PlumeCursor from "@components/PlumeCursor"
 
