@@ -16,6 +16,7 @@ const read = (req, res) => {
   models.cart
     .findOneCart(req.params.id)
     .then(([rows]) => {
+      console.info(rows)
       if (rows[0] == null) {
         res.status(200).send([])
       } else {
