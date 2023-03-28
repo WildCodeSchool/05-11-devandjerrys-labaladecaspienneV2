@@ -10,6 +10,7 @@
   background: var(--third-color);
   min-width: 82px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   color: var(--main-color);
@@ -26,6 +27,7 @@
 .event .event-left .month {
   font-size: 16px;
   font-weight: normal;
+  padding: 10px;
 }
 
 .event-right {
@@ -78,6 +80,7 @@
   .event-left {
     padding: 0;
     border-radius: 8px 8px 0 0;
+    flex-direction: row;
   }
   .event .event-left .event-date .date,
   .event .event-left .event-date .month {

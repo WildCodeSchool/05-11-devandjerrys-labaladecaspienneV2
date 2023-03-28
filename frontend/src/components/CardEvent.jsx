@@ -9,6 +9,14 @@ export default function CardEvent(props) {
       year: "numeric",
     })
     .replace(/^\w/, (c) => c.toUpperCase())
+
+  const dateEnd = new Date(props.date_event_end)
+  const formattedEnd = dateEnd.toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  })
+
   return (
     <div className="event-container">
       <div className="event">
@@ -17,6 +25,16 @@ export default function CardEvent(props) {
             <div className="date">{formattedDay}</div>
             <div className="month">{formattedMonthYear}</div>
           </div>
+          {props.date_event_end !== props.date_event_begginning && (
+            <div className="event-date">
+              {/* <div> - </div> */}
+              <div className="month">
+                <span> - </span>
+                {formattedEnd}
+              </div>
+              {/* <div className="month">{formattedMonthYear}</div> */}
+            </div>
+          )}
         </div>
         <div className="event-right">
           <h3 className="event-title">{props.name_event}</h3>

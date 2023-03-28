@@ -43,23 +43,34 @@ export default function Events() {
     transition: "opacity 0.8s ease-in-out",
   }
 
-  // Etats pour la pagination
-  // const [page, setPage] = useState(1) // Pagination en cours
-
   // Filtrer les événements passés
   const pastEvents = events.filter((event) => {
     const eventDate = new Date(event.date_event_begginning)
-    return eventDate.getFullYear() < new Date().getFullYear()
+    const currentYear = new Date().getFullYear()
+    return (
+      eventDate.getFullYear() < currentYear ||
+      (eventDate.getFullYear() === currentYear && eventDate < new Date())
+    )
   })
 
   // Obtenir la liste des années d'événements passés
-  const pastEventYears = [
+  let pastEventYears = [
     ...new Set(
       pastEvents.map((event) =>
         new Date(event.date_event_begginning).getFullYear()
       )
     ),
   ]
+
+  // // Vérifier si l'année en cours doit être ajoutée dans la liste des années passées
+  // const currentYear = new Date().getFullYear()
+  // const lastPastEventYear = pastEventYears[pastEventYears.length - 1]
+  // if (currentYear > lastPastEventYear) {
+  //   pastEventYears.push(currentYear)
+  // }
+
+  // Trier les années de manière décroissante
+  pastEventYears = pastEventYears.sort((a, b) => b - a)
 
   // Composant pour afficher les événements passés pour une année donnée
   const EventsByYear = ({ year, events }) => (
@@ -72,6 +83,7 @@ export default function Events() {
           name_event={event.name_event}
           description_event={event.description_event}
           date_event_begginning={event.date_event_begginning}
+          date_event_end={event.date_event_end}
           place_event={event.place_event}
           link_event={event.link_event}
         />
@@ -129,6 +141,7 @@ export default function Events() {
                     name_event={event.name_event}
                     description_event={event.description_event}
                     date_event_begginning={event.date_event_begginning}
+                    date_event_end={event.date_event_end}
                     place_event={event.place_event}
                     link_event={event.link_event}
                   />
