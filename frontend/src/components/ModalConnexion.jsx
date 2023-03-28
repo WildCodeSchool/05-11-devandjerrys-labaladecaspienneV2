@@ -10,7 +10,7 @@ export default function ModalConnexion({ isOpen, closeModal }) {
   const navigate = useNavigate()
   const [showCreateAccount, setShowCreateAccount] = useState(true)
   const token = localStorage.getItem("token")
-  console.info(token)
+  console.info("eeeeeeeeeee", token)
 
   const handleClick = (e) => {
     e.preventDefault()
@@ -46,47 +46,27 @@ export default function ModalConnexion({ isOpen, closeModal }) {
   const handleCreateAccount = (e) => {
     e.preventDefault()
 
-    // Vérifier si l'email existe déjà
     axios
-      .get(`http://localhost:5000/users?email=${email}`)
+      .post(`http://localhost:5000/users`, {
+        email: email,
+        password: password,
+      })
       .then((res) => {
-        if (res.data.length > 0) {
-          alert(
-            "Cet email est déjà utilisé. Veuillez utiliser un autre e-mail ou vous connecter avec votre compte."
-          )
-          return
+        if (res.data.insertId) {
+          setNewUser(true)
+          localStorage.setItem("res.data.insertId", res.data.insertId)
+          const userId = res.data.insertId
+          navigate(`/useraccount/${userId}`)
+          alert("Votre compte a été créé avec succès!") // Ajouter une alerte de confirmation
+          closeModal(false)
+          setShowCreateAccount(false) // Ajouter cette ligne pour masquer le bouton "Créer un compte"
+        } else {
+          alert("Une erreur est survenue lors de la création de votre compte.")
         }
-
-        // Sinon créer un nouveau compte utilisateur
-        axios
-          .post(`http://localhost:5000/users`, {
-            email: email,
-            password: password,
-          })
-          .then((res) => {
-            if (res.data.insertId) {
-              setNewUser(true)
-              localStorage.setItem("res.data.insertId", res.data.insertId)
-              const newUserId = res.data.insertId
-              navigate(`/useraccount/${newUserId}`)
-              alert("Votre compte a été créé avec succès!")
-              closeModal(false)
-            } else {
-              alert(
-                "Une erreur est survenue lors de la création de votre compte."
-              )
-            }
-          })
-          .catch((error) => {
-            console.error(error)
-            alert(
-              "Une erreur est survenue lors de la création de votre compte."
-            )
-          })
       })
       .catch((error) => {
         console.error(error)
-        alert("Une erreur est survenue lors de la vérification de l'email.")
+        alert("Une erreur est survenue lors de la création de votre compte.")
       })
   }
   const myFunction = () => {
@@ -140,7 +120,10 @@ export default function ModalConnexion({ isOpen, closeModal }) {
                 Se connecter
               </button>
               {showCreateAccount ? (
-                <button className="MC-bttn" onClick={handleCreateAccount}>
+                <button
+                  className="MC-bttn"
+                  onClick={() => setShowCreateAccount(false)}
+                >
                   Créer un compte
                 </button>
               ) : null}
@@ -148,7 +131,7 @@ export default function ModalConnexion({ isOpen, closeModal }) {
                 <button
                   className="MC-bttn"
                   // eslint-disable-next-line no-undef
-                  onClick={() => navigate(`/useraccount/${res.data.id}`)}
+                  onClick={() => navigate(`/useraccount/${userId}`)}
                 >
                   Se connecter
                 </button>
