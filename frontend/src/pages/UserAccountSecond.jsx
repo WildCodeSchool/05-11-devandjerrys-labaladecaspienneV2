@@ -20,16 +20,20 @@ export default function UserAccount() {
   const [userData, setUserData] = useState([])
   const [userOrder, setUserOrder] = useState([])
   const [isEditing, setIsEditing] = useState(false)
+  const [isSaved, setIsSaved] = useState(false)
+
+  console.info(isSaved)
 
   useEffect(() => {
     axios.get(`http://localhost:5000/users/${id}`).then((response) => {
       setUserData(response.data)
+      localStorage.setItem("userData", JSON.stringify(response.data))
     })
   }, [id])
+
   useEffect(() => {
     axios.get(`http://localhost:5000/users/${id}/orders`).then((response) => {
       setUserOrder(response.data)
-      // console.log(userOrder)
     })
   }, [id])
 
@@ -40,7 +44,7 @@ export default function UserAccount() {
       .then((response) => {
         setUserData(response.data)
         setIsEditing(false)
-        console.info("BIBI", id)
+        setIsSaved(true)
         alert("Votre profil a été mis à jour")
         window.location.href = `/eshop`
       })
@@ -49,6 +53,13 @@ export default function UserAccount() {
       setUserOrder(response.data)
     })
   }
+  useEffect(() => {
+    if (!isEditing) {
+      axios.get(`http://localhost:5000/users/${id}`).then((response) => {
+        setUserData(response.data)
+      })
+    }
+  }, [id, isEditing])
   function handleLogout() {
     localStorage.removeItem("token")
     window.location.href = "/home"
