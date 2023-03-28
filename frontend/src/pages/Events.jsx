@@ -22,7 +22,6 @@ export default function Events() {
   const [show, setShow] = useState(false)
   const [childShow, setChildShow] = useState(false)
   const handleShow = () => {
-    // setTimeout(() => {
     setShow(!show)
     if (!show) {
       // If the parent was just displayed, set the child opacity to 1 after a delay
@@ -34,11 +33,6 @@ export default function Events() {
       setChildShow(false)
     }
   }
-
-  // const styles = {
-  //   opacity: show ? 1 : 0,
-  //   transition: "opacity 0.5s ease-in-out",
-  // }
 
   const parentStyles = {
     display: show ? "block" : "none",
@@ -84,6 +78,8 @@ export default function Events() {
       ))}
     </div>
   )
+
+  const [selectedYear, setSelectedYear] = useState(null)
 
   return (
     <div>
@@ -163,7 +159,9 @@ export default function Events() {
                 <button
                   key={year}
                   className="listPast"
-                  onClick={() => setShow(year === show ? false : year)}
+                  onClick={() =>
+                    setSelectedYear(year === selectedYear ? null : year)
+                  }
                 >
                   {year}
                 </button>
@@ -177,7 +175,7 @@ export default function Events() {
                   new Date(event.date_event_begginning).getFullYear() === year
               )
               return (
-                show === year && (
+                selectedYear === year && (
                   <EventsByYear key={year} year={year} events={eventsByYear} />
                 )
               )
