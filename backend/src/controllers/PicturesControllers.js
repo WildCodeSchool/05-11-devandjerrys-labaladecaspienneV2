@@ -66,16 +66,17 @@ const edit = (req, res) => {
 }
 
 const add = (req, res) => {
-  const picture = req.body
-  const { originalname } = req.file
-  const { filename } = req.file
+  const picture = {
+    name_img: req.body.name_img,
+    url_img: `/public/uploads/${req.file.originalname}`,
+    artifacts_id: req.body.artifacts_id,
+  }
 
   // TODO validations (length, format...)
 
-  picture.id = parseInt(req.params.id, 10)
   fs.rename(
-    `./public/uploads/${filename}`,
-    `./public/uploads/${originalname}`,
+    `./public/uploads/${req.file.filename}`,
+    `./public/uploads/${req.file.originalname}`,
     (err) => {
       if (err) {
         console.error(err)
@@ -97,8 +98,6 @@ const add = (req, res) => {
       }
     }
   )
-  picture.url_img = `/public/uploads/${originalname}`
-  picture.name_img = `${originalname}`
 }
 
 const destroy = (req, res) => {
