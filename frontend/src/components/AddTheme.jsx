@@ -57,6 +57,7 @@ const AddTheme = () => {
           id="nameTheme"
           value={nameTheme}
           onChange={(e) => setNameTheme(e.target.value)}
+          required
         />
         <br />
 
@@ -85,6 +86,7 @@ const AddTheme = () => {
           id="archiveTheme"
           value={archiveTheme}
           onChange={(e) => setArchiveTheme(Number(e.target.value))}
+          required
         >
           <option value={0}>Non</option>
           <option value={1}>Oui</option>

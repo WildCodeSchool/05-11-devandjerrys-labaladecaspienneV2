@@ -60,22 +60,26 @@ export default function Artifacts() {
         {/* ********** DIV FILTERS ********** */}
         <div className="divAllFilters">
           <div id="themeListFilter">
-            <label className="labelSelect" htmlFor="themeSelect">
-              Filtrer par thèmes
-            </label>
-            <select
-              className="selectStyle"
-              id="themeSelect"
-              onChange={handleFilterChange}
-              value={filteredValue}
-            >
-              <option value="">Tous les thèmes</option>
-              {themeSelect.map((theme) => (
-                <option key={theme.id} value={theme.name_theme}>
-                  {theme.name_theme}
-                </option>
-              ))}
-            </select>
+            <div>
+              <label className="labelSelect" htmlFor="themeSelect">
+                Filtrer par thèmes
+              </label>
+            </div>
+            <div>
+              <select
+                className="selectStyle"
+                id="themeSelect"
+                onChange={handleFilterChange}
+                value={filteredValue}
+              >
+                <option value="">Tous les thèmes</option>
+                {themeSelect.map((theme) => (
+                  <option key={theme.id} value={theme.name_theme}>
+                    {theme.name_theme}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
         {/* ********** DIV ARTEFACTS ********** */}

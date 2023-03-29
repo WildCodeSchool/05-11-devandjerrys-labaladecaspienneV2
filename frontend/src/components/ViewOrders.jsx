@@ -20,7 +20,7 @@ const ViewOrders = () => {
 
   return (
     <div>
-      <h2>ViewOrders</h2>
+      <h2>Liste des commandes</h2>
       <table>
         <thead>
           <tr>

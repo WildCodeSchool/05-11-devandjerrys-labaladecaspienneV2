@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { TbAsterisk } from "react-icons/tb"
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import axios from "axios"
 
 const AddArtifact = () => {
@@ -12,7 +12,13 @@ const AddArtifact = () => {
   const [matiereArti, setMatiereArti] = useState("")
   const [archiveArti, setArchiveArti] = useState(0)
   const [pictureFile, setPictureFile] = useState(null)
+  const [pictureFile2, setPictureFile2] = useState(null)
+  const [pictureFile3, setPictureFile3] = useState(null)
   const [submitSuccess, setSubmitSuccess] = useState(false)
+
+  const fileInput1 = useRef(null)
+  const fileInput2 = useRef(null)
+  const fileInput3 = useRef(null)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -37,18 +43,28 @@ const AddArtifact = () => {
       // Récupérer l'ID de l'artefact
       const artifacts_id = artifactResponse.data.id
 
-      // Préparer les données de l'image
-      const formData = new FormData()
-      formData.append("name_img", pictureFile.name)
-      formData.append("url_img", pictureFile)
-      formData.append("artifacts_id", artifacts_id)
+      const uploadImage = async (file) => {
+        const formData = new FormData()
+        formData.append("name_img", file.name)
+        formData.append("url_img", file)
+        formData.append("artifacts_id", artifacts_id)
 
-      // Ajouter l'image avec l'ID de l'artefact
-      await axios.post("http://localhost:5000/pictures", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
+        await axios.post("http://localhost:5000/pictures", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+      }
+      // Ajoutez les images avec l'ID de l'artefact (si elles existent)
+      if (pictureFile) {
+        await uploadImage(pictureFile)
+      }
+      if (pictureFile2) {
+        await uploadImage(pictureFile2)
+      }
+      if (pictureFile3) {
+        await uploadImage(pictureFile3)
+      }
 
       // Réinitialiser les champs du formulaire
       setNameArti("")
@@ -59,7 +75,18 @@ const AddArtifact = () => {
       setMatiereArti("")
       setArchiveArti(0)
       setPictureFile(null)
+      setPictureFile2(null)
+      setPictureFile3(null)
       setSubmitSuccess(true)
+      if (fileInput1.current) {
+        fileInput1.current.value = null
+      }
+      if (fileInput2.current) {
+        fileInput2.current.value = null
+      }
+      if (fileInput3.current) {
+        fileInput3.current.value = null
+      }
     } catch (error) {
       console.error(
         "Erreur lors de l'ajout de l'artefact et de l'image:",
@@ -68,9 +95,19 @@ const AddArtifact = () => {
     }
   }
 
-  const handleFileChange = (e) => {
+  const handleFileChange = (e, index) => {
     if (e.target.files.length === 1) {
-      setPictureFile(e.target.files[0])
+      switch (index) {
+        case 1:
+          setPictureFile(e.target.files[0])
+          break
+        case 2:
+          setPictureFile2(e.target.files[0])
+          break
+        case 3:
+          setPictureFile3(e.target.files[0])
+          break
+      }
     } else {
       setPictureFile(null)
     }
@@ -90,6 +127,7 @@ const AddArtifact = () => {
           id="nameArti"
           value={nameArti}
           onChange={(e) => setNameArti(e.target.value)}
+          required
         />
         <br />
 
@@ -117,6 +155,7 @@ const AddArtifact = () => {
           id="price"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
+          required
         />
         <br />
         <label htmlFor="discount">
@@ -131,6 +170,7 @@ const AddArtifact = () => {
           max="100"
           value={discount}
           onChange={(e) => setDiscount(e.target.value)}
+          required
         />
         <br />
 
@@ -142,17 +182,37 @@ const AddArtifact = () => {
           id="archiveArti"
           value={archiveArti}
           onChange={(e) => setArchiveArti(Number(e.target.value))}
+          required
         >
           <option value={0}>Non</option>
           <option value={1}>Oui</option>
         </select>
         <br />
-        <label htmlFor="artifact_image">Image:</label>
+        <label htmlFor="artifact_image">Image n°1:</label>
         <input
+          ref={fileInput1}
           type="file"
           id="artifact_image"
           accept="image/*"
-          onChange={handleFileChange}
+          onChange={(e) => handleFileChange(e, 1)}
+        />
+        <br />
+        <label htmlFor="artifact_image2">Image n°2:</label>
+        <input
+          ref={fileInput2}
+          type="file"
+          id="artifact_image2"
+          accept="image/*"
+          onChange={(e) => handleFileChange(e, 2)}
+        />
+        <br />
+        <label htmlFor="artifact_image3">Image n°3:</label>
+        <input
+          ref={fileInput3}
+          type="file"
+          id="artifact_image3"
+          accept="image/*"
+          onChange={(e) => handleFileChange(e, 3)}
         />
         <br />
         <button className="buttonCart" type="submit">
