@@ -19,6 +19,7 @@ export default function EshopDetails() {
   const [isScaledIndex, setIsScaledIndex] = useState(-1)
 
   const themesWithCommas = artifactChosen.themesAll.join(", ")
+  console.info(themesWithCommas)
 
   const handleImageClick = (index) => {
     setIsScaledIndex(index === isScaledIndex ? -1 : index)
