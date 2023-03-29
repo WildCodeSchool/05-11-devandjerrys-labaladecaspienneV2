@@ -52,10 +52,10 @@
               z-index: -1;
               display: flex;
               .coinHG {
-                height: 200px;
+                height: 300px;
               }
               .coinHD {
-                height: 200px;
+                height: 300px;
               }
             }
             .allEncart {
@@ -63,9 +63,9 @@
               display: flex;
               flex-direction: column;
               align-items: center;
-              margin-top: -175px;
-              width: 350px;
-              height: 350px;
+              margin-top: -238px;
+              width: 510px;
+              height: 462px;
               overflow-y: auto;
 
               .encart {
@@ -83,91 +83,12 @@
             .coinBas {
               z-index: -1;
               display: flex;
-              margin-top: -165px;
+              margin-top: -223px;
               .coinBG {
-                height: 200px;
+                height: 300px;
               }
               .coinBD {
-                height: 200px;
-              }
-            }
-          }
-        }
-        .userEmailCadre {
-          margin-bottom: 40px;
-          .userEmail {
-            color: white;
-            .titreConnexion {
-              margin-bottom: -4px;
-              text-align: center;
-            }
-            .cadreEmail {
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-              .cadreHaut {
-                z-index: -1;
-                .cadreHG {
-                  height: 10vh;
-                }
-                .cadreHD {
-                  height: 10vh;
-                }
-              }
-              .cadreConnexion {
-                z-index: 1;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                margin-top: -130px;
-                .entreEmail {
-                  margin-bottom: 7px;
-                  .titreEmail {
-                  }
-                  .inputEmail {
-                  }
-                }
-                .separateur {
-                  width: 200px;
-                }
-                .entreMotdepasse {
-                  margin-bottom: 50px;
-                  .titreMotdepasse {
-                  }
-                  .inputMotdepasse {
-                    margin-bottom: 5px;
-                  }
-                }
-              }
-              .cadreConnexionSubmit {
-                z-index: 1;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                margin-top: -130px;
-                // margin-bottom: -100px;
-                .separateur {
-                  margin-top: 20px;
-                  width: 16vh;
-                }
-                .entreMotdepasse {
-                  .inputMotdepasse {
-                    margin-bottom: 5px;
-                  }
-                }
-              }
-              .cadreBas {
-                z-index: -1;
-                margin-top: -100px;
-                .cadreBG {
-                  height: 10vh;
-                }
-                .cadreBD {
-                  height: 10vh;
-                }
+                height: 300px;
               }
             }
           }
@@ -204,18 +125,18 @@
 
               .coinHD {
                 display: flex;
-                height: 30vh;
+                height: 435px;
               }
               .coinHG {
                 display: flex;
-                height: 30vh;
+                height: 435px;
               }
             }
             .descriptCommande {
               display: flex;
               flex-direction: column;
               align-items: flex-start;
-              width: 45vh;
+              width: 680px;
               margin-bottom: -195px;
               margin-top: -387px;
               height: 765px;
@@ -267,11 +188,11 @@
               margin-top: -187px;
               .coinBD {
                 display: flex;
-                height: 30vh;
+                height: 435px;
               }
               .coinBG {
                 display: flex;
-                height: 30vh;
+                height: 435px;
               }
             }
           }
