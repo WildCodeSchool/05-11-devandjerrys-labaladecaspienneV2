@@ -1,23 +1,37 @@
+// eslint-disable-next-line
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Burger from "../components/Burger"
 import Share from "@components/Share"
 import Deco2 from "../assets/Images/head_line.png"
-import Star from "../assets/Images/brown_star.png"
+// import Star from "../assets/Images/brown_star.png"
 import { useState, useEffect } from "react"
 import axios from "axios"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import ButtonCart from "@components/ButtonCart"
 
 export default function EshopDetails() {
   const { id } = useParams()
   const [artifactChosen, setArtifactChosen] = useState(`${id}`)
   const pictureGroups = [[], [], []]
+  const [isMessageDisplayed, setIsMessageDisplayed] = useState(false)
+  const [quantity, setQuantity] = useState(0)
+
+  const [isScaledIndex, setIsScaledIndex] = useState(-1)
+
+  const handleImageClick = (index) => {
+    setIsScaledIndex(index === isScaledIndex ? -1 : index)
+  }
+
+  const handleButtonClick = () => {
+    setIsMessageDisplayed(true)
+  }
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/artifacts/${id}`)
-      .then((res) => setArtifactChosen(res.data))
+    axios.get(`http://localhost:5000/artifacts/${id}`).then((res) => {
+      setArtifactChosen(res.data)
+      setQuantity(res.data.stock)
+    })
     // .catch((error) => console.error(error))
   }, [id])
 
@@ -51,86 +65,119 @@ export default function EshopDetails() {
         </div>
       </div>
       <div className="Esd-All" key={artifactChosen.id}>
-        <div className="titleHeadEshop1">
-          <h2>{artifactChosen.name_arti}</h2>
-          <img className="lineTitleEshop" src={Deco2} alt="décoration" />
-          <div className="E-desciption">
-            <div className="Esd-text">
-              <p>Description : {artifactChosen.description_arti}</p>
-            </div>
-            <div className="Esd-theme">
-              <p>Matières utilisées: {artifactChosen.matiere_arti}</p>
-              <p>Les themes: {artifactChosen.themesAll}</p>
-            </div>
-            <div className="Esd-pictures">
-              <div className="picture2-3">
-                {pictureGroups[0].map((image, index) => (
-                  <div key={`picture-2-${index}`}>
-                    <div className="picture3">
-                      <img
-                        src={import.meta.env.VITE_BACKEND_URL + image}
-                        alt={`Image ${6 + index}`}
-                      />
-                    </div>
-                  </div>
-                ))}
+        <h2 className="nameArtiShop">{artifactChosen.name_arti}</h2>
+        <div className="divPriceDesc">
+          <p>{artifactChosen.price}€</p>
+        </div>
 
-                <div className="-3">
-                  {pictureGroups[1].map((image, index) => (
-                    <div key={`picture-1-${index}`}>
-                      <div className="picture2">
-                        <img
-                          src={import.meta.env.VITE_BACKEND_URL + image}
-                          alt={`Image ${3 + index}`}
-                        />
-                      </div>
-                    </div>
-                  ))}
+        <div className="Esd-pictures">
+          <div className="pictureDiv1">
+            {pictureGroups[2].map((image, index) => (
+              <div key={`picture-0-${index}`}>
+                <div
+                  className={`picture1 ${
+                    isScaledIndex === index ? "scaled" : ""
+                  }`}
+                  onClick={() => handleImageClick(index)}
+                >
+                  <img
+                    src={import.meta.env.VITE_BACKEND_URL + image}
+                    alt={`Image ${index}`}
+                    title="Cliquez pour zoomer"
+                  />
                 </div>
               </div>
-              <div className="picture2-3">
-                {pictureGroups[2].map((image, index) => (
-                  <div key={`picture-0-${index}`}>
-                    <div className="mainPicture">
-                      <img
-                        src={import.meta.env.VITE_BACKEND_URL + image}
-                        alt={`Image ${index}`}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="Esd-price">
-              <p>{artifactChosen.price}€</p>
-            </div>
-            <div>
-              {/* <img className="lineTitleEshop" src={Deco2} alt="décoration" /> */}
-            </div>
-            <div className="Esd-share">
-              <div className="E-Share">
-                <Share />
-              </div>
-            </div>
-            <div className="E-stock">
-              <h4>En stock</h4>
-              <img className="Esd-star" src={Star} alt="star" />
-              <p>Livraison en</p>
-              <p>1 à 2 semaines</p>
-            </div>
+            ))}
+          </div>
 
-            <div className="Esd-stock">
-              <p>
-                En stock
-                <br />
-                Livraison en 1 à 2 semaines
-              </p>
-            </div>
-            <div className="Esd-bttn">
-              <ButtonCart artifactChosen={artifactChosen} />
-            </div>
+          <div className="pictureDiv2">
+            {pictureGroups[1].map((image, index) => (
+              <div key={`picture-1-${index}`}>
+                <div
+                  className={`picture2 ${
+                    isScaledIndex === 3 + index ? "scaled" : ""
+                  }`}
+                  onClick={() => handleImageClick(3 + index)}
+                >
+                  <img
+                    src={import.meta.env.VITE_BACKEND_URL + image}
+                    alt={`Image ${3 + index}`}
+                    title="Cliquez pour zoomer"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="pictureDiv3">
+            {pictureGroups[0].map((image, index) => (
+              <div key={`picture-2-${index}`}>
+                <div
+                  className={`picture3 ${
+                    isScaledIndex === 6 + index ? "scaled" : ""
+                  }`}
+                  onClick={() => handleImageClick(6 + index)}
+                >
+                  <img
+                    src={import.meta.env.VITE_BACKEND_URL + image}
+                    alt={`Image ${6 + index}`}
+                    title="Cliquez pour zoomer"
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
+
+        <div className="Esd-bttn">
+          {quantity > 0 && !isMessageDisplayed ? (
+            <ButtonCart
+              artifactChosen={artifactChosen}
+              handleButtonClick={handleButtonClick}
+            />
+          ) : (
+            !isMessageDisplayed && (
+              <div className="outOfStockMessage">
+                Trop tard ! Le produit est épuisé.
+              </div>
+            )
+          )}
+        </div>
+
+        {isMessageDisplayed && (
+          <div className="messDisplayed">
+            <div className="confirmCartMess">
+              Le produit a été ajouté au panier !
+            </div>
+            <Link to="/eshop" className="linkToCart">
+              <input
+                className="otherButtonED"
+                type="button"
+                value="Retour à la boutique"
+              />
+            </Link>
+            <Link to="/cart" className="linkToCart">
+              <input
+                className="otherButtonED"
+                type="button"
+                value="Voir mon panier"
+              />
+            </Link>
+          </div>
+        )}
+        <div className="E-desciption">
+          <p>Description : {artifactChosen.description_arti}</p>
+          <p>Matières utilisées : {artifactChosen.matiere_arti}</p>
+          <p>Les thèmes : {artifactChosen.themesAll}</p>
+        </div>
+
+        <div className="Esd-share">
+          <div className="E-Share">
+            <Share />
+          </div>
+        </div>
+
+        <img className="lineTitleEshop2" src={Deco2} alt="décoration" />
       </div>
       <Burger />
       <Footer />

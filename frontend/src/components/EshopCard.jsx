@@ -11,6 +11,7 @@ export default function EshopCard(props) {
 
   const artiLink = `/eshopdetails/${props.id}`
   console.info(artiLink)
+
   return (
     <Link to={artiLink} style={{ textDecoration: "none" }}>
       <div className="Eshop" onClick={handleClick}>

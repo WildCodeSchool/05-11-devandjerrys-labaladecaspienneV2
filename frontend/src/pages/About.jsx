@@ -48,8 +48,8 @@ export default function About() {
               src={`${import.meta.env.VITE_BACKEND_URL}/${image}`}
               alt="Alexandra"
             />
-            <div className="quote1">
-              <blockquote className="aboutText1">
+            <div className="quote 1">
+              <blockquote className="aboutText 1">
                 Je m'appelle Alexandra et je suis une artiste passionnée des
                 contrées de l'imaginaire. Je me suis spécialisée depuis quelques
                 années dans la sculpture sur pâte polymère et bois pour créer
@@ -64,8 +64,8 @@ export default function About() {
           </div>
 
           <div className="textPres">
-            <div className="quote2">
-              <blockquote className="aboutText2">
+            <div className="quote 2">
+              <blockquote className="aboutText 2">
                 Mes artéfacts sont inspirés par la culture de l'imaginaire, plus
                 particulièrement par les univers fantastiques, horrifiques et
                 science-fictionnels dont je puise mon inspiration dans des
@@ -82,8 +82,8 @@ export default function About() {
                 découverte de nouveaux univers imaginaires.
               </blockquote>
             </div>
-            <div className="quote3">
-              <blockquote className="aboutText3">
+            <div className="quote 3">
+              <blockquote className="aboutText 3">
                 Vous pourrez retrouver mes artéfacts dans ce merveilleux site ou
                 également à des salons ou expositions où je partage mon travail
                 avec un public plus large. Si vous souhaitez avoir une création

@@ -70,7 +70,7 @@ export default function UserAccount() {
       <Header />
       <div className="pageUser" key={userData.id}>
         <div className="titrePage">
-          <h2 className="titre">LA BALADE CAPSIENNE</h2>
+          <h2 className="titre">LA BALADE CASPIENNE</h2>
           <img src={Headline} className="headLine" />
         </div>
         {userData && (
