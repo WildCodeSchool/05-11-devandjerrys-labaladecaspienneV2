@@ -5,6 +5,7 @@ import LineTop from "../assets/Images/head_line.png"
 import { useState, useEffect } from "react"
 import axios from "axios"
 import EshopCard from "@components/EshopCard"
+import ScrollToTopButton from "@components/Srolltotop"
 
 export default function Artifacts() {
   const [artiSelect, setArtiSelect] = useState([])
@@ -120,7 +121,7 @@ export default function Artifacts() {
               )}
         </div>
       </div>
-
+      <ScrollToTopButton />
       <Burger />
       <Footer />
     </div>
