@@ -105,7 +105,7 @@ const editHasCart = (req, res) => {
   // TODO validations (length, format...)
 
   cart.id = parseInt(req.params.id, 10)
-  // console.log(cart)
+  // console.info(cart)
   models.cart
     .updateHasCart(cart)
     .then(([result]) => {

@@ -4,6 +4,37 @@ const { hashPassword } = require('../services/argonHelper')
 const jwt = require('jsonwebtoken')
 
 const argon2 = require('argon2')
+const getToken = (req) => {
+  console.info(req.headers.authorization)
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.split(' ')[0] === 'Bearer'
+  ) {
+    return req.headers.authorization.split(' ')[1]
+  } else if (req.query && req.query.token) {
+    return req.query.token
+  }
+  return null
+}
+const protection = (req, res, next) => {
+  const token = getToken(req)
+  console.info(token)
+  const objectTests = {
+    verifyData: true,
+  }
+  console.info(objectTests)
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      console.info(err)
+      return res.status(200).json({
+        mess: 'na pas acces au donnes',
+        verifyData: false,
+      })
+    }
+    console.info('decode', decoded)
+    return res.status(200).json({ mess: 'user data', verifyData: true })
+  })
+}
 
 // const updateUsers = (req, res) => {
 //   const id = parseInt(req.params.id)
@@ -33,7 +64,7 @@ const login = async (req, res) => {
 
   try {
     const [user] = await models.users.findOne(email)
-    console.info(email, password, user.id)
+    // console.info(email, password, user.id)
     if (!user) {
       res
         .status(401)
@@ -53,7 +84,10 @@ const login = async (req, res) => {
     const token = jwt.sign({ userId: user[0].id }, process.env.JWT_SECRET, {
       expiresIn: '1h',
     })
-    res.status(200).json({ token, id: user[0].id })
+    // TODO modif
+    res.header('Access-Control-Expose-Headers', 'x-access-token')
+    res.set('x-access-token', token)
+    res.status(200).json({ id: user[0].id, role: user[0].is_admin })
   } catch (err) {
     console.error(err)
     res.sendStatus(500)
@@ -94,7 +128,7 @@ const read = (req, res) => {
 
 const edit = (req, res) => {
   const user = req.body
-  // console.log('Hello', req.body)
+  // console.info('Hello', req.body)
   user.id = parseInt(req.params.id, 10)
 
   models.users
@@ -131,7 +165,7 @@ const add = async (req, res) => {
     // const result = await add({ ...req.body, password: hashedPassword })
 
     res.location(`users/${result.insertId}`).sendStatus(201)
-    // console.log(result.insertId)
+    // console.info(result.insertId)
   } catch (err) {
     console.error(err)
     res.sendStatus(500)
@@ -162,4 +196,5 @@ module.exports = {
   destroy,
   login,
   logout,
+  protection,
 }

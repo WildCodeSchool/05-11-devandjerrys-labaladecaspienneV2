@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 import Headline from "../assets/Images/Head_line.png"
 import Header from "../components/Header"
@@ -16,6 +16,8 @@ import Separateur from "../assets/Images/separateur.png"
 import Star from "../assets/star.png"
 
 export default function UserAccount() {
+  const navigate = useNavigate()
+
   const { id } = useParams()
   const [userData, setUserData] = useState([])
   const [userOrder, setUserOrder] = useState([])
@@ -23,11 +25,28 @@ export default function UserAccount() {
   const [isSaved, setIsSaved] = useState(false)
 
   console.info(isSaved)
+  const verifyToken = () => {
+    const token = localStorage.getItem("token")
+    axios({
+      method: "POST",
+      url: "http://localhost:5000/auth",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
+      console.info(res.data.verifyData)
+      if (!res.data.verifyData) {
+        console.info("userAccount test")
+        navigate(`/home`)
+      } // reste a ajouter les redirection si  token valide
+    })
+  }
 
   useEffect(() => {
+    verifyToken()
     axios.get(`http://localhost:5000/users/${id}`).then((response) => {
       setUserData(response.data)
-      localStorage.setItem("userData", JSON.stringify(response.data))
+      // localStorage.setItem("userData", JSON.stringify(response.data))
     })
   }, [id])
 
