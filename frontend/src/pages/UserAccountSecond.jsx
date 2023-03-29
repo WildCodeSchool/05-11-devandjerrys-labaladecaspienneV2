@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 import Headline from "../assets/Images/Head_line.png"
 import Header from "../components/Header"
@@ -16,6 +16,8 @@ import Separateur from "../assets/Images/separateur.png"
 import Star from "../assets/star.png"
 
 export default function UserAccount() {
+  const navigate = useNavigate()
+
   const { id } = useParams()
   const [userData, setUserData] = useState([])
   const [userOrder, setUserOrder] = useState([])
@@ -23,11 +25,28 @@ export default function UserAccount() {
   const [isSaved, setIsSaved] = useState(false)
 
   console.info(isSaved)
+  const verifyToken = () => {
+    const token = localStorage.getItem("token")
+    axios({
+      method: "POST",
+      url: "http://localhost:5000/auth",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
+      console.info(res.data.verifyData)
+      if (!res.data.verifyData) {
+        console.info("userAccount test")
+        navigate(`/home`)
+      } // reste a ajouter les redirection si  token valide
+    })
+  }
 
   useEffect(() => {
+    verifyToken()
     axios.get(`http://localhost:5000/users/${id}`).then((response) => {
       setUserData(response.data)
-      localStorage.setItem("userData", JSON.stringify(response.data))
+      // localStorage.setItem("userData", JSON.stringify(response.data))
     })
   }, [id])
 
@@ -77,81 +96,6 @@ export default function UserAccount() {
           <div className="infoPage">
             <div className="toutContenaire">
               <div className="contenaireGauche">
-                <div className="userEmailCadre">
-                  <div className="userEmail">
-                    <h3 className="titreConnexion">Connexions</h3>
-                    <div className="cadreEmail">
-                      <div className="cadreHaut">
-                        <img className="cadreHG" src={CoinHG} />
-                        <img src={CoinHD} className="cadreHD" />
-                      </div>
-                      {isEditing ? (
-                        <form onSubmit={handleSubmit}>
-                          <div className="cadreConnexionSubmit">
-                            <div className="entreEmail">
-                              <h4 className="titreEmail"> Email : </h4>
-                              <input
-                                className="inputEmail"
-                                value={userData.email}
-                                placeholder={userData.email}
-                                onChange={(event) =>
-                                  setUserData({
-                                    ...userData,
-                                    email: event.target.value,
-                                  })
-                                }
-                              />
-                            </div>
-                            <img src={Separateur} className="separateur" />
-                            <div className="entreMotdepasse">
-                              <h4 className="titreMotdepasse">
-                                {" "}
-                                Mot de Passe :{" "}
-                              </h4>
-                              <input
-                                className="inputMotdepasse"
-                                type="password"
-                                value={userData.password}
-                                placeholder={userData.password}
-                                onChange={(event) =>
-                                  setUserData({
-                                    ...userData,
-                                    password: event.target.value,
-                                  })
-                                }
-                              />
-                            </div>
-                            <button onClick={() => setIsEditing(true)}>
-                              Enregistrer
-                            </button>
-                          </div>
-                        </form>
-                      ) : (
-                        <div className="cadreConnexion">
-                          <div className="entreEmail">
-                            <h4 className="titreEmail"> Email : </h4>
-                            <p>{userData?.email}</p>
-                          </div>
-                          <img src={Separateur} className="separateur" />
-                          <div className="entreMotdepasse">
-                            <h4 className="titreMotdepasse">
-                              {" "}
-                              Mot de Passe :{" "}
-                            </h4>
-                            <p>{userData?.password}</p>
-                          </div>
-                          <button onClick={() => setIsEditing(true)}>
-                            Modifier
-                          </button>
-                        </div>
-                      )}
-                      <div className="cadreBas">
-                        <img src={CoinBG} className="cadreBG" />
-                        <img src={CoinBD} className="cadreBD" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 <div>
                   <div className="allUserProfil">
                     <div className="userInfo">
@@ -161,7 +105,7 @@ export default function UserAccount() {
                         <img className="coinHD" src={CoinHD} />
                       </div>
                       {isEditing ? (
-                        <form>
+                        <form onSubmit={handleSubmit}>
                           <div className="allEncart">
                             <div className="encart">
                               <div className="encartSousTitre">
@@ -195,6 +139,22 @@ export default function UserAccount() {
                                     setUserData({
                                       ...userData,
                                       firstname: event.target.value,
+                                    })
+                                  }
+                                />
+                              </div>
+                              <img className="separateur" src={Separateur} />
+                            </div>
+                            <div className="encart">
+                              <div className="encartSousTitre">
+                                <h4 className="sousTitre"> Email : </h4>
+                                <input
+                                  value={userData.email}
+                                  placeholder={userData.email}
+                                  onChange={(event) =>
+                                    setUserData({
+                                      ...userData,
+                                      email: event.target.value,
                                     })
                                   }
                                 />
@@ -265,8 +225,15 @@ export default function UserAccount() {
                           </div>
                           <div className="encart">
                             <div className="encartSousTitre">
-                              <h4 className="sousTitre"> Prenom : </h4>
+                              <h4 className="sousTitre"> Prénom : </h4>
                               <p>{userData?.firstname}</p>
+                            </div>
+                            <img className="separateur" src={Separateur} />
+                          </div>
+                          <div className="encart">
+                            <div className="encartSousTitre">
+                              <h4 className="sousTitre"> Email : </h4>
+                              <p>{userData?.email}</p>
                             </div>
                             <img className="separateur" src={Separateur} />
                           </div>
@@ -311,7 +278,7 @@ export default function UserAccount() {
               <div className="commande">
                 <div className="commandeHistorique">
                   <div className="divCommande">
-                    <h3 className="titreCommande">Historique de Commande</h3>
+                    <h3 className="titreCommande">Historique de Commandes</h3>
                     <div className="cadreHaut">
                       <img src={CoinHG} className="coinHG" />
                       <img src={CoinHD} className="coinHD" />
@@ -365,7 +332,6 @@ export default function UserAccount() {
           </div>
         )}
       </div>
-
       <Footer />
       <Burger />
     </div>

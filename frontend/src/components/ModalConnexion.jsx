@@ -11,7 +11,7 @@ export default function ModalConnexion({ isOpen, closeModal }) {
   const [showCreateAccount, setShowCreateAccount] = useState(true)
   const token = localStorage.getItem("token")
   console.info("eeeeeeeeeee", token)
-
+  console.info(setNewUser)
   const handleClick = (e) => {
     e.preventDefault()
 
@@ -21,17 +21,24 @@ export default function ModalConnexion({ isOpen, closeModal }) {
         password: password,
       })
       .then((res) => {
-        // console.log(token)
-        if (res.data.token) {
+        console.info(res.data)
+        if (res.headers["x-access-token"]) {
           setIsLoggedIn(true)
-          localStorage.setItem("token", res.data.token)
-          // console.log(res.data.token)
-          setShowCreateAccount(false)
+
           const userId = res.data.id
+          localStorage.setItem("token", res.headers["x-access-token"])
+          localStorage.setItem("userId", res.data.id)
+          localStorage.setItem("role", res.data.role)
+          console.info("token", localStorage.getItem("token")) // console.info(res.data.token)
+          setShowCreateAccount(false)
           if (newUser) {
             alert("Votre compte a été créé avec succès!")
           }
-          navigate(`/useraccount/${userId}`)
+          if (res.data.role === 0) {
+            navigate(`/useraccount/${userId}`)
+          } else if (res.data.role === 1) {
+            navigate(`/adminpage`)
+          }
           closeModal(false)
           //   setShowCreateAccount(false)
         }
@@ -59,23 +66,24 @@ export default function ModalConnexion({ isOpen, closeModal }) {
         password: password,
       })
       .then((res) => {
-        if (res.data.insertId) {
-          console.info(res.data.insertId)
+        if (res.headers["x-access-token"]) {
           setIsLoggedIn(true)
-          setNewUser(true)
+
+          const userId = res.data.id
+          localStorage.setItem("token", res.headers["x-access-token"])
+          localStorage.setItem("userId", res.data.id)
+          localStorage.setItem("role", res.data.role)
+          console.info("token", localStorage.getItem("token")) // console.info(res.data.token)
           setShowCreateAccount(false)
-
-          //   localStorage.setItem("token", res.data.token)
-          localStorage.setItem("res.data.insertId", res.data.insertId)
-          const newUserId = res.data.insertId
-          navigate(`/useraccount/${newUserId}`)
-
-          //   setNewUser(true)
-          closeModal(false)
-          setShowCreateAccount(false) //  masquer le bouton "Créer un compte"
-        } else {
-          //   alert("Une erreur est survenue lors de la création de votre compte.")
-          alert("Votre compte a été créé avec succès!")
+          if (newUser) {
+            alert("Votre compte a été créé avec succès!")
+          }
+          if (res.data.role === false) {
+            navigate(`/useraccount/${userId}`)
+          } else {
+            //   alert("Une erreur est survenue lors de la création de votre compte.")
+            alert("Votre compte a été créé avec succès!")
+          }
         }
       })
       .catch((error) => {
@@ -158,3 +166,19 @@ export default function ModalConnexion({ isOpen, closeModal }) {
     </div>
   )
 }
+
+// if (!res.data.insertId) {
+//   console.info(res.data.insertId)
+//   setIsLoggedIn(true)
+//   setNewUser(true)
+//   setShowCreateAccount(false)
+
+//   //   localStorage.setItem("token", res.data.token)
+//   localStorage.setItem("res.data.insertId", res.data.insertId)
+//   const newUserId = res.data.insertId
+//   navigate(`/useraccount/${newUserId}`)
+
+//   //   setNewUser(true)
+//   closeModal(false)
+//   setShowCreateAccount(false) //  masquer le bouton "Créer un compte"
+// }
