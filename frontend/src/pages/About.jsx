@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import LineTop from "../assets/Images/head_line.png"
+import CartButtonHeader from "@components/CartButtonHeader"
 
 export default function About() {
   const [image, setImage] = useState("")
@@ -29,6 +30,7 @@ export default function About() {
   return (
     <div>
       <Header />
+      <CartButtonHeader />
       <div className="About">
         <p className="titleHeadEshop">LA BALADE CASPIENNE</p>
         <img className="lineTitleEshop" src={LineTop} alt="image" />
