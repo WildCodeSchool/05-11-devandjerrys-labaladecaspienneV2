@@ -77,81 +77,6 @@ export default function UserAccount() {
           <div className="infoPage">
             <div className="toutContenaire">
               <div className="contenaireGauche">
-                <div className="userEmailCadre">
-                  <div className="userEmail">
-                    <h3 className="titreConnexion">Connexions</h3>
-                    <div className="cadreEmail">
-                      <div className="cadreHaut">
-                        <img className="cadreHG" src={CoinHG} />
-                        <img src={CoinHD} className="cadreHD" />
-                      </div>
-                      {isEditing ? (
-                        <form onSubmit={handleSubmit}>
-                          <div className="cadreConnexionSubmit">
-                            <div className="entreEmail">
-                              <h4 className="titreEmail"> Email : </h4>
-                              <input
-                                className="inputEmail"
-                                value={userData.email}
-                                placeholder={userData.email}
-                                onChange={(event) =>
-                                  setUserData({
-                                    ...userData,
-                                    email: event.target.value,
-                                  })
-                                }
-                              />
-                            </div>
-                            <img src={Separateur} className="separateur" />
-                            <div className="entreMotdepasse">
-                              <h4 className="titreMotdepasse">
-                                {" "}
-                                Mot de Passe :{" "}
-                              </h4>
-                              <input
-                                className="inputMotdepasse"
-                                type="password"
-                                value={userData.password}
-                                placeholder={userData.password}
-                                onChange={(event) =>
-                                  setUserData({
-                                    ...userData,
-                                    password: event.target.value,
-                                  })
-                                }
-                              />
-                            </div>
-                            <button onClick={() => setIsEditing(true)}>
-                              Enregistrer
-                            </button>
-                          </div>
-                        </form>
-                      ) : (
-                        <div className="cadreConnexion">
-                          <div className="entreEmail">
-                            <h4 className="titreEmail"> Email : </h4>
-                            <p>{userData?.email}</p>
-                          </div>
-                          <img src={Separateur} className="separateur" />
-                          <div className="entreMotdepasse">
-                            <h4 className="titreMotdepasse">
-                              {" "}
-                              Mot de Passe :{" "}
-                            </h4>
-                            <p>{userData?.password}</p>
-                          </div>
-                          <button onClick={() => setIsEditing(true)}>
-                            Modifier
-                          </button>
-                        </div>
-                      )}
-                      <div className="cadreBas">
-                        <img src={CoinBG} className="cadreBG" />
-                        <img src={CoinBD} className="cadreBD" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 <div>
                   <div className="allUserProfil">
                     <div className="userInfo">
@@ -161,7 +86,7 @@ export default function UserAccount() {
                         <img className="coinHD" src={CoinHD} />
                       </div>
                       {isEditing ? (
-                        <form>
+                        <form onSubmit={handleSubmit}>
                           <div className="allEncart">
                             <div className="encart">
                               <div className="encartSousTitre">
@@ -195,6 +120,22 @@ export default function UserAccount() {
                                     setUserData({
                                       ...userData,
                                       firstname: event.target.value,
+                                    })
+                                  }
+                                />
+                              </div>
+                              <img className="separateur" src={Separateur} />
+                            </div>
+                            <div className="encart">
+                              <div className="encartSousTitre">
+                                <h4 className="sousTitre"> Email : </h4>
+                                <input
+                                  value={userData.email}
+                                  placeholder={userData.email}
+                                  onChange={(event) =>
+                                    setUserData({
+                                      ...userData,
+                                      email: event.target.value,
                                     })
                                   }
                                 />
@@ -267,6 +208,13 @@ export default function UserAccount() {
                             <div className="encartSousTitre">
                               <h4 className="sousTitre"> Prenom : </h4>
                               <p>{userData?.firstname}</p>
+                            </div>
+                            <img className="separateur" src={Separateur} />
+                          </div>
+                          <div className="encart">
+                            <div className="encartSousTitre">
+                              <h4 className="sousTitre"> Email : </h4>
+                              <p>{userData?.email}</p>
                             </div>
                             <img className="separateur" src={Separateur} />
                           </div>
@@ -365,7 +313,6 @@ export default function UserAccount() {
           </div>
         )}
       </div>
-
       <Footer />
       <Burger />
     </div>
