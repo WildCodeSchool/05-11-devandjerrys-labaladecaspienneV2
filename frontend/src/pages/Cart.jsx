@@ -5,13 +5,32 @@ import Burger from "../components/Burger"
 import { useState, useEffect } from "react"
 import axios from "axios"
 import CartArtifact from "../components/CartArtifact"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 function Cart() {
+  const navigate = useNavigate()
+
   const [cartArti, setCartArti] = useState([])
   const [totalAmount, setTotalAmount] = useState()
   // ------------Test get --------------------
   // const [userId, setUserId] = useState(null)
+  const verifyToken = () => {
+    const token = localStorage.getItem("token")
+    axios({
+      method: "POST",
+      url: "http://localhost:5000/auth",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
+      console.info(res.data.userId)
+      if (!res.data.verifyData) {
+        console.info("userAccount test")
+        navigate(`/home`)
+      }
+      getData(res.data.userId)
+    })
+  }
 
   const getData = (id) => {
     axios
@@ -36,12 +55,14 @@ function Cart() {
         })
         .catch((err) => console.error(err))
     } else {
-      getData(1) // insérer l'id de l'utilisateur connecté
+      getData(id) // insérer l'id de l'utilisateur connecté
     }
   }
 
   useEffect(() => {
-    getData(1) // insérer l'id de l'utilisateur connecté
+    verifyToken()
+
+    // getData(1) // insérer l'id de l'utilisateur connecté
   }, [])
 
   useEffect(() => {
@@ -51,55 +72,6 @@ function Cart() {
     setTotalAmount(newTotalAmount)
   }, [cartArti])
   console.info("Total amount in Payment:", totalAmount)
-
-  // ------------------- A TESTER QUAND CONNEXION OK ------------------------------
-  // const getData = () => {
-  //   axios
-  //     .get(`http://localhost:5000/cart/${userId}`)
-  //     .then((res) => setCartArti(res.data))
-  //     .catch((err) => console.error(err))
-  //   console.info("user id :", userId)
-  // }
-
-  // const updateCart = (id, quantity, isDeleted) => {
-  //   if (!isDeleted) {
-  //     const newQuantity = quantity
-  //     axios
-  //       .put(`http://localhost:5000/hascart/${id}`, { quantity: newQuantity })
-  //       .then((res) => {
-  //         setCartArti((prevState) =>
-  //           prevState.map((arti) =>
-  //             arti.id_cart_has_artifacts === id
-  //               ? { ...arti, quantity: newQuantity }
-  //               : arti
-  //           )
-  //         )
-  //       })
-  //       .catch((err) => console.error(err))
-  //   } else {
-  //     getData(userId)
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   axios.get(`http://localhost:5000/users/${userId}`).then((response) => {
-  //     setUserData(response.data)
-  //   })
-  // }, [userId])
-
-  // useEffect(() => {
-  //   if (userId) {
-  //     getData()
-  //   }
-  // }, [userId])
-
-  // useEffect(() => {
-  //   const newTotalAmount = cartArti.reduce((acc, arti) => {
-  //     return acc + arti.price * arti.quantity
-  //   }, 0)
-  //   setTotalAmount(newTotalAmount)
-  // }, [cartArti])
-  // console.info("Total amount in Payment:", totalAmount)
 
   return (
     <div className="mainCart">
@@ -162,3 +134,51 @@ function Cart() {
 }
 
 export default Cart
+// ------------------- A TESTER QUAND CONNEXION OK ------------------------------
+// const getData = () => {
+//   axios
+//     .get(`http://localhost:5000/cart/${userId}`)
+//     .then((res) => setCartArti(res.data))
+//     .catch((err) => console.error(err))
+//   console.info("user id :", userId)
+// }
+
+// const updateCart = (id, quantity, isDeleted) => {
+//   if (!isDeleted) {
+//     const newQuantity = quantity
+//     axios
+//       .put(`http://localhost:5000/hascart/${id}`, { quantity: newQuantity })
+//       .then((res) => {
+//         setCartArti((prevState) =>
+//           prevState.map((arti) =>
+//             arti.id_cart_has_artifacts === id
+//               ? { ...arti, quantity: newQuantity }
+//               : arti
+//           )
+//         )
+//       })
+//       .catch((err) => console.error(err))
+//   } else {
+//     getData(userId)
+//   }
+// }
+
+// useEffect(() => {
+//   axios.get(`http://localhost:5000/users/${userId}`).then((response) => {
+//     setUserData(response.data)
+//   })
+// }, [userId])
+
+// useEffect(() => {
+//   if (userId) {
+//     getData()
+//   }
+// }, [userId])
+
+// useEffect(() => {
+//   const newTotalAmount = cartArti.reduce((acc, arti) => {
+//     return acc + arti.price * arti.quantity
+//   }, 0)
+//   setTotalAmount(newTotalAmount)
+// }, [cartArti])
+// console.info("Total amount in Payment:", totalAmount)

@@ -16,7 +16,7 @@ const EditArtifact = () => {
 
   // ---------------- TEST CECILIA ------------------
   const [images, setImages] = useState([])
-  // const [images, setImages] = useState([])
+  // const [themes, setThemes] = useState("")
 
   const handleDeleteImage = (imageToDelete) => {
     setImages(images.filter((image) => image !== imageToDelete))
