@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import logo from "../assets/Images/logo_baladecaspienne.png"
 import star from "../assets/Images/brown_star.png"
@@ -10,6 +10,8 @@ import ModalConnexion from "./ModalConnexion"
 function Header() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [openModal, setOpenModal] = useState(false)
+  const token = localStorage.getItem("token")
+  const navigate = useNavigate()
 
   const toggleModal = () => {
     setOpenModal((prevState) => !prevState)
@@ -19,6 +21,15 @@ function Header() {
     setIsAuthenticated(!isAuthenticated)
   }
 
+  const handleMonProfilClick = () => {
+    const userId = JSON.parse(localStorage.getItem("userId"))
+
+    if (token) {
+      navigate(`/useraccount/${userId}`)
+    } else {
+      toggleModal()
+    }
+  }
   return (
     <div className="Header">
       <div className="mainDivHeader">
@@ -44,20 +55,11 @@ function Header() {
           </Link>
         ) : (
           <div className="linkHeader">
-            <span className="itemsNavHeader" onClick={toggleModal}>
+            <span className="itemsNavHeader" onClick={handleMonProfilClick}>
               Mon profil
             </span>
           </div>
         )}
-        {/* <Link className="linkHeader" to="/useraccount">
-          <div
-            className="itemsNavHeader"
-            onClick={isAuthenticated ? handleAuthClick : toggleModal}
-          >
-            {isAuthenticated ? "Me connecter" : "Mon profil"}
-          </div>
-        </Link> */}
-
         <img className="headerStar" src={star} alt="image" />
         <Link className="linkHeader" to="/cart">
           <p className="itemsNavHeader">Panier</p>
@@ -65,7 +67,7 @@ function Header() {
         <img className="headerStar" src={star} alt="image" />
         <img className="headerAngle angleR" src={angleR} alt="image" />
       </div>
-      {openModal && (
+      {!token && (
         <ModalConnexion
           isOpen={openModal}
           closeModal={toggleModal}
@@ -75,4 +77,5 @@ function Header() {
     </div>
   )
 }
+
 export default Header

@@ -23,17 +23,18 @@ class OrdersManager extends AbstractManager {
 
   findAllOrder() {
     return this.database.query(
-      `SELECT  u.lastname, u.firstname, u.email, u.phone, u.number_delivery, u.adress_delivery, u.zip_delivery, u.town_delivery, o.num_cmd, o.order_amount, a.name_arti ,oha.quantity
+      `SELECT  u.lastname, u.firstname, u.email, u.phone, u.number_delivery, u.adress_delivery, u.zip_delivery, u.town_delivery, o.num_cmd, o.orderAmount, a.name_arti ,oha.quantity
       FROM orders AS o
       JOIN users AS u ON o.users_id = u.id
       JOIN orders_has_artifact AS oha ON oha.orders_id = o.id
-      JOIN artifacts AS a ON oha.artifact_id = a.id`
+      JOIN artifacts AS a ON oha.artifact_id = a.id
+      ORDER BY o.num_cmd DESC`
     )
   }
 
   findOneOrder(id) {
     return this.database.query(
-      `SELECT  u.lastname, u.firstname, u.email, u.phone, u.number_delivery, u.adress_delivery, u.zip_delivery, u.town_delivery, o.order_amount, a.name_arti ,oha.quantity
+      `SELECT  u.lastname, u.firstname, u.email, u.phone, u.number_delivery, u.adress_delivery, u.zip_delivery, u.town_delivery, o.orderAmount, a.name_arti ,oha.quantity
       FROM orders AS o
       JOIN users AS u ON o.users_id = u.id
       JOIN orders_has_artifact AS oha ON oha.orders_id = o.id
@@ -68,7 +69,7 @@ class OrdersManager extends AbstractManager {
 
   findOrderByUser(id) {
     return this.database.query(
-      `SELECT id, num_cmd, comments_id, users_id, order_amount 
+      `SELECT id, num_cmd, comments_id, users_id, orderAmount 
       FROM ${this.table} WHERE   users_id = ?`,
       [id]
     )

@@ -5,6 +5,7 @@ import LineTop from "../assets/Images/head_line.png"
 import { useState, useEffect } from "react"
 import axios from "axios"
 import EshopCard from "@components/EshopCard"
+import ScrollToTopButton from "@components/Srolltotop"
 
 export default function Artifacts() {
   const [artiSelect, setArtiSelect] = useState([])
@@ -59,22 +60,26 @@ export default function Artifacts() {
         {/* ********** DIV FILTERS ********** */}
         <div className="divAllFilters">
           <div id="themeListFilter">
-            <label className="labelSelect" htmlFor="themeSelect">
-              Filtrer par thèmes
-            </label>
-            <select
-              className="selectStyle"
-              id="themeSelect"
-              onChange={handleFilterChange}
-              value={filteredValue}
-            >
-              <option value="">Tous les thèmes</option>
-              {themeSelect.map((theme) => (
-                <option key={theme.id} value={theme.name_theme}>
-                  {theme.name_theme}
-                </option>
-              ))}
-            </select>
+            <div>
+              <label className="labelSelect" htmlFor="themeSelect">
+                Filtrer par thèmes
+              </label>
+            </div>
+            <div>
+              <select
+                className="selectStyle"
+                id="themeSelect"
+                onChange={handleFilterChange}
+                value={filteredValue}
+              >
+                <option value="">Tous les thèmes</option>
+                {themeSelect.map((theme) => (
+                  <option key={theme.id} value={theme.name_theme}>
+                    {theme.name_theme}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
         {/* ********** DIV ARTEFACTS ********** */}
@@ -116,7 +121,7 @@ export default function Artifacts() {
               )}
         </div>
       </div>
-
+      <ScrollToTopButton />
       <Burger />
       <Footer />
     </div>

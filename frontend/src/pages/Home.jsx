@@ -13,6 +13,7 @@ import CardThemeCarrousel from "../components/CardThemeCarrousel"
 import Modal from "react-modal"
 import Theme from "@components/Theme"
 import { CiCircleRemove } from "react-icons/ci"
+import ScrollToTopButton from "@components/Srolltotop"
 
 export default function Home() {
   const [themes, setThemes] = useState([])
@@ -62,7 +63,7 @@ export default function Home() {
           </p>
         </div>
         <img id="image2" className="image" src={deco1}></img>
-        <h2>Les Immaginaires</h2>
+        <h2>Les Imaginaires</h2>
 
         <img id="image3" className="image" src={deco1}></img>
         <div className="card-theme">
@@ -107,6 +108,7 @@ export default function Home() {
           ))}
         </Carousel>
       </div>
+      <ScrollToTopButton />
       <Burger />
       <Footer />
     </div>

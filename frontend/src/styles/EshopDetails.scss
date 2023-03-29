@@ -1,274 +1,216 @@
+.divHeadEshop {
+  .titleHeadEshop {
+    font-size: 2em;
+    margin-bottom: 0;
+    font-family: var(--font1);
+    color: var(--main-color);
+    text-align: center;
+  }
+  .lineTitleEshop,
+  .lineTitleEshop2 {
+    width: 50vw;
+  }
+} // OK
+
 .Esd-All {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-transform: capitalize;
+  // text-transform: capitalize;
   color: var(--main-color);
-  .Esd-All p {
-    font-size: 16px;
-    font-family: var(--font2);
-  }
-  .E-title {
-    margin: 50px;
-
-    .E-title h2 {
-      font-size: 36px;
-      text-transform: capitalize;
-      color: var(--main-color);
-    }
-    .E-title h3 {
-      margin: 50px 0 30px 0;
-      font-family: "EB Garamond";
-      font-style: normal;
-      font-weight: 700;
-      font-size: 48px;
-      line-height: 63px;
-      text-align: center;
-      text-transform: capitalize;
-      color: var(--main-color);
-    }
-  }
-  .E-deco {
-    height: 66px;
-    margin-bottom: 100px;
-  }
-
-  .E-desciption {
-    max-width: 100ch;
-    text-align: justify;
-    width: 840px;
-    color: var(--main-color);
-    font-family: var(--font2);
-    font-size: 24px;
-  }
-  .Esd-share {
-    position: relative;
-    padding: 5px;
-    transition: opacity 1s ease-in-out;
-    bottom: 1025px;
-  }
-  .Esd-bttn {
-    position: relative;
-    bottom: 595px;
-    left: 684px;
-  }
+}
+.nameArtiShop {
+  margin-bottom: 5px;
+}
+.Esd-All p {
+  // font-size: 16px;
+  font-family: var(--font2);
 }
 
+// PICTURES
 .Esd-pictures {
-  margin: 80px 0 50px 0;
   display: flex;
   align-items: center;
-  height: 557px;
-  width: 700px;
-
-  .mainPicture img {
-    margin: 10px;
-    width: 444px;
-    height: 550px;
-    object-fit: contain;
-    display: flex;
-  }
-  .picture2-3 {
-    width: 230px;
-    display: flex;
-    object-fit: cover;
-    flex-direction: column;
-  }
-  .picture2 img {
-    margin-top: 10px;
-    width: 216px;
-    height: 293px;
-    object-fit: cover;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .picture3 img {
-    margin-bottom: 10px;
-    width: 217px;
-    height: 170px;
-    object-fit: cover;
-    display: flex;
-    flex-direction: column;
-  }
+  justify-content: center;
+  height: 250px;
+  width: 100%;
 }
-.Esd-price {
-  position: relative;
+
+.picture1 img {
+  margin: 10px 20px;
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border: 5px solid var(--third-color);
+  border-radius: 10px;
+}
+.picture2 img {
+  margin: 10px 20px;
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border: 5px solid var(--third-color);
+  border-radius: 10px;
+}
+.picture3 img {
+  margin: 10px 20px;
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border: 5px solid var(--third-color);
+  border-radius: 10px;
+}
+.scaled {
+  transform: scale(1.8);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1;
+}
+//OUT OF STOCK
+.outOfStockMessage {
+  background-color: var(--secondary-color);
+  padding: 2px 10px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+// DESCRIPTION & INFOS
+
+.E-desciption {
+  max-width: 100ch;
+  text-align: justify;
+  width: 60%;
+  color: var(--main-color);
+  font-family: var(--font2);
+  font-size: 20px;
+  text-align: center;
+}
+.stockInfos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.divPriceDesc {
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: 579px;
-  left: 711px;
-  background-image: url(/src/assets/Images/etiquette.png);
+  background-image: url(/src/assets/Images/etiquette2.png);
   background-position: center;
-  text-align: center;
   color: var(--secondary-color);
   font-weight: 700;
-  font-size: 40px;
-  width: 142px;
-  height: 85px;
-  background-size: 100%;
-  background-repeat: no-repeat;
+  font-size: 32px;
+  height: 68px;
+  width: 148px;
+  margin-bottom: 10px;
 }
-.E-stock {
+
+.eStockDesktop {
   padding: 10px;
   text-align: center;
-  position: relative;
-  bottom: 608px;
-  left: 719px;
-  width: 107px;
-  height: 262px;
   background-color: var(--main-color);
   border-radius: 15px;
   color: var(--third-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
-.E-stock p {
+
+.eStockDesktop p {
   margin: 10px;
   text-align: center;
   font-size: 16px;
   font-family: var(--font2);
 }
 
+// DIV CONTAIN SHARE
+.Esd-share {
+  transition: opacity 1s ease-in-out;
+  cursor: pointer;
+}
+// DIV CONTAIN BUTTON
+.Esd-bttn {
+  // position: relative;
+  // bottom: 608px;
+  // left: 684px;
+}
+.messDisplayed {
+  // transition: all 0.5s ease-in-out;
+}
+.confirmCartMess {
+  background-color: var(--third-color);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  // transition: all 1ss ease-in-out;
+}
+// OTHERS BUTTONS
+.otherButtonED {
+  border: 0;
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  font-family: var(--font1);
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  margin: 20px;
+  background-color: var(--secondary-color);
+  background-image: linear-gradient(
+    to top left,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0)
+  );
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.otherButtonED:hover {
+  background-color: var(--third-color);
+  cursor: pointer;
+}
+
+.otherButtonED:active {
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+// AUTRES ?
 .Esd-star {
-  width: 71px;
-  height: 67px;
+  // width: 56px;
+  // height: 56px;
+  // padding: 0px 10px;
 }
 .E-deco2 {
   height: 66px;
   margin-bottom: 100px;
 }
-.Esd-stock {
+.eStockMobil {
   display: none;
 }
 
 @media screen and (max-width: 560px) {
-  .BurgerBody {
-    width: 500px;
-    // justify-content: center;
-    // align-items: center;
+  .Esd-pictures {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
-  .Esd-All {
-    margin-left: auto;
-    margin-right: auto;
-    align-items: center;
-
-    .Esd-All p {
-      justify-content: center;
-    }
-    .E-title {
-      margin: 10px;
-    }
-    .E-deco {
-      height: 30px;
-      margin-bottom: 100px;
-    }
-    .E-desciption {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      text-align: justify;
-      width: 480px;
-      height: 840px;
-    }
-
-    .Esd-bttn {
-      position: relative;
-      bottom: 190px;
-      left: 158px;
-    }
-
-    p {
-      text-align: center;
-    }
-    .Esd-text {
-      position: relative;
-      top: 954px;
-      margin: 20px 0 20px 0;
-    }
-    .Esd-theme {
-      margin: 110px 0 16px 0;
-    }
-    .Esd-pictures {
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: center;
-    }
-    .mainPicture img {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-      width: 400px;
-    }
-
-    .picture2-3 {
-      display: flex;
-      object-fit: cover;
-      flex-direction: row-reverse;
-    }
-    .picture2 img {
-      margin: 10px;
-      width: 204px;
-      height: 115px;
-      object-fit: cover;
-      flex-direction: row;
-    }
-
-    .picture3 img {
-      margin: 10px;
-      width: 217px;
-      height: 114px;
-      object-fit: cover;
-      flex-direction: row;
-    }
-
-    .Esd-price {
-      position: initial;
-      justify-content: center;
-      display: flex;
-      background-image: url(/src/assets/Images/etiquette.png);
-      background-size: contain;
-      width: 500px;
-      margin-bottom: 120px;
-      margin-top: 110px;
-    }
-    .Esd-share {
-      display: flex;
-      flex-direction: column-reverse;
-      bottom: 1160px;
-      right: 20px;
-    }
-    .E-stock {
-      display: none;
-      width: 80%;
-    }
-    .Esd-stock {
-      height: 63px;
-      background-color: var(--main-color);
-      background-size: contain;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      border-radius: 15px;
-      font-family: var(--font2);
-      color: var(--third-color);
-      text-overflow: clip;
-      margin-bottom: 20px;
-      margin-left: 48px;
-      width: 397px;
-
-      p {
-        font-size: 20px;
-        font-weight: 700;
-      }
-    }
-
-    .Esd-star {
-      display: none;
-    }
-    .E-deco2 {
-      display: none;
-    }
+  .scaled {
+    transform: scale(1.5);
+  }
+  .messDisplayed {
+    display: flex;
+    flex-direction: column;
+  }
+  .confirmCartMess {
+    margin-bottom: 10px;
+  }
+  .otherButtonED {
+    margin: 10px;
+  }
+  .E-desciption p {
+    margin: 30px 0px;
   }
 }

@@ -35,28 +35,28 @@ class ArtifactsManager extends AbstractManager {
 
   insert(artifact) {
     return this.database.query(
-      `insert into ${this.table} (name_arti, description_arti, price, stock, discount, pictures_id) values (?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (name_arti, description_arti, price, stock, discount, matiere_arti, archive_arti) values (?, ?, ?, ?, ?, ?, ?)`,
       [
         artifact.name_arti,
         artifact.description_arti,
         artifact.price,
         artifact.stock,
         artifact.discount,
-        artifact.pictures_id,
+        artifact.matiere_arti,
+        artifact.archive_arti,
       ]
     )
   }
 
   update(artifact) {
     return this.database.query(
-      `update ${this.table} set name_arti = ?, description_arti = ?, price = ?, stock = ?, discount = ?, pictures_id = ?, matiere_arti=? where id = ?`,
+      `update ${this.table} set name_arti = ?, description_arti = ?, price = ?, stock = ?, discount = ?, matiere_arti=? where id = ?`,
       [
         artifact.name_arti,
         artifact.description_arti,
         artifact.price,
         artifact.stock,
         artifact.discount,
-        artifact.pictures_id,
         artifact.matiere_arti,
         artifact.id,
       ]

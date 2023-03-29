@@ -12,16 +12,20 @@ export default function UserAccount() {
   const [userData, setUserData] = useState([])
   const [userOrder, setUserOrder] = useState([])
   const [isEditing, setIsEditing] = useState(false)
+  const [isSaved, setIsSaved] = useState(false)
+
+  console.info(isSaved)
 
   useEffect(() => {
     axios.get(`http://localhost:5000/users/${id}`).then((response) => {
       setUserData(response.data)
+      localStorage.setItem("userData", JSON.stringify(response.data))
     })
   }, [id])
+
   useEffect(() => {
     axios.get(`http://localhost:5000/users/${id}/orders`).then((response) => {
       setUserOrder(response.data)
-      // console.log(userOrder)
     })
   }, [id])
 
@@ -30,18 +34,30 @@ export default function UserAccount() {
     axios
       .put(`http://localhost:5000/users/${id}`, userData)
       .then((response) => {
-        // console.log("Poulette", response.data)
         setUserData(response.data)
         setIsEditing(false)
-      })
-      .catch((error) => {
-        console.error("Erreur :", error)
+        setIsSaved(true)
+        alert("Votre profil a été mis à jour")
+        window.location.href = `/eshop`
       })
 
     axios.get(`http://localhost:5000/users/${id}`).then((response) => {
       setUserOrder(response.data)
     })
   }
+  useEffect(() => {
+    if (!isEditing) {
+      axios.get(`http://localhost:5000/users/${id}`).then((response) => {
+        setUserData(response.data)
+      })
+    }
+  }, [id, isEditing])
+
+  function handleLogout() {
+    localStorage.removeItem("token")
+    window.location.href = "/home"
+  }
+
   return (
     <>
       <Header />
@@ -72,7 +88,9 @@ export default function UserAccount() {
                         })
                       }
                     />
-                    <button type="submit">Enregistrer</button>
+                    <button onClick={() => setIsEditing(true)}>
+                      Enregistrer
+                    </button>
                   </form>
                 ) : (
                   <div>
@@ -106,11 +124,14 @@ export default function UserAccount() {
                     <div key={order.id}>
                       <p>N° commande : {order.num_cmd}</p>
                       <p> état : {order.status}</p>
-                      <p>Montant payé: {order.order_amount}€</p>
+                      <p>Montant payé: {order.orderAmount}€</p>
                       <img className="UserSeparator" src={Separator} alt="" />
                     </div>
                   ))
                 )}
+                <div>
+                  <button onClick={handleLogout}>Se deconnecter</button>
+                </div>
               </div>
             </div>
           </div>

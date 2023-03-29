@@ -2,19 +2,18 @@ import { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
-function ModalConnexion({ isOpen, closeModal }) {
+export default function ModalConnexion({ isOpen, closeModal }) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [setNewUser] = useState("")
+  const [newUser, setNewUser] = useState(false)
   const navigate = useNavigate()
-  const [showCreateAccount, setShowCreateAccount] = useState(false)
+  const [showCreateAccount, setShowCreateAccount] = useState(true)
+  const token = localStorage.getItem("token")
+  console.info("eeeeeeeeeee", token)
 
   const handleClick = (e) => {
     e.preventDefault()
-    if (!isOpen) {
-      return null
-    }
 
     axios
       .post(`http://localhost:5000/users/login/`, {
@@ -22,14 +21,22 @@ function ModalConnexion({ isOpen, closeModal }) {
         password: password,
       })
       .then((res) => {
-        // console.log(res.data.user.id)
-        if (res.data.token) {
+        console.info(res.data)
+        if (res.headers["x-access-token"]) {
           setIsLoggedIn(true)
-          localStorage.setItem("token", res.data.token)
-          // console.log( res.data.id)
+
           const userId = res.data.id
+          localStorage.setItem("token", res.headers["x-access-token"])
+          localStorage.setItem("userId", res.data.id)
+          localStorage.setItem("role", res.data.role)
+          console.info("token", localStorage.getItem("token")) // console.info(res.data.token)
+          setShowCreateAccount(false)
+          if (newUser) {
+            alert("Votre compte a été créé avec succès!")
+          }
           navigate(`/useraccount/${userId}`)
           closeModal(false)
+          //   setShowCreateAccount(false)
         }
       })
       .catch((error) => {
@@ -37,23 +44,40 @@ function ModalConnexion({ isOpen, closeModal }) {
       })
   }
 
+  // eslint-disable-next-line no-unused-vars
+
   const handleCreateAccount = (e) => {
     e.preventDefault()
-
+    // Vérifier si l'email existe déjà dans la base de données
+    // axios.get(`http://localhost:5000/users?email=${email}`).then((res) => {
+    //   if (res.data.length > 0) {
+    //     alert(
+    //       "Cet email est déjà utilisé.
+    //     )
+    //     return
+    //   }
     axios
-      .post(`http://localhost:5000/users`, {
+      .post(`http://localhost:5000/users/`, {
         email: email,
         password: password,
       })
       .then((res) => {
         if (res.data.insertId) {
+          console.info(res.data.insertId)
+          setIsLoggedIn(true)
           setNewUser(true)
+          setShowCreateAccount(false)
+
+          //   localStorage.setItem("token", res.data.token)
           localStorage.setItem("res.data.insertId", res.data.insertId)
           const newUserId = res.data.insertId
           navigate(`/useraccount/${newUserId}`)
-          alert("Votre compte a été créé avec succès!")
+
+          //   setNewUser(true)
           closeModal(false)
+          setShowCreateAccount(false) //  masquer le bouton "Créer un compte"
         } else {
+          //   alert("Une erreur est survenue lors de la création de votre compte.")
           alert("Votre compte a été créé avec succès!")
         }
       })
@@ -61,6 +85,7 @@ function ModalConnexion({ isOpen, closeModal }) {
         console.error(error)
         alert("Une erreur est survenue lors de la création de votre compte.")
       })
+    // })
   }
   const myFunction = () => {
     const x = document.getElementById("passWord")
@@ -74,7 +99,6 @@ function ModalConnexion({ isOpen, closeModal }) {
   if (!isOpen) {
     return null
   }
-
   return (
     <div className="MC-all">
       <h2>Connexion</h2>
@@ -103,33 +127,25 @@ function ModalConnexion({ isOpen, closeModal }) {
             type="checkbox"
             onClick={() => myFunction()}
           />
-          {isLoggedIn ? (
-            <div>
-              <p>Vous êtes connecté!</p>
-            </div>
-          ) : (
-            <>
-              <button className="MC-bttn" type="submit">
-                Se connecter
-              </button>
-              {showCreateAccount && (
-                <>
-                  <button className="MC-bttn" onClick={handleCreateAccount}>
-                    Bienvenue !
-                  </button>
-                </>
-              )}
 
-              {!showCreateAccount && (
-                <button
-                  className="MC-bttn"
-                  onClick={() => setShowCreateAccount(true)}
-                >
-                  Créer un compte
-                </button>
-              )}
-            </>
+          {!isLoggedIn && !newUser && (
+            <button className="MC-bttn" onClick={handleClick}>
+              Se connecter
+            </button>
           )}
+          {showCreateAccount && (
+            <button className="MC-bttn" onClick={handleCreateAccount}>
+              Créer un compte
+            </button>
+          )}
+          {/* {!isLoggedIn && (
+            <button
+              className="MC-bttn"
+              onClick={showCreateAccount ? handleCreateAccount : handleClick}
+            >
+              {showCreateAccount ? "Se connecter" : "Créer un compte"}
+            </button>
+          )} */}
         </form>
 
         <div className="footer">
@@ -145,5 +161,3 @@ function ModalConnexion({ isOpen, closeModal }) {
     </div>
   )
 }
-
-export default ModalConnexion
