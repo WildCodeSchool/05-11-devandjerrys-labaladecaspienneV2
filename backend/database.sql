@@ -175,7 +175,7 @@ CREATE TABLE `events` (
   `archive_event` int DEFAULT NULL,
   `link_event` longtext,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,7 +184,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (1,'12ème Fête Médiévale de Mecquignies','Spectacles équestres, groupe de musique déambulatoire, marché d\'artisans et diverses animations sur les deux jours. Multiples restaurations sur site. Spectacle de feu le samedi soir.','2023-06-17','2023-06-18','Mecquignies (59)','https://scontent-cdg4-1.xx.fbcdn.net/v/t39.30808-6/309273457_209649984750751_8782038235405505558_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=vQ3IJvSYMroAX9AI6tW&_nc_ht=scontent-cdg4-1.xx&oh=00_AfDdYnKFSgsGkZFuVSlAPpaRx1ZRthvh7mBQThh-_10utA&oe=64202C62',0,'https://www.facebook.com/people/Medievale-Mecquignies/100071172511682/?paipv=0&eav=AfaCaEiDAPD9wjo2EjVzakMHH4owaEQScAI1mgG8yCM_97jwo6gAohFZoKeM2JLRdLs&_rdr'),(2,'Ludi Geek Festival 2023 - Festival du Jeu','Le temps d’un week-end, plongez dans la culture du comics, du manga et du jeu d’arcade','2023-10-28','2023-10-29','Halluin(59)','https://scontent-cdg4-1.xx.fbcdn.net/v/t39.30808-6/326154842_1350127862498759_6220042926693798284_n.jpg?stp=dst-jpg_s960x960&_nc_cat=104&ccb=1-7&_nc_sid=e3f864&_nc_ohc=SmulDT5B5AYAX9UFBpb&_nc_oc=AQmWwQb_08hBYMMKnYN9PpNri2i-9K2cEixq8ZbW_27cBXvLpv4KbwmviafdaQrpTqRlyYd0G60rGFD_ICweynHX&_nc_ht=scontent-cdg4-1.xx&oh=00_AfBDKUzfHgkcz4sF5mgH34g_q0sld32lZ5l-3kTp8qrGNA&oe=641F4CF0',0,'https://www.facebook.com/Ludigeek'),(3,'OctoGônes 2022 - 13ème Convention du Jeu et de l\'Imaginaire','42 rue de maître Gurdil à partir de 11H stand 42 - prix','2022-12-25','2022-12-25','Arras (62)',NULL,0,'https://poefestinternational.com/'),(4,'Le salon fantastique 10ème édition','A l\'auberge du poney qui tousse à partir de 10H stand 42 -','2021-11-13','2021-11-13','Dunkerque (59)',NULL,0,'https://poefestinternational.com/');
+INSERT INTO `events` VALUES (1,'12ème Fête Médiévale de Mecquignies','Spectacles équestres, groupe de musique déambulatoire, marché d\'artisans et diverses animations sur les deux jours. Multiples restaurations sur site. Spectacle de feu le samedi soir.','2023-06-17','2023-06-18','Mecquignies (59)','https://scontent-cdg4-1.xx.fbcdn.net/v/t39.30808-6/309273457_209649984750751_8782038235405505558_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=vQ3IJvSYMroAX9AI6tW&_nc_ht=scontent-cdg4-1.xx&oh=00_AfDdYnKFSgsGkZFuVSlAPpaRx1ZRthvh7mBQThh-_10utA&oe=64202C62',0,'https://www.facebook.com/people/Medievale-Mecquignies/100071172511682/?paipv=0&eav=AfaCaEiDAPD9wjo2EjVzakMHH4owaEQScAI1mgG8yCM_97jwo6gAohFZoKeM2JLRdLs&_rdr'),(2,'Ludi Geek Festival 2023 - Festival du Jeu','Le temps d’un week-end, plongez dans la culture du comics, du manga et du jeu d’arcade','2023-10-28','2023-10-29','Halluin(59)','https://scontent-cdg4-1.xx.fbcdn.net/v/t39.30808-6/326154842_1350127862498759_6220042926693798284_n.jpg?stp=dst-jpg_s960x960&_nc_cat=104&ccb=1-7&_nc_sid=e3f864&_nc_ohc=SmulDT5B5AYAX9UFBpb&_nc_oc=AQmWwQb_08hBYMMKnYN9PpNri2i-9K2cEixq8ZbW_27cBXvLpv4KbwmviafdaQrpTqRlyYd0G60rGFD_ICweynHX&_nc_ht=scontent-cdg4-1.xx&oh=00_AfBDKUzfHgkcz4sF5mgH34g_q0sld32lZ5l-3kTp8qrGNA&oe=641F4CF0',0,'https://www.facebook.com/Ludigeek'),(3,'OctoGônes 2022 - 13ème Convention du Jeu et de l\'Imaginaire','42 rue de maître Gurdil à partir de 11H stand 42 - prix','2022-12-25','2022-12-25','Arras (62)',NULL,0,'https://poefestinternational.com/'),(4,'Le salon fantastique 10ème édition','A l\'auberge du poney qui tousse à partir de 10H stand 42 -','2021-11-13','2021-11-13','Dunkerque (59)',NULL,0,'https://poefestinternational.com/'),(5,'Salon Fantastique et Japan Party','666 chemin de traverse à partir de 7h','2022-02-20','2022-02-20','Hazebrouck (59)',NULL,0,'https://poefestinternational.com/'),(6,'Middle Earth Festival','42 impasse du destin, parking payant','2023-01-08','2023-01-08','Lens (62)',NULL,0,'https://poefestinternational.com/');
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -381,4 +381,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-24 10:54:21
+-- Dump completed on 2023-03-29 14:42:00

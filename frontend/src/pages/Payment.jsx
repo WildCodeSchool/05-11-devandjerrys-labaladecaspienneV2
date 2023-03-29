@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom"
 import axios from "axios"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import Burger from "../components/Burger"
 import LineTop from "../assets/Images/head_line.png"
 import Paypal from "../assets/Images/paypal.png"
 import Visa from "../assets/Images/visa.png"
@@ -102,6 +103,7 @@ function Payment() {
       ) : (
         <PaymentConfirm />
       )}
+      <Burger />
       <Footer />
     </div>
   )
