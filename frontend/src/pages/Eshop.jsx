@@ -48,6 +48,7 @@ export default function Artifacts() {
   return (
     <div className="Artifacts">
       <Header />
+
       <div className="divHeadEshop">
         <div>
           <p className="titleHeadEshop">LA BALADE CASPIENNE</p>
@@ -86,22 +87,25 @@ export default function Artifacts() {
 
         <div className="divArtifactsEshop">
           {filteredValue === ""
-            ? artiSelect.map((arti) => (
-                <div className="eshop-card-wrapper" key={arti.id}>
-                  <EshopCard
-                    key={arti.id}
-                    id={arti.id}
-                    images={arti.images}
-                    name_arti={arti.name_arti}
-                    price={arti.price}
-                    onClick={() => handleCardClick(arti)}
-                  />
-                </div>
-              ))
+            ? artiSelect
+                .filter((arti) => arti.archive_arti !== 1)
+                .map((arti) => (
+                  <div className="eshop-card-wrapper" key={arti.id}>
+                    <EshopCard
+                      key={arti.id}
+                      id={arti.id}
+                      images={arti.images}
+                      name_arti={arti.name_arti}
+                      price={arti.price}
+                      onClick={() => handleCardClick(arti)}
+                    />
+                  </div>
+                ))
             : artiSelect.filter((arti) =>
                 arti.themesAll.includes(filteredValue)
               ).length > 0
             ? artiSelect
+                .filter((arti) => arti.archive_arti !== 1)
                 .filter((arti) => arti.themesAll.includes(filteredValue))
                 .map((arti) => (
                   <div className="eshop-card-wrapper" key={arti.id}>

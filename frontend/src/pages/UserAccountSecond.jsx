@@ -225,7 +225,7 @@ export default function UserAccount() {
                           </div>
                           <div className="encart">
                             <div className="encartSousTitre">
-                              <h4 className="sousTitre"> Prenom : </h4>
+                              <h4 className="sousTitre"> Prénom : </h4>
                               <p>{userData?.firstname}</p>
                             </div>
                             <img className="separateur" src={Separateur} />
@@ -278,7 +278,7 @@ export default function UserAccount() {
               <div className="commande">
                 <div className="commandeHistorique">
                   <div className="divCommande">
-                    <h3 className="titreCommande">Historique de Commande</h3>
+                    <h3 className="titreCommande">Historique de Commandes</h3>
                     <div className="cadreHaut">
                       <img src={CoinHG} className="coinHG" />
                       <img src={CoinHD} className="coinHD" />

@@ -34,42 +34,6 @@ export default function AdminPage() {
     })
   }
 
-  // const { id } = useParams()
-  // const [userData, setUserData] = useState([])
-  // const [userOrder, setUserOrder] = useState([])
-  // // const [isEditing, setIsEditing] = useState(false)
-
-  // useEffect(() => {
-  //   axios.get(`http://localhost:5000/users/${id}`).then((response) => {
-  //     setUserData(response.data)
-  //   })
-  // }, [id])
-  // useEffect(() => {
-  //   axios.get(`http://localhost:5000/users/${id}/orders`).then((response) => {
-  //     setUserOrder(response.data)
-  //   })
-  // }, [id])
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault()
-  //   axios
-  //     .put(`http://localhost:5000/users/${id}`, userData)
-  //     .then((response) => {
-  //       setUserData(response.data)
-  //       setIsEditing(false)
-  //       console.info("BIBI", id)
-  //       alert("Votre profil a été mis à jour")
-  //       window.location.href = `/eshop`
-  //     })
-
-  //   axios.get(`http://localhost:5000/users/${id}`).then((response) => {
-  //     setUserOrder(response.data)
-  //   })
-  // }
-  // function handleLogout() {
-  //   localStorage.removeItem("token")
-  //   window.location.href = "/home"
-  // }
   useEffect(() => {
     verifyTokenAdmin()
   }, [])

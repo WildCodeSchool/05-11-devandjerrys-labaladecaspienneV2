@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { MdOutlineVerticalAlignTop } from "react-icons/md"
 
 function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false)
@@ -29,9 +30,10 @@ function ScrollToTopButton() {
   return (
     <div className="scroll-to-top-button">
       {isVisible && (
-        <button onClick={handleClick}>
-          <i className="fa fa-chevron-up"></i>
-        </button>
+        <MdOutlineVerticalAlignTop
+          className="fa fa-chevron-up"
+          onClick={handleClick}
+        />
       )}
     </div>
   )
