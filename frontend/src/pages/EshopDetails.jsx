@@ -12,14 +12,12 @@ import ButtonCart from "@components/ButtonCart"
 
 export default function EshopDetails() {
   const { id } = useParams()
-  const [artifactChosen, setArtifactChosen] = useState(`${id}`)
+  const [artifactChosen, setArtifactChosen] = useState({})
+  const [quantity, setQuantity] = useState(0)
+
   const pictureGroups = [[], [], []]
   const [isMessageDisplayed, setIsMessageDisplayed] = useState(false)
-  const [quantity, setQuantity] = useState(0)
   const [isScaledIndex, setIsScaledIndex] = useState(-1)
-
-  const themesWithCommas = artifactChosen.themesAll.join(", ")
-  console.info(themesWithCommas)
 
   const handleImageClick = (index) => {
     setIsScaledIndex(index === isScaledIndex ? -1 : index)
@@ -170,8 +168,7 @@ export default function EshopDetails() {
         <div className="E-desciption">
           <p>Description : {artifactChosen.description_arti}</p>
           <p>Matières utilisées : {artifactChosen.matiere_arti}</p>
-          {/* <p>Les thèmes : {artifactChosen.themesAll}</p> */}
-          <p>Les thèmes : {artifactChosen.themesAll.join(", ")}</p>
+          <p>Les thèmes : {artifactChosen.themesAll}</p>
         </div>
 
         <div className="Esd-share">

@@ -21,13 +21,16 @@ export default function ModalConnexion({ isOpen, closeModal }) {
         password: password,
       })
       .then((res) => {
-        // console.log(token)
-        if (res.data.token) {
+        console.info(res.data)
+        if (res.headers["x-access-token"]) {
           setIsLoggedIn(true)
-          localStorage.setItem("token", res.data.token)
-          // console.log(res.data.token)
-          setShowCreateAccount(false)
+
           const userId = res.data.id
+          localStorage.setItem("token", res.headers["x-access-token"])
+          localStorage.setItem("userId", res.data.id)
+          localStorage.setItem("role", res.data.role)
+          console.info("token", localStorage.getItem("token")) // console.info(res.data.token)
+          setShowCreateAccount(false)
           if (newUser) {
             alert("Votre compte a été créé avec succès!")
           }

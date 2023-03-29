@@ -12,12 +12,19 @@ const EditArtifact = () => {
   const [discount, setDiscount] = useState(0)
   const [matiere_arti, setMatiereArti] = useState("")
   const [archive_arti, setArchiveArti] = useState(0)
-
   const [submitSuccess, setSubmitSuccess] = useState(false)
+
+  // ---------------- TEST CECILIA ------------------
+  const [images, setImages] = useState([])
+  // const [images, setImages] = useState([])
+
+  const handleDeleteImage = (imageToDelete) => {
+    setImages(images.filter((image) => image !== imageToDelete))
+  }
+  // ------------------------------------------------
 
   const handleArtifactSelection = (artifact) => {
     setSelectedArtifact(artifact)
-
     setNameArti(artifact.name_arti)
     setDescriptionArti(artifact.description_arti)
     setPrice(artifact.price)
@@ -26,6 +33,7 @@ const EditArtifact = () => {
     setMatiereArti(artifact.matiere_arti)
     setArchiveArti(artifact.archive_arti)
     setSubmitSuccess(false)
+    setImages(artifact.images || []) // Test Cecilia
   }
 
   const handleSubmit = async (e) => {
@@ -117,7 +125,6 @@ const EditArtifact = () => {
             onChange={(e) => setNameArti(e.target.value)}
           />
           <br />
-
           <label htmlFor="descriptionArti">Description de l'artéfact:</label>
           <textarea
             id="descriptionArti"
@@ -125,7 +132,6 @@ const EditArtifact = () => {
             onChange={(e) => setDescriptionArti(e.target.value)}
           ></textarea>
           <br />
-
           <label htmlFor="matiereArti">Matières utilisées:</label>
           <textarea
             id="matiereArti"
@@ -133,7 +139,6 @@ const EditArtifact = () => {
             onChange={(e) => setMatiereArti(e.target.value)}
           ></textarea>
           <br />
-
           <label htmlFor="price">Prix TTC (en €)</label>
           <input
             type="number"
@@ -142,7 +147,6 @@ const EditArtifact = () => {
             onChange={(e) => setPrice(e.target.value)}
           />
           <br />
-
           <label htmlFor="stock">Stock:</label>
           <input
             type="number"
@@ -151,7 +155,6 @@ const EditArtifact = () => {
             onChange={(e) => setStock(e.target.value)}
           />
           <br />
-
           <label htmlFor="discount">Réduction (en %):</label>
           <input
             type="number"
@@ -162,7 +165,6 @@ const EditArtifact = () => {
             onChange={(e) => setDiscount(e.target.value)}
           />
           <br />
-
           <label htmlFor="archiveArti">Archiver l'artéfact:</label>
           <select
             id="archiveArti"
@@ -172,7 +174,30 @@ const EditArtifact = () => {
             <option value={0}>Non</option>
             <option value={1}>Oui</option>
           </select>
-          <br />
+          <br /> <br />
+          <div>
+            ------------------------- TEST CECILIA -------------------------
+          </div>
+          <h3>Supprimer des images</h3>
+          <div className="changeArti">
+            {images.map((image, index) => (
+              <div key={index}>
+                <img src={image} alt={`Image ${index + 1}`} />
+                <button onClick={() => handleDeleteImage(image)}>
+                  Supprimer l'image
+                </button>
+              </div>
+            ))}
+          </div>
+          <h3>Ajouter des images</h3>
+          <p>à faire</p>
+          <h3>Supprimer les thèmes de l'artéfact</h3>
+          <p>à faire</p>
+          <h3>Ajouter des thèmes de l'artéfact</h3>
+          <p>à faire</p>
+          <div>
+            ------------------------------------------------------------
+          </div>
           <button className="buttonCart" type="submit">
             {submitSuccess ? "Modifié!" : "Modifier l'artifact"}
           </button>
