@@ -12,11 +12,11 @@ import ButtonCart from "@components/ButtonCart"
 
 export default function EshopDetails() {
   const { id } = useParams()
-  const [artifactChosen, setArtifactChosen] = useState(`${id}`)
-  const pictureGroups = [[], [], []]
-  const [isMessageDisplayed, setIsMessageDisplayed] = useState(false)
+  const [artifactChosen, setArtifactChosen] = useState({})
   const [quantity, setQuantity] = useState(0)
 
+  const pictureGroups = [[], [], []]
+  const [isMessageDisplayed, setIsMessageDisplayed] = useState(false)
   const [isScaledIndex, setIsScaledIndex] = useState(-1)
 
   const handleImageClick = (index) => {

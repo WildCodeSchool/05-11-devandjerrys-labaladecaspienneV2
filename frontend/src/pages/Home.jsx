@@ -39,7 +39,7 @@ export default function Home() {
         <h1>LA BALADE CASPIENNE</h1>
         <img id="image1" className="image" src={deco}></img>
         <h2>
-          Une promenade, une histoire au coeur de la culture de l'imaginaire.
+          Une promenade, une histoire au cœur de la culture de l'imaginaire.
         </h2>
         <div id="paragraph">
           <p>
@@ -67,18 +67,20 @@ export default function Home() {
 
         <img id="image3" className="image" src={deco1}></img>
         <div className="card-theme">
-          {themes.map((theme) => (
-            <div className="card-wrapper" key={theme.id}>
-              <CardTheme
-                key={theme.id}
-                id={theme.id}
-                picture_theme={theme.picture_theme}
-                name_theme={theme.name_theme}
-                description_theme={theme.description_theme}
-                onClick={() => openModal(theme.id)}
-              />
-            </div>
-          ))}
+          {themes
+            .filter((theme) => theme.archive_theme !== 1)
+            .map((theme) => (
+              <div className="card-wrapper" key={theme.id}>
+                <CardTheme
+                  key={theme.id}
+                  id={theme.id}
+                  picture_theme={theme.picture_theme}
+                  name_theme={theme.name_theme}
+                  description_theme={theme.description_theme}
+                  onClick={() => openModal(theme.id)}
+                />
+              </div>
+            ))}
 
           <Modal
             isOpen={selectedThemeId !== null}
@@ -97,15 +99,17 @@ export default function Home() {
           </Modal>
         </div>
         <Carousel showIndicators={true} showStatus={false}>
-          {themes.map((theme) => (
-            <CardThemeCarrousel
-              key={theme.id}
-              id={theme.id}
-              picture_theme={theme.picture_theme}
-              name_theme={theme.name_theme}
-              description_theme={theme.description_theme}
-            />
-          ))}
+          {themes
+            .filter((theme) => theme.archive_theme !== 1)
+            .map((theme) => (
+              <CardThemeCarrousel
+                key={theme.id}
+                id={theme.id}
+                picture_theme={theme.picture_theme}
+                name_theme={theme.name_theme}
+                description_theme={theme.description_theme}
+              />
+            ))}
         </Carousel>
       </div>
       <ScrollToTopButton />

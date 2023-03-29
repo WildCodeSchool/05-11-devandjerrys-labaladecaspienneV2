@@ -22,10 +22,10 @@ function Header() {
   }
 
   const handleMonProfilClick = () => {
-    const userData = JSON.parse(localStorage.getItem("userData"))
+    const userId = JSON.parse(localStorage.getItem("userId"))
 
     if (token) {
-      navigate(`/useraccount/${userData.id}`, token)
+      navigate(`/useraccount/${userId}`)
     } else {
       toggleModal()
     }

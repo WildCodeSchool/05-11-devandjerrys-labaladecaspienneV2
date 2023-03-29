@@ -22,7 +22,7 @@ function ButtonCart(props) {
   const handleClick = () => {
     axios
       .post(`http://localhost:5000/hascart`, {
-        cart_id: 1, // à modifier avec le user > userData.id
+        cart_id: localStorage.getItem("userId"), // à modifier avec le user > userData.id
         artifacts_id: idArti,
         quantity: 1,
       })
