@@ -16,8 +16,9 @@ export default function EshopDetails() {
   const pictureGroups = [[], [], []]
   const [isMessageDisplayed, setIsMessageDisplayed] = useState(false)
   const [quantity, setQuantity] = useState(0)
-
   const [isScaledIndex, setIsScaledIndex] = useState(-1)
+
+  const themesWithCommas = artifactChosen.themesAll.join(", ")
 
   const handleImageClick = (index) => {
     setIsScaledIndex(index === isScaledIndex ? -1 : index)
@@ -168,7 +169,8 @@ export default function EshopDetails() {
         <div className="E-desciption">
           <p>Description : {artifactChosen.description_arti}</p>
           <p>Matières utilisées : {artifactChosen.matiere_arti}</p>
-          <p>Les thèmes : {artifactChosen.themesAll}</p>
+          {/* <p>Les thèmes : {artifactChosen.themesAll}</p> */}
+          <p>Les thèmes : {artifactChosen.themesAll.join(", ")}</p>
         </div>
 
         <div className="Esd-share">
