@@ -17,6 +17,7 @@ const UsersControllers = require('./controllers/UsersControllers')
 const CartControllers = require('./controllers/CartControllers')
 const CommentsControllers = require('./controllers/CommentsControllers')
 
+router.post('/auth', UsersControllers.protection)
 router.get('/artifacts', ArtifactsControllers.browse)
 router.get('/artifacts/:id', ArtifactsControllers.read)
 router.put('/artifacts/:id', ArtifactsControllers.edit)
