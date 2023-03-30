@@ -26,6 +26,7 @@
 
 .left,
 .center,
+.centcart,
 .right,
 .lefter,
 .righter {
@@ -49,6 +50,10 @@
     box-shadow: 0 0 30px 10px rgba(249, 184, 120, 0.6);
     background-color: rgb(252, 212, 144);
   }
+  &:active {
+    box-shadow: 0 0 30px 10px rgba(249, 184, 120, 0.6);
+    background-color: rgb(252, 212, 144);
+  }
 }
 .text {
   transform: translateY(30px);
@@ -60,11 +65,24 @@
   will-change: transform;
   color: var(--main-color);
   font-family: var(--font1);
+  padding-top: 50px;
+}
+.cartext {
+  transform: translateY(30px);
+  opacity: 1;
+  // transition: all 0.3s ease;
+  bottom: 0;
+  left: 5px;
+  position: absolute;
+  will-change: transform;
+  color: var(--main-color);
+  font-family: var(--font1);
+  padding-top: 50px;
 }
 .lefter {
   transform: translateX(-60px) translateZ(-50px) rotateY(-10deg);
   background-image: url(../assets/shop.png);
-  background-size: 70%;
+  background-size: 60%;
 }
 .left {
   transform: translateX(-30px) translateZ(-25px) rotateY(-5deg);
@@ -99,13 +117,22 @@
   justify-content: center;
   align-items: center;
 }
+.centcart {
+  opacity: 1;
+  background-image: url(../assets/cart2.png);
+  background-size: 70%;
+}
 // .linkBurger {
 //     text-decoration: none;
 // }
 .BurgerBody {
   position: fixed;
-  bottom: 50px;
-  width: 100%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  // padding-top: 100px;
+  padding-bottom: 50px;
   z-index: 999;
 }
 
