@@ -68,35 +68,36 @@ const AddTheme = () => {
           required
         />
         <br />
-
-        <label className="label" htmlFor="descriptionTheme">
-          Description du thème:
-        </label>
-        <textarea
-          className="descriptionThemeArea"
-          id="descriptionTheme"
-          value={descriptionTheme}
-          onChange={(e) => setDescriptionTheme(e.target.value)}
-        ></textarea>
+        <div className="texteArea">
+          <label className="label" htmlFor="descriptionTheme">
+            Description du thème:
+          </label>
+          <textarea
+            className="descriptionThemeArea"
+            id="descriptionTheme"
+            value={descriptionTheme}
+            onChange={(e) => setDescriptionTheme(e.target.value)}
+          ></textarea>
+        </div>
         <br />
-
-        <label className="label" htmlFor="pictureTheme">
-          Ajouter une image:
-        </label>
-        <input
-          type="file"
-          id="pictureTheme"
-          accept="image/*"
-          onChange={handleFileChange}
-        />
-        {pictureTheme && (
-          <img
-            className="photoTheme"
-            src={URL.createObjectURL(pictureTheme)}
-            alt="Aperçu de l'image"
+        <div className="image">
+          <label className="label" htmlFor="pictureTheme">
+            Ajouter une image:
+          </label>
+          <input
+            type="file"
+            id="pictureTheme"
+            accept="image/*"
+            onChange={handleFileChange}
           />
-        )}
-
+          {pictureTheme && (
+            <img
+              className="photoTheme"
+              src={URL.createObjectURL(pictureTheme)}
+              alt="Aperçu de l'image"
+            />
+          )}
+        </div>
         <br />
 
         <label className="label" htmlFor="archiveTheme">

@@ -1,14 +1,16 @@
-.addTheme {
-  display: flex;
+.editTheme {
   color: white;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
+  display: flex;
   font-size: 30px;
+
   .cadreHaut {
     z-index: -1;
     display: flex;
     margin-bottom: -220px;
-    margin-top: -28px;
+    margin-top: -15px;
     .cadreHG {
       width: 250px;
     }
@@ -27,30 +29,40 @@
     .label {
       margin-top: 20px;
       margin-bottom: 10px;
-      font-size: 20px;
+      font-size: 23px;
     }
-    .descriptionThemeArea {
-      resize: none;
-      width: 280px;
-      height: 80px;
-    }
-
-    .image {
+    .interieurCadreSecond {
       display: flex;
       flex-direction: column;
       align-items: center;
       .label {
         margin-top: 20px;
         margin-bottom: 10px;
-        font-size: 20px;
+        font-size: 23px;
       }
-      .photoTheme {
-        background-color: white;
-        margin-bottom: 20px;
-        margin-top: 20px;
+      .descriptionThemeArea {
+        margin-top: 10px;
+        resize: none;
+        width: 280px;
+        height: 80px;
+      }
+      .image {
         display: flex;
-        height: 10vh;
-        width: 10vh;
+        flex-direction: column;
+        align-items: center;
+        .label {
+          margin-top: 20px;
+          margin-bottom: 10px;
+          font-size: 20px;
+        }
+        .photoTheme {
+          background-color: white;
+          margin-bottom: 20px;
+          margin-top: 20px;
+          display: flex;
+          height: 10vh;
+          width: 10vh;
+        }
       }
     }
   }

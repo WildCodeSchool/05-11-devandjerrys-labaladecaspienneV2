@@ -12,7 +12,7 @@ import EshopDetails from "./pages/EshopDetails"
 import Events from "@pages/Events"
 import UserAccount from "./pages/UserAccountSecond"
 import Cart from "./pages/Cart"
-import EditTheme from "./components/AddTheme"
+import EditTheme from "./pages/EditTheme"
 
 import Payment from "./pages/Payment"
 import PlumeCursor from "@components/PlumeCursor"

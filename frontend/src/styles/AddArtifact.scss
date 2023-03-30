@@ -1,9 +1,11 @@
-.addTheme {
-  display: flex;
+.addArtifact {
   color: white;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
+  display: flex;
   font-size: 30px;
+
   .cadreHaut {
     z-index: -1;
     display: flex;
@@ -34,7 +36,6 @@
       width: 280px;
       height: 80px;
     }
-
     .image {
       display: flex;
       flex-direction: column;
@@ -45,7 +46,6 @@
         font-size: 20px;
       }
       .photoTheme {
-        background-color: white;
         margin-bottom: 20px;
         margin-top: 20px;
         display: flex;

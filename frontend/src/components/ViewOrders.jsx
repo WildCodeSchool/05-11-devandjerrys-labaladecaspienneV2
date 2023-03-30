@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
+import CadreHG from "../assets/coinHG.svg"
+import CadreHD from "../assets/coinHD.svg"
+import CadreBG from "../assets/coinBG.svg"
+import CadreBD from "../assets/coinBD.svg"
 
 const ViewOrders = () => {
   const [orders, setOrders] = useState([])
@@ -19,32 +23,42 @@ const ViewOrders = () => {
   }, [])
 
   return (
-    <div>
+    <div className="viewOrder">
       <h2>Liste des commandes</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Numéro de commande</th>
-            <th>Article commandé</th>
-            <th>Montant de la commande</th>
-            {/* Ajoutez des colonnes pour afficher d'autres infos */}
-          </tr>
-        </thead>
-        <tbody>
-          {orders.map((order) => (
-            <tr key={order.id}>
-              <td>{order.lastname}</td>
-              <td>{order.firstname}</td>
-              <td>{order.num_cmd}</td>
-              <td>{order.name_arti}</td>
-              <td>{order.orderAmount} €</td>
+      <div className="cadreHaut">
+        <img src={CadreHG} className="cadreHG" alt="Cadre haut gauche" />
+        <img src={CadreHD} className="cadreHD" alt="Cadre haut droit" />
+      </div>
+      <div className="tableDiv">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Numéro de commande</th>
+              <th>Article commandé</th>
+              <th>Montant de la commande</th>
               {/* Ajoutez des colonnes pour afficher d'autres infos */}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {orders.map((order) => (
+              <tr key={order.id}>
+                <td>{order.lastname}</td>
+                <td>{order.firstname}</td>
+                <td>{order.num_cmd}</td>
+                <td>{order.name_arti}</td>
+                <td>{order.orderAmount} €</td>
+                {/* Ajoutez des colonnes pour afficher d'autres infos */}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="cadreBas">
+        <img src={CadreBG} className="cadreBG" alt="Cadre bas gauche" />
+        <img src={CadreBD} className="cadreBD" alt="Cadre bas gauche" />
+      </div>
     </div>
   )
 }

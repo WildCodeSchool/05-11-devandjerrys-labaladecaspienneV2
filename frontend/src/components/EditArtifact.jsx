@@ -1,6 +1,10 @@
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import CadreHG from "../assets/coinHG.svg"
+import CadreHD from "../assets/coinHD.svg"
+import CadreBG from "../assets/coinBG.svg"
+import CadreBD from "../assets/coinBD.svg"
 
 const EditArtifact = () => {
   const [artifacts, setArtifacts] = useState([])
@@ -93,116 +97,146 @@ const EditArtifact = () => {
   }, [])
 
   return (
-    <div>
+    <div className="editArtifact">
       <h2>Modifier un artefact</h2>
-      <label htmlFor="artifact-selection">Sélectionner un artefact:</label>
-      <select
-        id="artifact-selection"
-        value={selectedArtifact?.id || ""}
-        onChange={(e) => {
-          const artifact = artifacts.find(
-            (artifact) => artifact.id === Number(e.target.value)
-          )
-          if (artifact) {
-            handleArtifactSelection(artifact)
-          }
-        }}
-      >
-        <option value="">Choisir un artefact</option>
-        {artifacts.map((artifact) => (
-          <option key={artifact.id} value={artifact.id}>
-            {artifact.name_arti}
-          </option>
-        ))}
-      </select>
-      {selectedArtifact && (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="nameArti">Nom de l'artéfact:</label>
-          <input
-            type="text"
-            id="nameArti"
-            value={name_arti}
-            onChange={(e) => setNameArti(e.target.value)}
-          />
-          <br />
-          <label htmlFor="descriptionArti">Description de l'artéfact:</label>
-          <textarea
-            id="descriptionArti"
-            value={description_arti}
-            onChange={(e) => setDescriptionArti(e.target.value)}
-          ></textarea>
-          <br />
-          <label htmlFor="matiereArti">Matières utilisées:</label>
-          <textarea
-            id="matiereArti"
-            value={matiere_arti}
-            onChange={(e) => setMatiereArti(e.target.value)}
-          ></textarea>
-          <br />
-          <label htmlFor="price">Prix TTC (en €)</label>
-          <input
-            type="number"
-            id="price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-          />
-          <br />
-          <label htmlFor="stock">Stock:</label>
-          <input
-            type="number"
-            id="stock"
-            value={stock}
-            onChange={(e) => setStock(e.target.value)}
-          />
-          <br />
-          <label htmlFor="discount">Réduction (en %):</label>
-          <input
-            type="number"
-            id="discount"
-            min="0"
-            max="100"
-            value={discount}
-            onChange={(e) => setDiscount(e.target.value)}
-          />
-          <br />
-          <label htmlFor="archiveArti">Archiver l'artéfact:</label>
-          <select
-            id="archiveArti"
-            value={archive_arti}
-            onChange={(e) => setArchiveArti(Number(e.target.value))}
-          >
-            <option value={0}>Non</option>
-            <option value={1}>Oui</option>
-          </select>
-          <br /> <br />
-          <div>
-            ------------------------- TEST CECILIA -------------------------
-          </div>
-          <h3>Supprimer des images</h3>
-          <div className="changeArti">
-            {images.map((image, index) => (
-              <div key={index}>
-                <img src={image} alt={`Image ${index + 1}`} />
-                <button onClick={() => handleDeleteImage(image)}>
-                  Supprimer l'image
-                </button>
-              </div>
-            ))}
-          </div>
-          <h3>Ajouter des images</h3>
-          <p>à faire</p>
-          <h3>Supprimer les thèmes de l'artéfact</h3>
-          <p>à faire</p>
-          <h3>Ajouter des thèmes de l'artéfact</h3>
-          <p>à faire</p>
-          <div>
-            ------------------------------------------------------------
-          </div>
-          <button className="buttonCart" type="submit">
-            {submitSuccess ? "Modifié!" : "Modifier l'artifact"}
-          </button>
-        </form>
-      )}
+      <div className="cadreHaut">
+        <img src={CadreHG} className="cadreHG" alt="Cadre haut gauche" />
+        <img src={CadreHD} className="cadreHD" alt="Cadre haut droit" />
+      </div>
+      <form className="interieurCadre">
+        <label className="label" htmlFor="artifact-selection">
+          Sélectionner un artefact:
+        </label>
+        <select
+          id="artifact-selection"
+          value={selectedArtifact?.id || ""}
+          onChange={(e) => {
+            const artifact = artifacts.find(
+              (artifact) => artifact.id === Number(e.target.value)
+            )
+            if (artifact) {
+              handleArtifactSelection(artifact)
+            }
+          }}
+        >
+          <option value="">Choisir un artefact</option>
+          {artifacts.map((artifact) => (
+            <option key={artifact.id} value={artifact.id}>
+              {artifact.name_arti}
+            </option>
+          ))}
+        </select>
+        {selectedArtifact && (
+          <form className="interieurCadreSecond" onSubmit={handleSubmit}>
+            <label className="label" htmlFor="nameArti">
+              Nom de l'artéfact:
+            </label>
+            <input
+              type="text"
+              id="nameArti"
+              value={name_arti}
+              onChange={(e) => setNameArti(e.target.value)}
+            />
+            <br />
+            <div className="descript">
+              <label className="label" htmlFor="descriptionArti">
+                Description de l'artéfact:
+              </label>
+              <textarea
+                className="descriptionThemeArea"
+                id="descriptionArti"
+                value={description_arti}
+                onChange={(e) => setDescriptionArti(e.target.value)}
+              ></textarea>
+              <br />
+              <label className="label" htmlFor="matiereArti">
+                Matières utilisées:
+              </label>
+              <textarea
+                className="descriptionThemeArea"
+                id="matiereArti"
+                value={matiere_arti}
+                onChange={(e) => setMatiereArti(e.target.value)}
+              ></textarea>
+            </div>
+            <br />
+            <label className="label" htmlFor="price">
+              Prix TTC (en €)
+            </label>
+            <input
+              type="number"
+              id="price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
+            <br />
+            <label className="label" htmlFor="stock">
+              Stock:
+            </label>
+            <input
+              type="number"
+              id="stock"
+              value={stock}
+              onChange={(e) => setStock(e.target.value)}
+            />
+            <br />
+            <label className="label" htmlFor="discount">
+              Réduction (en %):
+            </label>
+            <input
+              type="number"
+              id="discount"
+              min="0"
+              max="100"
+              value={discount}
+              onChange={(e) => setDiscount(e.target.value)}
+            />
+            <br />
+            <label className="label" htmlFor="archiveArti">
+              Archiver l'artéfact:
+            </label>
+            <select
+              id="archiveArti"
+              value={archive_arti}
+              onChange={(e) => setArchiveArti(Number(e.target.value))}
+            >
+              <option value={0}>Non</option>
+              <option value={1}>Oui</option>
+            </select>
+            <br /> <br />
+            <div>
+              ------------------------- TEST CECILIA -------------------------
+            </div>
+            <h3>Supprimer des images</h3>
+            <div className="changeArti">
+              {images.map((image, index) => (
+                <div key={index}>
+                  <img src={image} alt={`Image ${index + 1}`} />
+                  <button onClick={() => handleDeleteImage(image)}>
+                    Supprimer l'image
+                  </button>
+                </div>
+              ))}
+            </div>
+            <h3>Ajouter des images</h3>
+            <p>à faire</p>
+            <h3>Supprimer les thèmes de l'artéfact</h3>
+            <p>à faire</p>
+            <h3>Ajouter des thèmes de l'artéfact</h3>
+            <p>à faire</p>
+            <div>
+              ------------------------------------------------------------
+            </div>
+            <button className="buttonCart" type="submit">
+              {submitSuccess ? "Modifié!" : "Modifier l'artifact"}
+            </button>
+          </form>
+        )}
+      </form>
+      <div className="cadreBas">
+        <img src={CadreBG} className="cadreBG" alt="Cadre bas gauche" />
+        <img src={CadreBD} className="cadreBD" alt="Cadre bas gauche" />
+      </div>
     </div>
   )
 }

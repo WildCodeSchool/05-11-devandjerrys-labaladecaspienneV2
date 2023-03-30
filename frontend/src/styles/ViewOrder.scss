@@ -1,0 +1,36 @@
+.viewOrder {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+  .cadreHaut {
+    z-index: -1;
+    display: flex;
+    margin-bottom: -220px;
+    margin-top: -15px;
+    .cadreHG {
+      width: 330px;
+    }
+    .cadreHD {
+      width: 330px;
+    }
+  }
+  .tableDiv {
+    font-size: 16px;
+    height: 500px;
+    overflow-y: auto;
+  }
+  .cadreBas {
+    z-index: -1;
+    display: flex;
+    margin-top: -240px;
+
+    .cadreBG {
+      width: 330px;
+    }
+    .cadreBD {
+      width: 330px;
+    }
+  }
+}
