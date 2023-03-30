@@ -1,7 +1,6 @@
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import CardEvent from "../components/CardEvent"
-import deco from "../assets/Images/deco.png"
 import deco1 from "../assets/Images/deco1.png"
 import Burger from "@components/Burger"
 import LineTop from "../assets/Images/head_line.png"
@@ -97,13 +96,9 @@ export default function Events() {
     <div>
       <Header />
       <div className="eventsBody">
-        <h1 className="headTitle">LA BALADE CASPIENNE</h1>
-        <img
-          id="lDesign1"
-          className="ligneDesign"
-          alt="ligne de séparation"
-          src={deco}
-        ></img>
+        <p id="titleHeadEshop">LA BALADE CASPIENNE</p>
+        <img id="lineTitleEshop" src={LineTop} alt="image" />
+        <p></p>
         <img
           id="lDesign2"
           className="ligneDesign"

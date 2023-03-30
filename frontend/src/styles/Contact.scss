@@ -1,24 +1,33 @@
-@import url(https://fonts.googleapis.com/css?family=Dancing+Script:400,700);
-* {
-  box-sizing: border-box;
-}
 .contactBody {
   margin: 0;
   padding: 0;
   height: 500px;
   color: var(--third-color);
   text-align: center;
-  font-family: monospace;
+  font-family: var(--font2);
   overflow: hidden;
+  box-sizing: border-box;
+  // margin-bottom: 250px;
 }
-h1,
-p {
+#titleHeadEshop {
+  font-family: var(--font1);
+  font-size: 2em;
+  color: var(--main-color);
+  margin-top: 9vh;
+  margin-bottom: 0;
+}
+#lineTitleEshop {
+  width: 50vw;
+  margin-bottom: 5vh;
+}
+.contacttittle,
+.contactph {
   margin: 0;
   padding: 0;
 }
-h1 {
+.contacttittle {
   font-size: 2rem;
-  font-family: "Dancing Script";
+  font-family: var(--font1);
 }
 small {
   display: block;
@@ -26,27 +35,27 @@ small {
   font-size: 0.8rem;
   transition: opacity 0.33s;
 }
-textarea,
-input,
-button {
+.contactextarea,
+.contactinput,
+#sendLetter {
   line-height: 1.5rem;
   border: 0;
   outline: none;
   font-family: inherit;
   appearance: none;
 }
-textarea,
-input {
+.contactextarea,
+.contactinput {
   color: var(--third-color);
   background-color: transparent;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='24'><rect fill='rgb(229, 225, 187)' x='0' y='23' width='10' height='1'/></svg>");
 }
-textarea {
+.contactextarea {
   width: 100%;
   height: 8rem;
   resize: none;
 }
-input {
+.contactinput {
   width: 50%;
   margin-bottom: 1rem;
   &[type="text"]:invalid,
@@ -55,7 +64,7 @@ input {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='24'><rect fill='rgba(240, 132, 114, 0.5)' x='0' y='23' width='10' height='1'/></svg>");
   }
 }
-button {
+#sendLetter {
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   background-color: var(--third-color);
@@ -65,18 +74,20 @@ button {
   &:hover,
   :focus {
     outline: none;
-    background-color: rgba(78, 94, 114, 1);
+    background-color: var(--secondary-color);
+    cursor: pointer;
   }
 }
 input[type="text"]:focus,
 input[type="email"]:focus,
-textarea:focus {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='24'><rect fill='rgba(78, 94, 114, 0.3)' x='0' y='23' width='10' height='1'/></svg>");
+.contactextarea:focus {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='24'><rect fill='var(--third-color)' x='0' y='23' width='10' height='1'/></svg>");
   outline: none;
 }
 .wrapper {
   width: 35rem;
   background-color: white;
+  box-sizing: border-box;
 }
 .letter {
   position: absolute;
@@ -86,11 +97,13 @@ textarea:focus {
   width: 30rem;
   margin: auto;
   perspective: 60rem;
+  box-sizing: border-box;
 }
 .side {
   height: 12rem;
   background-color: #fcfcf8;
   outline: 1px solid transparent;
+  box-sizing: border-box;
   &:nth-of-type(1) {
     padding: 2rem 2rem 0;
     border-radius: 1rem 1rem 0 0;
@@ -194,6 +207,7 @@ textarea:focus {
   left: 0;
   right: 0;
   margin: 1rem auto;
+  box-sizing: border-box;
 }
 @keyframes closeLetter {
   50% {
