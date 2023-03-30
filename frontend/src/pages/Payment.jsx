@@ -24,21 +24,55 @@ function Payment() {
     setShowFormPayment(!showFormPayment)
   }
 
-  const handlePayment = () => {
-    setShowConfirmation(true)
-    saveOrderToDatabase(totalAmount, cartArti)
+  const handlePayment = async () => {
+    console.info("handlePayment called")
+    try {
+      await saveOrderToDatabase(totalAmount, cartArti)
+      console.info("saveOrderToDatabase success")
+      await updateStock(cartArti)
+      console.info("stockManagement success")
+      setShowConfirmation(true)
+      console.info("setShowConfirmation called")
+    } catch (error) {
+      console.error(error)
+    }
   }
+  console.info("cartArti :", cartArti)
 
   const saveOrderToDatabase = async (totalAmount, cartArti) => {
     try {
       const orderResponse = await axios.post("http://localhost:5000/orders", {
-        users_id: userId, // voir pour récupérer l'id de l'utilisateur
+        users_id: userId,
         orderAmount: totalAmount,
         articleInfos: [...cartArti],
       })
-      console.info(orderResponse)
+      console.info("orderResponse :", orderResponse)
     } catch (error) {
-      console.error("Error saving order to database:", error)
+      console.error(
+        "Error saving order to database Orders and HasOrders :",
+        error
+      )
+    }
+  }
+
+  const updateStock = async (cartArti) => {
+    try {
+      for (const article of cartArti) {
+        const artifact = await axios.get(
+          `http://localhost:5000/artifacts/${article.id}`
+        )
+        const newStock = artifact.data.stock - article.quantity
+        const response = await axios.put(
+          `http://localhost:5000/artifacts/${article.id}`,
+          {
+            ...artifact.data,
+            stock: newStock,
+          }
+        )
+        console.info(response)
+      }
+    } catch (error) {
+      console.error("Error updating stock of artifact :", error)
     }
   }
 
