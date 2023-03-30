@@ -4,6 +4,7 @@ import Footer from "../components/Footer"
 import Burger from "../components/Burger"
 import LineTop from "../assets/Images/head_line.png"
 import axios from "axios"
+import CartButtonHeader from "@components/CartButtonHeader"
 
 function Contact() {
   const addClass = () => {
@@ -50,6 +51,7 @@ function Contact() {
   return (
     <div className="contactAll">
       <Header />
+      <CartButtonHeader />
       <p id="titleHeadEshop">LA BALADE CASPIENNE</p>
       <img id="lineTitleEshop" src={LineTop} alt="image" />
       <div className="contactBody">
