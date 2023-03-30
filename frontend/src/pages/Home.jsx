@@ -14,6 +14,7 @@ import Modal from "react-modal"
 import Theme from "@components/Theme"
 import { CiCircleRemove } from "react-icons/ci"
 import ScrollToTopButton from "@components/Srolltotop"
+import Snow from "../components/Snow"
 
 export default function Home() {
   const [themes, setThemes] = useState([])
@@ -113,6 +114,7 @@ export default function Home() {
         </Carousel>
       </div>
       <ScrollToTopButton />
+      <Snow />
       <Burger />
       <Footer />
     </div>

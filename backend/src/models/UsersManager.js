@@ -35,7 +35,6 @@ class UsersManager extends AbstractManager {
         user.firstname,
         user.email,
         user.password,
-
         user.phone,
         user.number_delivery,
         user.adress_delivery,
