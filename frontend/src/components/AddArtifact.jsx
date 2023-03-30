@@ -196,6 +196,9 @@ const AddArtifact = () => {
           accept="image/*"
           onChange={(e) => handleFileChange(e, 1)}
         />
+        {pictureFile && (
+          <img src={URL.createObjectURL(pictureFile)} alt="Aperçu de l'image" />
+        )}
         <br />
         <label htmlFor="artifact_image2">Image n°2:</label>
         <input
@@ -205,6 +208,12 @@ const AddArtifact = () => {
           accept="image/*"
           onChange={(e) => handleFileChange(e, 2)}
         />
+        {pictureFile2 && (
+          <img
+            src={URL.createObjectURL(pictureFile2)}
+            alt="Aperçu de l'image"
+          />
+        )}
         <br />
         <label htmlFor="artifact_image3">Image n°3:</label>
         <input
@@ -214,6 +223,12 @@ const AddArtifact = () => {
           accept="image/*"
           onChange={(e) => handleFileChange(e, 3)}
         />
+        {pictureFile3 && (
+          <img
+            src={URL.createObjectURL(pictureFile3)}
+            alt="Aperçu de l'image"
+          />
+        )}
         <br />
         <button className="buttonCart" type="submit">
           {submitSuccess ? "Ajouté!" : "Ajouter l'artifact"}

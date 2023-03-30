@@ -12,6 +12,7 @@ import EshopDetails from "./pages/EshopDetails"
 import Events from "@pages/Events"
 import UserAccount from "./pages/UserAccountSecond"
 import Cart from "./pages/Cart"
+import EditTheme from "./components/AddTheme"
 
 import Payment from "./pages/Payment"
 import PlumeCursor from "@components/PlumeCursor"
@@ -35,6 +36,7 @@ function App() {
         <Route path="/useraccount/:id" element={<UserAccount />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/useraccount" element={<UserAccount />} />
+        <Route path="/edit" element={<EditTheme />} />
       </Routes>
     </div>
   )
