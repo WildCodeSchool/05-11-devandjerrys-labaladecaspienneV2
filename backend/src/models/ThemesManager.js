@@ -17,6 +17,13 @@ class ThemesManager extends AbstractManager {
     )
   }
 
+  insertHasTheme(theme) {
+    return this.database.query(
+      `INSERT INTO artifacts_has_themes (artifacts_id, themes_id) VALUES (?, ?)`,
+      [theme.artifacts_id, theme.themes_id]
+    )
+  }
+
   update(theme) {
     const fields = []
     const values = []

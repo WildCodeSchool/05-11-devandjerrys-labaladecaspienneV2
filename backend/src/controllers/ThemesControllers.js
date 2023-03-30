@@ -138,10 +138,27 @@ const destroy = (req, res) => {
     })
 }
 
+const addHasTheme = (req, res) => {
+  const theme = req.body
+
+  // TODO validations (length, format...)
+
+  models.themes
+    .insertHasTheme(theme)
+    .then(([result]) => {
+      res.location(`/themes/${result.insertId}`).sendStatus(201)
+    })
+    .catch((err) => {
+      console.error(err)
+      res.sendStatus(500)
+    })
+}
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  addHasTheme,
 }
