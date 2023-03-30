@@ -1,19 +1,20 @@
-// mailer.js
-
-// on importe les éléments dont on a besoin
-
 require('dotenv').config()
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
-const nodemailer = require('nodemailer')
+const msg = {
+  to: process.env.SENDGRID_RECIPIENT_EMAIL, // Change to your recipient
+  from: process.env.SENDGRID_SENDER_EMAIL, // Change to your verified sender
+  subject: 'Contact La balade caspienne',
+  text: 'Message reçu depuis le formulaire contact :',
+  html: '<strong>Message reçu depuis le formulaire contact :</strong>',
+}
 
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: process.env.SMTP_PORT,
-  secureProtocol: 'TLSv1_method',
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASSWORD,
-  },
-})
-
-module.exports = transporter
+sgMail
+  .send(msg)
+  .then(() => {
+    // console.log('Email sent')
+  })
+  .catch((error) => {
+    console.error(error)
+  })
