@@ -19,10 +19,13 @@ const getToken = (req) => {
 const protection = (req, res, next) => {
   const token = getToken(req)
   console.info(token)
-  const objectTests = {
-    verifyData: true,
+  if (token === null) {
+    res.status(200).json({
+      mess: 'na pas acces au donnes',
+      verifyData: false,
+      role: false,
+    })
   }
-  console.info(objectTests)
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
       console.info(err)
@@ -32,7 +35,17 @@ const protection = (req, res, next) => {
       })
     }
     console.info('decode', decoded)
-    return res.status(200).json({ mess: 'user data', verifyData: true })
+    if (decoded.role === 0) {
+      decoded.role = false
+    } else {
+      decoded.role = true
+    }
+    return res.status(200).json({
+      mess: 'user data',
+      verifyData: true,
+      role: decoded.role,
+      userId: decoded.userId,
+    })
   })
 }
 
@@ -81,9 +94,13 @@ const login = async (req, res) => {
       return
     }
 
-    const token = jwt.sign({ userId: user[0].id }, process.env.JWT_SECRET, {
-      expiresIn: '1h',
-    })
+    const token = jwt.sign(
+      { userId: user[0].id, role: user[0].is_admin },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: '1h',
+      }
+    )
     // TODO modif
     res.header('Access-Control-Expose-Headers', 'x-access-token')
     res.set('x-access-token', token)
@@ -162,9 +179,20 @@ const add = async (req, res) => {
       ...req.body,
       password: hashedPassword,
     })
+    const resultCreateCart = await models.cart.createCartUser(result.insertId)
     // const result = await add({ ...req.body, password: hashedPassword })
-
-    res.location(`users/${result.insertId}`).sendStatus(201)
+    const token = jwt.sign(
+      { userId: result.insertId, role: false },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: '1h',
+      }
+    )
+    console.info(resultCreateCart)
+    // TODO modif
+    res.header('Access-Control-Expose-Headers', 'x-access-token')
+    res.set('x-access-token', token)
+    res.status(200).json({ id: result.insertId, role: false })
     // console.info(result.insertId)
   } catch (err) {
     console.error(err)

@@ -1,5 +1,5 @@
-// import { useState, useEffect } from "react"
-// import axios from "axios"
+import { useEffect } from "react"
+import axios from "axios"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Burger from "../components/Burger"
@@ -10,46 +10,33 @@ import EditArtifact from "../components/EditArtifact"
 // import Separator from "../assets/Images/separateur.png"
 import LineTop from "../assets/Images/head_line.png"
 import ViewOrders from "@components/ViewOrders"
-// import { useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 export default function AdminPage() {
-  // const { id } = useParams()
-  // const [userData, setUserData] = useState([])
-  // const [userOrder, setUserOrder] = useState([])
-  // // const [isEditing, setIsEditing] = useState(false)
+  const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   axios.get(`http://localhost:5000/users/${id}`).then((response) => {
-  //     setUserData(response.data)
-  //   })
-  // }, [id])
-  // useEffect(() => {
-  //   axios.get(`http://localhost:5000/users/${id}/orders`).then((response) => {
-  //     setUserOrder(response.data)
-  //   })
-  // }, [id])
+  const verifyTokenAdmin = () => {
+    const token = localStorage.getItem("token")
+    axios({
+      method: "POST",
+      url: "http://localhost:5000/auth",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
+      console.info(res.data.role, res.data.verifyData)
+      if (!res.data.verifyData || !res.data.role) {
+        console.info("userAccount test")
+        navigate(`/home`)
+      }
+      // else if (res.data.role) console.log("poirzoierjhoizjeojizjoizer")
+      // reste a ajouter les redirection si  token valide
+    })
+  }
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault()
-  //   axios
-  //     .put(`http://localhost:5000/users/${id}`, userData)
-  //     .then((response) => {
-  //       setUserData(response.data)
-  //       setIsEditing(false)
-  //       console.info("BIBI", id)
-  //       alert("Votre profil a été mis à jour")
-  //       window.location.href = `/eshop`
-  //     })
-
-  //   axios.get(`http://localhost:5000/users/${id}`).then((response) => {
-  //     setUserOrder(response.data)
-  //   })
-  // }
-  // function handleLogout() {
-  //   localStorage.removeItem("token")
-  //   window.location.href = "/home"
-  // }
-
+  useEffect(() => {
+    verifyTokenAdmin()
+  }, [])
   return (
     <>
       <Header />
@@ -58,7 +45,7 @@ export default function AdminPage() {
         <img className="lineTitleEshop" src={LineTop} alt="image" />
       </div>
       <div className="AdminAccountPage">
-        {/* {userData && ( */}
+        {/* {userData || ( */}
         <div className="AdminDivGrid">
           <div className="AdminGridDivs Grid1">
             <AddArtifact />
