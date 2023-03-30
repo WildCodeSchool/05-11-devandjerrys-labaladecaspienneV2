@@ -37,6 +37,11 @@ export default function AdminPage() {
   useEffect(() => {
     verifyTokenAdmin()
   }, [])
+
+  function handleLogout() {
+    localStorage.removeItem("token")
+    window.location.href = "/home"
+  }
   return (
     <>
       <Header />
@@ -62,6 +67,9 @@ export default function AdminPage() {
           <div className="AdminGridDivs Grid5">
             <EditArtifact />
           </div>
+          <button className="buttonCart" onClick={handleLogout}>
+            Se deconnecter
+          </button>
         </div>
       </div>
       <Burger />

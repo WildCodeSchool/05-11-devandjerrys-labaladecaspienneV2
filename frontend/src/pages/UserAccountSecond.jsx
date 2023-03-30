@@ -325,7 +325,7 @@ export default function UserAccount() {
               </div>
             </div>
             <div className="deconnexion">
-              <button className="boutonDeconnexion" onClick={handleLogout}>
+              <button className="buttonCart" onClick={handleLogout}>
                 Se deconnecter
               </button>
             </div>
