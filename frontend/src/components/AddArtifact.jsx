@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { TbAsterisk } from "react-icons/tb"
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import axios from "axios"
 
 const AddArtifact = () => {
@@ -19,6 +19,9 @@ const AddArtifact = () => {
   const fileInput1 = useRef(null)
   const fileInput2 = useRef(null)
   const fileInput3 = useRef(null)
+
+  const [themes, setThemes] = useState([])
+  const [selectedThemes, setSelectedThemes] = useState([])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -64,6 +67,20 @@ const AddArtifact = () => {
       }
       if (pictureFile3) {
         await uploadImage(pictureFile3)
+      }
+
+      for (const themeId of selectedThemes) {
+        try {
+          await axios.post("http://localhost:5000/hasthemes", {
+            artifacts_id,
+            themes_id: themeId,
+          })
+        } catch (error) {
+          console.error(
+            `Erreur lors de l'ajout du thème ${themeId} pour l'artefact ${artifacts_id}:`,
+            error
+          )
+        }
       }
 
       // Réinitialiser les champs du formulaire
@@ -112,6 +129,27 @@ const AddArtifact = () => {
       setPictureFile(null)
     }
   }
+
+  const handleThemeChange = (e, themeId) => {
+    if (e.target.checked) {
+      setSelectedThemes([...selectedThemes, themeId])
+    } else {
+      setSelectedThemes(selectedThemes.filter((id) => id !== themeId))
+    }
+  }
+
+  useEffect(() => {
+    const fetchThemes = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/themes")
+        setThemes(response.data)
+      } catch (error) {
+        console.error("Erreur lors de la récupération des thèmes:", error)
+      }
+    }
+
+    fetchThemes()
+  }, [])
 
   return (
     <div>
@@ -215,6 +253,24 @@ const AddArtifact = () => {
           onChange={(e) => handleFileChange(e, 3)}
         />
         <br />
+
+        <label htmlFor="themes">Sélectionner un ou plusieurs thèmes:</label>
+
+        {themes.map((theme) => (
+          <div key={theme.id}>
+            <input
+              type="checkbox"
+              id="theme"
+              name="theme"
+              value={theme.id}
+              checked={selectedThemes.includes(theme.id)}
+              onChange={(e) => handleThemeChange(e, theme.id)}
+            />
+            <label htmlFor={`theme-${theme.id}`}>{theme.name_theme}</label>
+          </div>
+        ))}
+        <br />
+
         <button className="buttonCart" type="submit">
           {submitSuccess ? "Ajouté!" : "Ajouter l'artifact"}
         </button>
