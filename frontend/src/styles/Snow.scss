@@ -1,0 +1,36 @@
+.snow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  pointer-events: none;
+}
+
+.snowflake {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #fff;
+  //   animation: snow 10s linear infinite;
+  animation: snow 10s ease-in-out infinite;
+}
+
+@keyframes snow {
+  0% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(200vh);
+  }
+}
+@keyframes snowfall {
+  0% {
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    transform: translate3d(0, 100%, 0);
+  }
+}

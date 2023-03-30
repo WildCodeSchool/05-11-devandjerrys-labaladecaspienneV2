@@ -16,6 +16,7 @@ function Payment() {
   const [showConfirmation, setShowConfirmation] = useState(false)
 
   const { totalAmount, cartArti } = location.state
+  const userId = localStorage.getItem("userId")
 
   console.info("Total amount in Payment :", totalAmount)
 
@@ -31,7 +32,7 @@ function Payment() {
   const saveOrderToDatabase = async (totalAmount, cartArti) => {
     try {
       const orderResponse = await axios.post("http://localhost:5000/orders", {
-        users_id: 1, // voir pour récupérer l'id de l'utilisateur
+        users_id: userId, // voir pour récupérer l'id de l'utilisateur
         orderAmount: totalAmount,
         articleInfos: [...cartArti],
       })

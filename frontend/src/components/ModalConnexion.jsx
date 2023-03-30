@@ -11,7 +11,7 @@ export default function ModalConnexion({ isOpen, closeModal }) {
   const [showCreateAccount, setShowCreateAccount] = useState(true)
   const token = localStorage.getItem("token")
   console.info("eeeeeeeeeee", token)
-
+  console.info(setNewUser)
   const handleClick = (e) => {
     e.preventDefault()
 
@@ -34,7 +34,11 @@ export default function ModalConnexion({ isOpen, closeModal }) {
           if (newUser) {
             alert("Votre compte a été créé avec succès!")
           }
-          navigate(`/useraccount/${userId}`)
+          if (res.data.role === 0) {
+            navigate(`/useraccount/${userId}`)
+          } else if (res.data.role === 1) {
+            navigate(`/adminpage`)
+          }
           closeModal(false)
           //   setShowCreateAccount(false)
         }
@@ -44,48 +48,44 @@ export default function ModalConnexion({ isOpen, closeModal }) {
       })
   }
 
-  // eslint-disable-next-line no-unused-vars
-
   const handleCreateAccount = (e) => {
     e.preventDefault()
     // Vérifier si l'email existe déjà dans la base de données
-    // axios.get(`http://localhost:5000/users?email=${email}`).then((res) => {
-    //   if (res.data.length > 0) {
-    //     alert(
-    //       "Cet email est déjà utilisé.
-    //     )
-    //     return
-    //   }
-    axios
-      .post(`http://localhost:5000/users/`, {
-        email: email,
-        password: password,
-      })
-      .then((res) => {
-        if (res.data.insertId) {
-          console.info(res.data.insertId)
-          setIsLoggedIn(true)
-          setNewUser(true)
-          setShowCreateAccount(false)
+    axios.get(`http://localhost:5000/users?email=${email}`).then((res) => {
+      if (res.data.length > 0) {
+        alert("Cet email est déjà utilisé")
+        return
+      }
+      axios
+        .post(`http://localhost:5000/users/`, {
+          email: email,
+          password: password,
+        })
+        .then((res) => {
+          if (res.headers["x-access-token"]) {
+            setIsLoggedIn(true)
 
-          //   localStorage.setItem("token", res.data.token)
-          localStorage.setItem("res.data.insertId", res.data.insertId)
-          const newUserId = res.data.insertId
-          navigate(`/useraccount/${newUserId}`)
-
-          //   setNewUser(true)
-          closeModal(false)
-          setShowCreateAccount(false) //  masquer le bouton "Créer un compte"
-        } else {
-          //   alert("Une erreur est survenue lors de la création de votre compte.")
-          alert("Votre compte a été créé avec succès!")
-        }
-      })
-      .catch((error) => {
-        console.error(error)
-        alert("Une erreur est survenue lors de la création de votre compte.")
-      })
-    // })
+            const userId = res.data.id
+            localStorage.setItem("token", res.headers["x-access-token"])
+            localStorage.setItem("userId", res.data.id)
+            localStorage.setItem("role", res.data.role)
+            console.info("token", localStorage.getItem("token")) // console.info(res.data.token)
+            setShowCreateAccount(false)
+            if (newUser) {
+              alert("Votre compte a été créé avec succès!")
+            }
+            if (res.data.role === false) {
+              navigate(`/useraccount/${userId}`)
+            } else {
+              alert("Votre compte a été créé avec succès!")
+            }
+          }
+        })
+        .catch((error) => {
+          console.error(error)
+          alert("Une erreur est survenue lors de la création de votre compte.")
+        })
+    })
   }
   const myFunction = () => {
     const x = document.getElementById("passWord")
@@ -161,3 +161,19 @@ export default function ModalConnexion({ isOpen, closeModal }) {
     </div>
   )
 }
+
+// if (!res.data.insertId) {
+//   console.info(res.data.insertId)
+//   setIsLoggedIn(true)
+//   setNewUser(true)
+//   setShowCreateAccount(false)
+
+//   //   localStorage.setItem("token", res.data.token)
+//   localStorage.setItem("res.data.insertId", res.data.insertId)
+//   const newUserId = res.data.insertId
+//   navigate(`/useraccount/${newUserId}`)
+
+//   //   setNewUser(true)
+//   closeModal(false)
+//   setShowCreateAccount(false) //  masquer le bouton "Créer un compte"
+// }
