@@ -10,7 +10,7 @@
 .eventTitle {
   margin-top: 0;
   margin-bottom: 5px;
-  font-size: 2.8vw;
+  font-size: 3em;
   text-align: center;
   color: var(--main-color);
 }
@@ -23,7 +23,7 @@
   color: white;
   margin-left: 200px;
   margin-right: 200px;
-  font-size: large;
+  font-size: 30px;
 }
 #lDesign1 {
   width: 30%;
@@ -115,7 +115,7 @@
 }
 
 .holder {
-  margin: 12rem auto 0;
+  margin: 1rem auto 0;
   width: 150px;
   height: 400px;
   position: relative;
@@ -324,5 +324,19 @@
 @keyframes blinkIt {
   50% {
     opacity: 0.8;
+  }
+}
+
+// ************************RESPONSIVE****************************************
+
+@media (max-width: 550px) {
+  #introEvent {
+    //font-size: 1.2vw;
+    margin: 60px;
+    text-align: center;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
   }
 }
