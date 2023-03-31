@@ -13,7 +13,7 @@ export default function Artifacts() {
   const handleCardClick = (arti) => {
     console.info("Id de l'objet cliqué :", arti.id)
   }
-  const [counter, setCounter] = useState(0)
+  const [, setCounter] = useState(0)
   const [comments, setComments] = useState([])
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function Artifacts() {
       .get("http://localhost:5000/comments")
       .then((res) => setComments(res.data))
   }, [])
-
+  console.log(comments)
   useEffect(() => {
     const interval = setInterval(() => {
       setCounter((prevCounter) => prevCounter + 1)
@@ -121,7 +121,14 @@ export default function Artifacts() {
       </div>
       <div className="comments">
         <h1 className="titlecomm">Comments</h1>
-        <p>{JSON.stringify(comments, undefined, 2)}</p>
+        {comments.map((comment) => (
+          // eslint-disable-next-line react/jsx-key
+          <>
+            <p>{comment.content}</p>
+            <p>{comment.date_create}</p>
+            <p>{comment.date_update}</p>
+          </>
+        ))}
       </div>
 
       <Burger />
