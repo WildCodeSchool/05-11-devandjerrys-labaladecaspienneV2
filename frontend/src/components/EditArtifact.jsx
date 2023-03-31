@@ -211,10 +211,10 @@
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from "react"
 import axios from "axios"
-// import CadreHG from "../assets/coinHG.svg"
-// import CadreHD from "../assets/coinHD.svg"
-// import CadreBG from "../assets/coinBG.svg"
-// import CadreBD from "../assets/coinBD.svg"
+import CadreHG from "../assets/coinHG.svg"
+import CadreHD from "../assets/coinHD.svg"
+import CadreBG from "../assets/coinBG.svg"
+import CadreBD from "../assets/coinBD.svg"
 
 const EditArtifact = () => {
   const [artifacts, setArtifacts] = useState([])
@@ -345,137 +345,111 @@ const EditArtifact = () => {
     setPictureArtifact("")
   }
 
-  // const handleDeleteImage = async () => {
-  //   if (selectedArtifacts && images) {
-  //     try {
-  //       // Récupérer l'ID de l'image à supprimer
-  //       const response = await axios.get(
-  //         `http://localhost:5000/artifacts/${selectedArtifacts.id}`
-  //       )
-  //       const artifact = response.data
-  //       console.log("Coco", response.data)
-  //       const imageId =
-  //         artifact.images.length > 0 ? artifact.images[0].id : null
-
-  //       console.log("Dodo", imageId)
-
-  //       // Supprimer l'image de la table "pictures"
-  //       await axios.delete(`http://localhost:5000/pictures/${imageId}`)
-  //       // Trouver l'ID de l'image à supprimer
-  //       const imageToDelete = pictures.find(
-  //         (picture) => picture.url_img === imageUrl
-  //       )
-  //       const imageSelected = imageToDelete.id
-
-  //       // Mettre à jour l'état des artéfacts localement
-  //       setArtifacts(
-  //         artifacts.map((artifact) =>
-  //           artifact.id === selectedArtifacts.id
-  //             ? {
-  //                 ...artifact,
-  //                 images: null,
-  //               }
-  //             : artifact
-  //         )
-  //       )
-
-  //       // Vider les champs liés à l'image supprimée
-  //       setImageUrl("")
-  //       setPictureArtifact(null)
-  //       setSubmitSuccess(false)
-  //     } catch (error) {
-  //       console.error("Erreur lors de la suppression de l'image:", error)
-  //     }
-  //   }
-  // }
-
   return (
-    <div>
+    <div className="editArtifact">
       <h2>Modifier un artéfact</h2>
-      <label htmlFor="Artifact-selection">Sélectionner un artéfact:</label>
-      <select
-        id="Artifact-selection"
-        value={selectedArtifacts?.id || ""}
-        onChange={(e) => {
-          const Artifact = artifacts.find(
-            (Artifact) => Artifact.id === Number(e.target.value)
-          )
-          if (Artifact) {
-            handleArtifactselection(Artifact)
-          }
-        }}
-      >
-        <option value="">Choisir un artéfact</option>
-        {artifacts.map((Artifact) => (
-          <option key={Artifact.id} value={Artifact.id}>
-            {Artifact.name_arti}
-          </option>
-        ))}
-      </select>
+      <div className="cadreHaut">
+        <img src={CadreHG} className="cadreHG" alt="Cadre haut gauche" />
+        <img src={CadreHD} className="cadreHD" alt="Cadre haut droit" />
+      </div>
+      <form className="interieurCadre">
+        <label htmlFor="Artifact-selection">Sélectionner un artéfact:</label>
+        <select
+          id="Artifact-selection"
+          value={selectedArtifacts?.id || ""}
+          onChange={(e) => {
+            const Artifact = artifacts.find(
+              (Artifact) => Artifact.id === Number(e.target.value)
+            )
+            if (Artifact) {
+              handleArtifactselection(Artifact)
+            }
+          }}
+        >
+          <option value="">Choisir un artéfact</option>
+          {artifacts.map((Artifact) => (
+            <option key={Artifact.id} value={Artifact.id}>
+              {Artifact.name_arti}
+            </option>
+          ))}
+        </select>
 
-      {selectedArtifacts && (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="name_arti">Nom de l'artéfact:</label>
-          <input
-            type="text"
-            id="name_arti"
-            value={name_arti}
-            onChange={(e) => setNameArtifact(e.target.value)}
-          />
-          <br />
+        {selectedArtifacts && (
+          <form onSubmit={handleSubmit} className="interieurCadreSecond">
+            <label className="label" htmlFor="name_arti">
+              Nom de l'artéfact:
+            </label>
+            <input
+              type="text"
+              id="name_arti"
+              value={name_arti}
+              onChange={(e) => setNameArtifact(e.target.value)}
+            />
+            <br />
 
-          <label htmlFor="description_arti">Description de l'artéfact:</label>
-          <textarea
-            id="description_arti"
-            value={description_arti}
-            onChange={(e) => setDescriptionArtifact(e.target.value)}
-          ></textarea>
-          <br />
+            <label className="label" htmlFor="description_arti">
+              Description de l'artéfact:
+            </label>
+            <textarea
+              id="description_arti"
+              value={description_arti}
+              onChange={(e) => setDescriptionArtifact(e.target.value)}
+            ></textarea>
+            <br />
 
-          <label htmlFor="images">Image:</label>
-          <div>
-            {imageUrl && (
-              <div>
-                <img src={imageUrl} alt="Aperçu" width="150" />
-                <button type="button" onClick={handleDeleteImage}>
-                  Supprimer
-                </button>
-              </div>
-            )}
-            <label htmlFor="images">Image:</label>
+            <label className="label" htmlFor="images">
+              Images:{" "}
+            </label>
+            <div>
+              {imageUrl && (
+                <div>
+                  <img src={imageUrl} alt="Aperçu" width="150" />
+                  <button type="button" onClick={handleDeleteImage}>
+                    Supprimer
+                  </button>
+                </div>
+              )}
+              {/* <label className="label" htmlFor="images"></label> */}
+              <input
+                type="file"
+                id="images"
+                accept="image/*"
+                onChange={handleFileChange}
+              />
+            </div>
             <input
               type="file"
               id="images"
               accept="image/*"
               onChange={handleFileChange}
             />
-          </div>
-          <input
-            type="file"
-            id="images"
-            accept="image/*"
-            onChange={handleFileChange}
-          />
 
-          <input type="hidden" id="existing_images" value={images} />
-          <br />
+            <input type="hidden" id="existing_images" value={images} />
+            <br />
 
-          <label htmlFor="archive_arti">Archiver l'artéfact:</label>
-          <select
-            id="archive_arti"
-            value={archive_arti}
-            onChange={(e) => setArchiveArtifact(Number(e.target.value))}
-          >
-            <option value={0}>Non</option>
-            <option value={1}>Oui</option>
-          </select>
-          <br />
+            <label className="label" htmlFor="archive_arti">
+              Archiver l'artéfact:
+            </label>
+            <select
+              id="archive_arti"
+              value={archive_arti}
+              onChange={(e) => setArchiveArtifact(Number(e.target.value))}
+            >
+              <option value={0}>Non</option>
+              <option value={1}>Oui</option>
+            </select>
+            <br />
 
-          <button className="buttonCart" type="submit">
-            {submitSuccess ? "Modifié!" : "Modifier l'artéfact"}
-          </button>
-        </form>
-      )}
+            <button className="buttonCart" type="submit">
+              {submitSuccess ? "Modifié!" : "Modifier l'artéfact"}
+            </button>
+          </form>
+        )}
+      </form>
+      <div className="cadreBas">
+        <img src={CadreBG} className="cadreBG" alt="Cadre bas gauche" />
+        <img src={CadreBD} className="cadreBD" alt="Cadre bas gauche" />
+      </div>
     </div>
   )
 }
