@@ -300,32 +300,28 @@ const AddArtifact = () => {
             )}
           </div>
           <br />
-          <label htmlFor="themes">Sélectionner un ou plusieurs thèmes:</label>
+          <div className="chooseTheme">
+            <label htmlFor="themes">Sélectionner un ou plusieurs thèmes:</label>
 
-          {themes.map((theme) => (
-            <div key={theme.id}>
-              <input
-                type="checkbox"
-                id="theme"
-                name="theme"
-                value={theme.id}
-                checked={selectedThemes.includes(theme.id)}
-                onChange={(e) => handleThemeChange(e, theme.id)}
-              />
-              <label htmlFor={`theme-${theme.id}`}>{theme.name_theme}</label>
-            </div>
-          ))}
+            {themes.map((theme) => (
+              <div key={theme.id}>
+                <input
+                  type="checkbox"
+                  id="theme"
+                  name="theme"
+                  value={theme.id}
+                  checked={selectedThemes.includes(theme.id)}
+                  onChange={(e) => handleThemeChange(e, theme.id)}
+                />
+                <label htmlFor={`theme-${theme.id}`}>{theme.name_theme}</label>
+              </div>
+            ))}
+          </div>
           <br />
 
           <button className="buttonCart" type="submit">
             {submitSuccess ? "Ajouté!" : "Ajouter l'artifact"}
           </button>
-          <div>
-            <p>
-              {" "}
-              <TbAsterisk /> champs obligatoire{" "}
-            </p>
-          </div>
         </form>
         <div className="cadreBas">
           <img src={CadreBG} className="cadreBG" alt="Cadre bas gauche" />
