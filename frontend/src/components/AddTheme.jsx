@@ -118,12 +118,6 @@ const AddTheme = () => {
         <button className="buttonCart" type="submit">
           {submitSuccess ? "Ajouté!" : "Ajouter le thème"}
         </button>
-        <div>
-          <p>
-            {" "}
-            <TbAsterisk /> champs obligatoire{" "}
-          </p>
-        </div>
       </form>
       <div className="cadreBas">
         <img src={CadreBG} className="cadreBG" alt="Cadre bas gauche" />

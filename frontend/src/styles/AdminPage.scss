@@ -19,8 +19,8 @@
     /*les astérisques rouges */
     svg {
       transform: scale(0.5);
-      filter: brightness(0) saturate(100%) invert(22%) sepia(99%)
-        saturate(7369%) hue-rotate(358deg) brightness(98%) contrast(115%);
+      filter: brightness(0) saturate(100%) invert(22%) sepia(99%) saturate(7369%) hue-rotate(358deg) brightness(98%)
+        contrast(115%);
     }
     .carousel-root {
       width: 100vw;
@@ -31,17 +31,24 @@
         width: 100vw;
         .control-dots {
           position: relative;
-          padding: 0;
+          padding: 8px;
+          .dot {
+            width: 10px;
+            height: 10px;
+            cursor: pointer;
+            margin: 10px;
+            padding: 8px;
+          }
         }
         .control-prev {
           background-color: rgba(255, 255, 255, 0.306);
           border-radius: 300px;
-          width: 5vw;
+          width: 1vw;
         }
         .control-next {
           background-color: rgba(255, 255, 255, 0.306);
           border-radius: 300px;
-          width: 5vw;
+          width: 1vw;
         }
       }
     }
