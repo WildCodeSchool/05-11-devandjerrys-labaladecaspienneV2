@@ -33,20 +33,21 @@ const ViewOrders = () => {
         <table className="table">
           <thead>
             <tr>
+              <th>N° de commande</th>
               <th>Nom</th>
               <th>Prénom</th>
-              <th>Numéro de commande</th>
-              <th>Article commandé</th>
-              <th>Montant de la commande</th>
+
+              <th>Articles</th>
+              <th>Montant</th>
               {/* Ajoutez des colonnes pour afficher d'autres infos */}
             </tr>
           </thead>
           <tbody>
             {orders.map((order) => (
               <tr key={order.id}>
+                <td>{order.num_cmd}</td>
                 <td>{order.lastname}</td>
                 <td>{order.firstname}</td>
-                <td>{order.num_cmd}</td>
                 <td>{order.name_arti}</td>
                 <td>{order.orderAmount} €</td>
                 {/* Ajoutez des colonnes pour afficher d'autres infos */}
