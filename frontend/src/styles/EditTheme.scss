@@ -31,6 +31,12 @@
       margin-bottom: 10px;
       font-size: 23px;
     }
+    option {
+      .theme-selection {
+        background-color: var(--third-color);
+      }
+    }
+
     .interieurCadreSecond {
       display: flex;
       flex-direction: column;
@@ -40,12 +46,48 @@
         margin-bottom: 10px;
         font-size: 23px;
       }
+      option {
+        font-family: var(--font2);
+        font-size: 20px;
+        background-color: var(--third-color);
+        color: white;
+      }
+
       .descriptionThemeArea {
         margin-top: 10px;
         resize: none;
-        width: 280px;
-        height: 80px;
+        width: 375px;
+        height: 190px;
       }
+      input {
+        width: 277px;
+        text-align: center;
+        font-family: var(--font2);
+        color: white;
+        font-size: 20px;
+        background-color: var(--third-color);
+        border-radius: 20px;
+        border: none;
+      }
+      textarea {
+        text-align: justify;
+        font-family: var(--font2);
+        font-size: 20px;
+        background-color: var(--third-color);
+        color: white;
+        border-radius: 20px;
+        border: none;
+        padding: 12px;
+      }
+      select {
+        font-family: var(--font2);
+        font-size: 20px;
+        background-color: var(--third-color);
+        color: white;
+        border-radius: 20px;
+        border: none;
+      }
+
       .image {
         display: flex;
         flex-direction: column;
@@ -56,12 +98,16 @@
           font-size: 20px;
         }
         .photoTheme {
-          background-color: white;
+          background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(128, 64, 0, 1) 100%);
+          border-radius: 280px 280px 0px 0px;
           margin-bottom: 20px;
           margin-top: 20px;
           display: flex;
           height: 10vh;
           width: 10vh;
+        }
+        input {
+          font-size: 15px;
         }
       }
     }

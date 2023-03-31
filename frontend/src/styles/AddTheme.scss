@@ -29,6 +29,27 @@
       margin-bottom: 10px;
       font-size: 20px;
     }
+    input {
+      width: 277px;
+      text-align: center;
+      font-family: var(--font2);
+      color: white;
+      font-size: 20px;
+      background-color: var(--third-color);
+    }
+    textarea {
+      text-align: center;
+      font-family: var(--font2);
+      font-size: 20px;
+      background-color: var(--third-color);
+      color: white;
+    }
+    select {
+      font-family: var(--font2);
+      font-size: 20px;
+      background-color: var(--third-color);
+      color: white;
+    }
     .descriptionThemeArea {
       resize: none;
       width: 280px;
@@ -51,6 +72,9 @@
         display: flex;
         height: 10vh;
         width: 10vh;
+      }
+      input {
+        font-size: 15px;
       }
     }
   }
