@@ -1,6 +1,10 @@
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import CadreHG from "../assets/coinHG.svg"
+import CadreHD from "../assets/coinHD.svg"
+import CadreBG from "../assets/coinBG.svg"
+import CadreBD from "../assets/coinBD.svg"
 
 const EditTheme = () => {
   const [themes, setThemes] = useState([])
@@ -88,79 +92,109 @@ const EditTheme = () => {
   }
 
   return (
-    <div>
+    <div className="editTheme">
       <h2>Modifier un thème</h2>
-      <label htmlFor="theme-selection">Sélectionner un thème:</label>
-      <select
-        id="theme-selection"
-        value={selectedTheme?.id || ""}
-        onChange={(e) => {
-          const theme = themes.find(
-            (theme) => theme.id === Number(e.target.value)
-          )
-          if (theme) {
-            handleThemeSelection(theme)
-          }
-        }}
-      >
-        <option value="">Choisir un thème</option>
-        {themes.map((theme) => (
-          <option key={theme.id} value={theme.id}>
-            {theme.name_theme}
-          </option>
-        ))}
-      </select>
+      <div className="cadreHaut">
+        <img src={CadreHG} className="cadreHG" alt="Cadre haut gauche" />
+        <img src={CadreHD} className="cadreHD" alt="Cadre haut droit" />
+      </div>
+      <form className="interieurCadre">
+        <label className="label" htmlFor="theme-selection">
+          Sélectionner un thème:
+        </label>
+        <select
+          id="theme-selection"
+          value={selectedTheme?.id || ""}
+          onChange={(e) => {
+            const theme = themes.find(
+              (theme) => theme.id === Number(e.target.value)
+            )
+            if (theme) {
+              handleThemeSelection(theme)
+            }
+          }}
+        >
+          <option value="">Choisir un thème</option>
+          {themes.map((theme) => (
+            <option key={theme.id} value={theme.id}>
+              {theme.name_theme}
+            </option>
+          ))}
+        </select>
 
-      {selectedTheme && (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="name_theme">Nom du thème:</label>
-          <input
-            type="text"
-            id="name_theme"
-            value={name_theme}
-            onChange={(e) => setNameTheme(e.target.value)}
-          />
-          <br />
+        {selectedTheme && (
+          <form onSubmit={handleSubmit} className="interieurCadreSecond">
+            <label className="label" htmlFor="name_theme">
+              Nom du thème:
+            </label>
+            <input
+              type="text"
+              id="name_theme"
+              value={name_theme}
+              onChange={(e) => setNameTheme(e.target.value)}
+            />
+            <br />
+            <div className="descript">
+              <label className="label" htmlFor="description_theme">
+                Description du thème:
+              </label>
+              <textarea
+                className="descriptionThemeArea"
+                id="description_theme"
+                value={description_theme}
+                onChange={(e) => setDescriptionTheme(e.target.value)}
+              ></textarea>
+              <br />
+            </div>
+            <div className="image">
+              <label className="label" htmlFor="picture_theme">
+                Image:
+              </label>
+              {imageUrl && (
+                <img
+                  className="photoTheme"
+                  src={imageUrl}
+                  alt="Aperçu"
+                  width="150"
+                />
+              )}
+              <input
+                type="file"
+                id="picture_theme"
+                accept="image/*"
+                onChange={handleFileChange}
+              />
+              <input
+                type="hidden"
+                id="existing_picture_theme"
+                value={picture_theme}
+              />
+            </div>
+            <br />
 
-          <label htmlFor="description_theme">Description du thème:</label>
-          <textarea
-            id="description_theme"
-            value={description_theme}
-            onChange={(e) => setDescriptionTheme(e.target.value)}
-          ></textarea>
-          <br />
+            <label className="label" htmlFor="archive_theme">
+              Archiver le thème:
+            </label>
+            <select
+              id="archive_theme"
+              value={archive_theme}
+              onChange={(e) => setArchiveTheme(Number(e.target.value))}
+            >
+              <option value={0}>Non</option>
+              <option value={1}>Oui</option>
+            </select>
+            <br />
 
-          <label htmlFor="picture_theme">Image:</label>
-          {imageUrl && <img src={imageUrl} alt="Aperçu" width="150" />}
-          <input
-            type="file"
-            id="picture_theme"
-            accept="image/*"
-            onChange={handleFileChange}
-          />
-          <input
-            type="hidden"
-            id="existing_picture_theme"
-            value={picture_theme}
-          />
-          <br />
-
-          <label htmlFor="archive_theme">Archiver le thème:</label>
-          <select
-            id="archive_theme"
-            value={archive_theme}
-            onChange={(e) => setArchiveTheme(Number(e.target.value))}
-          >
-            <option value={0}>Non</option>
-            <option value={1}>Oui</option>
-          </select>
-          <br />
-
-          <button className="buttonCart" type="submit">
-            {submitSuccess ? "Modifié!" : "Modifier le thème"}
-          </button>
-        </form>
-      )}
+            <button className="buttonCart" type="submit">
+              {submitSuccess ? "Modifié!" : "Modifier le thème"}
+            </button>
+          </form>
+        )}
+      </form>
+      <div className="cadreBas">
+        <img src={CadreBG} className="cadreBG" alt="Cadre bas gauche" />
+        <img src={CadreBD} className="cadreBD" alt="Cadre bas gauche" />
+      </div>
     </div>
   )
 }

@@ -4,20 +4,12 @@ import axios from "axios"
 function ButtonCart(props) {
   const [addCart, setAddCart] = useState([])
   const [idArti, setIdArti] = useState(props.artifactChosen.id)
-  // const [userData, setUserData] = useState([])
+
   console.info(addCart)
 
   useEffect(() => {
     setIdArti(props.artifactChosen.id)
   }, [props.artifactChosen.id])
-
-  // récupérer ici l'id utilisateur pour faire cart_id=user_id
-  // useEffect(() => {
-  //   axios.get(`http://localhost:5000/users/${id}`).then((response) => {
-  //     setUserData(response.data)
-  //   })
-  // }, [id])
-  //
 
   const handleClick = () => {
     axios

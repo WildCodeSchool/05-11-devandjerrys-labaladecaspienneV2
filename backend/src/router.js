@@ -108,6 +108,7 @@ router.put(
 )
 router.post('/themes', upload.single('picture_theme'), ThemesControllers.add) // ok
 router.delete('/themes/:id', ThemesControllers.destroy) // ok
+router.post('/hasthemes', ThemesControllers.addHasTheme) // ok
 
 router.get('/users', UsersControllers.browse)
 router.get('/users/:id', UsersControllers.read)

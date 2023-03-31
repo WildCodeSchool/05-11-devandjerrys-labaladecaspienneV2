@@ -1,242 +1,122 @@
-.pageUser {
+.allPageUser {
   display: flex;
   flex-direction: column;
-  color: var(--main-color);
-  font-family: var(--font1);
-  align-content: center;
-  margin-top: 50px;
-
-  .titrePage {
+  width: 100vw;
+  .pageUser {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-bottom: 100px;
-    .titre {
+    color: white;
+    .infoPage {
       display: flex;
+      flex-direction: column;
 
-      margin-top: 30px;
-      margin-bottom: 0;
-      font-size: 2em;
-    }
-    .headLine {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 500px;
-    }
-  }
-  .infoPage {
-    display: flex;
-    flex-direction: column;
-
-    .toutContenaire {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-
-      .userInfo {
-        font-size: 30px;
-        color: white;
+      .toutContenaire {
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        justify-content: space-around;
 
-        .titreInfo {
-          margin-bottom: -10px;
-        }
-        .coinHaut {
-          z-index: -1;
-          display: flex;
-          .coinHG {
-            height: 300px;
-          }
-          .coinHD {
-            height: 300px;
-          }
-        }
-        .allEncart {
-          z-index: 1;
+        .userInfo {
           display: flex;
           flex-direction: column;
-          align-items: center;
-          margin-top: -238px;
-          width: 510px;
-          height: 462px;
-          overflow-y: auto;
-
-          .encart {
+          .userInfoSuite {
             display: flex;
             flex-direction: column;
-            .encartSousTitre {
+            align-items: center;
+            .coinHaut {
+              z-index: -1;
               display: flex;
+
+              .coinHG {
+                width: 50%;
+              }
+              .coinHD {
+                width: 50%;
+              }
+            }
+            .allEncart {
+              margin-bottom: -240px;
+              margin-top: -240px;
+              z-index: 1;
+              display: flex;
+              overflow-y: auto;
+              height: 600px;
+              width: 400px;
               flex-direction: column;
+              align-items: center;
+              .encart {
+                display: flex;
+                flex-direction: column;
+                width: 390px;
+                align-items: center;
+                margin-right: 0;
+                .encartSousTitre {
+                  margin-bottom: 20px;
+                }
+              }
             }
+            .coinBas {
+              z-index: -1;
+              display: flex;
 
-            .separateur {
-              margin-top: 50px;
+              .coinBG {
+                width: 50%;
+              }
+              .coinBD {
+                width: 50%;
+              }
             }
           }
         }
-        .coinBas {
-          z-index: -1;
+        .commande {
           display: flex;
-          margin-top: -223px;
-          .coinBG {
-            height: 300px;
-          }
-          .coinBD {
-            height: 300px;
-          }
-        }
-      }
+          flex-direction: column;
 
-      .horizontal {
-        display: none;
-      }
-      .vertical {
-        display: flex;
-        height: 65vh;
-      }
-      .commande {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        .commandeHistorique {
-          display: flex;
-
-          color: white;
           .divCommande {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            width: 100%;
-            .titreCommande {
-              display: flex;
-              font-size: 30px;
-              margin: -10px;
-              margin-top: 30px;
-            }
             .cadreHaut {
+              z-index: -1;
               display: flex;
 
-              .coinHD {
-                display: flex;
-                height: 435px;
-              }
               .coinHG {
-                display: flex;
-                height: 435px;
+                width: 50%;
+              }
+              .coinHD {
+                width: 50%;
               }
             }
             .descriptCommande {
-              font-size: 23px;
+              margin-bottom: -240px;
+              margin-top: -240px;
               display: flex;
               flex-direction: column;
-              align-items: flex-start;
-              width: 580px;
-              padding: 20px;
-              margin-bottom: -195px;
-              margin-top: -387px;
-              height: 765px;
+              align-items: center;
+              height: 600px;
               overflow-y: auto;
-              .descriptCommandeSuite {
-                width: 100%;
-                height: 100%;
-                .propsCommande {
-                  display: flex;
-                  justify-content: space-between;
-                  width: 100%;
-                  margin-top: 20px;
-                  margin-bottom: 20px;
-                  .ligneCommande {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-
-                    .cadreLigne {
-                      display: flex;
-                      .lignes {
-                        margin: 5px;
-                      }
-                    }
-                  }
-                  .detailCommande {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    .lignesDetail {
-                      margin: 5px;
-                    }
-                    .boutonDetail {
-                      width: 60%;
-                      height: 50%;
-                    }
-                  }
-                }
-              }
-              .separateur {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-              }
             }
             .cadreBas {
+              z-index: -1;
               display: flex;
-              margin-top: -187px;
-              .coinBD {
-                display: flex;
-                height: 435px;
-              }
+
               .coinBG {
-                display: flex;
-                height: 435px;
+                width: 50%;
+              }
+              .coinBD {
+                width: 50%;
               }
             }
           }
         }
-      }
-    }
-    .deconnexion {
-      margin: 50px;
-      margin-top: 100px;
-      .boutonDeconnexion {
-        border-radius: 47px;
-        height: 5vh;
-        width: 15vw;
       }
     }
   }
 }
 
-@media (max-width: 949px) {
-  .pageUser {
-    .titrePage {
-      .titre {
-        font-size: 1.5em;
-      }
-      .headLine {
-        width: 300px;
-      }
-    }
-    .toutContenaire {
-      display: flex;
-      justify-content: center;
-      align-content: center;
-      flex-direction: column;
-      .contenaireGauche {
-        margin-bottom: 50px;
-      }
-      .horizontal {
-        display: flex;
-        width: 45vw;
-        margin-bottom: 20px;
-      }
-      .vertical {
-        display: none;
-      }
+@media (max-width: 1375px) {
+  .toutContenaire {
+    flex-direction: column;
+    .userInfo {
+      margin-bottom: 50px;
     }
   }
 }

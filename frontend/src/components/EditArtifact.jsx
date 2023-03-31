@@ -211,6 +211,10 @@
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+// import CadreHG from "../assets/coinHG.svg"
+// import CadreHD from "../assets/coinHD.svg"
+// import CadreBG from "../assets/coinBG.svg"
+// import CadreBD from "../assets/coinBD.svg"
 
 const EditArtifact = () => {
   const [artifacts, setArtifacts] = useState([])

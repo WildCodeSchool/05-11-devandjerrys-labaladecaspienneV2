@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom"
 
 function Cart() {
   const navigate = useNavigate()
-
+  const [userId, setUserId] = useState(null)
   const [cartArti, setCartArti] = useState([])
   const [totalAmount, setTotalAmount] = useState()
   // ------------Test get --------------------
@@ -28,6 +28,7 @@ function Cart() {
         console.info("userAccount test")
         navigate(`/home`)
       }
+      setUserId(res.data.userId) // Définir l'ID de l'utilisateur ici
       getData(res.data.userId)
     })
   }
@@ -55,7 +56,7 @@ function Cart() {
         })
         .catch((err) => console.error(err))
     } else {
-      getData(id) // insérer l'id de l'utilisateur connecté
+      getData(userId) // insérer l'id de l'utilisateur connecté
     }
   }
 

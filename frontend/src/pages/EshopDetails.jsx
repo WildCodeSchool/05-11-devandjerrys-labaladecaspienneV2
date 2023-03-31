@@ -9,6 +9,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { useParams, Link } from "react-router-dom"
 import ButtonCart from "@components/ButtonCart"
+import CartButtonHeader from "@components/CartButtonHeader"
 
 export default function EshopDetails() {
   const { id } = useParams()
@@ -55,6 +56,7 @@ export default function EshopDetails() {
     <div>
       <div className="Esd-Header">
         <Header />
+        <CartButtonHeader />
       </div>{" "}
       <div className="divHeadEshop">
         <div>

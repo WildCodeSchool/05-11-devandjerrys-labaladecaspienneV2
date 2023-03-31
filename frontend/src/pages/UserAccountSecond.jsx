@@ -6,8 +6,7 @@ import Headline from "../assets/Images/Head_line.png"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Burger from "../components/Burger"
-import Vertical from "../assets/Images/separateurOcreVertical.svg"
-import Horizontal from "../assets/Images/separateurOcreHorizontal.svg"
+
 import CoinHG from "../assets/coinHG.svg"
 import CoinHD from "../assets/coinHD.svg"
 import CoinBG from "../assets/coinBG.svg"
@@ -85,7 +84,7 @@ export default function UserAccount() {
   }
 
   return (
-    <div>
+    <div className="allPageUser">
       <Header />
       <div className="pageUser" key={userData.id}>
         <div className="titrePage">
@@ -95,8 +94,8 @@ export default function UserAccount() {
         {userData && (
           <div className="infoPage">
             <div className="toutContenaire">
-              <div className="contenaireGauche">
-                <div className="userInfo">
+              <div className="userInfo">
+                <div className="userInfoSuite">
                   <h3 className="titreInfo">Profil</h3>
                   <div className="coinHaut">
                     <img className="coinHG" src={CoinHG} />
@@ -266,59 +265,55 @@ export default function UserAccount() {
                 </div>
               </div>
 
-              <img src={Vertical} className="vertical" />
-              <img src={Horizontal} className="horizontal" />
               <div className="commande">
-                <div className="commandeHistorique">
-                  <div className="divCommande">
-                    <h3 className="titreCommande">Historique de Commandes</h3>
-                    <div className="cadreHaut">
-                      <img src={CoinHG} className="coinHG" />
-                      <img src={CoinHD} className="coinHD" />
-                    </div>
-                    <div className="descriptCommande">
-                      {userOrder.length === 0 ? (
-                        <p>Pas de commande, pour le moment...</p>
-                      ) : (
-                        userOrder.map((order) => (
-                          <div className="descriptCommandeSuite" key={order.id}>
-                            <div className="propsCommande">
-                              <div className="ligneCommande">
-                                <div className="cadreLigne">
-                                  <h4 className="lignes"> N° de Commande : </h4>
-                                  <p className="lignes">{order.num_cmd}</p>
-                                </div>
-                                <div className="cadreLigne">
-                                  <h4 className="lignes"> État : </h4>
-                                  <p className="lignes">{order.status}</p>
-                                </div>
-                                <div className="cadreLigne">
-                                  <h4 className="lignes"> Montant Payé : </h4>
-                                  <p className="lignes">{order.orderAmount}</p>
-                                </div>
+                <div className="divCommande">
+                  <h3 className="titreCommande">Historique de Commandes</h3>
+                  <div className="cadreHaut">
+                    <img src={CoinHG} className="coinHG" />
+                    <img src={CoinHD} className="coinHD" />
+                  </div>
+                  <div className="descriptCommande">
+                    {userOrder.length === 0 ? (
+                      <p>Pas de commande, pour le moment...</p>
+                    ) : (
+                      userOrder.map((order) => (
+                        <div className="descriptCommandeSuite" key={order.id}>
+                          <div className="propsCommande">
+                            <div className="ligneCommande">
+                              <div className="cadreLigne">
+                                <h4 className="lignes"> N° de Commande : </h4>
+                                <p className="lignes">{order.num_cmd}</p>
                               </div>
-                              <div className="detailCommande">
-                                <h4 className="lignesDetail">Détail</h4>
-                                <img src={Star} className="boutonDetail" />
+                              <div className="cadreLigne">
+                                <h4 className="lignes"> État : </h4>
+                                <p className="lignes">{order.status}</p>
+                              </div>
+                              <div className="cadreLigne">
+                                <h4 className="lignes"> Montant Payé : </h4>
+                                <p className="lignes">{order.orderAmount}</p>
                               </div>
                             </div>
-                            <div className="separateur">
-                              <img src={Separateur} />
+                            <div className="detailCommande">
+                              <h4 className="lignesDetail">Détail</h4>
+                              <img src={Star} className="boutonDetail" />
                             </div>
                           </div>
-                        ))
-                      )}
-                    </div>
-                    <div className="cadreBas">
-                      <img src={CoinBG} className="coinBG" />
-                      <img src={CoinBD} className="coinBD" />
-                    </div>
+                          <div className="separateur">
+                            <img src={Separateur} />
+                          </div>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                  <div className="cadreBas">
+                    <img src={CoinBG} className="coinBG" />
+                    <img src={CoinBD} className="coinBD" />
                   </div>
                 </div>
               </div>
             </div>
             <div className="deconnexion">
-              <button className="boutonDeconnexion" onClick={handleLogout}>
+              <button className="buttonCart" onClick={handleLogout}>
                 Se deconnecter
               </button>
             </div>
