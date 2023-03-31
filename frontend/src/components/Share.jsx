@@ -6,12 +6,9 @@ import {
   LinkedinShareButton,
   TwitterShareButton,
   EmailShareButton,
-  FacebookIcon,
-  WhatsappIcon,
-  LinkedinIcon,
-  TwitterIcon,
-  EmailIcon,
 } from "react-share"
+import { BsFacebook, BsWhatsapp, BsLinkedin, BsTwitter } from "react-icons/bs"
+import { MdMail } from "react-icons/md"
 import iconShare from "../assets/Images/share-white.png"
 import iconClose from "../assets/Images/close.png"
 
@@ -30,48 +27,23 @@ function Share() {
       {isToggled && (
         <div className="divToggled">
           <FacebookShareButton url={shareUrl} hashtag={"#labaladecaspienne"}>
-            <FacebookIcon
-              className="iconsRS"
-              size={30}
-              round={true}
-              iconFillColor={"#804000"}
-            />
+            <BsFacebook className="iconsRS" size={29} color="#004033" />
           </FacebookShareButton>
 
           <LinkedinShareButton url={shareUrl} title={"La Balade Caspienne"}>
-            <LinkedinIcon
-              className="iconsRS"
-              size={30}
-              round={true}
-              iconFillColor={"#804000"}
-            />
+            <BsLinkedin className="iconsRS" size={29} color="#004033" />
           </LinkedinShareButton>
 
           <TwitterShareButton url={shareUrl} hashtag={"#labaladecaspienne"}>
-            <TwitterIcon
-              className="iconsRS"
-              size={30}
-              round={true}
-              iconFillColor={"#804000"}
-            />
+            <BsTwitter className="iconsRS" size={29} color="#004033" />
           </TwitterShareButton>
 
           <WhatsappShareButton url={shareUrl} hashtag={"#labaladecaspienne"}>
-            <WhatsappIcon
-              className="iconsRS"
-              size={30}
-              round={true}
-              iconFillColor={"#804000"}
-            />
+            <BsWhatsapp className="iconsRS" size={29} color="#004033" />
           </WhatsappShareButton>
 
           <EmailShareButton url={shareUrl} redirectUri={shareUrl}>
-            <EmailIcon
-              className="iconsRS"
-              size={30}
-              round={true}
-              iconFillColor={"#804000"}
-            />
+            <MdMail className="iconsRS" size={29} color="#004033" />
           </EmailShareButton>
         </div>
       )}
