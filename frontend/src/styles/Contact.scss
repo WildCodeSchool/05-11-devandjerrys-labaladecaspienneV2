@@ -256,3 +256,11 @@ input[type="email"]:focus,
     transform: translateY(-8rem) scale(0.3, 0.5);
   }
 }
+@media (max-width: 550px) {
+  .envelope {
+    margin: 0 155px;
+  }
+  .letter {
+    margin: 0px -5px;
+  }
+}

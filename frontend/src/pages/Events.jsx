@@ -4,7 +4,7 @@ import CardEvent from "../components/CardEvent"
 import deco1 from "../assets/Images/deco1.png"
 import Burger from "@components/Burger"
 import LineTop from "../assets/Images/head_line.png"
-
+import CartButtonHeader from "@components/CartButtonHeader"
 import { useState, useEffect } from "react"
 import axios from "axios"
 
@@ -95,6 +95,7 @@ export default function Events() {
   return (
     <div>
       <Header />
+      <CartButtonHeader />
       <div className="eventsBody">
         <p id="titleHeadEshop">LA BALADE CASPIENNE</p>
         <img id="lineTitleEshop" src={LineTop} alt="image" />
