@@ -11,6 +11,8 @@ import EditArtifact from "../components/EditArtifact"
 import LineTop from "../assets/Images/head_line.png"
 import ViewOrders from "@components/ViewOrders"
 import { useNavigate } from "react-router-dom"
+import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
+import { Carousel } from "react-responsive-carousel"
 
 export default function AdminPage() {
   const navigate = useNavigate()
@@ -37,8 +39,13 @@ export default function AdminPage() {
   useEffect(() => {
     verifyTokenAdmin()
   }, [])
+
+  function handleLogout() {
+    localStorage.removeItem("token")
+    window.location.href = "/home"
+  }
   return (
-    <>
+    <div className="adminPage">
       <Header />
       <div className="divHeadEshop" /* key={userData.id} */>
         <p className="titleHeadEshop">LA BALADE CASPIENNE</p>
@@ -47,25 +54,21 @@ export default function AdminPage() {
       <div className="AdminAccountPage">
         {/* {userData || ( */}
         <div className="AdminDivGrid">
-          <div className="AdminGridDivs Grid1">
+          <Carousel showIndicators={true} showStatus={false}>
             <AddArtifact />
-          </div>
-          <div className="AdminGridDivs Grid2">
             <AddTheme />
-          </div>
-          <div className="AdminGridDivs Grid4">
-            <EditTheme />
-          </div>
-          <div className="AdminGridDivs Grid3">
-            <ViewOrders />
-          </div>
-          <div className="AdminGridDivs Grid5">
             <EditArtifact />
-          </div>
+            <EditTheme />
+            <ViewOrders />
+          </Carousel>
+
+          <button className="buttonCart" onClick={handleLogout}>
+            Se deconnecter
+          </button>
         </div>
       </div>
       <Burger />
       <Footer />
-    </>
+    </div>
   )
 }
