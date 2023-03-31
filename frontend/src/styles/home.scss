@@ -31,7 +31,7 @@
     color: white;
     margin-left: 100px;
     margin-right: 100px;
-    font-size: var(--desktop-size4);
+    font-size: var(--desktop-size3);
   }
   #image2 {
     width: 30vw;
@@ -70,8 +70,8 @@
       .close {
         svg {
           transform: scale(1.2);
-          filter: brightness(0) saturate(100%) invert(23%) sepia(85%) saturate(907%) hue-rotate(2deg) brightness(100%)
-            contrast(102%);
+          filter: brightness(0) saturate(100%) invert(23%) sepia(85%)
+            saturate(907%) hue-rotate(2deg) brightness(100%) contrast(102%);
         }
 
         svg:hover {

@@ -62,7 +62,7 @@ export default function Artifacts() {
         {/* ********** DIV FILTERS ********** */}
         <div className="divAllFilters">
           <div id="themeListFilter">
-            <div>
+            <div className="filter-artifact">
               <label className="labelSelect" htmlFor="themeSelect">
                 Filtrer par thèmes
               </label>
