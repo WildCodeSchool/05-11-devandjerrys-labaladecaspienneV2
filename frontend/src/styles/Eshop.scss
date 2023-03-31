@@ -23,18 +23,13 @@
       .themeListFilter {
         display: flex;
         flex-direction: column;
-      }
-      .labelSelect {
-        font-size: 1.5em;
-        text-align: center;
-        color: var(--main-color);
-        margin-bottom: 2px;
-      }
-      .selectStyle {
-        border: 3px solid #804000;
-        padding: 0.2em;
-        appearance: auto;
-        margin-top: 5px;
+
+        .selectStyle {
+          border: 3px solid #804000;
+          padding: 0.2em;
+          appearance: auto;
+          margin-top: 5px;
+        }
       }
     }
     .divArtifactsEshop {
@@ -42,6 +37,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      padding-top: 20px;
 
       .eshop-card-wrapper {
         flex: 0 0 calc(33.333% - 2%);
@@ -62,6 +58,14 @@
   }
 }
 
+.filter-artifact {
+  padding-bottom: 20px;
+}
+.labelSelect {
+  font-size: 30px;
+  text-align: center;
+  color: var(--main-color);
+}
 @media (max-width: 560px) {
   .Artifacts {
     .lineTitleEshop {
