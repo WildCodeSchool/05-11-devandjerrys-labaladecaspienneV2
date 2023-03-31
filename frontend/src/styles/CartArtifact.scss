@@ -1,0 +1,59 @@
+.MainCartArtifact1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .MainCartArtifact2 {
+        display: flex;
+        font-size: var(--desktop-size3);
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        padding: 20px;
+        width: 80vw;
+        justify-content: space-evenly;
+
+        svg {
+            transform: scale(1.2);
+            filter: brightness(0) saturate(100%) invert(23%) sepia(85%) saturate(907%) hue-rotate(2deg) brightness(100%)
+                contrast(102%);
+        }
+        svg:hover {
+            transform: scale(1.4);
+            transition-duration: 0.5s;
+            // box-shadow: 2px 2px 2px 2px #656565;
+        }
+
+        svg:active {
+            transform: scale(0.8);
+        }
+
+        .CartArtifactImg {
+            img {
+                width: 180px;
+                height: 180px;
+                object-fit: cover;
+            }
+        }
+        // .CartArtifactName {
+        // }
+        .CartArtifactQty {
+            display: flex;
+            // flex-direction: column;
+            width: 100px;
+            justify-content: space-around;
+            align-items: center;
+            .hide {
+                display: none;
+            }
+        }
+        // .CartArtifactPrice {
+        // }
+        // .CartArtifactTotal {
+        // }
+    }
+    .Star {
+        img {
+            width: 30px;
+        }
+    }
+}

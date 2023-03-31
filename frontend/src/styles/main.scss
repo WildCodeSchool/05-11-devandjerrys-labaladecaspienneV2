@@ -1,0 +1,67 @@
+@import "./about.scss";
+@import "./App.scss";
+@import "./burger.scss";
+@import "./ButtonCart.scss";
+@import "./CardTheme.scss";
+@import "./CardEvent.scss";
+@import "./CardThemeCarrousel.scss";
+@import "./cart.scss";
+@import "./CartArtifact.scss";
+@import "./Contact.scss";
+@import "./Eshop.scss";
+@import "./EshopCard.scss";
+@import "./EshopDetails.scss";
+@import "./events.scss";
+@import "./footer.scss";
+@import "./header.scss";
+@import "./home.scss";
+@import "./splash.scss";
+@import "./HomeModalTheme.scss";
+@import "./UserAccount.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Alegreya&family=EB+Garamond:ital@1&display=swap");
+@font-face {
+  font-family: "Dream";
+  src: url("../assets/Font/Dream-Avenue.ttf");
+}
+
+:root {
+  --background-color: #151515;
+  --main-color: #ffffff;
+  --secondary-color: #804000;
+  --third-color: #004033;
+  --font1: "Dream";
+  --font2: "Alegreya";
+  --font3: "EB Garamond";
+  --desktop-size1: 65px;
+  --desktop-size2: 55px;
+  --desktop-size3: 22px;
+  --desktop-size4: 18px;
+  --mobile-size1: calc(var(--desktop-size1) - 20px);
+  --mobile-size2: calc(var(--desktop-size2) - 25px);
+  --mobile-size3: calc(var(--desktop-size3) - 8px);
+  --mobile-size4: calc(var(--desktop-size3) - 3px);
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  background-color: var(--background-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::-webkit-scrollbar {
+  width: 0.4em;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: (--background-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
