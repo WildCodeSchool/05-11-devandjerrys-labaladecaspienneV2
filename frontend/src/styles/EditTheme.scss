@@ -1,0 +1,80 @@
+.editTheme {
+  color: white;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  display: flex;
+  font-size: 30px;
+
+  .cadreHaut {
+    z-index: -1;
+    display: flex;
+    margin-bottom: -220px;
+    margin-top: -15px;
+    .cadreHG {
+      width: 250px;
+    }
+    .cadreHD {
+      width: 250px;
+    }
+  }
+  .interieurCadre {
+    overflow-y: auto;
+    height: 500px;
+    width: 430px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .label {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: 23px;
+    }
+    .interieurCadreSecond {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .label {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 23px;
+      }
+      .descriptionThemeArea {
+        margin-top: 10px;
+        resize: none;
+        width: 280px;
+        height: 80px;
+      }
+      .image {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .label {
+          margin-top: 20px;
+          margin-bottom: 10px;
+          font-size: 20px;
+        }
+        .photoTheme {
+          background-color: white;
+          margin-bottom: 20px;
+          margin-top: 20px;
+          display: flex;
+          height: 10vh;
+          width: 10vh;
+        }
+      }
+    }
+  }
+  .cadreBas {
+    z-index: -1;
+    display: flex;
+    margin-top: -220px;
+    .cadreBG {
+      width: 250px;
+    }
+    .cadreBD {
+      width: 250px;
+    }
+  }
+}

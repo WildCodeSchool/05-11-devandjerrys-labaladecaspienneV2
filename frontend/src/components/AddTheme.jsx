@@ -1,6 +1,10 @@
 import { TbAsterisk } from "react-icons/tb"
 import React, { useState } from "react"
 import axios from "axios"
+import CadreHG from "../assets/coinHG.svg"
+import CadreHD from "../assets/coinHD.svg"
+import CadreBG from "../assets/coinBG.svg"
+import CadreBD from "../assets/coinBD.svg"
 
 const AddTheme = () => {
   const [nameTheme, setNameTheme] = useState("")
@@ -44,10 +48,14 @@ const AddTheme = () => {
   }
 
   return (
-    <div>
+    <div className="addTheme">
       <h2>Ajouter un thème</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="nameTheme">
+      <div className="cadreHaut">
+        <img src={CadreHG} className="cadreHG" alt="Cadre haut gauche" />
+        <img src={CadreHD} className="cadreHD" alt="Cadre haut droit" />
+      </div>
+      <form className="interieurCadre" onSubmit={handleSubmit}>
+        <label className="label" htmlFor="nameTheme">
           Nom du thème
           <TbAsterisk />:
         </label>
@@ -60,25 +68,39 @@ const AddTheme = () => {
           required
         />
         <br />
-
-        <label htmlFor="descriptionTheme">Description du thème:</label>
-        <textarea
-          id="descriptionTheme"
-          value={descriptionTheme}
-          onChange={(e) => setDescriptionTheme(e.target.value)}
-        ></textarea>
+        <div className="texteArea">
+          <label className="label" htmlFor="descriptionTheme">
+            Description du thème:
+          </label>
+          <textarea
+            className="descriptionThemeArea"
+            id="descriptionTheme"
+            value={descriptionTheme}
+            onChange={(e) => setDescriptionTheme(e.target.value)}
+          ></textarea>
+        </div>
+        <br />
+        <div className="image">
+          <label className="label" htmlFor="pictureTheme">
+            Ajouter une image:
+          </label>
+          <input
+            type="file"
+            id="pictureTheme"
+            accept="image/*"
+            onChange={handleFileChange}
+          />
+          {pictureTheme && (
+            <img
+              className="photoTheme"
+              src={URL.createObjectURL(pictureTheme)}
+              alt="Aperçu de l'image"
+            />
+          )}
+        </div>
         <br />
 
-        <label htmlFor="pictureTheme">Ajouter une image:</label>
-        <input
-          type="file"
-          id="pictureTheme"
-          accept="image/*"
-          onChange={handleFileChange}
-        />
-        <br />
-
-        <label htmlFor="archiveTheme">
+        <label className="label" htmlFor="archiveTheme">
           Archiver le thème
           <TbAsterisk />:
         </label>
@@ -96,7 +118,17 @@ const AddTheme = () => {
         <button className="buttonCart" type="submit">
           {submitSuccess ? "Ajouté!" : "Ajouter le thème"}
         </button>
+        <div>
+          <p>
+            {" "}
+            <TbAsterisk /> champs obligatoire{" "}
+          </p>
+        </div>
       </form>
+      <div className="cadreBas">
+        <img src={CadreBG} className="cadreBG" alt="Cadre bas gauche" />
+        <img src={CadreBD} className="cadreBD" alt="Cadre bas gauche" />
+      </div>
     </div>
   )
 }
