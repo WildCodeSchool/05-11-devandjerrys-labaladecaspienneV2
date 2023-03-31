@@ -13,6 +13,8 @@ export default function Artifacts() {
   const handleCardClick = (arti) => {
     console.info("Id de l'objet cliqué :", arti.id)
   }
+  const [counter, setCounter] = useState(0)
+  const [comments, setComments] = useState([])
 
   useEffect(() => {
     axios.get("http://localhost:5000/artifacts").then((res) => {
@@ -30,6 +32,20 @@ export default function Artifacts() {
     axios
       .get("http://localhost:5000/themes")
       .then((res) => setThemeSelect(res.data))
+  }, [])
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/comments")
+      .then((res) => setComments(res.data))
+  }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCounter((prevCounter) => prevCounter + 1)
+    }, 1000)
+
+    return () => clearInterval(interval)
   }, [])
 
   const handleFilterChange = (e) => {
@@ -102,6 +118,10 @@ export default function Artifacts() {
                 </p>
               )}
         </div>
+      </div>
+      <div className="comments">
+        <h1 className="titlecomm">Comments</h1>
+        <p>{JSON.stringify(comments, undefined, 2)}</p>
       </div>
 
       <Burger />

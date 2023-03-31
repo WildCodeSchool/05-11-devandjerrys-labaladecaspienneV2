@@ -3,17 +3,31 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import LineTop from "../assets/Images/head_line.png"
 import Separateur from "../assets/Images/separateur.png"
-import { set } from "husky"
+import axios from "axios"
 
 function Contact() {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
+  // function hidenElement() {}
   function Submit() {
-    alert(
-      `Bonjour ${firstName} ${lastName} merci pour votre message,nous vous repondons au plus vite`
-    )
+    const regrup = {
+      fn: firstName,
+      ln: lastName,
+      e: email,
+      msg: message,
+    }
+    axios
+      .post(`http://localhost:5000/sendEmail`, regrup)
+      .then((res) => {
+        alert(
+          `Bonjour ${firstName} ${lastName} merci pour votre message,nous vous repondons au plus vite \n
+          inforeception: ${JSON.stringify(res.data, undefined, 2)}`
+        )
+        // hidenElement()
+      })
+      .catch((err) => console.error(err))
   }
   return (
     <div>

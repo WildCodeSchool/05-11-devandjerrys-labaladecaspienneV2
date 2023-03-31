@@ -10,6 +10,7 @@ const ThemesControllers = require('./controllers/ThemesControllers')
 const UsersControllers = require('./controllers/UsersControllers')
 const CartControllers = require('./controllers/CartControllers')
 const CommentsControllers = require('./controllers/CommentsControllers')
+const MailerControllers = require('./controllers/MailerControllers')
 
 router.get('/artifacts', ArtifactsControllers.browse)
 router.get('/artifacts/:id', ArtifactsControllers.read)
@@ -75,5 +76,8 @@ router.get('/comments/:id', CommentsControllers.read)
 router.put('/comments/:id', CommentsControllers.edit)
 router.post('/comments', CommentsControllers.add)
 router.delete('/comments/:id', CommentsControllers.destroy)
+
+// route mailer
+router.post('/sendEmail', MailerControllers.send)
 
 module.exports = router
