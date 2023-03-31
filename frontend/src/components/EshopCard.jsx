@@ -15,9 +15,6 @@ export default function EshopCard(props) {
   return (
     <Link to={artiLink} style={{ textDecoration: "none" }}>
       <div className="Eshop" onClick={handleClick}>
-        <div className="Arti-name">
-          <h2>{props.name_arti}</h2>
-        </div>
         <section className="Image">
           <div
             className="ArtImage"
@@ -34,6 +31,9 @@ export default function EshopCard(props) {
 
         <div className="Eshop-Price">
           <p>{props.price} €</p>
+        </div>
+        <div className="Arti-name">
+          <h2>{props.name_arti}</h2>
         </div>
       </div>
     </Link>

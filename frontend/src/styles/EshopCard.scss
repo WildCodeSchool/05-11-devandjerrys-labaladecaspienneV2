@@ -12,6 +12,7 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    padding-top: 20px;
 
     .ArtImage {
       height: 280px;
@@ -20,8 +21,8 @@
       background-size: cover;
       filter: drop-shadow(4px 5px 3px var(--secondary-color));
       border-radius: 280px 280px 0px 0px;
-      box-shadow: inset 0 0 2px 3px rgba($color: #ffffff, $alpha: 100%),
-        0 0 30px 5px rgba($color: #ffffff, $alpha: 0.35);
+      // box-shadow: inset 0 0 2px 3px rgba($color: #ffffff, $alpha: 100%),
+      //   0 0 30px 5px rgba($color: #ffffff, $alpha: 0.35);
     }
 
     .Frame {
@@ -40,9 +41,9 @@
   }
   .Arti-name {
     position: relative;
+    top: -35px;
     filter: drop-shadow(8px 11px 2px var(--background-color));
     z-index: 1;
-    top: 350px;
     color: var(--main-color);
     font-family: var(--font3);
     font-size: var(--desktop-size4);
@@ -54,15 +55,15 @@
   }
 
   .Eshop-Price {
-    position: relative;
-    bottom: 165px;
+    // position: relative;
+
     background-image: url("../assets/Images/etiquette.png");
     background-position: center;
     background-size: 100%;
     min-width: 116px;
     background-repeat: no-repeat;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    // opacity: 0;
+    // transition: opacity 0.3s ease-in-out;
     p {
       font-weight: 700;
       opacity: 1;
@@ -77,19 +78,15 @@
   }
 }
 .Eshop {
-  &:hover {
-    .price p,
-    .Arti-name {
-      filter: drop-shadow(1px 1px 0px var(--secondary-color));
-      opacity: 1;
-    }
-    .Eshop-Price {
-      opacity: 0.6;
-    }
-    .ArtImage {
-      opacity: 1;
-      filter: drop-shadow(8px 11px 10px var(--third-color));
-    }
+  .price p,
+  .Arti-name {
+    filter: drop-shadow(1px 1px 0px var(--secondary-color));
+    opacity: 1;
+  }
+  .Eshop-Price {
+  }
+  .ArtImage {
+    filter: drop-shadow(8px 11px 10px var(--third-color));
   }
 }
 

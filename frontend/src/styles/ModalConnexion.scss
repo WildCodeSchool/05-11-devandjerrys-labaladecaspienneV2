@@ -13,7 +13,7 @@
   color: var(--main-color);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: var(--main-color) 0px 0px 100px, var(--main-color) 2px 5px 12px;
+  filter: drop-shadow(2px 0px 15px white);
   text-shadow: rgb(9, 9, 9) 1px 10px 10px;
   z-index: 5;
 
