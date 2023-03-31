@@ -5,7 +5,7 @@
 
   .titleHeadEshop {
     font-family: var(--font1);
-    font-size: 2em;
+    font-size: var(--desktop-size1);
     color: var(--main-color);
     margin-top: 9vh;
     margin-bottom: 0;
@@ -24,7 +24,7 @@
   .AboutEvent {
     color: var(--secondary-color);
     font-family: var(--font1);
-    font-size: x-large;
+    font-size: 30px;
     font-weight: bold;
     padding: 20px;
   }
@@ -53,7 +53,6 @@
       .img-alex {
         margin: 5vh;
         width: 320px;
-        border-radius: 25px;
       }
     }
 
@@ -103,15 +102,14 @@
       }
     }
   }
+}
+.videoDiv {
+  margin-bottom: 10vh;
+  height: 500px;
+  // width: 30vw;
 
-  .videoDiv {
-    margin: 10vh;
-    height: 30vh;
-    width: 30vw;
-
-    .videoAngle {
-      width: 100%;
-    }
+  .videoAngle {
+    width: 100%;
   }
 }
 .divAboutShare {

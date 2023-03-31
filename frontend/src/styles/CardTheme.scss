@@ -7,12 +7,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url("../assets/cadreExterieur.svg");
+    background-image: url(../assets/cadreExterieur.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     height: 280px;
-    margin: 35px;
+    margin-top: 65px;
     .colorCadre {
       background: radial-gradient(
         circle,
@@ -26,8 +26,8 @@
         border-radius: 280px 280px 0px 0px;
         box-shadow: inset 0 0 2px 3px rgba($color: #ffffff, $alpha: 100%),
           0 0 30px 5px rgba($color: #ffffff, $alpha: 0.35);
-        width: 144px;
-        height: 236px;
+        width: 216px;
+        height: 346px;
         object-fit: cover;
       }
     }
@@ -35,11 +35,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: -40px;
-      margin-bottom: 0px;
+      margin-top: -72px;
+      /* margin-bottom: 0px; */
       background-color: #804000;
-      width: 230px;
-      height: 30px;
+      width: 270px;
+      height: 38px;
       border-radius: 20px;
       font-family: var(--font2);
       font-size: larger;
