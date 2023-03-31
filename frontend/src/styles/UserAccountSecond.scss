@@ -1,7 +1,11 @@
+.titrePage {
+  font-size: var(--desktop-size1);
+}
 .allPageUser {
   display: flex;
   flex-direction: column;
   width: 100vw;
+
   .pageUser {
     display: flex;
     flex-direction: column;
