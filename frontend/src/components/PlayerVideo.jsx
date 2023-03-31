@@ -5,9 +5,11 @@ import Clip from "../assets/videos/clip1.mp4"
 const PlayerVideo = () => {
   return (
     <>
-      <video width="100%" height="100%" controls>
-        <source src={Clip} type="video/mp4" />
-      </video>
+      <div className="video">
+        <video width="542px" height="500px" controls>
+          <source src={Clip} type="video/mp4" />
+        </video>
+      </div>
     </>
   )
 }

@@ -19,8 +19,8 @@
     /*les astérisques rouges */
     svg {
       transform: scale(0.5);
-      filter: brightness(0) saturate(100%) invert(22%) sepia(99%) saturate(7369%) hue-rotate(358deg) brightness(98%)
-        contrast(115%);
+      filter: brightness(0) saturate(100%) invert(22%) sepia(99%)
+        saturate(7369%) hue-rotate(358deg) brightness(98%) contrast(115%);
     }
     .carousel-root {
       width: 100vw;

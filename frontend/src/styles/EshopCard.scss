@@ -10,12 +10,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    //taille image
+    width: 400px;
+    height: 400px;
     padding-top: 20px;
 
     .ArtImage {
-      height: 280px;
+      //taille image
+      height: 400px;
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
@@ -26,8 +28,8 @@
     }
 
     .Frame {
-      width: 100%;
-      height: 100%;
+      //Taille image
+      height: 400px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -35,9 +37,9 @@
     }
   }
   .E-Star {
-    width: 83px;
+    width: 98px;
     position: relative;
-    bottom: 63px;
+    bottom: 78px;
   }
   .Arti-name {
     position: relative;
