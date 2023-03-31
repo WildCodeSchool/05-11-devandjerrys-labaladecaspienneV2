@@ -290,8 +290,9 @@ const EditArtifact = () => {
 
       try {
         // Mettre à jour l'enregistrement dans la table "artifacts"
-        // eslint-disable-next-line no-unused-vars
-        const response = await axios.post(
+
+        await axios.post(
+          // eslint-disable-next-line no-undef
           `http://localhost:5000/pictures/${artifactId}`,
           formData,
           {

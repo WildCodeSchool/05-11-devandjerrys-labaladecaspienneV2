@@ -27,6 +27,8 @@ class PicturesManager extends AbstractManager {
     )
 
     // Supprimer les images liées à l'artifact
+
+    // eslint-disable-next-line no-unused-vars
     for (const image of images) {
       await this.database.query(`DELETE FROM pictures WHERE id = ?`, [id])
     }

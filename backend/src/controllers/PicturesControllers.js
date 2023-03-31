@@ -103,7 +103,7 @@ const add = (req, res) => {
 const destroy = async (req, res) => {
   try {
     const id = JSON.parse(req.params.id).id
-    console.log('Number', id)
+    // console.log('Number', id)
     const [rows] = await models.pictures.find(id)
     if (!rows[0]) {
       res.sendStatus(404)
