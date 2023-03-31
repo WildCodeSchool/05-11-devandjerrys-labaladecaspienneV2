@@ -100,20 +100,27 @@ const add = (req, res) => {
   )
 }
 
-const destroy = (req, res) => {
-  models.pictures
-    .delete(req.params.id)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404)
-      } else {
-        res.sendStatus(204)
-      }
-    })
-    .catch((err) => {
-      console.error(err)
-      res.sendStatus(500)
-    })
+const destroy = async (req, res) => {
+  try {
+    const id = JSON.parse(req.params.id).id
+    console.log('Number', id)
+    const [rows] = await models.pictures.find(id)
+    if (!rows[0]) {
+      res.sendStatus(404)
+      return
+    }
+    const picture = rows[0]
+    await fs.promises.unlink(`./public${picture.url_img}`)
+    const [result] = await models.pictures.delete(id)
+    if (result.affectedRows === 0) {
+      res.sendStatus(404)
+    } else {
+      res.sendStatus(204)
+    }
+  } catch (err) {
+    console.error(err)
+    res.sendStatus(500)
+  }
 }
 
 module.exports = {

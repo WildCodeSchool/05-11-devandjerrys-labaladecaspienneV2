@@ -96,179 +96,172 @@ export default function UserAccount() {
           <div className="infoPage">
             <div className="toutContenaire">
               <div className="contenaireGauche">
-                <div>
-                  <div className="allUserProfil">
-                    <div className="userInfo">
-                      <h3 className="titreInfo">Profil</h3>
-                      <div className="coinHaut">
-                        <img className="coinHG" src={CoinHG} />
-                        <img className="coinHD" src={CoinHD} />
-                      </div>
-                      {isEditing ? (
-                        <form onSubmit={handleSubmit}>
-                          <div className="allEncart">
-                            <div className="encart">
-                              <div className="encartSousTitre">
-                                <h4 className="sousTitre">
-                                  {" "}
-                                  Nom de Famille :{" "}
-                                </h4>
-                                <input
-                                  type="text"
-                                  name="firstname"
-                                  id="firstname"
-                                  value={userData.lastname}
-                                  placeholder={userData.lastname}
-                                  onChange={(event) =>
-                                    setUserData({
-                                      ...userData,
-                                      lastname: event.target.value,
-                                    })
-                                  }
-                                />
-                              </div>
-                              <img className="separateur" src={Separateur} />
-                            </div>
-                            <div className="encart">
-                              <div className="encartSousTitre">
-                                <h4 className="sousTitre"> Prenom : </h4>
-                                <input
-                                  value={userData.firstname}
-                                  placeholder={userData.firstname}
-                                  onChange={(event) =>
-                                    setUserData({
-                                      ...userData,
-                                      firstname: event.target.value,
-                                    })
-                                  }
-                                />
-                              </div>
-                              <img className="separateur" src={Separateur} />
-                            </div>
-                            <div className="encart">
-                              <div className="encartSousTitre">
-                                <h4 className="sousTitre"> Email : </h4>
-                                <input
-                                  value={userData.email}
-                                  placeholder={userData.email}
-                                  onChange={(event) =>
-                                    setUserData({
-                                      ...userData,
-                                      email: event.target.value,
-                                    })
-                                  }
-                                />
-                              </div>
-                              <img className="separateur" src={Separateur} />
-                            </div>
-                            <div className="encart">
-                              <div className="encartSousTitre">
-                                <h4 className="sousTitre"> Adresse : </h4>
-                                <input
-                                  value={userData.address_delivery}
-                                  placeholder={userData.address_delivery}
-                                  onChange={(event) =>
-                                    setUserData({
-                                      ...userData,
-                                      address_delivery: event.target.value,
-                                    })
-                                  }
-                                />
-                              </div>
-                              <img className="separateur" src={Separateur} />
-                            </div>
-                            <div className="encart">
-                              <div className="encartSousTitre">
-                                <h4 className="sousTitre"> Code Postal : </h4>
-                                <input
-                                  value={userData.zip_delivery}
-                                  placeholder={userData.zip_delivery}
-                                  onChange={(event) =>
-                                    setUserData({
-                                      ...userData,
-                                      zip_delivery: event.target.value,
-                                    })
-                                  }
-                                />
-                              </div>
-                              <img className="separateur" src={Separateur} />
-                            </div>
-                            <div className="encart">
-                              <div className="encartSousTitre">
-                                <h4 className="sousTitre"> Ville : </h4>
-                                <input
-                                  value={userData.town_delivery}
-                                  placeholder={userData.town_delivery}
-                                  onChange={(event) =>
-                                    setUserData({
-                                      ...userData,
-                                      town_delivery: event.target.value,
-                                    })
-                                  }
-                                />
-                              </div>
-                              <img className="separateur" src={Separateur} />
-                            </div>
-                            <button onClick={() => setIsEditing(true)}>
-                              Enregistrer
-                            </button>
+                <div className="userInfo">
+                  <h3 className="titreInfo">Profil</h3>
+                  <div className="coinHaut">
+                    <img className="coinHG" src={CoinHG} />
+                    <img className="coinHD" src={CoinHD} />
+                  </div>
+                  {isEditing ? (
+                    <form onSubmit={handleSubmit}>
+                      <div className="allEncart">
+                        <div className="encart">
+                          <div className="encartSousTitre">
+                            <h4 className="sousTitre"> Nom de Famille : </h4>
+                            <input
+                              type="text"
+                              name="firstname"
+                              id="firstname"
+                              value={userData.lastname}
+                              placeholder={userData.lastname}
+                              onChange={(event) =>
+                                setUserData({
+                                  ...userData,
+                                  lastname: event.target.value,
+                                })
+                              }
+                            />
                           </div>
-                        </form>
-                      ) : (
-                        <div className="allEncart">
-                          <div className="encart">
-                            <div className="encartSousTitre">
-                              <h4 className="sousTitre"> Nom de Famille : </h4>
-                              <p>{userData?.lastname}</p>
-                            </div>
-                            <img className="separateur" src={Separateur} />
-                          </div>
-                          <div className="encart">
-                            <div className="encartSousTitre">
-                              <h4 className="sousTitre"> Prénom : </h4>
-                              <p>{userData?.firstname}</p>
-                            </div>
-                            <img className="separateur" src={Separateur} />
-                          </div>
-                          <div className="encart">
-                            <div className="encartSousTitre">
-                              <h4 className="sousTitre"> Email : </h4>
-                              <p>{userData?.email}</p>
-                            </div>
-                            <img className="separateur" src={Separateur} />
-                          </div>
-                          <div className="encart">
-                            <div className="encartSousTitre">
-                              <h4 className="sousTitre"> Adresse : </h4>
-                              <p>{userData?.address_delivery}</p>
-                            </div>
-                            <img className="separateur" src={Separateur} />
-                          </div>
-                          <div className="encart">
-                            <div className="encartSousTitre">
-                              <h4 className="sousTitre"> Code Postal : </h4>
-                              <p>{userData?.zip_delivery}</p>
-                            </div>
-                            <img className="separateur" src={Separateur} />
-                          </div>
-                          <div className="encart">
-                            <div className="encartSousTitre">
-                              <h4 className="sousTitre"> Ville : </h4>
-                              <p>{userData?.town_delivery}</p>
-                            </div>
-                            <img className="separateur" src={Separateur} />
-                          </div>
-                          <button onClick={() => setIsEditing(true)}>
-                            Modifier
-                          </button>
+                          <img className="separateur" src={Separateur} />
                         </div>
-                      )}
-
-                      <div className="coinBas">
-                        <img className="coinBG" src={CoinBG} />
-                        <img className="coinBD" src={CoinBD} />
+                        <div className="encart">
+                          <div className="encartSousTitre">
+                            <h4 className="sousTitre"> Prenom : </h4>
+                            <input
+                              value={userData.firstname}
+                              placeholder={userData.firstname}
+                              onChange={(event) =>
+                                setUserData({
+                                  ...userData,
+                                  firstname: event.target.value,
+                                })
+                              }
+                            />
+                          </div>
+                          <img className="separateur" src={Separateur} />
+                        </div>
+                        <div className="encart">
+                          <div className="encartSousTitre">
+                            <h4 className="sousTitre"> Email : </h4>
+                            <input
+                              value={userData.email}
+                              placeholder={userData.email}
+                              onChange={(event) =>
+                                setUserData({
+                                  ...userData,
+                                  email: event.target.value,
+                                })
+                              }
+                            />
+                          </div>
+                          <img className="separateur" src={Separateur} />
+                        </div>
+                        <div className="encart">
+                          <div className="encartSousTitre">
+                            <h4 className="sousTitre"> Adresse : </h4>
+                            <input
+                              value={userData.address_delivery}
+                              placeholder={userData.address_delivery}
+                              onChange={(event) =>
+                                setUserData({
+                                  ...userData,
+                                  address_delivery: event.target.value,
+                                })
+                              }
+                            />
+                          </div>
+                          <img className="separateur" src={Separateur} />
+                        </div>
+                        <div className="encart">
+                          <div className="encartSousTitre">
+                            <h4 className="sousTitre"> Code Postal : </h4>
+                            <input
+                              value={userData.zip_delivery}
+                              placeholder={userData.zip_delivery}
+                              onChange={(event) =>
+                                setUserData({
+                                  ...userData,
+                                  zip_delivery: event.target.value,
+                                })
+                              }
+                            />
+                          </div>
+                          <img className="separateur" src={Separateur} />
+                        </div>
+                        <div className="encart">
+                          <div className="encartSousTitre">
+                            <h4 className="sousTitre"> Ville : </h4>
+                            <input
+                              value={userData.town_delivery}
+                              placeholder={userData.town_delivery}
+                              onChange={(event) =>
+                                setUserData({
+                                  ...userData,
+                                  town_delivery: event.target.value,
+                                })
+                              }
+                            />
+                          </div>
+                          <img className="separateur" src={Separateur} />
+                        </div>
+                        <button onClick={() => setIsEditing(true)}>
+                          Enregistrer
+                        </button>
                       </div>
+                    </form>
+                  ) : (
+                    <div className="allEncart">
+                      <div className="encart">
+                        <div className="encartSousTitre">
+                          <h4 className="sousTitre"> Nom de Famille : </h4>
+                          <p>{userData?.lastname}</p>
+                        </div>
+                        <img className="separateur" src={Separateur} />
+                      </div>
+                      <div className="encart">
+                        <div className="encartSousTitre">
+                          <h4 className="sousTitre"> Prénom : </h4>
+                          <p>{userData?.firstname}</p>
+                        </div>
+                        <img className="separateur" src={Separateur} />
+                      </div>
+                      <div className="encart">
+                        <div className="encartSousTitre">
+                          <h4 className="sousTitre"> Email : </h4>
+                          <p>{userData?.email}</p>
+                        </div>
+                        <img className="separateur" src={Separateur} />
+                      </div>
+                      <div className="encart">
+                        <div className="encartSousTitre">
+                          <h4 className="sousTitre"> Adresse : </h4>
+                          <p>{userData?.address_delivery}</p>
+                        </div>
+                        <img className="separateur" src={Separateur} />
+                      </div>
+                      <div className="encart">
+                        <div className="encartSousTitre">
+                          <h4 className="sousTitre"> Code Postal : </h4>
+                          <p>{userData?.zip_delivery}</p>
+                        </div>
+                        <img className="separateur" src={Separateur} />
+                      </div>
+                      <div className="encart">
+                        <div className="encartSousTitre">
+                          <h4 className="sousTitre"> Ville : </h4>
+                          <p>{userData?.town_delivery}</p>
+                        </div>
+                        <img className="separateur" src={Separateur} />
+                      </div>
+                      <button onClick={() => setIsEditing(true)}>
+                        Modifier
+                      </button>
                     </div>
+                  )}
+
+                  <div className="coinBas">
+                    <img className="coinBG" src={CoinBG} />
+                    <img className="coinBD" src={CoinBD} />
                   </div>
                 </div>
               </div>

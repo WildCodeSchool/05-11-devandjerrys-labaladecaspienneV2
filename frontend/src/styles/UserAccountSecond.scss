@@ -5,6 +5,7 @@
   font-family: var(--font1);
   align-content: center;
   margin-top: 50px;
+
   .titrePage {
     display: flex;
     flex-direction: column;
@@ -27,74 +28,68 @@
   .infoPage {
     display: flex;
     flex-direction: column;
+
     .toutContenaire {
       display: flex;
       justify-content: space-around;
       align-items: center;
-      .contenaireGauche {
+
+      .userInfo {
+        font-size: 30px;
+        color: white;
         display: flex;
         flex-direction: column;
         align-items: center;
-        .allUserProfil {
+
+        .titreInfo {
+          margin-bottom: -10px;
+        }
+        .coinHaut {
+          z-index: -1;
           display: flex;
-          .userInfo {
-            color: white;
+          .coinHG {
+            height: 300px;
+          }
+          .coinHD {
+            height: 300px;
+          }
+        }
+        .allEncart {
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: -238px;
+          width: 510px;
+          height: 462px;
+          overflow-y: auto;
+
+          .encart {
             display: flex;
             flex-direction: column;
-            align-items: center;
-
-            .titreInfo {
-              display: flex;
-
-              margin-bottom: -10px;
-            }
-            .coinHaut {
-              z-index: -1;
-              display: flex;
-              .coinHG {
-                height: 300px;
-              }
-              .coinHD {
-                height: 300px;
-              }
-            }
-            .allEncart {
-              z-index: 1;
+            .encartSousTitre {
               display: flex;
               flex-direction: column;
-              align-items: center;
-              margin-top: -238px;
-              width: 510px;
-              height: 462px;
-              overflow-y: auto;
-
-              .encart {
-                display: flex;
-                flex-direction: column;
-                .encartSousTitre {
-                  display: flex;
-                  flex-direction: column;
-                }
-
-                .separateur {
-                  margin-top: 50px;
-                }
-              }
             }
-            .coinBas {
-              z-index: -1;
-              display: flex;
-              margin-top: -223px;
-              .coinBG {
-                height: 300px;
-              }
-              .coinBD {
-                height: 300px;
-              }
+
+            .separateur {
+              margin-top: 50px;
             }
           }
         }
+        .coinBas {
+          z-index: -1;
+          display: flex;
+          margin-top: -223px;
+          .coinBG {
+            height: 300px;
+          }
+          .coinBD {
+            height: 300px;
+          }
+        }
       }
+
       .horizontal {
         display: none;
       }
@@ -106,6 +101,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
         .commandeHistorique {
           display: flex;
 
@@ -115,9 +111,10 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            width: 100%;
             .titreCommande {
               display: flex;
-
+              font-size: 30px;
               margin: -10px;
               margin-top: 30px;
             }
@@ -134,10 +131,12 @@
               }
             }
             .descriptCommande {
+              font-size: 23px;
               display: flex;
               flex-direction: column;
               align-items: flex-start;
-              width: 680px;
+              width: 580px;
+              padding: 20px;
               margin-bottom: -195px;
               margin-top: -387px;
               height: 765px;
@@ -204,9 +203,9 @@
       margin: 50px;
       margin-top: 100px;
       .boutonDeconnexion {
-        border-radius: 20px;
+        border-radius: 47px;
         height: 5vh;
-        width: 8vw;
+        width: 15vw;
       }
     }
   }

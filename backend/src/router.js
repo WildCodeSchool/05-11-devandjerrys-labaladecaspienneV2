@@ -23,6 +23,30 @@ router.get('/artifacts/:id', ArtifactsControllers.read)
 router.put('/artifacts/:id', ArtifactsControllers.edit)
 router.post('/artifacts', ArtifactsControllers.add)
 router.delete('/artifacts/:id', ArtifactsControllers.destroy)
+router.put(
+  '/artifacts/:id/pictures',
+  upload.single('picture_artifacts'),
+  async (req, res) => {
+    try {
+      const id = req.params.id
+      const image = await Image.findOneAndUpdate(
+        { _id: id },
+        { image: req.file.path }
+      )
+      res.json(image)
+    } catch (err) {
+      console.error(err)
+      res.status(500).send('Server Error')
+    }
+  },
+  ArtifactsControllers.editArtifact
+)
+
+router.post(
+  '/artifacts',
+  upload.single('picture_artifact'),
+  ArtifactsControllers.addArtifact
+)
 
 router.get('/events', EventsControllers.browse)
 // router.get('/events/:id', EventsControllers.read)
@@ -50,6 +74,7 @@ router.get('/pictures', PicturesControllers.browse)
 router.get('/pictures/:id', PicturesControllers.read)
 router.put('/pictures/:id', upload.single('url_img'), PicturesControllers.edit) // ok
 router.post('/pictures/', upload.single('url_img'), PicturesControllers.add) // ok
+router.delete('/pictures/:id', PicturesControllers.destroy)
 
 router.get('/avatar', (req, res) => {
   // Vous pouvez remplacer cette partie par votre logique pour récupérer l'URL de l'image
@@ -73,8 +98,6 @@ router.post('/avatar', upload.single('avatar'), (req, res) => {
     }
   )
 })
-
-router.delete('/pictures/:id', PicturesControllers.destroy)
 
 router.get('/themes', ThemesControllers.browse)
 router.get('/themes/:id', ThemesControllers.read) // ok
