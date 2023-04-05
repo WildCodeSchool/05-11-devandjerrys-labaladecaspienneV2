@@ -293,8 +293,10 @@ export default function UserAccount() {
                                 <p className="lignes">{order.orderAmount}</p>
                               </div>
                             </div>
+
                             <div className="detailCommande">
                               <h4 className="lignesDetail">Détail</h4>
+                              <p className="lignes">{order.quantity}</p>
                               <img src={Star} className="boutonDetail" />
                             </div>
                           </div>

@@ -51,41 +51,41 @@ export default function ModalConnexion({ isOpen, closeModal }) {
   const handleCreateAccount = (e) => {
     e.preventDefault()
     // Vérifier si l'email existe déjà dans la base de données
-    axios.get(`http://localhost:5000/users?email=${email}`).then((res) => {
-      if (res.data.length > 0) {
-        alert("Cet email est déjà utilisé")
-        return
-      }
-      axios
-        .post(`http://localhost:5000/users/`, {
-          email: email,
-          password: password,
-        })
-        .then((res) => {
-          if (res.headers["x-access-token"]) {
-            setIsLoggedIn(true)
+    // axios.get(`http://localhost:5000/users?email=${email}`).then((res) => {
+    //   if (res.data.length > 0) {
+    //     alert("Cet email est déjà utilisé")
+    //     return
+    //   }
+    axios
+      .post(`http://localhost:5000/users/`, {
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        if (res.headers["x-access-token"]) {
+          setIsLoggedIn(true)
 
-            const userId = res.data.id
-            localStorage.setItem("token", res.headers["x-access-token"])
-            localStorage.setItem("userId", res.data.id)
-            localStorage.setItem("role", res.data.role)
-            console.info("token", localStorage.getItem("token")) // console.info(res.data.token)
-            setShowCreateAccount(false)
-            if (newUser) {
-              alert("Votre compte a été créé avec succès!")
-            }
-            if (res.data.role === false) {
-              navigate(`/useraccount/${userId}`)
-            } else {
-              alert("Votre compte a été créé avec succès!")
-            }
+          const userId = res.data.id
+          localStorage.setItem("token", res.headers["x-access-token"])
+          localStorage.setItem("userId", res.data.id)
+          localStorage.setItem("role", res.data.role)
+          console.info("token", localStorage.getItem("token")) // console.info(res.data.token)
+          setShowCreateAccount(false)
+          if (newUser) {
+            alert("Votre compte a été créé avec succès!")
           }
-        })
-        .catch((error) => {
-          console.error(error)
-          alert("Une erreur est survenue lors de la création de votre compte.")
-        })
-    })
+          if (res.data.role === false) {
+            navigate(`/useraccount/${userId}`)
+          } else {
+            alert("Votre compte a été créé avec succès!")
+          }
+        }
+      })
+      .catch((error) => {
+        console.error(error)
+        alert("Une erreur est survenue lors de la création de votre compte.")
+      })
+    // })
   }
   const myFunction = () => {
     const x = document.getElementById("passWord")
