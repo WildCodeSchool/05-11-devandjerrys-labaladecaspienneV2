@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { useParams, useNavigate } from "react-router-dom"
 
-import Headline from "../assets/Images/Head_line.png"
+import LineTop from "../assets/Images/head_line.png"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Burger from "../components/Burger"
@@ -12,7 +12,6 @@ import CoinHD from "../assets/coinHD.svg"
 import CoinBG from "../assets/coinBG.svg"
 import CoinBD from "../assets/coinBD.svg"
 import Separateur from "../assets/Images/separateur.png"
-import Star from "../assets/star.png"
 
 export default function UserAccount() {
   const navigate = useNavigate()
@@ -84,246 +83,252 @@ export default function UserAccount() {
   }
 
   return (
-    <div className="allPageUser">
+    <>
       <Header />
-      <div className="pageUser" key={userData.id}>
-        <div className="titrePage">
-          <h2 className="titre">LA BALADE CASPIENNE</h2>
-          <img src={Headline} className="headLine" />
-        </div>
-        {userData && (
-          <div className="infoPage">
-            <div className="toutContenaire">
-              <div className="userInfo">
-                <div className="userInfoSuite">
-                  <h3 className="titreInfo">Profil</h3>
-                  <div className="coinHaut">
-                    <img className="coinHG" src={CoinHG} />
-                    <img className="coinHD" src={CoinHD} />
-                  </div>
-                  {isEditing ? (
-                    <form onSubmit={handleSubmit}>
+      <div className="allPageUser">
+        <p className="titleHeadEshop">LA BALADE CASPIENNE</p>
+        <img className="lineTitleEshop" src={LineTop} alt="image" />
+        <div className="pageUser" key={userData.id}>
+          {userData && (
+            <div className="infoPage">
+              <div className="toutContenaire">
+                <div className="userInfo">
+                  <div className="userInfoSuite">
+                    <h3 className="titreInfo">Profil</h3>
+                    <div className="coinHaut">
+                      <img className="coinHG" src={CoinHG} />
+                      <img className="coinHD" src={CoinHD} />
+                    </div>
+                    {isEditing ? (
+                      <form onSubmit={handleSubmit}>
+                        <div className="allEncart">
+                          <div className="encart">
+                            <div className="encartSousTitre">
+                              <h4 className="sousTitre"> Nom de Famille : </h4>
+                              <input
+                                type="text"
+                                name="firstname"
+                                id="firstname"
+                                value={userData.lastname}
+                                placeholder={userData.lastname}
+                                onChange={(event) =>
+                                  setUserData({
+                                    ...userData,
+                                    lastname: event.target.value,
+                                  })
+                                }
+                              />
+                            </div>
+                            <img className="separateur" src={Separateur} />
+                          </div>
+                          <div className="encart">
+                            <div className="encartSousTitre">
+                              <h4 className="sousTitre"> Prenom : </h4>
+                              <input
+                                value={userData.firstname}
+                                placeholder={userData.firstname}
+                                onChange={(event) =>
+                                  setUserData({
+                                    ...userData,
+                                    firstname: event.target.value,
+                                  })
+                                }
+                              />
+                            </div>
+                            <img className="separateur" src={Separateur} />
+                          </div>
+                          <div className="encart">
+                            <div className="encartSousTitre">
+                              <h4 className="sousTitre"> Email : </h4>
+                              <input
+                                value={userData.email}
+                                placeholder={userData.email}
+                                onChange={(event) =>
+                                  setUserData({
+                                    ...userData,
+                                    email: event.target.value,
+                                  })
+                                }
+                              />
+                            </div>
+                            <img className="separateur" src={Separateur} />
+                          </div>
+                          <div className="encart">
+                            <div className="encartSousTitre">
+                              <h4 className="sousTitre"> Adresse : </h4>
+                              <input
+                                value={userData.address_delivery}
+                                placeholder={userData.address_delivery}
+                                onChange={(event) =>
+                                  setUserData({
+                                    ...userData,
+                                    address_delivery: event.target.value,
+                                  })
+                                }
+                              />
+                            </div>
+                            <img className="separateur" src={Separateur} />
+                          </div>
+                          <div className="encart">
+                            <div className="encartSousTitre">
+                              <h4 className="sousTitre"> Code Postal : </h4>
+                              <input
+                                value={userData.zip_delivery}
+                                placeholder={userData.zip_delivery}
+                                onChange={(event) =>
+                                  setUserData({
+                                    ...userData,
+                                    zip_delivery: event.target.value,
+                                  })
+                                }
+                              />
+                            </div>
+                            <img className="separateur" src={Separateur} />
+                          </div>
+                          <div className="encart">
+                            <div className="encartSousTitre">
+                              <h4 className="sousTitre"> Ville : </h4>
+                              <input
+                                value={userData.town_delivery}
+                                placeholder={userData.town_delivery}
+                                onChange={(event) =>
+                                  setUserData({
+                                    ...userData,
+                                    town_delivery: event.target.value,
+                                  })
+                                }
+                              />
+                            </div>
+                            <img className="separateur" src={Separateur} />
+                          </div>
+                          <button
+                            className="buttonCart"
+                            onClick={() => setIsEditing(true)}
+                          >
+                            Enregistrer
+                          </button>
+                        </div>
+                      </form>
+                    ) : (
                       <div className="allEncart">
                         <div className="encart">
                           <div className="encartSousTitre">
                             <h4 className="sousTitre"> Nom de Famille : </h4>
-                            <input
-                              type="text"
-                              name="firstname"
-                              id="firstname"
-                              value={userData.lastname}
-                              placeholder={userData.lastname}
-                              onChange={(event) =>
-                                setUserData({
-                                  ...userData,
-                                  lastname: event.target.value,
-                                })
-                              }
-                            />
+                            <p>{userData?.lastname}</p>
                           </div>
                           <img className="separateur" src={Separateur} />
                         </div>
                         <div className="encart">
                           <div className="encartSousTitre">
-                            <h4 className="sousTitre"> Prenom : </h4>
-                            <input
-                              value={userData.firstname}
-                              placeholder={userData.firstname}
-                              onChange={(event) =>
-                                setUserData({
-                                  ...userData,
-                                  firstname: event.target.value,
-                                })
-                              }
-                            />
+                            <h4 className="sousTitre"> Prénom : </h4>
+                            <p>{userData?.firstname}</p>
                           </div>
                           <img className="separateur" src={Separateur} />
                         </div>
                         <div className="encart">
                           <div className="encartSousTitre">
                             <h4 className="sousTitre"> Email : </h4>
-                            <input
-                              value={userData.email}
-                              placeholder={userData.email}
-                              onChange={(event) =>
-                                setUserData({
-                                  ...userData,
-                                  email: event.target.value,
-                                })
-                              }
-                            />
+                            <p>{userData?.email}</p>
                           </div>
                           <img className="separateur" src={Separateur} />
                         </div>
                         <div className="encart">
                           <div className="encartSousTitre">
                             <h4 className="sousTitre"> Adresse : </h4>
-                            <input
-                              value={userData.address_delivery}
-                              placeholder={userData.address_delivery}
-                              onChange={(event) =>
-                                setUserData({
-                                  ...userData,
-                                  address_delivery: event.target.value,
-                                })
-                              }
-                            />
+                            <p>{userData?.address_delivery}</p>
                           </div>
                           <img className="separateur" src={Separateur} />
                         </div>
                         <div className="encart">
                           <div className="encartSousTitre">
                             <h4 className="sousTitre"> Code Postal : </h4>
-                            <input
-                              value={userData.zip_delivery}
-                              placeholder={userData.zip_delivery}
-                              onChange={(event) =>
-                                setUserData({
-                                  ...userData,
-                                  zip_delivery: event.target.value,
-                                })
-                              }
-                            />
+                            <p>{userData?.zip_delivery}</p>
                           </div>
                           <img className="separateur" src={Separateur} />
                         </div>
                         <div className="encart">
                           <div className="encartSousTitre">
                             <h4 className="sousTitre"> Ville : </h4>
-                            <input
-                              value={userData.town_delivery}
-                              placeholder={userData.town_delivery}
-                              onChange={(event) =>
-                                setUserData({
-                                  ...userData,
-                                  town_delivery: event.target.value,
-                                })
-                              }
-                            />
+                            <p>{userData?.town_delivery}</p>
                           </div>
                           <img className="separateur" src={Separateur} />
                         </div>
-                        <button onClick={() => setIsEditing(true)}>
-                          Enregistrer
+                        <button
+                          className="buttonCart"
+                          onClick={() => setIsEditing(true)}
+                        >
+                          Modifier
                         </button>
                       </div>
-                    </form>
-                  ) : (
-                    <div className="allEncart">
-                      <div className="encart">
-                        <div className="encartSousTitre">
-                          <h4 className="sousTitre"> Nom de Famille : </h4>
-                          <p>{userData?.lastname}</p>
-                        </div>
-                        <img className="separateur" src={Separateur} />
-                      </div>
-                      <div className="encart">
-                        <div className="encartSousTitre">
-                          <h4 className="sousTitre"> Prénom : </h4>
-                          <p>{userData?.firstname}</p>
-                        </div>
-                        <img className="separateur" src={Separateur} />
-                      </div>
-                      <div className="encart">
-                        <div className="encartSousTitre">
-                          <h4 className="sousTitre"> Email : </h4>
-                          <p>{userData?.email}</p>
-                        </div>
-                        <img className="separateur" src={Separateur} />
-                      </div>
-                      <div className="encart">
-                        <div className="encartSousTitre">
-                          <h4 className="sousTitre"> Adresse : </h4>
-                          <p>{userData?.address_delivery}</p>
-                        </div>
-                        <img className="separateur" src={Separateur} />
-                      </div>
-                      <div className="encart">
-                        <div className="encartSousTitre">
-                          <h4 className="sousTitre"> Code Postal : </h4>
-                          <p>{userData?.zip_delivery}</p>
-                        </div>
-                        <img className="separateur" src={Separateur} />
-                      </div>
-                      <div className="encart">
-                        <div className="encartSousTitre">
-                          <h4 className="sousTitre"> Ville : </h4>
-                          <p>{userData?.town_delivery}</p>
-                        </div>
-                        <img className="separateur" src={Separateur} />
-                      </div>
-                      <button onClick={() => setIsEditing(true)}>
-                        Modifier
-                      </button>
-                    </div>
-                  )}
+                    )}
 
-                  <div className="coinBas">
-                    <img className="coinBG" src={CoinBG} />
-                    <img className="coinBD" src={CoinBD} />
+                    <div className="coinBas">
+                      <img className="coinBG" src={CoinBG} />
+                      <img className="coinBD" src={CoinBD} />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="commande">
-                <div className="divCommande">
-                  <h3 className="titreCommande">Historique de Commandes</h3>
-                  <div className="cadreHaut">
-                    <img src={CoinHG} className="coinHG" />
-                    <img src={CoinHD} className="coinHD" />
-                  </div>
-                  <div className="descriptCommande">
-                    {userOrder.length === 0 ? (
-                      <p>Pas de commande, pour le moment...</p>
-                    ) : (
-                      userOrder.map((order) => (
-                        <div className="descriptCommandeSuite" key={order.id}>
-                          <div className="propsCommande">
-                            <div className="ligneCommande">
-                              <div className="cadreLigne">
-                                <h4 className="lignes"> N° de Commande : </h4>
-                                <p className="lignes">{order.num_cmd}</p>
-                              </div>
-                              <div className="cadreLigne">
-                                <h4 className="lignes"> État : </h4>
-                                <p className="lignes">{order.status}</p>
-                              </div>
-                              <div className="cadreLigne">
-                                <h4 className="lignes"> Montant Payé : </h4>
-                                <p className="lignes">{order.orderAmount}</p>
+                <div className="commande">
+                  <div className="divCommande">
+                    <h3 className="titreCommande">Historique de Commandes</h3>
+                    <div className="cadreHaut">
+                      <img src={CoinHG} className="coinHG" />
+                      <img src={CoinHD} className="coinHD" />
+                    </div>
+                    <div className="descriptCommande">
+                      {userOrder.length === 0 ? (
+                        <p>Pas de commande, pour le moment...</p>
+                      ) : (
+                        userOrder.map((order) => (
+                          <div className="descriptCommandeSuite" key={order.id}>
+                            <div className="propsCommande">
+                              <div className="ligneCommande">
+                                <div className="cadreLigne">
+                                  <h4 className="lignes"> N° de Commande : </h4>
+                                  <p className="lignes">{order.num_cmd}</p>
+                                </div>
+                                <div className="cadreLigne">
+                                  <h4 className="lignes"> État : </h4>
+                                  <p className="lignes">{order.status}</p>
+                                </div>
+                                <div className="cadreLigne">
+                                  <h4 className="lignes"> Montant Payé : </h4>
+                                  <p className="lignes">{order.orderAmount}€</p>
+                                </div>
                               </div>
                             </div>
 
                             <div className="detailCommande">
                               <h4 className="lignesDetail">Détail</h4>
                               <p className="lignes">{order.quantity}</p>
-                              <img src={Star} className="boutonDetail" />
+                              {/* <img src={Star} className="boutonDetail" /> */}
+                            </div>
+                            <div className="separateur">
+                              <img src={Separateur} />
                             </div>
                           </div>
-                          <div className="separateur">
-                            <img src={Separateur} />
-                          </div>
-                        </div>
-                      ))
-                    )}
-                  </div>
-                  <div className="cadreBas">
-                    <img src={CoinBG} className="coinBG" />
-                    <img src={CoinBD} className="coinBD" />
+                        ))
+                      )}
+                    </div>
+                    <div className="cadreBas">
+                      <img src={CoinBG} className="coinBG" />
+                      <img src={CoinBD} className="coinBD" />
+                    </div>
                   </div>
                 </div>
               </div>
+              <div className="deconnexion">
+                <button className="buttonCart" onClick={handleLogout}>
+                  Se deconnecter
+                </button>
+              </div>
             </div>
-            <div className="deconnexion">
-              <button className="buttonCart" onClick={handleLogout}>
-                Se deconnecter
-              </button>
-            </div>
-          </div>
-        )}
+          )}
+        </div>
+        <Footer />
+        <Burger />
       </div>
-      <Footer />
-      <Burger />
-    </div>
+    </>
   )
 }
